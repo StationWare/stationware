@@ -64,7 +64,7 @@ namespace Content.Server.StationEvents.Events
 
             if (ev.StartAnnouncement != null)
             {
-                ChatSystem.DispatchGlobalAnnouncement(Loc.GetString(ev.StartAnnouncement), playSound: false, colorOverride: Color.Gold);
+                ChatSystem.DispatchGlobalAnnouncement(Loc.GetString(ev.StartAnnouncement), playSound: false, colorOverride: Color.Fuchsia);
             }
 
             if (ev.StartAudio != null)
