@@ -221,7 +221,7 @@ public sealed partial class ChatSystem : SharedChatSystem
     /// <param name="sender">The sender (Communications Console in Communications Console Announcement)</param>
     /// <param name="playSound">Play the announcement sound</param>
     /// <param name="colorOverride">Optional color for the announcement message</param>
-    public void DispatchGlobalAnnouncement(string message, string sender = "Central Command",
+    public void DispatchGlobalAnnouncement(string message, string sender = "StationWare Event",
         bool playSound = true, SoundSpecifier? announcementSound = null, Color? colorOverride = null)
     {
         var wrappedMessage = Loc.GetString("chat-manager-sender-announcement-wrap-message", ("sender", sender), ("message", FormattedMessage.EscapeText(message)));

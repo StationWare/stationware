@@ -1,4 +1,14 @@
 - type: gamePreset
+  id: StationWare
+  alias:
+  - bus
+  name: stationware-title
+  showInVote: true
+  description: stationware-description
+  rules:
+  - RegularStationEventScheduler
+
+- type: gamePreset
   id: Survival
   alias:
     - survival
@@ -25,7 +35,7 @@
     - secret
     - sekrit
   name: secret-title
-  showInVote: true
+  showInVote: false
   description: secret-description
   rules:
     - Secret
@@ -36,7 +46,7 @@
     - sandbox
   name: sandbox-title
   description: sandbox-description
-  showInVote: true
+  showInVote: false
   maxPlayers: 5
   rules:
     - Sandbox

@@ -1,7 +1,3 @@
-﻿[events]
-# Annoying
-enabled = false
-
-[npc]
+﻿[npc]
 # Makes physics etc debugging easier.
 enabled = false
