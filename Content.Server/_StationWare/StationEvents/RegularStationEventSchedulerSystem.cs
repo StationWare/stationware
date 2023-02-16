@@ -48,7 +48,6 @@ public sealed class RegularStationEventSchedulerSystem : GameRuleSystem
     /// </summary>
     private void ResetTimer()
     {
-        // 5 - 25 minutes. TG does 3-10 but that's pretty frequent
         _timeUntilNextEvent = _eventInterval;
     }
 }
