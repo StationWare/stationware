@@ -1,0 +1,15 @@
+- type: gameMap
+  id: Stationware
+  mapName: 'Bus'
+  mapPath: /Maps/stationware.yml
+  minPlayers: 0
+  stations:
+    Stationware:
+      mapNameTemplate: '{0} Bus {1}'
+      nameGenerator:
+        !type:NanotrasenNameGenerator
+        prefixCreator: 'B'
+      overflowJobs:
+        - Passenger
+      availableJobs:
+        Passenger: [ -1, -1 ]
