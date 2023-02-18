@@ -24,6 +24,7 @@ public sealed class WareEventSystem : EntitySystem
         var ev = _random.Pick(_prototype.EnumeratePrototypes<WareEventPrototype>().ToArray());
 
         var players = GetAllPlayers().ToArray();
+        _random.Shuffle(players);
 
         _chat.DispatchGlobalAnnouncement(Loc.GetString(ev.Announcement), announcementSound: ev.AnnouncementSound, colorOverride: Color.Fuchsia);
 
