@@ -37,7 +37,6 @@ public sealed class WareEventSchedulerSystem : GameRuleSystem
             return;
         }
 
-        Logger.Debug("foo");
         _wareEvent.RunWareEvent();
         ResetTimer();
     }
