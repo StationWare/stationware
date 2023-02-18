@@ -1,0 +1,94 @@
+- type: entity
+  id: SWWindowIndestructible
+  parent: BaseStructure
+  suffix: StationWare, Indestructible
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Window
+  components:
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        path:
+          "/Audio/Effects/glass_hit.ogg"
+  - type: WallMount
+    arc: 360 # interact despite grilles
+  - type: Tag
+    tags:
+      - ForceFixRotations
+      - Window
+  - type: Sprite
+    netsync: false
+    drawdepth: WallTops
+    sprite: Structures/Windows/window.rsi
+  - type: Icon
+    sprite: Structures/Windows/window.rsi
+    state: full
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+    - shape:
+        !type:PhysShapeAabb {}
+      mask:
+      - FullTileMask
+      layer:
+      - GlassLayer
+  - type: Airtight
+  - type: IconSmooth
+    key: windows
+    base: window
+  - type: InteractionPopup
+    interactSuccessString: comp-window-knock
+    messagePerceivedByOthers: comp-window-knock
+    interactSuccessSound:
+      path: /Audio/Effects/glass_knock.ogg
+  - type: Appearance
+
+- type: entity
+  id: SWGrilleIndestructible
+  parent: BaseStructure
+  suffix: StationWare, Indestructible
+  components:
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        path:
+          "/Audio/Weapons/grille_hit.ogg"
+  - type: CanBuildWindowOnTop
+  - type: Sprite
+    netsync: false
+    drawdepth: Walls
+    sprite: Structures/Walls/grille.rsi
+    state: grille
+  - type: Icon
+    sprite: Structures/Walls/grille.rsi
+    state: grille
+  - type: PowerConsumer
+  - type: Electrified
+    requirePower: true
+    noWindowInTile: true
+    highVoltageNode: high
+    mediumVoltageNode: medium
+    lowVoltageNode: low
+  - type: NodeContainer
+    nodes:
+      high:
+        !type:CableDeviceNode
+        nodeGroupID: HVPower
+      medium:
+        !type:CableDeviceNode
+        nodeGroupID: MVPower
+      low:
+        !type:CableDeviceNode
+        nodeGroupID: Apc
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+    - shape:
+        !type:PhysShapeAabb
+        bounds: "-0.5,-0.5,0.5,0.5"
+      layer:
+      - GlassLayer
