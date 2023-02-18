@@ -6,7 +6,7 @@
   showInVote: true
   description: stationware-description
   rules:
-  - RegularStationEventScheduler
+  - WareEventScheduler
 
 - type: gamePreset
   id: Survival

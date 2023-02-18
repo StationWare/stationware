@@ -1,0 +1,7 @@
+- type: wareEvent
+  id: GiveItemBikeHornEvent
+  announcement: ware-event-give-item-bike-horn
+  event: 
+    !type:GiveItemWareEvent
+      spawns:
+      - id: BikeHorn

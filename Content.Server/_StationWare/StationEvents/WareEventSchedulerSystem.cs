@@ -1,21 +1,19 @@
-﻿using Content.Server.GameTicking.Rules;
-using Content.Server.StationEvents;
+﻿using Content.Server._StationWare.WareEvents;
+using Content.Server.GameTicking.Rules;
 
 namespace Content.Server._StationWare.StationEvents;
 
 /// <summary>
-/// runs events at regular intervals.
+/// runs wareevents at regular intervals.
 /// </summary>
-public sealed class RegularStationEventSchedulerSystem : GameRuleSystem
+public sealed class WareEventSchedulerSystem : GameRuleSystem
 {
-    public override string Prototype => "RegularStationEventScheduler";
+    public override string Prototype => "WareEventScheduler";
 
-    [Dependency] private readonly EventManagerSystem _event = default!;
+    [Dependency] private readonly WareEventSystem _wareEvent = default!;
 
-    [DataField("eventInterval"), ViewVariables(VVAccess.ReadWrite)]
-    private float _eventInterval = 60;
-
-    private const float MinimumTimeUntilFirstEvent = 60;
+    private const float EventInterval = 60;
+    private const float MinimumTimeUntilFirstEvent = 10;
 
     private float _timeUntilNextEvent = MinimumTimeUntilFirstEvent;
 
@@ -30,7 +28,7 @@ public sealed class RegularStationEventSchedulerSystem : GameRuleSystem
     {
         base.Update(frameTime);
 
-        if (!RuleStarted || !_event.EventsEnabled)
+        if (!RuleStarted)
             return;
 
         if (_timeUntilNextEvent > 0)
@@ -39,7 +37,8 @@ public sealed class RegularStationEventSchedulerSystem : GameRuleSystem
             return;
         }
 
-        _event.RunRandomEvent();
+        Logger.Debug("foo");
+        _wareEvent.RunWareEvent();
         ResetTimer();
     }
 
@@ -48,6 +47,6 @@ public sealed class RegularStationEventSchedulerSystem : GameRuleSystem
     /// </summary>
     private void ResetTimer()
     {
-        _timeUntilNextEvent = _eventInterval;
+        _timeUntilNextEvent = EventInterval;
     }
 }
