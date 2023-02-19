@@ -1,4 +1,4 @@
-﻿using Content.Server._StationWare.WareEvents.Components;
+using Content.Server._StationWare.WareEvents.Components;
 using Content.Shared._StationWare.WareEvents;
 using Content.Shared.Movement.Systems;
 using Robust.Shared.Random;

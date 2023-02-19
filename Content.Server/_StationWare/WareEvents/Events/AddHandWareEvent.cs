@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Content.Server._StationWare.WareEvents.Components;
 using Content.Server.Hands.Components;
 using Content.Server.Hands.Systems;

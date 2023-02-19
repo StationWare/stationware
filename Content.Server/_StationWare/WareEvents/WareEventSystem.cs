@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Content.Server.Chat.Systems;
 using Content.Shared._StationWare.WareEvents;
 using Content.Shared.Mobs.Components;
