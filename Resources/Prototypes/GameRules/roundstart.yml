@@ -80,7 +80,7 @@
     id: RampingStationEventScheduler
 
 - type: gameRule
-  id: RegularStationEventScheduler
+  id: WareEventScheduler
   config:
     !type:GenericGameRuleConfiguration
-    id: RegularStationEventScheduler
+    id: WareEventScheduler
