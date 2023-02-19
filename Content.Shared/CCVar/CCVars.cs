@@ -1164,6 +1164,16 @@ namespace Content.Shared.CCVar
             CVarDef.Create("anomaly.generation_grid_bounds_scale", 0.6f, CVar.SERVERONLY);
 
         /*
+         * StationWare
+         */
+
+        /// <summary>
+        ///     How long is the interval between events
+        /// </summary>
+        public static readonly CVarDef<float> StationWareWareEventInterval =
+            CVarDef.Create("stationware.wareevent.interval", 60f, CVar.SERVERONLY);
+
+        /*
          * VIEWPORT
          */
 
