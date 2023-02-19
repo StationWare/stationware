@@ -10,3 +10,8 @@ ware-event-single-fast-speed = Some guy is moving fast as lightning!
 ware-event-single-warp-speed = Someone is moving at warp speed!
 
 ware-event-polymorph-monkey = Someone is going ape all over the bus!
+
+ware-event-spawn-entrance-gorilla = A gorilla has hopped a ride on the bus!
+ware-event-spawn-entrance-xeno-queen = Seems like some royalty has hopped on for a ride. Not the kind you want, though...
+
+ware-event-spawn-mice = Someone must've left some crumbs out. Now we have mice everywhere!

@@ -9,7 +9,7 @@ using Robust.Shared.Random;
 
 namespace Content.Server._StationWare.WareEvents;
 
-public sealed class WareEventSystem : EntitySystem
+public sealed partial class WareEventSystem : EntitySystem
 {
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
@@ -23,11 +23,22 @@ public sealed class WareEventSystem : EntitySystem
 
     private List<EntityUid> _lastPlayersAffected = new();
 
-    public void RunWareEvent()
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        InitializeCommands();
+    }
+
+    public void RunRandomWareEvent()
     {
         // TODO: maybe one day we'll want something more profound than this.
         var ev = _random.Pick(_prototype.EnumeratePrototypes<WareEventPrototype>().ToArray());
+        RunWareEvent(ev);
+    }
 
+    public void RunWareEvent(WareEventPrototype ev)
+    {
         var players = GetAllPlayers().ToList();
 
         if (!players.Any())
@@ -48,6 +59,7 @@ public sealed class WareEventSystem : EntitySystem
 
         _lastEventRan = ev;
         _lastPlayersAffected = players;
+
     }
 
     private IEnumerable<EntityUid> GetAllPlayers()
