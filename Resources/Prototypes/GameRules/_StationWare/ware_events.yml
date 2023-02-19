@@ -5,3 +5,100 @@
     !type:GiveItemWareEvent
       spawns:
       - id: BikeHorn
+
+- type: wareEvent
+  id: GiveHandEvent
+  announcement: ware-event-give-hand
+  event: 
+    !type:AddHandWareEvent
+      amount: 1
+
+- type: wareEvent
+  id: LoseHandEvent
+  announcement: ware-event-lose-hand
+  event: 
+    !type:AddHandWareEvent
+      amount: -1
+
+- type: wareEvent
+  id: SingleNoHandsEvent
+  announcement: ware-event-single-no-hands
+  event: 
+    !type:AddHandWareEvent
+      permanent: false
+      playersToAffect: 1
+      amount: -100
+
+- type: wareEvent
+  id: RandomSpeedEvent
+  announcement: ware-event-random-speed
+  event: 
+    !type:MoveSpeedWareEvent
+      permanent: true
+      minMoveSpeedModifier: 0.5
+      maxMoveSpeedModifier: 1.5
+
+- type: wareEvent
+  id: TurtleSpeedEvent
+  announcement: ware-event-turtle-speed
+  event: 
+    !type:MoveSpeedWareEvent
+      permanent: false
+      minMoveSpeedModifier: 0.25
+      maxMoveSpeedModifier: 0.5
+
+- type: wareEvent
+  id: SingleFastSpeedEvent
+  announcement: ware-event-single-fast-speed
+  event: 
+    !type:MoveSpeedWareEvent
+      permanent: true
+      playersToAffect: 1
+      minMoveSpeedModifier: 2
+      maxMoveSpeedModifier: 2.5
+
+- type: wareEvent
+  id: SingleWarpSpeedEvent
+  announcement: ware-event-single-warp-speed
+  event: 
+    !type:MoveSpeedWareEvent
+      permanent: false
+      playersToAffect: 1
+      minMoveSpeedModifier: 7.5
+      maxMoveSpeedModifier: 10
+
+- type: wareEvent
+  id: PolymorphMonkeyEvent
+  announcement: ware-event-polymorph-monkey
+  event: 
+    !type:PolymorphWareEvent
+      playersToAffect: 1
+      polymorphProtoypes:
+      - Monkey
+
+- type: wareEvent
+  id: SpawnEntranceGorillaEvent
+  announcement: ware-event-spawn-entrance-gorilla
+  event: 
+    !type:SpawnAtEntranceWareEvent
+      spawns:
+      - id: MobGorilla
+
+- type: wareEvent
+  id: SpawnEntranceXenoQueenEvent
+  announcement: ware-event-spawn-entrance-xeno-queen
+  event: 
+    !type:SpawnAtEntranceWareEvent
+      spawns:
+      - id: MobXenoQueen
+
+- type: wareEvent
+  id: SpawnMiceEvent
+  announcement: ware-event-spawn-mice
+  event: 
+    !type:SpawnRandomWareEvent
+      spawns:
+      - id: MobMouse
+        amount: 15
+        maxAmount: 20
+      clumpSize: 6

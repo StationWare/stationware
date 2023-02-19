@@ -1,5 +1,7 @@
 ﻿using Content.Server._StationWare.WareEvents;
 using Content.Server.GameTicking.Rules;
+using Content.Shared.CCVar;
+using Robust.Shared.Configuration;
 
 namespace Content.Server._StationWare.StationEvents;
 
@@ -8,11 +10,20 @@ namespace Content.Server._StationWare.StationEvents;
 /// </summary>
 public sealed class WareEventSchedulerSystem : GameRuleSystem
 {
+    [Dependency] private readonly IConfigurationManager _configuration = default!;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        _configuration.OnValueChanged(CCVars.StationWareWareEventInterval, v=> _eventInterval = v, true);
+    }
+
     public override string Prototype => "WareEventScheduler";
 
     [Dependency] private readonly WareEventSystem _wareEvent = default!;
 
-    private const float EventInterval = 60;
+    private float _eventInterval = 60;
     private const float MinimumTimeUntilFirstEvent = 10;
 
     private float _timeUntilNextEvent = MinimumTimeUntilFirstEvent;
@@ -37,7 +48,7 @@ public sealed class WareEventSchedulerSystem : GameRuleSystem
             return;
         }
 
-        _wareEvent.RunWareEvent();
+        _wareEvent.RunRandomWareEvent();
         ResetTimer();
     }
 
@@ -46,6 +57,6 @@ public sealed class WareEventSchedulerSystem : GameRuleSystem
     /// </summary>
     private void ResetTimer()
     {
-        _timeUntilNextEvent = EventInterval;
+        _timeUntilNextEvent = _eventInterval;
     }
 }

@@ -22,19 +22,12 @@ public sealed class GiveItemWareEvent : WareEvent
     [DataField("itemDuration")]
     public float? ItemDuration;
 
-    /// <summary>
-    /// The max amount of items that the event will spawn
-    /// </summary>
-    [DataField("maxItems")]
-    public int MaxItems = int.MaxValue;
-
     /// <inheritdoc/>
     public override void Run(IEnumerable<EntityUid> players, IEntityManager entity, IRobustRandom random)
     {
         var hands = entity.System<HandsSystem>();
 
         var handsQuery = entity.GetEntityQuery<HandsComponent>();
-        var count = 0;
         foreach (var player in players)
         {
             var xform = entity.GetComponent<TransformComponent>(player);
@@ -45,11 +38,7 @@ public sealed class GiveItemWareEvent : WareEvent
             var spawns = EntitySpawnCollection.GetSpawns(Spawns, random);
             foreach (var spawnProto in spawns)
             {
-                if (count > MaxItems)
-                    break;
-
                 var spawnedEntity = entity.SpawnEntity(spawnProto, xform.Coordinates);
-                count++;
                 if (ItemDuration != null)
                 {
                     var timedDespawn = entity.EnsureComponent<TimedDespawnComponent>(spawnedEntity);
