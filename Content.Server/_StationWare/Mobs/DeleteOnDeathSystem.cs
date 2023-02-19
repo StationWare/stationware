@@ -1,4 +1,5 @@
-﻿using Content.Shared.Mobs;
+﻿using Content.Shared.CCVar;
+using Content.Shared.Mobs;
 using Robust.Shared.Configuration;
 
 namespace Content.Server._StationWare.Mobs;
@@ -14,10 +15,19 @@ public sealed class DeleteOnDeathSystem : EntitySystem
     public override void Initialize()
     {
         SubscribeLocalEvent<MobStateChangedEvent>(OnMobStateChanged);
+        _configuration.OnValueChanged(CCVars.StationWareMobsDeleteDeadBodies, e => _enabled = e, true);
     }
 
-    private void OnMobStateChanged(ref MobStateChangedEvent ev)
-    {
+    private bool _enabled;
 
+    private void OnMobStateChanged(MobStateChangedEvent ev)
+    {
+        if (!_enabled)
+            return;
+
+        if (ev.NewMobState != MobState.Dead)
+            return;
+
+        QueueDel(ev.Target);
     }
 }
