@@ -6,10 +6,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.GameTicking;
 using Content.Server.Maps;
-using Content.Server.Shuttles.Components;
 using Content.Server.Spawners.Components;
 using Content.Server.Station.Components;
-using Content.Server.Station.Systems;
 using Content.Shared.Roles;
 using NUnit.Framework;
 using Robust.Server.GameObjects;
@@ -20,7 +18,6 @@ using Robust.Shared.Utility;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using YamlDotNet.RepresentationModel;
-using ShuttleSystem = Content.Server.Shuttles.Systems.ShuttleSystem;
 
 namespace Content.IntegrationTests.Tests
 {
@@ -178,10 +175,8 @@ namespace Content.IntegrationTests.Tests
 
             var mapManager = server.ResolveDependency<IMapManager>();
             var entManager = server.ResolveDependency<IEntityManager>();
-            var mapLoader = entManager.System<MapLoaderSystem>();
             var protoManager = server.ResolveDependency<IPrototypeManager>();
             var ticker = entManager.EntitySysManager.GetEntitySystem<GameTicker>();
-            var shuttleSystem = entManager.EntitySysManager.GetEntitySystem<ShuttleSystem>();
             var xformQuery = entManager.GetEntityQuery<TransformComponent>();
 
             await server.WaitPost(() =>
@@ -196,7 +191,6 @@ namespace Content.IntegrationTests.Tests
                     throw new Exception($"Failed to load map {mapProto}", ex);
                 }
 
-                var shuttleMap = mapManager.CreateMap();
                 var largest = 0f;
                 EntityUid? targetGrid = null;
                 var memberQuery = entManager.GetEntityQuery<StationMemberComponent>();
@@ -218,16 +212,9 @@ namespace Content.IntegrationTests.Tests
                     }
                 }
 
-                // Test shuttle can dock.
-                // This is done inside gamemap test because loading the map takes ages and we already have it.
                 var station = entManager.GetComponent<StationMemberComponent>(targetGrid!.Value).Station;
                 var stationConfig = entManager.GetComponent<StationDataComponent>(station).StationConfig;
                 Assert.IsNotNull(stationConfig, $"{entManager.ToPrettyString(station)} had null StationConfig.");
-                var shuttlePath = stationConfig.EmergencyShuttlePath.ToString();
-                var shuttle = mapLoader.LoadGrid(shuttleMap, shuttlePath);
-                // Assert.That(shuttle != null && shuttleSystem.TryFTLDock(entManager.GetComponent<ShuttleComponent>(shuttle.Value), targetGrid.Value), $"Unable to dock {shuttlePath} to {mapProto}");
-
-                mapManager.DeleteMap(shuttleMap);
 
                 // Test that the map has valid latejoin spawn points
                 if (!NoSpawnMaps.Contains(mapProto))
