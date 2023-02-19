@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Content.Server._StationWare.WareEvents.Components;
 using Content.Server.Hands.Components;
 using Content.Server.Hands.Systems;
@@ -11,16 +11,17 @@ namespace Content.Server._StationWare.WareEvents.Events;
 public sealed class AddHandWareEvent : WareEvent
 {
     /// <summary>
+    /// Whether or not the effects of the event should
+    /// be reset.
+    /// </summary>
+    [DataField("permanent")]
+    public bool Permanent = true;
+
+    /// <summary>
     /// A counter used to generate unique hand names.
     /// static so that it works between repeated calls of the event
     /// </summary>
     private static int _counter;
-
-    /// <summary>
-    /// Whether or not the hands are restored at the end of the event
-    /// </summary>
-    [DataField("permanent")]
-    public bool Permanent = true;
 
     /// <summary>
     /// The amount of hands to be added/removed.

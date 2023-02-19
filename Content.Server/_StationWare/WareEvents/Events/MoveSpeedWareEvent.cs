@@ -1,4 +1,4 @@
-﻿using Content.Server._StationWare.WareEvents.Components;
+using Content.Server._StationWare.WareEvents.Components;
 using Content.Shared._StationWare.WareEvents;
 using Content.Shared.Movement.Systems;
 using Robust.Shared.Random;
@@ -8,10 +8,11 @@ namespace Content.Server._StationWare.WareEvents.Events;
 public sealed class MoveSpeedWareEvent : WareEvent
 {
     /// <summary>
-    /// Whether or not the speed modifier is removed after the event.
+    /// Whether or not the effects of the event should
+    /// be reset. Must be
     /// </summary>
     [DataField("permanent")]
-    public bool Permanent;
+    public bool Permanent = true;
 
     /// <summary>
     /// The minimum value for the change in movement speed.
