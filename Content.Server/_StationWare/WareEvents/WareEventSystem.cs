@@ -57,6 +57,9 @@ public sealed partial class WareEventSystem : EntitySystem
 
         ev.Event.Run(players, EntityManager, _random);
 
+        var eventRanEvent = new WareEventRanEvent();
+        RaiseLocalEvent(ref eventRanEvent);
+
         _lastEventRan = ev;
         _lastPlayersAffected = players;
 
@@ -72,4 +75,8 @@ public sealed partial class WareEventSystem : EntitySystem
             yield return ent;
         }
     }
+
 }
+
+[ByRefEvent]
+public readonly record struct WareEventRanEvent;

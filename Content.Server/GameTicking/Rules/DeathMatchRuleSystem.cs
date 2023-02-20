@@ -1,12 +1,12 @@
+using System.Linq;
+using Content.Server._StationWare.WareEvents;
 using Content.Server.Chat.Managers;
-using Content.Server.GameTicking.Rules.Configurations;
 using Content.Shared.CCVar;
-using Content.Shared.Damage;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
+using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
-using Robust.Shared.Enums;
 
 namespace Content.Server.GameTicking.Rules;
 
@@ -18,50 +18,53 @@ public sealed class DeathMatchRuleSystem : GameRuleSystem
 {
     public override string Prototype => "DeathMatch";
 
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IChatManager _chatManager = default!;
-    [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
+    [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
 
     private const float RestartDelay = 10f;
-    private const float DeadCheckDelay = 5f;
+    private const float DeadCheckDelay = 0;
 
-    private float? _deadCheckTimer = null;
-    private float? _restartTimer = null;
+    private float? _deadCheckTimer;
+    private float? _restartTimer;
+
+    private string? _winnerName;
+    private string? _winnerUsername;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<DamageChangedEvent>(OnHealthChanged);
+        SubscribeLocalEvent<WareEventRanEvent>(OnWareEvent);
+        SubscribeLocalEvent<RoundEndTextAppendEvent>(OnRoundEndTextAppend);
+    }
+
+    private void OnWareEvent(ref WareEventRanEvent ev)
+    {
+        RunDelayedCheck();
     }
 
     public override void Started()
     {
-        _chatManager.DispatchServerAnnouncement(Loc.GetString("rule-death-match-added-announcement"));
-
-        _playerManager.PlayerStatusChanged += OnPlayerStatusChanged;
+        _winnerName = null;
+        _winnerUsername = null;
     }
 
     public override void Ended()
     {
         _deadCheckTimer = null;
         _restartTimer = null;
-
-        _playerManager.PlayerStatusChanged -= OnPlayerStatusChanged;
     }
 
-    private void OnHealthChanged(DamageChangedEvent _)
+    private void OnRoundEndTextAppend(RoundEndTextAppendEvent ev)
     {
-        RunDelayedCheck();
-    }
+        if (!RuleAdded)
+            return;
 
-    private void OnPlayerStatusChanged(object? _, SessionStatusEventArgs e)
-    {
-        if (e.NewStatus == SessionStatus.Disconnected)
-        {
-            RunDelayedCheck();
-        }
+        var line = _winnerName != null && _winnerUsername != null
+            ? Loc.GetString("rule-death-match-check-winner", ("name", _winnerName), ("username", _winnerUsername))
+            : Loc.GetString("rule-death-match-check-winner-stalemate");
+        ev.AddLine(line);
     }
 
     private void RunDelayedCheck()
@@ -86,7 +89,7 @@ public sealed class DeathMatchRuleSystem : GameRuleSystem
             if (_restartTimer > 0f)
                 return;
 
-            GameTicker.EndRound();
+            //GameTicker.EndRound();
             GameTicker.RestartRound();
             return;
         }
@@ -101,28 +104,28 @@ public sealed class DeathMatchRuleSystem : GameRuleSystem
 
         _deadCheckTimer = null;
 
-        IPlayerSession? winner = null;
-        foreach (var playerSession in _playerManager.ServerSessions)
+        List<IPlayerSession> winners = new();
+        foreach (var (actor, mobState) in EntityQuery<ActorComponent, MobStateComponent>())
         {
-            if (playerSession.AttachedEntity is not {Valid: true} playerEntity
-                || !TryComp(playerEntity, out MobStateComponent? state))
+            if (actor.PlayerSession.AttachedEntity is not {Valid: true} playerEntity)
                 continue;
 
-            if (!_mobStateSystem.IsAlive(playerEntity, state))
+            if (_mobStateSystem.IsDead(playerEntity, mobState))
                 continue;
 
-            // Found a second person alive, nothing decided yet!
-            if (winner != null)
-                return;
-
-            winner = playerSession;
+            winners.Add(actor.PlayerSession);
         }
 
-        _chatManager.DispatchServerAnnouncement(winner == null
-            ? Loc.GetString("rule-death-match-check-winner-stalemate")
-            : Loc.GetString("rule-death-match-check-winner",("winner", winner)));
+        if (winners.Count > 1)
+            return;
+
+        var winner = winners.FirstOrDefault();
+        _winnerUsername = winner?.Name;
+        if (winner?.AttachedEntity != null)
+            _winnerName = MetaData(winner.AttachedEntity.Value).EntityName;
 
         _chatManager.DispatchServerAnnouncement(Loc.GetString("rule-restarting-in-seconds", ("seconds", RestartDelay)));
+        GameTicker.ShowRoundEndScoreboard();
         _restartTimer = RestartDelay;
     }
 }

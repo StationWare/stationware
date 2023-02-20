@@ -24,7 +24,7 @@ public sealed class WareEventSchedulerSystem : GameRuleSystem
     [Dependency] private readonly WareEventSystem _wareEvent = default!;
 
     private float _eventInterval = 60;
-    private const float MinimumTimeUntilFirstEvent = 10;
+    private const float MinimumTimeUntilFirstEvent = 60;
 
     private float _timeUntilNextEvent = MinimumTimeUntilFirstEvent;
 
