@@ -1,6 +1,8 @@
 - type: entity
   id: SWWindowIndestructible
   parent: BaseStructure
+  name: window
+  description: Don't smudge up the glass down there.
   suffix: StationWare, Indestructible
   placement:
     mode: SnapgridCenter
@@ -49,6 +51,8 @@
 - type: entity
   id: SWGrilleIndestructible
   parent: BaseStructure
+  name: grille
+  description: A flimsy framework of iron rods.
   suffix: StationWare, Indestructible
   components:
   - type: MeleeSound

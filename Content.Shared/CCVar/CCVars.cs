@@ -1168,6 +1168,12 @@ namespace Content.Shared.CCVar
          */
 
         /// <summary>
+        ///     Do we delete bodies once they die?
+        /// </summary>
+        public static readonly CVarDef<bool> StationWareMobsDeleteDeadBodies =
+            CVarDef.Create("stationware.mobs.delete_dead_bodies", true, CVar.SERVERONLY);
+
+        /// <summary>
         ///     How long is the interval between events
         /// </summary>
         public static readonly CVarDef<float> StationWareWareEventInterval =
