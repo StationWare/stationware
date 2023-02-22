@@ -1,0 +1,10 @@
+- type: challenge
+  id: LastManStanding
+  announcement: Be the last man standing.
+  winByDefault: false
+  duration: 5
+  challengeModifiers:
+  - type: StayAliveModifier
+  - type: GiveItemModifier
+    items:
+    - id: BikeHorn
