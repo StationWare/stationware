@@ -1,6 +1,6 @@
 - type: challenge
-  id: LastManStanding
-  announcement: Be the last man standing.
+  id: Debug
+  announcement: debug
   winByDefault: false
   duration: 5
   challengeModifiers:
