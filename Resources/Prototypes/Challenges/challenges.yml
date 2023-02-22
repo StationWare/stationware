@@ -1,0 +1,10 @@
+- type: challenge
+  id: Debug
+  announcement: debug
+  winByDefault: false
+  duration: 5
+  challengeModifiers:
+  - type: StayAliveModifier
+  - type: GiveItemModifier
+    items:
+    - id: BikeHorn
