@@ -86,6 +86,14 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
         Del(uid);
     }
 
+    /// <summary>
+    /// Sets a player as winning a challenge.
+    /// </summary>
+    /// <param name="uid"></param>
+    /// <param name="challengeEnt"></param>
+    /// <param name="win"></param>
+    /// <param name="component"></param>
+    /// <param name="actor"></param>
     public void SetPlayerChallengeState(EntityUid uid,
         EntityUid challengeEnt,
         bool win,
@@ -139,11 +147,27 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
     }
 }
 
+/// <summary>
+/// Event raised once the challenge begins and logic can start.
+/// </summary>
+/// <param name="Players"></param>
+/// <param name="Challenge"></param>
 [ByRefEvent]
 public readonly record struct ChallengeStartEvent(List<EntityUid> Players, EntityUid Challenge);
 
+/// <summary>
+/// Event raised before the winners are checked but at the end of the challenge.
+/// </summary>
+/// <param name="Players"></param>
 [ByRefEvent]
 public readonly record struct BeforeChallengeEndEvent(List<EntityUid> Players);
 
+/// <summary>
+/// Event raised at the end of a challenge.
+/// Used for cleanup and checking winners.
+/// </summary>
+/// <param name="Players"></param>
+/// <param name="Completions"></param>
+/// <param name="Challenge"></param>
 [ByRefEvent]
 public readonly record struct ChallengeEndEvent(List<EntityUid> Players, Dictionary<IPlayerSession, bool> Completions, EntityUid Challenge);
