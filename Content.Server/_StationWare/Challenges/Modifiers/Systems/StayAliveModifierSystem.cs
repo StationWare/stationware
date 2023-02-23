@@ -31,6 +31,9 @@ public sealed class StayAliveModifierSystem : EntitySystem
     {
         foreach (var (stayAlive, challenge) in EntityQuery<StayAliveModifierComponent, StationWareChallengeComponent>())
         {
+            if (!challenge.Participants.ContainsValue(ev.Target))
+                continue;
+
             if (_mobState.IsIncapacitated(ev.Target, ev.Component))
                 _stationWareChallenge.SetPlayerChallengeState(ev.Target, stayAlive.Owner, false, challenge);
         }
