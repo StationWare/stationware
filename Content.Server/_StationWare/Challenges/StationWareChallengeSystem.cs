@@ -23,10 +23,13 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
     [Dependency] private readonly ISerializationManager _serialization = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly TransformSystem _transform = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
     {
+        InitializeEffects();
+
         _consoleHost.RegisterCommand("startchallenge", "Starts the specified challenge", "startchallenge <prototype ID>",
             StartChallengeCommand,
             StartChallengeCommandCompletions);
@@ -74,10 +77,21 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
         var beforeEv = new BeforeChallengeEndEvent(component.Participants.Values.ToList());
         RaiseLocalEvent(uid, ref beforeEv);
 
-        Dictionary<IPlayerSession, bool> finalCompletions = new();
         foreach (var (player, completion) in component.Completions)
         {
-            finalCompletions.Add(player, completion ?? component.WinByDefault);
+            if (completion != null)
+                continue;
+            if (player.AttachedEntity == null ||
+                !SetPlayerChallengeState(player.AttachedEntity.Value, uid, component.WinByDefault, component))
+            {
+                component.Completions[player] = component.WinByDefault;
+            }
+        }
+
+        Dictionary<IPlayerSession, bool> finalCompletions = new();
+        foreach (var (player, completion)  in component.Completions)
+        {
+            finalCompletions.Add(player, completion!.Value);
         }
 
         var ev = new ChallengeEndEvent(component.Participants.Values.ToList(), finalCompletions, uid);
@@ -94,23 +108,31 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
     /// <param name="win"></param>
     /// <param name="component"></param>
     /// <param name="actor"></param>
-    public void SetPlayerChallengeState(EntityUid uid,
+    public bool SetPlayerChallengeState(EntityUid uid,
         EntityUid challengeEnt,
         bool win,
         StationWareChallengeComponent? component = null,
         ActorComponent? actor = null)
     {
         if (!Resolve(uid, ref actor, false) || !Resolve(challengeEnt, ref component))
-            return;
+            return false;
 
         if (!component.Participants.ContainsKey(actor.PlayerSession))
-            return;
+            return false;
 
         if (component.Completions[actor.PlayerSession] != null)
-            return;
+            return false;
 
         component.Completions[actor.PlayerSession] = win;
-        // TODO: we probably want a big X or checkmark to pop over the player's head
+
+        var xform = Transform(uid);
+        var effect = win
+            ? component.WinEffectPrototypeId
+            : component.LoseEffectPrototypeId;
+        var effectEnt = Spawn(effect, xform.Coordinates);
+        _transform.SetParent(effectEnt, uid);
+        EnsureComp<ChallengeStateEffectComponent>(effectEnt).Challenge = challengeEnt;
+        return true;
     }
 
     private Dictionary<IPlayerSession, EntityUid> GetParticipants()

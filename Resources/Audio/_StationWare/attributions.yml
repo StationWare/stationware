@@ -1,3 +1,13 @@
+- files: ["buzzer.ogg"]
+  license: "CC0-1.0"
+  copyright: "Taken from -Andreas (freesound.org), edited and converted to .ogg and MONO by EmoGarbage404 (github)"
+  source: "https://freesound.org/people/-Andreas/sounds/650842/"
+
+- files: ["correct.ogg"]
+  license: "CC0-1.0"
+  copyright: "Taken from bwg2020 (freesound.org), converted to .ogg and MONO by EmoGarbage404 (github)"
+  source: "https://freesound.org/people/bwg2020/sounds/456161/"
+
 - files: ["event_ding.ogg"]
   license: "CC-BY-4.0"
   copyright: "Taken from tim.kahn (freesound.org), converted to .ogg and MONO by EmoGarbage404 (github)"
