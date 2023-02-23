@@ -27,6 +27,13 @@ public sealed class ChallengePrototype : IPrototype
     public TimeSpan Duration = TimeSpan.FromSeconds(10);
 
     /// <summary>
+    /// A delay between the challenge announcement
+    /// and the actual challenge beginning.
+    /// </summary>
+    [DataField("startDelay")]
+    public TimeSpan StartDelay = TimeSpan.Zero;
+
+    /// <summary>
     /// The announcement played when the event starts
     /// </summary>
     [DataField("announcement")]

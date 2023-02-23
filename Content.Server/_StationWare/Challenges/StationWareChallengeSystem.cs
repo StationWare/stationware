@@ -38,9 +38,9 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
     public EntityUid StartChallenge(ChallengePrototype challengePrototype)
     {
         var uid = Spawn(null, MapCoordinates.Nullspace);
-
         var challengeComp = AddComp<StationWareChallengeComponent>(uid);
-        challengeComp.EndTime = _timing.CurTime + challengePrototype.Duration; // time modifiers?
+        challengeComp.StartTime = _timing.CurTime + challengePrototype.StartDelay;
+        challengeComp.EndTime = _timing.CurTime + challengePrototype.Duration + challengePrototype.StartDelay; // time modifiers?
         challengeComp.WinByDefault = challengePrototype.WinByDefault;
         challengeComp.Participants = GetParticipants(); // get all of the players for this challenge
 
@@ -62,10 +62,6 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
 
         var announcement = Loc.GetString(challengePrototype.Announcement);
         _chat.DispatchGlobalAnnouncement(announcement, announcementSound: challengePrototype.AnnouncementSound, colorOverride: Color.Fuchsia);
-
-        // TODO: at some point, this should have a configurable delay
-        var ev = new ChallengeStartEvent(challengeComp.Participants.Values.ToList(), uid);
-        RaiseLocalEvent(uid, ref ev, true);
         return uid;
     }
 
@@ -97,6 +93,7 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
         var ev = new ChallengeEndEvent(component.Participants.Values.ToList(), finalCompletions, uid);
         RaiseLocalEvent(uid, ref ev, true);
 
+        // TODO: we need to rejuv/respawn everyone we murdered
         Del(uid);
     }
 
@@ -160,11 +157,21 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
 
         foreach (var challenge in EntityQuery<StationWareChallengeComponent>())
         {
-            var ent = challenge.Owner;
+            var uid = challenge.Owner;
+
+            if (challenge.StartTime != null &&
+                _timing.CurTime >= challenge.StartTime)
+            {
+                var ev = new ChallengeStartEvent(challenge.Participants.Values.ToList(), uid);
+                RaiseLocalEvent(uid, ref ev, true);
+                challenge.StartTime = null;
+            }
+
+
             if (_timing.CurTime < challenge.EndTime)
                 continue;
 
-            EndChallenge(ent, challenge);
+            EndChallenge(uid, challenge);
         }
     }
 }
