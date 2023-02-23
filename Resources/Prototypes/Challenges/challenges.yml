@@ -8,3 +8,12 @@
   - type: GiveItemModifier
     items:
     - id: BikeHorn
+
+- type: challenge
+  id: KeepTheCrownChallenge
+  announcement: challenge-keep-the-crown
+  winByDefault: false
+  duration: 10
+  challengeModifiers:
+  - type: WinningMarkerModifier
+    markerEffectPrototype: CrownEffect

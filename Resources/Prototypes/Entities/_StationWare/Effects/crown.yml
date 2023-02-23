@@ -1,0 +1,23 @@
+- type: entity
+  id: CrownEffect
+  name: crown
+  noSpawn: true
+  save: false
+  components:
+  - type: Transform
+    noRot: true
+  - type: Sprite
+    sprite: _StationWare/crown.rsi
+    drawdepth: Effects
+    noRot: true
+    netsync: false
+    offset: 0, 1
+    layers:
+    - state: icon
+      shader: unshaded
+  - type: Tag
+    tags:
+    - HideContextMenu
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Effects/pop.ogg
