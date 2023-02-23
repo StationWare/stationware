@@ -1,0 +1,51 @@
+- type: entity
+  id: WinEffect
+  name: win
+  noSpawn: true
+  save: false
+  components:
+  - type: Transform
+    noRot: true
+  - type: Sprite
+    sprite: _StationWare/winlose.rsi
+    drawdepth: Effects
+    noRot: true
+    netsync: false
+    offset: 0, 1
+    layers:
+    - state: win
+      shader: unshaded
+  - type: Tag
+    tags:
+    - HideContextMenu
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/_StationWare/correct.ogg
+      params:
+        volume: 5
+
+- type: entity
+  id: LoseEffect
+  name: lose
+  noSpawn: true
+  save: false
+  components:
+  - type: Transform
+    noRot: true
+  - type: Sprite
+    sprite: _StationWare/winlose.rsi
+    drawdepth: Effects
+    noRot: true
+    netsync: false
+    offset: 0, 1
+    layers:
+    - state: lose
+      shader: unshaded
+  - type: Tag
+    tags:
+    - HideContextMenu
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/_StationWare/buzzer.ogg
+      params:
+        volume: 5

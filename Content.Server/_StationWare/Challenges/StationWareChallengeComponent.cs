@@ -1,5 +1,7 @@
 ﻿using Robust.Server.Player;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Server._StationWare.Challenges;
 
@@ -17,4 +19,10 @@ public sealed class StationWareChallengeComponent : Component
 
     [DataField("endTime", customTypeSerializer: typeof(TimeOffsetSerializer))]
     public TimeSpan EndTime;
+
+    [DataField("winEffectPrototypeId", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
+    public string WinEffectPrototypeId = "WinEffect";
+
+    [DataField("loseEffectPrototypeId", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
+    public string LoseEffectPrototypeId = "LoseEffect";
 }
