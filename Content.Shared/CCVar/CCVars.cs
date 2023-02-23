@@ -1168,6 +1168,18 @@ namespace Content.Shared.CCVar
          */
 
         /// <summary>
+        ///     How many challenges are in a single stationware round
+        /// </summary>
+        public static readonly CVarDef<int> StationWareTotalChallenges =
+            CVarDef.Create("stationware.total_challenges", 10, CVar.SERVERONLY);
+
+        /// <summary>
+        ///     How much time do we wait between each challenge
+        /// </summary>
+        public static readonly CVarDef<float> StationWareChallengeCooldownLength =
+            CVarDef.Create("stationware.challenge_cooldown_length", 5f, CVar.SERVERONLY);
+
+        /// <summary>
         ///     Do we delete bodies once they die?
         /// </summary>
         public static readonly CVarDef<bool> StationWareMobsDeleteDeadBodies =
