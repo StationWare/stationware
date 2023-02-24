@@ -1,4 +1,13 @@
 - type: challenge
+  id: FreezeChallenge
+  announcement: challenge-freeze
+  winByDefault: true
+  startDelay: 1
+  duration: 5
+  challengeModifiers:
+  - type: FreezeModifier
+
+- type: challenge
   id: Debug
   announcement: debug
   winByDefault: false
