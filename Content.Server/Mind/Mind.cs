@@ -203,7 +203,7 @@ namespace Content.Server.Mind
         /// <exception cref="ArgumentException">
         ///     Thrown if we already have a role with this type.
         /// </exception>
-        public Role AddRole(Role role)
+        public Role AddRole(Role role, bool greet = true)
         {
             if (_roles.Contains(role))
             {
@@ -211,7 +211,8 @@ namespace Content.Server.Mind
             }
 
             _roles.Add(role);
-            role.Greet();
+            if (greet)
+                role.Greet();
 
             var message = new RoleAddedEvent(this, role);
             if (OwnedEntity != null)

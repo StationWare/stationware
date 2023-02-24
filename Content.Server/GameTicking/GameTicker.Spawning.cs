@@ -95,7 +95,7 @@ namespace Content.Server.GameTicking
             RaiseLocalEvent(new RulePlayerJobsAssignedEvent(assignedJobs.Keys.Select(x => _playerManager.GetSessionByUserId(x)).ToArray(), profiles, force));
         }
 
-        private void SpawnPlayer(IPlayerSession player, EntityUid station, string? jobId = null, bool lateJoin = true)
+        public void SpawnPlayer(IPlayerSession player, EntityUid station, string? jobId = null, bool lateJoin = true, bool announce = true)
         {
             var character = GetPlayerProfile(player);
 
@@ -105,10 +105,10 @@ namespace Content.Server.GameTicking
 
             if (jobId != null && !_playTimeTrackings.IsAllowed(player, jobId))
                 return;
-            SpawnPlayer(player, character, station, jobId, lateJoin);
+            SpawnPlayer(player, character, station, jobId, lateJoin, announce);
         }
 
-        private void SpawnPlayer(IPlayerSession player, HumanoidCharacterProfile character, EntityUid station, string? jobId = null, bool lateJoin = true)
+        private void SpawnPlayer(IPlayerSession player, HumanoidCharacterProfile character, EntityUid station, string? jobId = null, bool lateJoin = true, bool announce = true)
         {
             // Can't spawn players with a dummy ticker!
             if (DummyTicker)
@@ -137,7 +137,7 @@ namespace Content.Server.GameTicking
             // Do nothing, something else has handled spawning this player for us!
             if (bev.Handled)
             {
-                PlayerJoinGame(player);
+                PlayerJoinGame(player, announce);
                 return;
             }
 
@@ -160,7 +160,8 @@ namespace Content.Server.GameTicking
                 {
                     MakeObserve(player);
                 }
-                _chatManager.DispatchServerMessage(player, Loc.GetString("game-ticker-player-no-jobs-available-when-joining"));
+                if (announce)
+                    _chatManager.DispatchServerMessage(player, Loc.GetString("game-ticker-player-no-jobs-available-when-joining"));
                 return;
             }
 
@@ -179,7 +180,7 @@ namespace Content.Server.GameTicking
 
             var jobPrototype = _prototypeManager.Index<JobPrototype>(jobId);
             var job = new Job(newMind, jobPrototype);
-            newMind.AddRole(job);
+            newMind.AddRole(job, announce);
 
             _playTimeTrackings.PlayerRolesChanged(player);
 
@@ -190,7 +191,7 @@ namespace Content.Server.GameTicking
 
             newMind.TransferTo(mob);
 
-            if (lateJoin)
+            if (lateJoin && announce)
             {
                 _chatSystem.DispatchStationAnnouncement(station,
                     Loc.GetString(
@@ -214,14 +215,15 @@ namespace Content.Server.GameTicking
                 _adminLogger.Add(LogType.RoundStartJoin, LogImpact.Medium, $"Player {player.Name} joined as {character.Name:characterName} on station {Name(station):stationName} with {ToPrettyString(mob):entity} as a {job.Name:jobName}.");
 
             // Make sure they're aware of extended access.
-            if (Comp<StationJobsComponent>(station).ExtendedAccess
+            if (announce &&
+                Comp<StationJobsComponent>(station).ExtendedAccess
                 && (jobPrototype.ExtendedAccess.Count > 0
                     || jobPrototype.ExtendedAccessGroups.Count > 0))
             {
                 _chatManager.DispatchServerMessage(player, Loc.GetString("job-greet-crew-shortages"));
             }
 
-            if (TryComp(station, out MetaDataComponent? metaData))
+            if (announce && TryComp(station, out MetaDataComponent? metaData))
             {
                 _chatManager.DispatchServerMessage(player,
                     Loc.GetString("job-greet-station-name", ("stationName", metaData.EntityName)));
