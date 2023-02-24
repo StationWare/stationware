@@ -8,3 +8,17 @@
   - type: GiveItemModifier
     items:
     - id: BikeHorn
+
+- type: challenge
+  id: FindIanChallenge
+  announcement: challenge-find-ian
+  winByDefault: false
+  duration: 10
+  challengeModifiers:
+  - type: SpawnEntityModifier
+    clumpSize: 1
+    spawns:
+    - id: SWMobCorgiIan
+    - id: MobCorgi
+      amount: 99
+

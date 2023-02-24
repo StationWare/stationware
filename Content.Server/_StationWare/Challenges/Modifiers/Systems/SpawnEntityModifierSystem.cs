@@ -37,20 +37,17 @@ public sealed class SpawnEntityModifierSystem : EntitySystem
             if (!gridQuery.TryGetComponent(grid, out var gridComp))
                 continue;
 
+            var spawns = EntitySpawnCollection.GetSpawns(component.Spawns);
             var positions = new List<EntityCoordinates>();
-            for (var i = 0; i < (component.ClumpSize ?? 1); i++)
+            for (var i = 0; i < spawns.Count / (component.ClumpSize ?? 1); i++)
             {
                 positions.Add(GetRandomPositionOnGrid(grid.Value, gridComp));
             }
 
-            var spawns = EntitySpawnCollection.GetSpawns(component.Spawns);
             for (var i = 0; i < spawns.Count; i++)
             {
                 var spawn = spawns[i];
-                var position = component.ClumpSize == null
-                    ? positions[i % positions.Count]
-                    : positions[i % positions.Count % component.ClumpSize.Value];
-
+                var position = positions[i % positions.Count];
                 var ent = Spawn(spawn, position.Offset(_random.NextVector2(0.2f)));
                 component.SpawnedEntities.Add(ent);
             }
