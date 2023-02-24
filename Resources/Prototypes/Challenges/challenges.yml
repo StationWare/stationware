@@ -22,3 +22,13 @@
     - id: MobCorgi
       amount: 99
 
+- type: challenge
+  id: OneShotGunChallenge
+  announcement: challenge-one-shot-gun
+  duration: 10
+  startDelay: 1
+  challengeModifiers:
+  - type: StayAliveModifier
+  - type: GiveItemModifier
+    items:
+    - id: SWWeaponOneShotGun
