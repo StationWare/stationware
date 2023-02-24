@@ -52,3 +52,11 @@
   components:
   - type: CartridgeAmmo
     proto: BulletPistolRubber
+
+- type: entity
+  id: CartridgePistolOneShot
+  name: cartridge (one-shot)
+  parent: BaseCartridgePistol
+  components:
+  - type: CartridgeAmmo
+    proto: BulletInstakillMagic
