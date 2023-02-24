@@ -1,5 +1,8 @@
 ﻿using System.Linq;
+using Content.Server.Administration.Commands;
 using Content.Server.Chat.Systems;
+using Content.Server.GameTicking;
+using Content.Server.Ghost.Components;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Robust.Server.GameObjects;
@@ -22,6 +25,7 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ISerializationManager _serialization = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private readonly GameTicker _gameTicker = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
 
@@ -92,8 +96,7 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
 
         var ev = new ChallengeEndEvent(component.Participants.Values.ToList(), finalCompletions, uid, component);
         RaiseLocalEvent(uid, ref ev, true);
-
-        // TODO: we need to rejuv/respawn everyone we murdered
+        RespawnPlayers(component.Participants.Keys.ToList());
         Del(uid);
     }
 
@@ -149,6 +152,25 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
             participants.Add(actor.PlayerSession, ent);
         }
         return participants;
+    }
+
+    private void RespawnPlayers(List<IPlayerSession> players)
+    {
+        foreach (var session in players)
+        {
+            // they belong to the void now
+            if (session.AttachedEntity is not { } entity)
+                continue;
+
+            if (HasComp<GhostComponent>(entity) || // are you a ghostie?
+                !HasComp<MobStateComponent>(entity)) // or did you get your ass gibbed
+            {
+                _gameTicker.SpawnPlayer(session, EntityUid.Invalid, null, false, false);
+                continue;
+            }
+
+            RejuvenateCommand.PerformRejuvenate(entity);
+        }
     }
 
     public override void Update(float frameTime)
