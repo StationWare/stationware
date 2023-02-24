@@ -1,0 +1,18 @@
+- type: entity
+  id: SWBaseBallBatKnockback
+  parent: BaseBallBat
+  suffix: Knockback
+  components:
+  - type: Unremoveable
+  - type: KnockbackWeapon
+    strength: 10
+    distance: 3
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 0
+  - type: Wieldable
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: 0
