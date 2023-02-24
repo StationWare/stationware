@@ -1,4 +1,27 @@
 - type: challenge
+  id: FreezeChallenge
+  announcement: challenge-freeze
+  winByDefault: true
+  startDelay: 1
+  duration: 5
+  challengeModifiers:
+  - type: FreezeModifier
+
+- type: challenge
+  id: KingOfTheHillChallenge
+  announcement: challenge-king-of-the-hill
+  duration: 10
+  challengeModifiers:
+  - type: GiveItemModifier
+    items:
+    - id: SWBaseBallBatKnockback
+  - type: ControlPointModifier
+  - type: SpawnEntityModifier
+    spawnLocationScalar: 0.8
+    spawns:
+    - id: ControlPoint
+
+- type: challenge
   id: Debug
   announcement: debug
   winByDefault: false
@@ -8,6 +31,17 @@
   - type: GiveItemModifier
     items:
     - id: BikeHorn
+
+- type: challenge
+  id: OneShotGunChallenge
+  announcement: challenge-one-shot-gun
+  duration: 10
+  startDelay: 1
+  challengeModifiers:
+  - type: StayAliveModifier
+  - type: GiveItemModifier
+    items:
+    - id: SWWeaponOneShotGun
 
 - type: challenge
   id: KeepTheCrownChallenge

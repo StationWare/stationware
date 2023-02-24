@@ -1,5 +1,8 @@
 ﻿using System.Linq;
+using Content.Server.Administration.Commands;
 using Content.Server.Chat.Systems;
+using Content.Server.GameTicking;
+using Content.Server.Ghost.Components;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Robust.Server.GameObjects;
@@ -22,6 +25,7 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ISerializationManager _serialization = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private readonly GameTicker _gameTicker = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
 
@@ -70,7 +74,7 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
         if (!Resolve(uid, ref component))
             return;
 
-        var beforeEv = new BeforeChallengeEndEvent(component.Participants.Values.ToList());
+        var beforeEv = new BeforeChallengeEndEvent(component.Participants.Values.ToList(), component);
         RaiseLocalEvent(uid, ref beforeEv);
 
         foreach (var (player, completion) in component.Completions)
@@ -90,10 +94,9 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
             finalCompletions.Add(player, completion!.Value);
         }
 
-        var ev = new ChallengeEndEvent(component.Participants.Values.ToList(), finalCompletions, uid);
+        var ev = new ChallengeEndEvent(component.Participants.Values.ToList(), finalCompletions, uid, component);
         RaiseLocalEvent(uid, ref ev, true);
-
-        // TODO: we need to rejuv/respawn everyone we murdered
+        RespawnPlayers(component.Participants.Keys.ToList());
         Del(uid);
     }
 
@@ -151,6 +154,25 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
         return participants;
     }
 
+    private void RespawnPlayers(List<IPlayerSession> players)
+    {
+        foreach (var session in players)
+        {
+            // they belong to the void now
+            if (session.AttachedEntity is not { } entity)
+                continue;
+
+            if (HasComp<GhostComponent>(entity) || // are you a ghostie?
+                !HasComp<MobStateComponent>(entity)) // or did you get your ass gibbed
+            {
+                _gameTicker.SpawnPlayer(session, EntityUid.Invalid, null, false, false);
+                continue;
+            }
+
+            RejuvenateCommand.PerformRejuvenate(entity);
+        }
+    }
+
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
@@ -162,7 +184,7 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
             if (challenge.StartTime != null &&
                 _timing.CurTime >= challenge.StartTime)
             {
-                var ev = new ChallengeStartEvent(challenge.Participants.Values.ToList(), uid);
+                var ev = new ChallengeStartEvent(challenge.Participants.Values.ToList(), uid, challenge);
                 RaiseLocalEvent(uid, ref ev, true);
                 challenge.StartTime = null;
             }
@@ -182,14 +204,14 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
 /// <param name="Players"></param>
 /// <param name="Challenge"></param>
 [ByRefEvent]
-public readonly record struct ChallengeStartEvent(List<EntityUid> Players, EntityUid Challenge);
+public readonly record struct ChallengeStartEvent(List<EntityUid> Players, EntityUid Challenge, StationWareChallengeComponent Component);
 
 /// <summary>
 /// Event raised before the winners are checked but at the end of the challenge.
 /// </summary>
 /// <param name="Players"></param>
 [ByRefEvent]
-public readonly record struct BeforeChallengeEndEvent(List<EntityUid> Players);
+public readonly record struct BeforeChallengeEndEvent(List<EntityUid> Players, StationWareChallengeComponent Component);
 
 /// <summary>
 /// Event raised at the end of a challenge.
@@ -199,4 +221,4 @@ public readonly record struct BeforeChallengeEndEvent(List<EntityUid> Players);
 /// <param name="Completions"></param>
 /// <param name="Challenge"></param>
 [ByRefEvent]
-public readonly record struct ChallengeEndEvent(List<EntityUid> Players, Dictionary<IPlayerSession, bool> Completions, EntityUid Challenge);
+public readonly record struct ChallengeEndEvent(List<EntityUid> Players, Dictionary<IPlayerSession, bool> Completions, EntityUid Challenge, StationWareChallengeComponent Component);

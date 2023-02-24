@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "license": "CC0-1.0",
+    "copyright": "Created by EmoGarbage404 (github)",
+    "size": {
+        "x": 96,
+        "y": 96
+    },
+    "states": [
+        {
+            "name": "icon"
+        }
+    ]
+}
