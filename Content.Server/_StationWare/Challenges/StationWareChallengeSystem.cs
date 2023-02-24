@@ -70,7 +70,7 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
         if (!Resolve(uid, ref component))
             return;
 
-        var beforeEv = new BeforeChallengeEndEvent(component.Participants.Values.ToList());
+        var beforeEv = new BeforeChallengeEndEvent(component.Participants.Values.ToList(), component);
         RaiseLocalEvent(uid, ref beforeEv);
 
         foreach (var (player, completion) in component.Completions)
@@ -90,7 +90,7 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
             finalCompletions.Add(player, completion!.Value);
         }
 
-        var ev = new ChallengeEndEvent(component.Participants.Values.ToList(), finalCompletions, uid);
+        var ev = new ChallengeEndEvent(component.Participants.Values.ToList(), finalCompletions, uid, component);
         RaiseLocalEvent(uid, ref ev, true);
 
         // TODO: we need to rejuv/respawn everyone we murdered
@@ -162,7 +162,7 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
             if (challenge.StartTime != null &&
                 _timing.CurTime >= challenge.StartTime)
             {
-                var ev = new ChallengeStartEvent(challenge.Participants.Values.ToList(), uid);
+                var ev = new ChallengeStartEvent(challenge.Participants.Values.ToList(), uid, challenge);
                 RaiseLocalEvent(uid, ref ev, true);
                 challenge.StartTime = null;
             }
@@ -182,14 +182,14 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
 /// <param name="Players"></param>
 /// <param name="Challenge"></param>
 [ByRefEvent]
-public readonly record struct ChallengeStartEvent(List<EntityUid> Players, EntityUid Challenge);
+public readonly record struct ChallengeStartEvent(List<EntityUid> Players, EntityUid Challenge, StationWareChallengeComponent Component);
 
 /// <summary>
 /// Event raised before the winners are checked but at the end of the challenge.
 /// </summary>
 /// <param name="Players"></param>
 [ByRefEvent]
-public readonly record struct BeforeChallengeEndEvent(List<EntityUid> Players);
+public readonly record struct BeforeChallengeEndEvent(List<EntityUid> Players, StationWareChallengeComponent Component);
 
 /// <summary>
 /// Event raised at the end of a challenge.
@@ -199,4 +199,4 @@ public readonly record struct BeforeChallengeEndEvent(List<EntityUid> Players);
 /// <param name="Completions"></param>
 /// <param name="Challenge"></param>
 [ByRefEvent]
-public readonly record struct ChallengeEndEvent(List<EntityUid> Players, Dictionary<IPlayerSession, bool> Completions, EntityUid Challenge);
+public readonly record struct ChallengeEndEvent(List<EntityUid> Players, Dictionary<IPlayerSession, bool> Completions, EntityUid Challenge, StationWareChallengeComponent Component);

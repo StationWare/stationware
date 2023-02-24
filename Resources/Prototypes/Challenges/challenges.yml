@@ -1,4 +1,18 @@
 - type: challenge
+  id: KingOfTheHillChallenge
+  announcement: challenge-king-of-the-hill
+  duration: 10
+  challengeModifiers:
+  - type: GiveItemModifier
+    items:
+    - id: SWBaseBallBatKnockback
+  - type: ControlPointModifier
+  - type: SpawnEntityModifier
+    spawnLocationScalar: 0.8
+    spawns:
+    - id: ControlPoint
+
+- type: challenge
   id: Debug
   announcement: debug
   winByDefault: false

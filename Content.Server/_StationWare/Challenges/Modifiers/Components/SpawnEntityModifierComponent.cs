@@ -18,6 +18,12 @@ public sealed class SpawnEntityModifierComponent : Component
     [DataField("clumpSize")]
     public int? ClumpSize;
 
+    /// <summary>
+    /// A scalar applied to the grid when selecting spawning locations.
+    /// </summary>
+    [DataField("spawnLocationScalar")]
+    public float SpawnLocationScalar = 1f;
+
     [DataField("spawnedEntities"), ViewVariables(VVAccess.ReadWrite)]
     public HashSet<EntityUid> SpawnedEntities = new();
 }

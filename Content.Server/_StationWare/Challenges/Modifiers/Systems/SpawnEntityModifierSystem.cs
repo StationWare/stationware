@@ -40,7 +40,7 @@ public sealed class SpawnEntityModifierSystem : EntitySystem
             var positions = new List<EntityCoordinates>();
             for (var i = 0; i < (component.ClumpSize ?? 1); i++)
             {
-                positions.Add(GetRandomPositionOnGrid(grid.Value, gridComp));
+                positions.Add(GetRandomPositionOnGrid(grid.Value, gridComp, component.SpawnLocationScalar));
             }
 
             var spawns = EntitySpawnCollection.GetSpawns(component.Spawns);
@@ -65,10 +65,10 @@ public sealed class SpawnEntityModifierSystem : EntitySystem
         }
     }
 
-    private EntityCoordinates GetRandomPositionOnGrid(EntityUid grid, MapGridComponent mapGridComp)
+    private EntityCoordinates GetRandomPositionOnGrid(EntityUid grid, MapGridComponent mapGridComp, float scalar)
     {
         var xform = Transform(grid);
-        var gridBounds = mapGridComp.LocalAABB;
+        var gridBounds = mapGridComp.LocalAABB.Scale(scalar);
 
         for (var i = 0; i < 10; i++)
         {

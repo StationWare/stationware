@@ -1,0 +1,32 @@
+- type: entity
+  id: ControlPoint
+  name: control point
+  description: awfully controlling, huh?
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: ControlPoint
+  - type: Sprite
+    netsync: false
+    sprite: _StationWare/controlpoint.rsi
+    drawdepth: FloorTiles
+    layers:
+    - state: icon
+      map: [ "enum.DamageStateVisualLayers.Base" ]
+  - type: RandomSprite
+    available:
+    - enum.DamageStateVisualLayers.Base:
+        icon: Rainbow
+  - type: Transform
+    anchored: true
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+    - shape:
+        !type:PhysShapeCircle
+        radius: 1.25
+      density: 400
+      mask:
+      - MobMask
+      layer:
+      - MobLayer
