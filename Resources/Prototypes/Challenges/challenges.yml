@@ -33,6 +33,19 @@
     - id: BikeHorn
 
 - type: challenge
+  id: FindIanChallenge
+  announcement: challenge-find-ian
+  winByDefault: false
+  duration: 10
+  challengeModifiers:
+  - type: SpawnEntityModifier
+    clumpSize: 1
+    spawns:
+    - id: SWMobCorgiIan
+    - id: MobCorgi
+      amount: 99
+
+- type: challenge
   id: OneShotGunChallenge
   announcement: challenge-one-shot-gun
   duration: 10
