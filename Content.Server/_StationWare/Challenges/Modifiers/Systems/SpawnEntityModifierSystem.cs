@@ -9,11 +9,13 @@ using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
 
 namespace Content.Server._StationWare.Challenges.Modifiers.Systems;
 
 public sealed class SpawnEntityModifierSystem : EntitySystem
 {
+    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly AtmosphereSystem _atmosphere = default!;
     [Dependency] private readonly StationSystem _station = default!;
@@ -23,9 +25,15 @@ public sealed class SpawnEntityModifierSystem : EntitySystem
     {
         SubscribeLocalEvent<SpawnEntityModifierComponent, ChallengeStartEvent>(OnChallengeStart);
         SubscribeLocalEvent<SpawnEntityModifierComponent, ChallengeEndEvent>(OnChallengeEnd);
+        SubscribeLocalEvent<RepeatSpawnEntityModifierComponent, ChallengeStartEvent>(OnRepeatChallengeStart);
     }
 
     private void OnChallengeStart(EntityUid uid, SpawnEntityModifierComponent component, ref ChallengeStartEvent args)
+    {
+        SpawnEntities(uid, component);
+    }
+
+    public void SpawnEntities(EntityUid uid, SpawnEntityModifierComponent component)
     {
         var gridQuery = GetEntityQuery<MapGridComponent>();
         foreach (var station in _station.Stations)
@@ -56,6 +64,9 @@ public sealed class SpawnEntityModifierSystem : EntitySystem
 
     private void OnChallengeEnd(EntityUid uid, SpawnEntityModifierComponent component, ref ChallengeEndEvent args)
     {
+        if (!component.DeleteAtEnd)
+            return;
+
         foreach (var ent in component.SpawnedEntities)
         {
             Del(ent);
@@ -101,5 +112,26 @@ public sealed class SpawnEntityModifierSystem : EntitySystem
             return mapGridComp.GridTileToLocal(tile);
         }
         return xform.Coordinates;
+    }
+
+    private void OnRepeatChallengeStart(EntityUid uid, RepeatSpawnEntityModifierComponent component, ref ChallengeStartEvent args)
+    {
+        component.NextSpawn = _timing.CurTime + component.Interval;
+        component.Started = true;
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        foreach (var (timer, spawn) in EntityQuery<RepeatSpawnEntityModifierComponent, SpawnEntityModifierComponent>())
+        {
+            if (!timer.Started)
+                continue;
+            if (_timing.CurTime < timer.NextSpawn)
+                continue;
+            timer.NextSpawn = _timing.CurTime + timer.Interval;
+            SpawnEntities(spawn.Owner, spawn);
+        }
     }
 }

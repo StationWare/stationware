@@ -20,6 +20,7 @@
     tags:
       - ForceFixRotations
       - Window
+      - Structure
   - type: Sprite
     netsync: false
     drawdepth: WallTops

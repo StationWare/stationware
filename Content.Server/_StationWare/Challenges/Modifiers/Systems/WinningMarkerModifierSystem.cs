@@ -35,13 +35,10 @@ public sealed class WinningMarkerModifierSystem : EntitySystem
 
     private void OnBeforeChallengeEnd(EntityUid uid, WinningMarkerModifierComponent component, ref BeforeChallengeEndEvent args)
     {
-        if (!TryComp<StationWareChallengeComponent>(uid, out var challenge))
-            return;
-
         foreach (var player in args.Players)
         {
             var won = TryComp<WinningMarkerComponent>(player, out var winning) && winning.Challenge == uid;
-            _stationWareChallenge.SetPlayerChallengeState(player, uid, won, challenge);
+            _stationWareChallenge.SetPlayerChallengeState(player, uid, won, args.Component);
             if (won && winning != null)
                 RemComp(player, winning);
         }

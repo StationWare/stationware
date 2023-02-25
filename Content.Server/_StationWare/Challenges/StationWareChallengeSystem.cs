@@ -3,6 +3,7 @@ using Content.Server.Administration.Commands;
 using Content.Server.Chat.Systems;
 using Content.Server.GameTicking;
 using Content.Server.Ghost.Components;
+using Content.Server.Spawners.Components;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Robust.Server.GameObjects;
@@ -125,12 +126,10 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
 
         component.Completions[actor.PlayerSession] = win;
 
-        var xform = Transform(uid);
         var effect = win
             ? component.WinEffectPrototypeId
             : component.LoseEffectPrototypeId;
-        var effectEnt = Spawn(effect, xform.Coordinates);
-        _transform.SetParent(effectEnt, uid);
+        var effectEnt = Spawn(effect, new EntityCoordinates(uid, 0, 0));
         EnsureComp<ChallengeStateEffectComponent>(effectEnt).Challenge = challengeEnt;
         return true;
     }
@@ -170,6 +169,16 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
             }
 
             RejuvenateCommand.PerformRejuvenate(entity);
+
+            var xform = Transform(entity);
+            if (xform.GridUid == null)
+            {
+                var validSpawns = EntityQuery<SpawnPointComponent>()
+                    .Where(s => s.SpawnType == SpawnPointType.LateJoin)
+                    .Select(s => Transform(s.Owner)).ToList();
+                var spawn = _random.Pick(validSpawns);
+                _transform.SetCoordinates(xform, spawn.Coordinates);
+            }
         }
     }
 
@@ -181,14 +190,12 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
         {
             var uid = challenge.Owner;
 
-            if (challenge.StartTime != null &&
-                _timing.CurTime >= challenge.StartTime)
+            if (challenge.StartTime != null && _timing.CurTime >= challenge.StartTime)
             {
                 var ev = new ChallengeStartEvent(challenge.Participants.Values.ToList(), uid, challenge);
                 RaiseLocalEvent(uid, ref ev, true);
                 challenge.StartTime = null;
             }
-
 
             if (_timing.CurTime < challenge.EndTime)
                 continue;

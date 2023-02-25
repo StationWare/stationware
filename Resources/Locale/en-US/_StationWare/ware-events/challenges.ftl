@@ -1,5 +1,10 @@
-challenge-find-ian = Ian is hidden in the swarm of corgis. Pet him to win.
 challenge-freeze = Freeze! Don't move!
 challenge-king-of-the-hill = End the challenge inside the circle.
-challenge-one-shot-gun = One gun. One bullet. One chance. Don't let the person shot be you. Survive to win.
-challenge-keep-the-crown = Someone will have a crown above their head. Punch the person with the crown to steal it. The person with the crown at the end of 10 seconds wins. 
+challenge-not-spleef = The walls aren't solid. Knock people off the bus to win.
+challenge-find-ian = Ian is hidden in the swarm of corgis. Pet him to win.
+challenge-exploding-tile = Don't stand on the bright red tiles.
+challenge-shootout = Total shootout! Stay alive!
+challenge-xeno-queen = Spend some time with the Xeno Queen. Stay alive!
+challenge-wizard-duel = Wizard duel! Fight!
+challenge-one-shot-gun = One gun and one bullet. Don't get shot.
+challenge-keep-the-crown = Punch the person with the crown to steal it. The person with the crown wins. 
