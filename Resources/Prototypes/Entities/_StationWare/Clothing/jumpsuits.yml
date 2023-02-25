@@ -1,0 +1,21 @@
+- type: entity
+  parent: ClothingUniformBase
+  id: SWClothingUniformJumpsuitPlayer
+  name: player jumpsuit
+  description: A spiffy white and blue jumpsuit. How thematic!
+  components:
+  - type: Sprite
+    sprite: _StationWare/Clothing/Uniforms/player_jumpsuit.rsi
+  - type: Clothing
+    sprite: _StationWare/Clothing/Uniforms/player_jumpsuit.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: SWClothingUniformJumpskirtPlayer
+  name: player jumpskirt
+  description: A spiffy white and blue jumpskirt. How thematic!
+  components:
+  - type: Sprite
+    sprite: _StationWare/Clothing/Uniforms/player_jumpskirt.rsi
+  - type: Clothing
+    sprite: _StationWare/Clothing/Uniforms/player_jumpskirt.rsi
