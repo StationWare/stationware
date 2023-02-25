@@ -22,15 +22,31 @@
     - id: ControlPoint
 
 - type: challenge
-  id: Debug
-  announcement: debug
-  winByDefault: false
-  duration: 5
+  id: NotSpleefChallenge
+  announcement: challenge-not-spleef
+  winByDefault: true
+  duration: 15
   challengeModifiers:
-  - type: StayAliveModifier
+  - type: NonSolidStructuresModifier
+  - type: StayOnGridModifier
   - type: GiveItemModifier
     items:
-    - id: BikeHorn
+    - id: SWBaseBallBatKnockback
+    - id: SoapSyndie
+      prob: 0.45
+      orGroup: soab #soab
+    - id: SoapNT
+      prob: 0.45
+      orGroup: soab #soab
+    - id: SoapOmega
+      prob: 0.1
+      orGroup: soab #soab
+  - type: SpawnEntityModifier
+    clumpSize: 1
+    spawns:
+    - id: SoapNT
+      amount: 10
+      maxAmount: 15
 
 - type: challenge
   id: FindIanChallenge
@@ -44,6 +60,105 @@
     - id: SWMobCorgiIan
     - id: MobCorgi
       amount: 99
+
+- type: challenge
+  id: ExplodingTileChallenge
+  announcement: challenge-exploding-tile
+  winByDefault: true
+  startDelay: 3
+  duration: 10
+  challengeModifiers:
+  - type: StayAliveModifier
+  - type: StayOnGridModifier
+  - type: RepeatSpawnEntityModifier
+    interval: 0.5
+  - type: SpawnEntityModifier
+    spawnLocationScalar: 0.8
+    clumpSize: 1
+    spawns:
+    - id: ExplodingTile
+      amount: 5
+
+- type: challenge
+  id: ShootoutChallenge
+  announcement: challenge-shootout
+  duration: 15
+  challengeModifiers:
+  - type: StayAliveModifier
+  - type: GiveItemModifier
+    items:
+    - id: WeaponShotgunEnforcer
+      orGroup: weapon
+      prob: 0.165
+    - id: WeaponShotgunDoubleBarreled
+      orGroup: weapon
+      prob: 0.165
+    - id: WeaponSniperHristov
+      orGroup: weapon
+      prob: 0.165
+    - id: WeaponRifleLecter
+      orGroup: weapon
+      prob: 0.165
+    - id: WeaponLauncherRocket
+      orGroup: weapon
+      prob: 0.165
+    - id: WeaponPistolViper
+      orGroup: weapon
+      amount: 2
+      prob: 0.165
+    - id: BikeHorn
+      orGroup: weapon
+      prob: 0.1
+
+- type: challenge
+  id: XenoQueenChallenge
+  announcement: challenge-xeno-queen
+  winByDefault: true
+  duration: 15
+  challengeModifiers:
+  - type: StayAliveModifier
+  - type: StayOnGridModifier
+  - type: SpawnEntityModifier
+    spawnLocationScalar: 0.8
+    spawns:
+    - id: MobXenoQueen
+
+- type: challenge
+  id: WizardDuelChallenge
+  announcement: challenge-wizard-duel
+  duration: 10
+  challengeModifiers:
+  - type: StayAliveModifier
+  - type: GiveItemModifier
+    items:
+    - id: WeaponWandDeath
+      orGroup: weapon
+      prob: 0.165
+    - id: WeaponWandPolymorphCarp
+      orGroup: weapon
+      prob: 0.165
+    - id: WeaponWandFireball
+      orGroup: weapon
+      prob: 0.165
+    - id: WeaponWandPolymorphMonkey
+      orGroup: weapon
+      prob: 0.165
+    - id: WeaponStaffHealing
+      orGroup: weapon
+      prob: 0.165
+    - id: RGBStaff
+      orGroup: weapon
+      amount: 2
+      prob: 0.165
+    - id: ClothingHeadHatWizard
+      orGroup: hat
+      prob: 0.33
+    - id: ClothingHeadHatVioletwizard
+      orGroup: hat
+      prob: 0.33
+    - id: ClothingHeadHatRedwizard
+      orGroup: hat
+      prob: 0.33
 
 - type: challenge
   id: OneShotGunChallenge

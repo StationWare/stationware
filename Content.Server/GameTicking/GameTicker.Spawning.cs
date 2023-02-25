@@ -165,7 +165,7 @@ namespace Content.Server.GameTicking
                 return;
             }
 
-            PlayerJoinGame(player);
+            PlayerJoinGame(player, announce);
 
             var data = player.ContentData();
 

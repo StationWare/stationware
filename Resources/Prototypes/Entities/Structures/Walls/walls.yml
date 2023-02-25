@@ -21,6 +21,7 @@
   - type: Tag
     tags:
     - Wall
+    - Structure
   - type: Sprite
     netsync: false
     drawdepth: Walls
@@ -474,6 +475,7 @@
   - type: Tag
     tags:
       - Wall
+      - Structure
       - RCDDeconstructWhitelist
   - type: Sprite
     sprite: Structures/Walls/riveted.rsi
