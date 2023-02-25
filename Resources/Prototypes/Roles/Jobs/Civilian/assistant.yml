@@ -12,11 +12,7 @@
 - type: startingGear
   id: PassengerGear
   equipment:
-    jumpsuit: ClothingUniformJumpsuitColorGrey
-    back: ClothingBackpackFilled
+    jumpsuit: SWClothingUniformJumpsuitPlayer
     shoes: ClothingShoesColorBlack
-    id: PassengerPDA
     ears: ClothingHeadsetGrey
-  innerclothingskirt: ClothingUniformJumpskirtColorGrey
-  satchel: ClothingBackpackSatchelFilled
-  duffelbag: ClothingBackpackDuffelFilled
+  innerclothingskirt: SWClothingUniformJumpskirtPlayer
