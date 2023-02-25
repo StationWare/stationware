@@ -23,7 +23,7 @@ VERSION = os.environ['GITHUB_SHA']
 FORK_ID = "stationware"
 BUILD_URL = f"https://builds.421034.xyz/stationware/builds/{{FORK_VERSION}}/{FILE}"
 MANIFEST_URL = f"https://swcdn.421034.xyz/version/{{FORK_VERSION}}/manifest"
-MANIFEST_DOWNLOAD_URL = f"https://swcdn.421034.xyz/cdn/version/{{FORK_VERSION}}/download"
+MANIFEST_DOWNLOAD_URL = f"https://swcdn.421034.xyz/version/{{FORK_VERSION}}/download"
 
 def main() -> None:
     client_file = os.path.join("release", FILE)
