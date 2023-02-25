@@ -44,7 +44,7 @@ public sealed class StayOnGridModifierSystem : EntitySystem
         {
             var uid = tracker.Owner;
             if (!tracker.Lost)
-                return;
+                continue;
             _stationWareChallenge.SetPlayerChallengeState(uid, tracker.Challenge, false);
             RemComp(uid, tracker);
         }
