@@ -5,6 +5,7 @@ using Content.Server.GameTicking.Rules;
 using Content.Shared.CCVar;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
+using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -20,13 +21,15 @@ public sealed class StationWareRuleSystem : GameRuleSystem
     [Dependency] private readonly StationWareChallengeSystem _stationWareChallenge = default!;
 
     private TimeSpan _nextChallengeTime;
+    private TimeSpan? _restartRoundTime;
     private TimeSpan _challengeDelay = TimeSpan.FromSeconds(5);
+    private readonly TimeSpan _postRoundDuration = TimeSpan.FromSeconds(10);
     private EntityUid? _currentChallenge;
 
     private int _totalChallenges = 10;
     private int _challengeCount = 1;
 
-    private readonly Dictionary<IPlayerSession, int> _points = new();
+    private readonly Dictionary<NetUserId, PlayerInfo> _points = new();
 
     public override string Prototype => "StationWare";
 
@@ -48,17 +51,13 @@ public sealed class StationWareRuleSystem : GameRuleSystem
 
         foreach (var (session, won) in ev.Completions)
         {
-            if (won)
-                AdjustPlayerScore(session);
+            AdjustPlayerScore(session, won ? 1 : 0);
         }
 
         if (_challengeCount == _totalChallenges)
         {
-            // TODO: make this slightly better
-            // more actionable plan: add a 10 second end-screen delay
-            // before booting everyone back into the lobby. (Deathmatch code)
             GameTicker.EndRound();
-            GameTicker.RestartRound();
+            _restartRoundTime = _timing.CurTime + _postRoundDuration;
             return;
         }
         _challengeCount++;
@@ -72,33 +71,37 @@ public sealed class StationWareRuleSystem : GameRuleSystem
         if (_points.Count == 0)
             return;
 
-        var orderedList = _points.OrderByDescending(x => x.Value).ToList();
+        var orderedList = _points.OrderByDescending(x => x.Value.Points).ToList();
 
         for (var i = 0; i < orderedList.Count; i++)
         {
-            var (session, points) = orderedList[i];
+            var (_, playerInfo) = orderedList[i];
             ev.AddLine(Loc.GetString("stationware-report-score",
                 ("place", i + 1),
-                ("name", session.Name),
-                ("points", points)));
+                ("name", playerInfo.Name),
+                ("points", playerInfo.Points)));
         }
 
-        var first = orderedList.First();
+        var (_, fPlayerInfo) = orderedList.First();
         ev.AddLine("");
-        ev.AddLine(Loc.GetString("stationware-report-winner", ("name", first.Key.Name), ("points", first.Value)));
+        ev.AddLine(Loc.GetString("stationware-report-winner",
+            ("name", fPlayerInfo.Name),
+            ("points", fPlayerInfo.Points)));
     }
 
-    private void AdjustPlayerScore(IPlayerSession session)
+    private void AdjustPlayerScore(IPlayerSession session, int amount = 1)
     {
-        if (!_points.ContainsKey(session))
-            _points[session] = 0;
-        _points[session]++;
+        if (!_points.ContainsKey(session.UserId))
+            _points[session.UserId] = new PlayerInfo(session.Name);
+        _points[session.UserId].Points += amount;
     }
 
     public override void Started()
     {
+        _points.Clear();
         _challengeCount = 1;
         _currentChallenge = null;
+        _restartRoundTime = null;
         _nextChallengeTime = _timing.CurTime + _challengeDelay;
     }
 
@@ -111,6 +114,14 @@ public sealed class StationWareRuleSystem : GameRuleSystem
         if (!RuleStarted)
             return;
 
+        if (_restartRoundTime != null && _timing.CurTime > _restartRoundTime)
+        {
+            GameTicker.RestartRound();
+        }
+
+        if (GameTicker.RunLevel != GameRunLevel.InRound)
+            return;
+
         if (_currentChallenge != null)
             return;
 
@@ -119,5 +130,21 @@ public sealed class StationWareRuleSystem : GameRuleSystem
 
         var challenge = _random.Pick(_prototype.EnumeratePrototypes<ChallengePrototype>().ToList());
         _currentChallenge = _stationWareChallenge.StartChallenge(challenge);
+    }
+
+    /// <summary>
+    /// A little struct used to associate a player's netUserId
+    /// with their name and point amount.
+    /// </summary>
+    private sealed class PlayerInfo
+    {
+        public readonly string Name;
+        public int Points;
+
+        public PlayerInfo(string name, int points = 0)
+        {
+            Name = name;
+            Points = points;
+        }
     }
 }
