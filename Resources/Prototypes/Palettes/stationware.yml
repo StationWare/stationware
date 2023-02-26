@@ -1,0 +1,8 @@
+﻿- type: palette
+  id: StationWare
+  name: StationWare
+  colors:
+    wareblue: "#0069b3ff"
+    warered: "#f0323fff"
+    wareyellow: "#f0dd36ff"
+    waregreen: "#1df072ff"
