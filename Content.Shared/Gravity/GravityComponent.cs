@@ -28,7 +28,7 @@ namespace Content.Shared.Gravity
         [DataField("enabled")]
         public bool Enabled;
 
-        [DataField("forceEnabled")]
-        public bool ForceEnabled = true;
+        [DataField("forceEnabled"), ViewVariables(VVAccess.ReadWrite)]
+        public bool ForceEnabled;
     }
 }

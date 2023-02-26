@@ -131,6 +131,7 @@ entities:
   - gravityShakeSound: !type:SoundPathSpecifier
       path: /Audio/Effects/alert.ogg
     enabled: True
+    forceEnabled: True
     type: Gravity
   - chunkCollection:
       -1,0:
