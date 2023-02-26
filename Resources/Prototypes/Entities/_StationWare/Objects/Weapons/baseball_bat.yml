@@ -6,7 +6,7 @@
   - type: Unremoveable
   - type: KnockbackWeapon
     strength: 10
-    distance: 3
+    distance: 10
   - type: MeleeWeapon
     damage:
       types:
