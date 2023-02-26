@@ -1,8 +1,13 @@
 ﻿using System.Linq;
 using Content.Server._StationWare.Challenges;
+using Content.Server.Chat.Managers;
+using Content.Server.CombatMode;
+using Content.Server.Damage.Systems;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
+using Content.Server.Hands.Systems;
 using Content.Shared.CCVar;
+using Content.Shared.Interaction.Components;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
@@ -14,10 +19,13 @@ namespace Content.Server._StationWare.GameRules;
 
 public sealed class StationWareRuleSystem : GameRuleSystem
 {
+    [Dependency] private readonly IChatManager _chatManager = default!;
     [Dependency] private readonly IConfigurationManager _configuration = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly GodmodeSystem _godmode = default!;
+    [Dependency] private readonly HandsSystem _hands = default!;
     [Dependency] private readonly StationWareChallengeSystem _stationWareChallenge = default!;
 
     private TimeSpan _nextChallengeTime;
@@ -25,6 +33,8 @@ public sealed class StationWareRuleSystem : GameRuleSystem
     private TimeSpan _challengeDelay = TimeSpan.FromSeconds(5);
     private readonly TimeSpan _postRoundDuration = TimeSpan.FromSeconds(10);
     private EntityUid? _currentChallenge;
+
+    private readonly HashSet<string> _previousChallenges = new();
 
     private int _totalChallenges = 10;
     private int _challengeCount = 1;
@@ -57,6 +67,7 @@ public sealed class StationWareRuleSystem : GameRuleSystem
         if (_challengeCount == _totalChallenges)
         {
             GameTicker.EndRound();
+            StartPostRoundSlaughter(ev.Completions.Keys.ToList());
             _restartRoundTime = _timing.CurTime + _postRoundDuration;
             return;
         }
@@ -117,6 +128,7 @@ public sealed class StationWareRuleSystem : GameRuleSystem
         if (_restartRoundTime != null && _timing.CurTime > _restartRoundTime)
         {
             GameTicker.RestartRound();
+            return;
         }
 
         if (GameTicker.RunLevel != GameRunLevel.InRound)
@@ -128,8 +140,41 @@ public sealed class StationWareRuleSystem : GameRuleSystem
         if (_timing.CurTime < _nextChallengeTime)
             return;
 
-        var challenge = _random.Pick(_prototype.EnumeratePrototypes<ChallengePrototype>().ToList());
+        var challenge = GetRandomChallenge();
         _currentChallenge = _stationWareChallenge.StartChallenge(challenge);
+        _previousChallenges.Add(challenge.ID);
+    }
+
+    private ChallengePrototype GetRandomChallenge()
+    {
+        return _random.Pick(_prototype.EnumeratePrototypes<ChallengePrototype>()
+            .Where(p => !_previousChallenges.Contains(p.ID))
+            .ToList());
+    }
+
+    private void StartPostRoundSlaughter(List<IPlayerSession> players)
+    {
+        var firstNetUserId = _points.MaxBy(x => x.Value.Points).Key;
+        var firstPlayer = players.First(x => x.UserId == firstNetUserId);
+        if (firstPlayer.AttachedEntity is { } playerEnt)
+        {
+            _godmode.EnableGodmode(playerEnt);
+            _chatManager.DispatchServerMessage(firstPlayer, Loc.GetString("stationware-you-won"));
+            var minigun = Spawn("WeaponMinigun", Transform(playerEnt).Coordinates); // gamerules suck dick anyways idgaf
+            EnsureComp<UnremoveableComponent>(minigun); // no stealing allowed
+            _hands.TryPickup(playerEnt, minigun, checkActionBlocker: false);
+        }
+
+        players.Remove(firstPlayer);
+        foreach (var session in players)
+        {
+            if (session.AttachedEntity is not { } ent)
+                continue;
+            if (!TryComp<CombatModeComponent>(ent, out var combatMode))
+                continue;
+            combatMode.IsInCombatMode = false;
+            RemComp(ent, combatMode);
+        }
     }
 
     /// <summary>
