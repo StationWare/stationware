@@ -33,18 +33,15 @@
     items:
     - id: SWBaseBallBatKnockback
     - id: SoapSyndie
-      prob: 0.45
-      orGroup: soab #soab
-    - id: SoapNT
-      prob: 0.45
+      prob: 0.5
       orGroup: soab #soab
     - id: SoapOmega
-      prob: 0.1
+      prob: 0.5
       orGroup: soab #soab
   - type: SpawnEntityModifier
     clumpSize: 1
     spawns:
-    - id: SoapNT
+    - id: SoapSyndie
       amount: 10
       maxAmount: 15
 
@@ -73,7 +70,6 @@
   - type: RepeatSpawnEntityModifier
     interval: 0.5
   - type: SpawnEntityModifier
-    spawnLocationScalar: 0.8
     clumpSize: 1
     spawns:
     - id: ExplodingTile
@@ -148,7 +144,6 @@
       prob: 0.165
     - id: RGBStaff
       orGroup: weapon
-      amount: 2
       prob: 0.165
     - id: ClothingHeadHatWizard
       orGroup: hat
