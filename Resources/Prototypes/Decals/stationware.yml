@@ -1,0 +1,62 @@
+﻿- type: decal
+  id: StationWareLogo1
+  tags: ["stationware", "sign"]
+  sprite:
+    sprite: _StationWare/Decals/swsign.rsi
+    state: sw1
+
+- type: decal
+  id: StationWareLogo2
+  tags: ["stationware", "sign"]
+  sprite:
+    sprite: _StationWare/Decals/swsign.rsi
+    state: sw2
+
+- type: decal
+  id: StationWareLogo3
+  tags: ["stationware", "sign"]
+  sprite:
+    sprite: _StationWare/Decals/swsign.rsi
+    state: sw3
+
+- type: decal
+  id: StationWareLogo4
+  tags: ["stationware", "sign"]
+  sprite:
+    sprite: _StationWare/Decals/swsign.rsi
+    state: sw4
+
+- type: decal
+  id: StationWareLogo5
+  tags: ["stationware", "sign"]
+  sprite:
+    sprite: _StationWare/Decals/swsign.rsi
+    state: sw5
+
+- type: decal
+  id: StationWareLogo6
+  tags: ["stationware", "sign"]
+  sprite:
+    sprite: _StationWare/Decals/swsign.rsi
+    state: sw6
+
+- type: decal
+  id: StationWareLogo7
+  tags: ["stationware", "sign"]
+  sprite:
+    sprite: _StationWare/Decals/swsign.rsi
+    state: sw7
+
+- type: decal
+  id: StationWareLogo8
+  tags: ["stationware", "sign"]
+  sprite:
+    sprite: _StationWare/Decals/swsign.rsi
+    state: sw8
+
+- type: decal
+  id: StationWareLogo9
+  tags: ["stationware", "sign"]
+  sprite:
+    sprite: _StationWare/Decals/swsign.rsi
+    state: sw9
