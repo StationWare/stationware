@@ -1,0 +1,32 @@
+# Base configuration preset for StationWare
+
+[net]
+tickrate            = 30
+max_connections     = 100
+
+[game]
+lobbyenabled        = true
+lobbyduration       = 30
+fallbackpreset      = "StationWare"
+defaultpreset       = "StationWare"
+soft_max_players    = 30
+desc                = "A WarioWare-esque fork of Space Station 14, oriented on low-no roleplay and unbalanced fun."
+
+[infolinks]
+bug_report          = "https://github.com/frigid14/stationware/issues/new/choose"
+discord             = "https://discord.gg/TutAsX6JnY"
+github              = "https://github.com/frigid14/stationware"
+patreon             = "https://www.patreon.com/raincaldwell"
+
+[ooc]
+enable_during_round = true
+
+[tips]
+enabled             = false # Re-enable when we have actual tips.
+
+[vote]
+preset_enabled      = false
+map_enabled         = false
+
+[stationware] # Stationware cvars
+total_challenges    = 15
