@@ -5,8 +5,8 @@
   components:
   - type: Unremoveable
   - type: KnockbackWeapon
-    strength: 10
-    distance: 10
+    strength: 15
+    distance: 5
   - type: MeleeWeapon
     damage:
       types:
