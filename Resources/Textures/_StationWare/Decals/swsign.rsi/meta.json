@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "license": "CC0-1.0",
+  "copyright": "Created by EmoGarbage404 (github)",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "sw1"
+    },
+    {
+      "name": "sw2"
+    },
+    {
+      "name": "sw3"
+    },
+    {
+      "name": "sw4"
+    },
+    {
+      "name": "sw5"
+    },
+    {
+      "name": "sw6"
+    },
+    {
+      "name": "sw7"
+    },
+    {
+      "name": "sw8"
+    },
+    {
+      "name": "sw9"
+    }
+  ]
+}

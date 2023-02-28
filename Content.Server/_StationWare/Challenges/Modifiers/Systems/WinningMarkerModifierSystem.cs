@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Content.Server._StationWare.Challenges.Modifiers.Components;
+using Content.Shared.Interaction;
 using Content.Shared.Weapons.Melee.Events;
 using Robust.Server.GameObjects;
 
@@ -19,6 +20,7 @@ public sealed class WinningMarkerModifierSystem : EntitySystem
         SubscribeLocalEvent<WinningMarkerComponent, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<WinningMarkerComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<WinningMarkerComponent, AttackedEvent>(OnAttacked);
+        SubscribeLocalEvent<WinningMarkerComponent, InteractHandEvent>(OnAfterInteractUsing);
     }
 
     private void OnChallengeStart(EntityUid uid, WinningMarkerModifierComponent component, ref ChallengeStartEvent args)
@@ -35,12 +37,14 @@ public sealed class WinningMarkerModifierSystem : EntitySystem
 
     private void OnBeforeChallengeEnd(EntityUid uid, WinningMarkerModifierComponent component, ref BeforeChallengeEndEvent args)
     {
-        foreach (var player in args.Players)
+        foreach (var winning in EntityQuery<WinningMarkerComponent>())
         {
-            var won = TryComp<WinningMarkerComponent>(player, out var winning) && winning.Challenge == uid;
-            _stationWareChallenge.SetPlayerChallengeState(player, uid, won, args.Component);
-            if (won && winning != null)
-                RemComp(player, winning);
+            var ent = winning.Owner;
+            if (winning.Challenge != uid)
+                continue;
+
+            _stationWareChallenge.SetPlayerChallengeState(ent, uid, true, args.Component);
+            RemComp(ent, winning);
         }
     }
 
@@ -63,13 +67,24 @@ public sealed class WinningMarkerModifierSystem : EntitySystem
 
     private void OnAttacked(EntityUid uid, WinningMarkerComponent component, AttackedEvent args)
     {
-        if (HasComp<WinningMarkerComponent>(args.User))
+        TryTransferWinningMarker(args.User, uid, component);
+    }
+
+    private void OnAfterInteractUsing(EntityUid uid, WinningMarkerComponent component, InteractHandEvent args)
+    {
+        TryTransferWinningMarker(args.User, uid, component);
+    }
+
+    private void TryTransferWinningMarker(EntityUid user, EntityUid uid, WinningMarkerComponent component)
+    {
+        if (HasComp<WinningMarkerComponent>(user))
             return;
 
         var winning = _componentFactory.GetComponent<WinningMarkerComponent>();
         winning.Challenge = component.Challenge;
-        winning.Owner = args.User;
-        EntityManager.AddComponent(args.User, winning);
+        winning.Owner = user;
+        EntityManager.AddComponent(user, winning);
         RemComp(uid, component);
+
     }
 }

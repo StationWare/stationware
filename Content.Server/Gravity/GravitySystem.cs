@@ -33,6 +33,9 @@ namespace Content.Server.Gravity
                 break;
             }
 
+            if (gravity.ForceEnabled)
+                enabled = true;
+
             if (enabled != gravity.Enabled)
             {
                 gravity.Enabled = enabled;
