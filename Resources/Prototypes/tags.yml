@@ -390,6 +390,9 @@
   id: MindTransferTarget
 
 - type: Tag
+  id: Modifier
+
+- type: Tag
   id: MonkeyCube
 
 - type: Tag

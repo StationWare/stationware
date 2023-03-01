@@ -1,0 +1,11 @@
+﻿- type: challenge
+  id: BlindModifier
+  announcement: modifier-blind
+  tags:
+    - Modifier
+  winByDefault: false
+  duration: null
+  challengeModifiers:
+    - type: AddComponentModifier
+      addedComponents:
+        - type: PermanentBlindness

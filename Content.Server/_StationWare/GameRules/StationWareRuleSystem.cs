@@ -41,6 +41,9 @@ public sealed class StationWareRuleSystem : GameRuleSystem
 
     private readonly Dictionary<NetUserId, PlayerInfo> _points = new();
 
+    // i know this is shitcode but fuck you anyway
+    private string _modifierTagId = "Modifier";
+
     public override string Prototype => "StationWare";
 
     public override void Initialize()
@@ -114,6 +117,9 @@ public sealed class StationWareRuleSystem : GameRuleSystem
         _currentChallenge = null;
         _restartRoundTime = null;
         _nextChallengeTime = _timing.CurTime + _challengeDelay;
+
+        var modifier = GetRandomModifier();
+        _stationWareChallenge.StartChallenge(modifier);
     }
 
     public override void Ended() { }
@@ -145,10 +151,18 @@ public sealed class StationWareRuleSystem : GameRuleSystem
         _previousChallenges.Add(challenge.ID);
     }
 
+    private ChallengePrototype GetRandomModifier()
+    {
+        return _random.Pick(_prototype.EnumeratePrototypes<ChallengePrototype>()
+            .Where(p => p.Tags.Contains(_modifierTagId))
+            .ToList());
+    }
+
     private ChallengePrototype GetRandomChallenge()
     {
         return _random.Pick(_prototype.EnumeratePrototypes<ChallengePrototype>()
             .Where(p => !_previousChallenges.Contains(p.ID))
+            .Where(p => !p.Tags.Contains(_modifierTagId))
             .ToList());
     }
 

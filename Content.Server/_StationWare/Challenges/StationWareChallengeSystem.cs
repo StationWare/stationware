@@ -44,8 +44,18 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
     {
         var uid = Spawn(null, MapCoordinates.Nullspace);
         var challengeComp = AddComp<StationWareChallengeComponent>(uid);
+        var duration = challengePrototype.Duration;
+
+
         challengeComp.StartTime = _timing.CurTime + challengePrototype.StartDelay;
-        challengeComp.EndTime = _timing.CurTime + challengePrototype.Duration + challengePrototype.StartDelay; // time modifiers?
+        if (duration.HasValue)
+        {
+            challengeComp.EndTime = _timing.CurTime + duration + challengePrototype.StartDelay; // time modifiers?
+        }
+        else
+        {
+            challengeComp.EndTime = null;
+        }
         challengeComp.WinByDefault = challengePrototype.WinByDefault;
         challengeComp.Participants = GetParticipants(); // get all of the players for this challenge
 
@@ -196,6 +206,9 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
                 RaiseLocalEvent(uid, ref ev, true);
                 challenge.StartTime = null;
             }
+
+            if (challenge.EndTime == null)
+                continue;
 
             if (_timing.CurTime < challenge.EndTime)
                 continue;

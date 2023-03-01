@@ -1,5 +1,8 @@
-﻿using Robust.Shared.Audio;
+﻿using Content.Shared.Tag;
+using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Generic;
 
 namespace Content.Server._StationWare.Challenges;
 
@@ -14,6 +17,12 @@ public sealed class ChallengePrototype : IPrototype
     public string ID { get; } = default!;
 
     /// <summary>
+    /// A list of prototypes to quickly query/get a list of prototypes.
+    /// </summary>
+    [DataField("tags", customTypeSerializer: typeof(ListSerializers<PrototypeIdSerializer<TagPrototype>>))]
+    public List<string> Tags = default!;
+
+    /// <summary>
     /// Whether or not the players win automatically or
     /// lose automatically.
     /// </summary>
@@ -24,7 +33,7 @@ public sealed class ChallengePrototype : IPrototype
     /// How long the challenge lasts.
     /// </summary>
     [DataField("duration")]
-    public TimeSpan Duration = TimeSpan.FromSeconds(10);
+    public TimeSpan? Duration = TimeSpan.FromSeconds(10);
 
     /// <summary>
     /// A delay between the challenge announcement
