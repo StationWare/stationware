@@ -1,5 +1,7 @@
-﻿using Robust.Shared.Audio;
+﻿using Content.Shared.Tag;
+using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
 
 namespace Content.Server._StationWare.Challenges;
 
@@ -18,33 +20,39 @@ public sealed class ChallengePrototype : IPrototype
     /// lose automatically.
     /// </summary>
     [DataField("winByDefault")]
-    public bool WinByDefault;
+    public readonly bool WinByDefault;
+
+    /// <summary>
+    /// Tags for categorizing/filtering challenges
+    /// </summary>
+    [DataField("tags", customTypeSerializer: typeof(PrototypeIdListSerializer<TagPrototype>))]
+    public readonly List<string> Tags = new();
 
     /// <summary>
     /// How long the challenge lasts.
     /// </summary>
     [DataField("duration")]
-    public TimeSpan Duration = TimeSpan.FromSeconds(10);
+    public readonly TimeSpan? Duration;
 
     /// <summary>
     /// A delay between the challenge announcement
     /// and the actual challenge beginning.
     /// </summary>
     [DataField("startDelay")]
-    public TimeSpan StartDelay = TimeSpan.Zero;
+    public readonly TimeSpan StartDelay = TimeSpan.Zero;
 
     /// <summary>
     /// The announcement played when the event starts
     /// </summary>
     [DataField("announcement")]
-    public string Announcement = default!;
+    public readonly string Announcement = default!;
 
     /// <summary>
     /// The sound played when the event starts
     /// Defaults to the funny ding.
     /// </summary>
     [DataField("announcementSound")]
-    public SoundSpecifier AnnouncementSound = new SoundPathSpecifier("/Audio/_StationWare/event_ding.ogg");
+    public readonly SoundSpecifier AnnouncementSound = new SoundPathSpecifier("/Audio/_StationWare/event_ding.ogg");
 
     /// <summary>
     /// Components that are added to the challenge entity
@@ -52,5 +60,5 @@ public sealed class ChallengePrototype : IPrototype
     /// the challenge itself.
     /// </summary>
     [DataField("challengeModifiers")]
-    public EntityPrototype.ComponentRegistry ChallengeModifiers = new();
+    public readonly EntityPrototype.ComponentRegistry ChallengeModifiers = new();
 }

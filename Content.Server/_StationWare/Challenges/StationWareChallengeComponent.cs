@@ -30,7 +30,7 @@ public sealed class StationWareChallengeComponent : Component
     public TimeSpan? StartTime;
 
     [DataField("endTime", customTypeSerializer: typeof(TimeOffsetSerializer))]
-    public TimeSpan EndTime;
+    public TimeSpan? EndTime;
 
     [DataField("winEffectPrototypeId", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
     public string WinEffectPrototypeId = "WinEffect";
