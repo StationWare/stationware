@@ -197,10 +197,10 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
                 challenge.StartTime = null;
             }
 
-            if (_timing.CurTime < challenge.EndTime)
-                continue;
-
-            EndChallenge(uid, challenge);
+            if (challenge.EndTime != null && _timing.CurTime >= challenge.EndTime)
+            {
+                EndChallenge(uid, challenge);
+            }
         }
     }
 }
