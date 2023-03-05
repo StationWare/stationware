@@ -168,9 +168,12 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
 
     public void RespawnPlayer(NetUserId id)
     {
-        if (!_player.TryGetSessionById(id, out var session))
-            return;
+        if (_player.TryGetSessionById(id, out var session))
+            RespawnPlayer(session);
+    }
 
+    public void RespawnPlayer(IPlayerSession session)
+    {
         // they belong to the void now
         if (session.AttachedEntity is not { } entity)
             return;
