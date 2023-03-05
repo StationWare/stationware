@@ -19,8 +19,6 @@ public sealed class InteractionWinSystem : EntitySystem
         foreach (var challenge in EntityQuery<StationWareChallengeComponent>())
         {
             var challengeEnt = challenge.Owner;
-            if (!challenge.Participants.ContainsValue(player))
-                continue;
             _stationWareChallenge.SetPlayerChallengeState(player, challengeEnt, component.WinOnInteract, challenge);
         }
     }

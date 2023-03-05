@@ -10,6 +10,7 @@ using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared.Console;
 using Robust.Shared.Map;
+using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Serialization.Manager;
@@ -22,6 +23,7 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
     [Dependency] private readonly IComponentFactory _componentFactory = default!;
     [Dependency] private readonly IConsoleHost _consoleHost = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ISerializationManager _serialization = default!;
@@ -47,7 +49,7 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
         challengeComp.StartTime = _timing.CurTime + challengePrototype.StartDelay;
         challengeComp.EndTime = _timing.CurTime + challengePrototype.Duration + challengePrototype.StartDelay; // time modifiers?
         challengeComp.WinByDefault = challengePrototype.WinByDefault;
-        challengeComp.Participants = GetParticipants(); // get all of the players for this challenge
+        var participants = GetParticipants(); // get all of the players for this challenge
 
         // copy all our modifiers from the challenge component to the entity
         foreach (var (name, entry) in challengePrototype.ChallengeModifiers)
@@ -60,9 +62,9 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
             EntityManager.AddComponent(uid, (Component) temp!, true);
         }
 
-        foreach (var session in challengeComp.Participants.Keys)
+        foreach (var session in participants.Keys)
         {
-            challengeComp.Completions.Add(session, null);
+            challengeComp.Completions.Add(session.UserId, null);
         }
 
         var announcement = Loc.GetString(challengePrototype.Announcement);
@@ -75,29 +77,30 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
         if (!Resolve(uid, ref component))
             return;
 
-        var beforeEv = new BeforeChallengeEndEvent(component.Participants.Values.ToList(), component);
+        var beforeEv = new BeforeChallengeEndEvent(GetEntitiesFromNetUserIds(component.Completions.Keys).ToList(), component);
         RaiseLocalEvent(uid, ref beforeEv);
 
         foreach (var (player, completion) in component.Completions)
         {
             if (completion != null)
                 continue;
-            if (player.AttachedEntity == null ||
-                !SetPlayerChallengeState(player.AttachedEntity.Value, uid, component.WinByDefault, component))
+            if (!_player.TryGetSessionById(player, out var session) || session.AttachedEntity is not { } attachedEntity)
+                continue;
+            if (!SetPlayerChallengeState(attachedEntity, uid, component.WinByDefault, component))
             {
                 component.Completions[player] = component.WinByDefault;
             }
         }
 
-        Dictionary<IPlayerSession, bool> finalCompletions = new();
+        Dictionary<NetUserId, bool> finalCompletions = new();
         foreach (var (player, completion)  in component.Completions)
         {
             finalCompletions.Add(player, completion!.Value);
         }
 
-        var ev = new ChallengeEndEvent(component.Participants.Values.ToList(), finalCompletions, uid, component);
+        var ev = new ChallengeEndEvent(GetEntitiesFromNetUserIds(component.Completions.Keys).ToList(), finalCompletions, uid, component);
         RaiseLocalEvent(uid, ref ev, true);
-        RespawnPlayers(component.Participants.Keys.ToList());
+        RespawnPlayers(component.Completions.Keys);
         Del(uid);
     }
 
@@ -118,13 +121,15 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
         if (!Resolve(uid, ref actor, false) || !Resolve(challengeEnt, ref component))
             return false;
 
-        if (!component.Participants.ContainsKey(actor.PlayerSession))
+        var id = actor.PlayerSession.UserId;
+
+        if (!component.Completions.ContainsKey(id))
             return false;
 
-        if (component.Completions[actor.PlayerSession] != null)
+        if (component.Completions[id] != null)
             return false;
 
-        component.Completions[actor.PlayerSession] = win;
+        component.Completions[id] = win;
 
         var effect = win
             ? component.WinEffectPrototypeId
@@ -153,32 +158,53 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
         return participants;
     }
 
-    private void RespawnPlayers(List<IPlayerSession> players)
+    public void RespawnPlayers(IEnumerable<NetUserId> players)
     {
-        foreach (var session in players)
+        foreach (var id in players)
         {
-            // they belong to the void now
-            if (session.AttachedEntity is not { } entity)
+            RespawnPlayer(id);
+        }
+    }
+
+    public void RespawnPlayer(NetUserId id)
+    {
+        if (!_player.TryGetSessionById(id, out var session))
+            return;
+
+        // they belong to the void now
+        if (session.AttachedEntity is not { } entity)
+            return;
+
+        if (HasComp<GhostComponent>(entity) || // are you a ghostie?
+            !HasComp<MobStateComponent>(entity)) // or did you get your ass gibbed
+        {
+            _gameTicker.SpawnPlayer(session, EntityUid.Invalid, null, false, false);
+            return;
+        }
+
+        RejuvenateCommand.PerformRejuvenate(entity);
+
+        var xform = Transform(entity);
+        if (xform.GridUid == null)
+        {
+            var validSpawns = EntityQuery<SpawnPointComponent>()
+                .Where(s => s.SpawnType == SpawnPointType.LateJoin)
+                .Select(s => Transform(s.Owner)).ToList();
+            var spawn = _random.Pick(validSpawns);
+            _transform.SetCoordinates(xform, spawn.Coordinates);
+        }
+    }
+
+    public IEnumerable<EntityUid> GetEntitiesFromNetUserIds(IEnumerable<NetUserId> sessions)
+    {
+        foreach (var id in sessions)
+        {
+            if (!_player.TryGetSessionById(id, out var session))
                 continue;
 
-            if (HasComp<GhostComponent>(entity) || // are you a ghostie?
-                !HasComp<MobStateComponent>(entity)) // or did you get your ass gibbed
-            {
-                _gameTicker.SpawnPlayer(session, EntityUid.Invalid, null, false, false);
+            if (session.AttachedEntity is not {} ent)
                 continue;
-            }
-
-            RejuvenateCommand.PerformRejuvenate(entity);
-
-            var xform = Transform(entity);
-            if (xform.GridUid == null)
-            {
-                var validSpawns = EntityQuery<SpawnPointComponent>()
-                    .Where(s => s.SpawnType == SpawnPointType.LateJoin)
-                    .Select(s => Transform(s.Owner)).ToList();
-                var spawn = _random.Pick(validSpawns);
-                _transform.SetCoordinates(xform, spawn.Coordinates);
-            }
+            yield return ent;
         }
     }
 
@@ -192,7 +218,7 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
 
             if (challenge.StartTime != null && _timing.CurTime >= challenge.StartTime)
             {
-                var ev = new ChallengeStartEvent(challenge.Participants.Values.ToList(), uid, challenge);
+                var ev = new ChallengeStartEvent(GetEntitiesFromNetUserIds(challenge.Completions.Keys).ToList(), uid, challenge);
                 RaiseLocalEvent(uid, ref ev, true);
                 challenge.StartTime = null;
             }
@@ -228,4 +254,4 @@ public readonly record struct BeforeChallengeEndEvent(List<EntityUid> Players, S
 /// <param name="Completions"></param>
 /// <param name="Challenge"></param>
 [ByRefEvent]
-public readonly record struct ChallengeEndEvent(List<EntityUid> Players, Dictionary<IPlayerSession, bool> Completions, EntityUid Challenge, StationWareChallengeComponent Component);
+public readonly record struct ChallengeEndEvent(List<EntityUid> Players, Dictionary<NetUserId, bool> Completions, EntityUid Challenge, StationWareChallengeComponent Component);
