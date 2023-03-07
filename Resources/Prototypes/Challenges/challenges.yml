@@ -120,6 +120,17 @@
     - id: MobXenoQueen
 
 - type: challenge
+  id: TheButtonChallenge
+  announcement: challenge-the-button
+  winByDefault: false
+  duration: 5
+  challengeModifiers:
+  - type: SpawnEntityModifier
+    spawns:
+    - id: TheButton
+  - type: GibOnFailModifier
+
+- type: challenge
   id: WizardDuelChallenge
   announcement: challenge-wizard-duel
   duration: 10

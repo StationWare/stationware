@@ -1,10 +1,12 @@
 ﻿using Content.Server._StationWare.Challenges.Modifiers.Components;
 using Content.Shared.Interaction;
+using Robust.Shared.Random;
 
 namespace Content.Server._StationWare.Challenges.Modifiers.Systems;
 
 public sealed class InteractionWinSystem : EntitySystem
 {
+    [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly StationWareChallengeSystem _stationWareChallenge = default!;
 
     /// <inheritdoc/>
@@ -21,7 +23,10 @@ public sealed class InteractionWinSystem : EntitySystem
             var challengeEnt = challenge.Owner;
             if (!challenge.Participants.ContainsValue(player))
                 continue;
-            _stationWareChallenge.SetPlayerChallengeState(player, challengeEnt, component.WinOnInteract, challenge);
+            var won = _random.Prob(component.WinChance);
+            if (!won && !component.FailOnNoWin)
+                continue;
+            _stationWareChallenge.SetPlayerChallengeState(player, challengeEnt, won, challenge);
         }
     }
 }
