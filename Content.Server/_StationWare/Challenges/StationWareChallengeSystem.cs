@@ -136,6 +136,10 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
             : component.LoseEffectPrototypeId;
         var effectEnt = Spawn(effect, new EntityCoordinates(uid, 0, 0));
         EnsureComp<ChallengeStateEffectComponent>(effectEnt).Challenge = challengeEnt;
+
+        var ev = new PlayerChallengeStateSetEvent(challengeEnt, actor.PlayerSession, win);
+        RaiseLocalEvent(uid, ref ev);
+        RaiseLocalEvent(challengeEnt, ref ev, true);
         return true;
     }
 
@@ -258,3 +262,12 @@ public readonly record struct BeforeChallengeEndEvent(List<EntityUid> Players, S
 /// <param name="Challenge"></param>
 [ByRefEvent]
 public readonly record struct ChallengeEndEvent(List<EntityUid> Players, Dictionary<NetUserId, bool> Completions, EntityUid Challenge, StationWareChallengeComponent Component);
+
+/// <summary>
+/// Raised when a player wins/loses a challenge
+/// </summary>
+/// <param name="Challenge"></param>
+/// <param name="Player"></param>
+/// <param name="Won"></param>
+[ByRefEvent]
+public readonly record struct PlayerChallengeStateSetEvent(EntityUid Challenge, IPlayerSession Player, bool Won);

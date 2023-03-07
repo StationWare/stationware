@@ -8,8 +8,14 @@
 public sealed class InteractionWinComponent : Component
 {
     /// <summary>
-    /// Whether or not you win or lose on interact
+    /// The chance that you win when you interact.
     /// </summary>
-    [DataField("winOnInteract")]
-    public bool WinOnInteract = true;
+    [DataField("winChance")]
+    public float WinChance = 1;
+
+    /// <summary>
+    /// Whether or not you fail the challenge if <see cref="WinChance"/> fails
+    /// </summary>
+    [DataField("failOnNoWin")]
+    public bool FailOnNoWin;
 }
