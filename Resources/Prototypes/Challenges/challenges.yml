@@ -22,6 +22,31 @@
     - id: ControlPoint
 
 - type: challenge
+  id: GetRichChallenge
+  announcement: challenge-get-rich
+  duration: 10
+  challengeModifiers:
+  - type: HighestPriceWinModifier
+  - type: RepeatSpawnEntityModifier
+    interval: 1
+  - type: SpawnEntityModifier
+    clumpSize: 1
+    spawns:
+    - id: MaterialDiamond1
+    - id: IngotGold1
+    - id: IngotSilver1
+    - id: SheetPlasma1
+    - id: SheetPlasteel1
+    - id: SpaceCash10
+      maxAmount: 5
+    - id: SheetSteel1
+      maxAmount: 5
+    - id: SheetGlass1
+      maxAmount: 5
+    - id: SheetPlastic1
+      maxAmount: 5
+
+- type: challenge
   id: NotSpleefChallenge
   announcement: challenge-not-spleef
   winByDefault: true

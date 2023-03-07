@@ -1,5 +1,6 @@
 challenge-freeze = Freeze! Don't move!
 challenge-king-of-the-hill = End the challenge inside the circle.
+challenge-get-rich = Have the most wealth at the end to win.
 challenge-not-spleef = The walls aren't solid. Knock people off the bus to win.
 challenge-find-ian = Ian is hidden in the swarm of corgis. Pet him to win.
 challenge-exploding-tile = Don't stand on the bright red tiles.
