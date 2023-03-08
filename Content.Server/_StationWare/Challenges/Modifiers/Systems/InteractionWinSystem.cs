@@ -21,8 +21,6 @@ public sealed class InteractionWinSystem : EntitySystem
         foreach (var challenge in EntityQuery<StationWareChallengeComponent>())
         {
             var challengeEnt = challenge.Owner;
-            if (!challenge.Participants.ContainsValue(player))
-                continue;
             var won = _random.Prob(component.WinChance);
             if (!won && !component.FailOnNoWin)
                 continue;
