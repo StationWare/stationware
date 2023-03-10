@@ -29,4 +29,4 @@ preset_enabled      = false
 map_enabled         = false
 
 [stationware] # Stationware cvars
-total_challenges    = 15
+total_challenges    = 7
