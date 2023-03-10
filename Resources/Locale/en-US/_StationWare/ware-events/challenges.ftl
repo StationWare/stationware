@@ -7,4 +7,5 @@ challenge-shootout = Total shootout! Stay alive!
 challenge-xeno-queen = Spend some time with the Xeno Queen. Stay alive!
 challenge-wizard-duel = Wizard duel! Fight!
 challenge-one-shot-gun = One gun and one bullet. Don't get shot.
-challenge-keep-the-crown = Punch the person with the crown to steal it. The person with the crown wins. 
+challenge-keep-the-crown = Punch the person with the crown to steal it. The person with the crown wins.
+challenge-put-that-helmet-on = PUT THAT HELMET ON!
