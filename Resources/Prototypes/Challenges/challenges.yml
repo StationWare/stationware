@@ -214,10 +214,44 @@
   id: LandmineChallenge
   announcement: challenge-landmine
   duration: 5
-  startDelay: 0
+  startDelay: 3
   challengeModifiers:
     - type: StayAliveModifier
+    - type: GiveItemModifier
+      items:
+        - id: SWBaseBallBatKnockback
+        - id: SoapSyndie
+          prob: 0.5
+          orGroup: soab #soab
     - type: SpawnEntityModifier
       spawns:
         - id: LandMineExplosive
           amount: 25
+        - id: MobRatServant
+          amount: 25 # one for each mine
+
+- type: challenge
+  id: XenosChallenge
+  announcement: challenge-xenos
+  duration: 5
+  startDelay: 0
+  challengeModifiers:
+    - type: StayAliveModifier
+    - type: SpawnEntityModifier
+      spawnLocationScalar: 0.8
+      spawns:
+        - id: MobXenoDrone
+        - id: MobXenoRavager
+        - id: MobXenoRunner
+        - id: MobXenoQueen
+          prob: 0.125
+        - id: MobXenoPrateorion
+          prob: 0.35
+        - id: MobXenoSpitter
+          prob: 0.5
+        - id: MobXenoRouny # rouny!
+          prob: 0.01
+    - type: GiveItemModifier
+      items:
+        - id: WeaponPulseCarbine
+        - id: ClothingOuterHardsuitDeathsquad
