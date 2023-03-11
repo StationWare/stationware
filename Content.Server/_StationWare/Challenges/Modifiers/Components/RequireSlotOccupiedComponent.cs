@@ -8,19 +8,16 @@ namespace Content.Server._StationWare.Challenges.Modifiers.Components;
 [RegisterComponent]
 public sealed class RequireSlotOccupiedComponent : Component
 {
-    [DataField("slot")] public string Slot = "head";
-    [DataField("requiredPrototype")] public EntityWhitelist? RequiredPrototype = null;
+    /// <summary>
+    /// The slot that must be occupied
+    /// </summary>
+    [DataField("slot", required: true)]
+    public string Slot = "head";
+
+    /// <summary>
+    /// A whitelist for what the entity occupying the slot must be in order to win.
+    /// </summary>
+    [DataField("whitelist")]
+    public EntityWhitelist? Whitelist;
 }
 
-/// <summary>
-/// Tracking players for <see cref="RequireSlotOccupiedComponent"/>
-/// </summary>
-[RegisterComponent]
-public sealed class RequireSlotOccupiedTrackerComponent : Component
-{
-    /// <summary>
-    /// The challenge entity for the slot occupation modifier player
-    /// </summary>
-    [DataField("challenge")]
-    public EntityUid Challenge;
-}

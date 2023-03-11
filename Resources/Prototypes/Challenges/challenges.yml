@@ -236,13 +236,12 @@
   startDelay: 0
   duration: 5
   challengeModifiers:
-    - type: SpawnEntityModifier
-      spawns:
-        - id: ClothingOuterHardsuitSpatio
-          amount: 3
-    - type: RequireSlotOccupied
-      slot: "head"
-      # we don't need a requiredPrototype cause normally the player doesn't have anything on their head, if (and when) we get loadouts, this should be added back in again
+  - type: SpawnEntityModifier
+    spawns:
+      - id: ClothingOuterHardsuitSpatio
+        amount: 3
+  - type: RequireSlotOccupied
+    slot: "head"
 
 - type: challenge
   id: GreytideChallenge
@@ -250,11 +249,11 @@
   duration: 5
   startDelay: 0
   challengeModifiers:
-    - type: StayAliveModifier
-    - type: SpawnEntityModifier
-      spawns:
-        - id: SWToolboxGreytide
-          amount: 25
+  - type: StayAliveModifier
+  - type: SpawnEntityModifier
+    spawns:
+    - id: SWToolboxGreytide
+      amount: 25
 
 - type: challenge
   id: LandmineChallenge
@@ -262,19 +261,19 @@
   duration: 5
   startDelay: 3
   challengeModifiers:
-    - type: StayAliveModifier
-    - type: GiveItemModifier
-      items:
-        - id: SWBaseBallBatKnockback
-        - id: SoapSyndie
-          prob: 0.5
-          orGroup: soab #soab
-    - type: SpawnEntityModifier
-      spawns:
-        - id: LandMineExplosive
-          amount: 10
-        - id: MobRatServant
-          amount: 3
+  - type: StayAliveModifier
+  - type: GiveItemModifier
+    items:
+    - id: SWBaseBallBatKnockback
+    - id: SoapSyndie
+      prob: 0.5
+      orGroup: soab #soab
+  - type: SpawnEntityModifier
+    spawns:
+      - id: LandMineExplosive
+        amount: 10
+      - id: MobRatServant
+        amount: 3
 
 - type: challenge
   id: MorbChallenge
@@ -282,25 +281,25 @@
   duration: 10
   startDelay: 3
   challengeModifiers:
-    - type: StayAliveModifier
-    - type: SpawnEntityModifier
-      spawnLocationScalar: 0.8
-      spawns:
-        - id: MobFleshJared
-          amount: 3
-          maxAmount: 8
-        - id: MobFleshGolem
-          amount: 3
-          maxAmount: 8
-        - id: MobFleshClamp
-          amount: 3
-          maxAmount: 8
-        - id: MobFleshLover
-          amount: 3
-          maxAmount: 8
-        - id: FleshBlocker
-          amount: 3
-          maxAmount: 8
+  - type: StayAliveModifier
+  - type: SpawnEntityModifier
+    spawnLocationScalar: 0.8
+    spawns:
+      - id: MobFleshJared
+        amount: 3
+        maxAmount: 8
+      - id: MobFleshGolem
+        amount: 3
+        maxAmount: 8
+      - id: MobFleshClamp
+        amount: 3
+        maxAmount: 8
+      - id: MobFleshLover
+        amount: 3
+        maxAmount: 8
+      - id: FleshBlocker
+        amount: 3
+        maxAmount: 8
 
 - type: challenge
   id: XenosChallenge
@@ -312,34 +311,34 @@
     - type: SpawnEntityModifier
       spawnLocationScalar: 0.8
       spawns:
-        - id: MobXenoDrone
-          amount: 3
-          maxAmount: 5
-        - id: MobXenoRavager
-          prob: 0.125
-          amount: 3
-          maxAmount: 5
-        - id: MobXenoRunner
-          prob: 0.125
-          amount: 3
-          maxAmount: 5
-        - id: MobXenoQueen
-          prob: 0.125
-          amount: 1
-          maxAmount: 1
-        - id: MobXenoPrateorion
-          prob: 0.35
-          amount: 1
-          maxAmount: 3
-        - id: MobXenoSpitter
-          prob: 0.5
-          amount: 1
-          maxAmount: 3
-        - id: MobXenoRouny # rouny!
-          prob: 0.01
-          amount: 1
-          maxAmount: 3
-    - type: GiveItemModifier
-      items:
-        - id: WeaponPulseCarbine
-        - id: ClothingOuterHardsuitDeathsquad
+      - id: MobXenoDrone
+        amount: 3
+        maxAmount: 5
+      - id: MobXenoRavager
+        prob: 0.125
+        amount: 3
+        maxAmount: 5
+      - id: MobXenoRunner
+        prob: 0.125
+        amount: 3
+        maxAmount: 5
+      - id: MobXenoQueen
+        prob: 0.125
+        amount: 1
+        maxAmount: 1
+      - id: MobXenoPrateorion
+        prob: 0.35
+        amount: 1
+        maxAmount: 3
+      - id: MobXenoSpitter
+        prob: 0.5
+        amount: 1
+        maxAmount: 3
+      - id: MobXenoRouny # rouny!
+        prob: 0.01
+        amount: 1
+        maxAmount: 3
+  - type: GiveItemModifier
+    items:
+    - id: WeaponPulseCarbine
+    - id: ClothingOuterHardsuitDeathsquad
