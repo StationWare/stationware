@@ -33,4 +33,13 @@ public sealed class SpawnEntityModifierComponent : Component
     /// </summary>
     [DataField("deleteAtEnd")]
     public bool DeleteAtEnd = true;
+
+    /// <summary>
+    /// Whether or not an entity is spawned for each player.
+    /// </summary>
+    [DataField("spawnPerPlayer")]
+    public bool SpawnPerPlayer = false;
+
+    [DataField("spawnPerPlayerMultiplier")]
+    public float SpawnPerPlayerMultiplier = 1.0f;
 }
