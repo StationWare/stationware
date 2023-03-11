@@ -242,7 +242,7 @@
           amount: 3
     - type: RequireSlotOccupied
       slot: "head"
-      # we don't need a requiredPrototype cause normally the player doesn't have anything on their head
+      # we don't need a requiredPrototype cause normally the player doesn't have anything on their head, if (and when) we get loadouts, this should be added back in again
 
 - type: challenge
   id: GreytideChallenge
