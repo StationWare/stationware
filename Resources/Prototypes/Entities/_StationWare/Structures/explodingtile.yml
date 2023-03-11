@@ -32,3 +32,31 @@
       - MobMask
       layer:
       - MobLayer
+
+- type: entity
+  id: WinningTile
+  name: exploding tile
+  description: boom?
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: ControlPoint
+  - type: Sprite
+    netsync: false
+    sprite: _StationWare/warningtile.rsi
+    drawdepth: FloorTiles
+    layers:
+    - state: icon
+  - type: Transform
+    anchored: true
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+    - shape:
+        !type:PhysShapeAabb
+        bounds: "-0.5,-0.5,0.5,0.5"
+      density: 400
+      mask:
+      - MobMask
+      layer:
+      - MobLayer
