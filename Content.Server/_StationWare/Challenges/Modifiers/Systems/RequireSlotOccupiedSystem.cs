@@ -65,6 +65,8 @@ public sealed class RequireSlotOccupiedSystem : EntitySystem
                     _stationWareChallenge.SetPlayerChallengeState(ent, uid, true, args.Component);
                 }
             }
+
+            RemComp(ent, tracker);
         }
     }
 }
