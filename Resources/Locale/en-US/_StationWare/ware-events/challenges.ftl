@@ -16,4 +16,4 @@ challenge-put-that-helmet-on = PUT THAT FUCKING HELMET ON!
 challenge-greytide = Greytide worldwide!
 challenge-landmine = Oops! Cargo mixed our soap and bats with landmines!
 challenge-xenos = Nanotrasen's Colonial Marines program needs new recruits to the frontlines, prove it!
-challenge-morb = It's morbing time
+challenge-morb = It's morbing time.
