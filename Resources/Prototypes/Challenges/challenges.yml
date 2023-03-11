@@ -196,7 +196,7 @@
           amount: 3
     - type: RequireSlotOccupied
       slot: "head"
-      requiredPrototype: "ClothingHeadHelmetHardsuitSpatio"
+      # we don't need a requiredPrototype cause normally the player doesn't have anything on their head
 
 - type: challenge
   id: GreytideChallenge

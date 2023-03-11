@@ -40,10 +40,8 @@ public sealed class RequireSlotOccupiedSystem : EntitySystem
         {
             var ent = tracker.Owner;
 
-            _invSystem.TryGetSlotEntity(ent, component.Slot, out var slot_entity);
+            _invSystem.TryGetSlotEntity(ent, component.Slot, out var slotEntity);
 
-            if (slot_entity == null)
-                continue;
 
             if (component.RequiredPrototype == null)
             {
@@ -52,7 +50,10 @@ public sealed class RequireSlotOccupiedSystem : EntitySystem
             else
             {
                 // assume we need to check prototype
-                if (component.RequiredPrototype.IsValid(slot_entity))
+                if (slotEntity == null)
+                    continue;
+
+                if (component.RequiredPrototype.IsValid(slotEntity.Value))
                    _stationWareChallenge.SetPlayerChallengeState(ent, uid, true, args.Component);
             }
 
