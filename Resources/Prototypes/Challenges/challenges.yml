@@ -210,3 +210,13 @@
   challengeModifiers:
   - type: WinningMarkerModifier
     markerEffectPrototype: CrownEffect
+
+- type: challenge
+  id: AcidTripChallenge
+  announcement: challenge-acid-trip
+  duration: 15
+  challengeModifiers:
+  - type: StayAliveModifier
+  - type: GiveItemModifier
+    items:
+    - id: SWAcidExtinguisher

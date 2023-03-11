@@ -1,0 +1,13 @@
+- type: entity
+  name: acid extinguisher
+  parent: FireExtinguisher
+  id: SWAcidExtinguisher
+  description: It doesn't extinguish acids.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      spray:
+        maxVol: 500
+        reagents:
+        - ReagentId: SWSulfuricAcid
+          Quantity: 500
