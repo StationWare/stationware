@@ -48,6 +48,22 @@
     sprite: Objects/Tools/Toolboxes/toolbox_blue.rsi
 
 - type: entity
+  name: toolbox
+  parent: ToolboxBase
+  id: SWToolboxGreytide
+  description: Greytide worldwide!
+  components:
+    - type: MeleeWeapon
+      damage:
+        types:
+          Blunt: 10000 # gibber
+    - type: Sprite
+      sprite: Objects/Tools/Toolboxes/toolbox_blue.rsi
+      state: icon
+    - type: Item
+      sprite: Objects/Tools/Toolboxes/toolbox_blue.rsi
+
+- type: entity
   name: electrical toolbox
   parent: ToolboxBase
   id: ToolboxElectrical
