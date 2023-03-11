@@ -197,3 +197,27 @@
     - type: RequireSlotOccupied
       slot: "head"
       requiredPrototype: "ClothingHeadHelmetHardsuitSpatio"
+
+- type: challenge
+  id: GreytideChallenge
+  announcement: challenge-greytide
+  duration: 5
+  startDelay: 0
+  challengeModifiers:
+    - type: StayAliveModifier
+    - type: SpawnEntityModifier
+      spawns:
+        - id: SWToolboxGreytide
+          amount: 25
+
+- type: challenge
+  id: LandmineChallenge
+  announcement: challenge-landmine
+  duration: 5
+  startDelay: 0
+  challengeModifiers:
+    - type: StayAliveModifier
+    - type: SpawnEntityModifier
+      spawns:
+        - id: LandMineExplosive
+          amount: 25
