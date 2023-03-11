@@ -1,3 +1,4 @@
+using Content.Server._StationWare.Challenges;
 using Content.Server.Actions;
 using Content.Server.Inventory;
 using Content.Server.Mind.Components;
@@ -36,6 +37,15 @@ namespace Content.Server.Polymorph.Systems
 
             SubscribeLocalEvent<PolymorphedEntityComponent, ComponentStartup>(OnInit);
             SubscribeLocalEvent<PolymorphedEntityComponent, RevertPolymorphActionEvent>(OnRevertPolymorphActionEvent);
+            SubscribeLocalEvent<ChallengeEndEvent>(OnChallengeEnd);
+        }
+
+        private void OnChallengeEnd(ref ChallengeEndEvent ev)
+        {
+            foreach (var player in ev.Players)
+            {
+                Revert(player);
+            }
         }
 
         private void OnRevertPolymorphActionEvent(EntityUid uid, PolymorphedEntityComponent component, RevertPolymorphActionEvent args)
