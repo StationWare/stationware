@@ -152,9 +152,15 @@ public sealed class StationWareRuleSystem : GameRuleSystem
 
     private ChallengePrototype GetRandomChallenge()
     {
-        return _random.Pick(_prototype.EnumeratePrototypes<ChallengePrototype>()
+        var available = _prototype.EnumeratePrototypes<ChallengePrototype>()
             .Where(p => !_previousChallenges.Contains(p.ID))
-            .ToList());
+            .ToList();
+        if (!available.Any())
+        {
+            _previousChallenges.Clear();
+            return GetRandomChallenge();
+        }
+        return _random.Pick(available);
     }
 
     private void StartPostRoundSlaughter(List<NetUserId> ids)
