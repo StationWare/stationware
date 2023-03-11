@@ -45,14 +45,6 @@ public sealed class RequireSlotOccupiedSystem : EntitySystem
             if (slot_entity == null)
                 continue;
 
-            EntityManager.TryGetComponent<MetaDataComponent>(slot_entity.Value, out var meta_data);
-
-            if (meta_data == null)
-                continue;
-
-            if (meta_data.EntityPrototype == null)
-                continue;
-
             if (component.RequiredPrototype == null)
             {
                 _stationWareChallenge.SetPlayerChallengeState(ent, uid, true, args.Component);
@@ -60,10 +52,8 @@ public sealed class RequireSlotOccupiedSystem : EntitySystem
             else
             {
                 // assume we need to check prototype
-                if (meta_data.EntityPrototype.ID == component.RequiredPrototype)
-                {
-                    _stationWareChallenge.SetPlayerChallengeState(ent, uid, true, args.Component);
-                }
+                if (component.RequiredPrototype.IsValid(slot_entity))
+                   _stationWareChallenge.SetPlayerChallengeState(ent, uid, true, args.Component);
             }
 
             RemComp(ent, tracker);

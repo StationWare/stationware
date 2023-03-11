@@ -1,4 +1,6 @@
-﻿namespace Content.Server._StationWare.Challenges.Modifiers.Components;
+﻿using Content.Shared.Whitelist;
+
+namespace Content.Server._StationWare.Challenges.Modifiers.Components;
 
 /// <summary>
 /// This is used for events to check whether their slot has a prototype or is generally occupied
@@ -7,7 +9,7 @@
 public sealed class RequireSlotOccupiedComponent : Component
 {
     [DataField("slot")] public string Slot = "head";
-    [DataField("requiredPrototype")] public string? RequiredPrototype = null;
+    [DataField("requiredPrototype")] public EntityWhitelist? RequiredPrototype = null;
 }
 
 /// <summary>
