@@ -22,6 +22,7 @@ public sealed class StationWareRuleSystem : GameRuleSystem
     [Dependency] private readonly IChatManager _chatManager = default!;
     [Dependency] private readonly IConfigurationManager _configuration = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly GodmodeSystem _godmode = default!;
@@ -59,9 +60,9 @@ public sealed class StationWareRuleSystem : GameRuleSystem
         if (ev.Challenge != _currentChallenge)
             return;
 
-        foreach (var (session, won) in ev.Completions)
+        foreach (var (netUserId, won) in ev.Completions)
         {
-            AdjustPlayerScore(session, won ? 1 : 0);
+            AdjustPlayerScore(netUserId, won ? 1 : 0);
         }
 
         if (_challengeCount == _totalChallenges)
@@ -100,16 +101,20 @@ public sealed class StationWareRuleSystem : GameRuleSystem
             ("points", fPlayerInfo.Points)));
     }
 
-    private void AdjustPlayerScore(IPlayerSession session, int amount = 1)
+    private void AdjustPlayerScore(NetUserId id, int amount = 1)
     {
-        if (!_points.ContainsKey(session.UserId))
-            _points[session.UserId] = new PlayerInfo(session.Name);
-        _points[session.UserId].Points += amount;
+        if (!_points.ContainsKey(id))
+        {
+            _player.TryGetSessionById(id, out var session);
+            _points[id] = new PlayerInfo(session?.Name ?? "Unknown");
+        }
+        _points[id].Points += amount;
     }
 
     public override void Started()
     {
         _points.Clear();
+        _previousChallenges.Clear();
         _challengeCount = 1;
         _currentChallenge = null;
         _restartRoundTime = null;
@@ -147,29 +152,40 @@ public sealed class StationWareRuleSystem : GameRuleSystem
 
     private ChallengePrototype GetRandomChallenge()
     {
-        return _random.Pick(_prototype.EnumeratePrototypes<ChallengePrototype>()
+        var available = _prototype.EnumeratePrototypes<ChallengePrototype>()
             .Where(p => !_previousChallenges.Contains(p.ID))
-            .ToList());
+            .ToList();
+        if (!available.Any())
+        {
+            _previousChallenges.Clear();
+            return GetRandomChallenge();
+        }
+        return _random.Pick(available);
     }
 
-    private void StartPostRoundSlaughter(List<IPlayerSession> players)
+    private void StartPostRoundSlaughter(List<NetUserId> ids)
     {
-        var firstNetUserId = _points.MaxBy(x => x.Value.Points).Key;
-        var firstPlayer = players.First(x => x.UserId == firstNetUserId);
-        if (firstPlayer.AttachedEntity is { } playerEnt)
+        Dictionary<NetUserId, (IPlayerSession, EntityUid)> players = new();
+        foreach (var id in ids)
         {
+            if (_player.TryGetSessionById(id, out var session) && session.AttachedEntity is { } attachedEntity)
+                players.Add(id, (session, attachedEntity));
+        }
+
+        var firstNetUserId = _points.MaxBy(x => x.Value.Points).Key;
+        if (players.TryGetValue(firstNetUserId, out var s))
+        {
+            var playerEnt = s.Item2;
             _godmode.EnableGodmode(playerEnt);
-            _chatManager.DispatchServerMessage(firstPlayer, Loc.GetString("stationware-you-won"));
+            _chatManager.DispatchServerMessage(s.Item1, Loc.GetString("stationware-you-won"));
             var minigun = Spawn("WeaponMinigun", Transform(playerEnt).Coordinates); // gamerules suck dick anyways idgaf
             EnsureComp<UnremoveableComponent>(minigun); // no stealing allowed
             _hands.TryPickup(playerEnt, minigun, checkActionBlocker: false);
         }
 
-        players.Remove(firstPlayer);
-        foreach (var session in players)
+        players.Remove(firstNetUserId);
+        foreach (var (_, ent) in players.Values)
         {
-            if (session.AttachedEntity is not { } ent)
-                continue;
             if (!TryComp<CombatModeComponent>(ent, out var combatMode))
                 continue;
             combatMode.IsInCombatMode = false;
@@ -178,7 +194,7 @@ public sealed class StationWareRuleSystem : GameRuleSystem
     }
 
     /// <summary>
-    /// A little struct used to associate a player's netUserId
+    /// A little class used to associate a player's netUserId
     /// with their name and point amount.
     /// </summary>
     private sealed class PlayerInfo

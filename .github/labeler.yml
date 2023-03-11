@@ -1,12 +1,12 @@
-﻿"Changes: Sprites":
+"sprites":
 - '**/*.rsi/*.png'
 
-"Changes: Map":
+"cartography":
 - 'Resources/Maps/*.yml'
 - 'Resources/Prototypes/Maps/*.yml'
 
-"Changes: UI":
+"ui":
 - '**/*.xaml*'
 
-"No C#":
+"no C#":
 - all: ["!**/*.cs"]
