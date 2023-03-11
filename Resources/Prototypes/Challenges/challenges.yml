@@ -47,6 +47,20 @@
       maxAmount: 5
 
 - type: challenge
+  id: MusicalChairsChallenge
+  announcement: challenge-musical-chairs
+  duration: 5
+  challengeModifiers:
+  - type: BuckledWinModifier
+  - type: SpawnEntityModifier
+    spawnPerPlayer: true
+    spawnPerPlayerMultiplier: 0.5
+    clumpSize: 1
+    spawns:
+    - id: ComfyChair
+      amount: 100 #it won't spawn 100
+
+- type: challenge
   id: NotSpleefChallenge
   announcement: challenge-not-spleef
   winByDefault: true

@@ -1,4 +1,5 @@
-﻿using Content.Server._StationWare.Challenges.Modifiers.Components;
+﻿using System.Linq;
+using Content.Server._StationWare.Challenges.Modifiers.Components;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
@@ -30,10 +31,10 @@ public sealed class SpawnEntityModifierSystem : EntitySystem
 
     private void OnChallengeStart(EntityUid uid, SpawnEntityModifierComponent component, ref ChallengeStartEvent args)
     {
-        SpawnEntities(uid, component);
+        SpawnEntities(uid, component, args.Players.Count);
     }
 
-    public void SpawnEntities(EntityUid uid, SpawnEntityModifierComponent component)
+    public void SpawnEntities(EntityUid uid, SpawnEntityModifierComponent component, int players)
     {
         var gridQuery = GetEntityQuery<MapGridComponent>();
         foreach (var station in _station.Stations)
@@ -46,6 +47,12 @@ public sealed class SpawnEntityModifierSystem : EntitySystem
                 continue;
 
             var spawns = EntitySpawnCollection.GetSpawns(component.Spawns);
+            if (component.SpawnPerPlayer)
+            {
+                var amount = (int) MathF.Round(players * component.SpawnPerPlayerMultiplier);
+                spawns = spawns.Take(Math.Min(spawns.Count, amount)).ToList();
+            }
+
             var positions = new List<EntityCoordinates>();
             for (var i = 0; i < spawns.Count / (component.ClumpSize ?? 1); i++)
             {
@@ -124,14 +131,14 @@ public sealed class SpawnEntityModifierSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        foreach (var (timer, spawn) in EntityQuery<RepeatSpawnEntityModifierComponent, SpawnEntityModifierComponent>())
+        foreach (var (timer, spawn, challenge) in EntityQuery<RepeatSpawnEntityModifierComponent, SpawnEntityModifierComponent, StationWareChallengeComponent>())
         {
             if (!timer.Started)
                 continue;
             if (_timing.CurTime < timer.NextSpawn)
                 continue;
             timer.NextSpawn = _timing.CurTime + timer.Interval;
-            SpawnEntities(spawn.Owner, spawn);
+            SpawnEntities(spawn.Owner, spawn, challenge.Completions.Count);
         }
     }
 }
