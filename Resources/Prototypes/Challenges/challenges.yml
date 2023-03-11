@@ -163,42 +163,42 @@
   - type: StayAliveModifier
   - type: GiveItemModifier
     items:
-      - id: SmiteBook
-        orGroup: weapon
-        prob: 0.165
-      - id: SmiteBook
-        orGroup: weapon
-        prob: 0.165
-      - id: ForceWallSpellbook
-        orGroup: weapon
-        prob: 0.165
-      - id: WeaponWandDeath
-        orGroup: weapon
-        prob: 0.165
-      - id: WeaponWandPolymorphCarp
-        orGroup: weapon
-        prob: 0.165
-      - id: WeaponWandFireball
-        orGroup: weapon
-        prob: 0.165
-      - id: WeaponWandPolymorphMonkey
-        orGroup: weapon
-        prob: 0.165
-      - id: WeaponStaffHealing
-        orGroup: weapon
-        prob: 0.165
-      - id: RGBStaff
-        orGroup: weapon
-        prob: 0.165
-      - id: ClothingHeadHatWizard
-        orGroup: hat
-        prob: 0.33
-      - id: ClothingHeadHatVioletwizard
-        orGroup: hat
-        prob: 0.33
-      - id: ClothingHeadHatRedwizard
-        orGroup: hat
-        prob: 0.33
+    - id: SmiteBook
+      orGroup: weapon
+      prob: 0.165
+    - id: SmiteBook
+      orGroup: weapon
+      prob: 0.165
+    - id: ForceWallSpellbook
+      orGroup: weapon
+      prob: 0.165
+    - id: WeaponWandDeath
+      orGroup: weapon
+      prob: 0.165
+    - id: WeaponWandPolymorphCarp
+      orGroup: weapon
+      prob: 0.165
+    - id: WeaponWandFireball
+      orGroup: weapon
+      prob: 0.165
+    - id: WeaponWandPolymorphMonkey
+      orGroup: weapon
+      prob: 0.165
+    - id: WeaponStaffHealing
+      orGroup: weapon
+      prob: 0.165
+    - id: RGBStaff
+      orGroup: weapon
+      prob: 0.165
+    - id: ClothingHeadHatWizard
+      orGroup: hat
+      prob: 0.33
+    - id: ClothingHeadHatVioletwizard
+      orGroup: hat
+      prob: 0.33
+    - id: ClothingHeadHatRedwizard
+      orGroup: hat
+      prob: 0.33
 
 - type: challenge
   id: OneShotGunChallenge
