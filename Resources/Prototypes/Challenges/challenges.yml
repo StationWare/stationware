@@ -22,6 +22,20 @@
     - id: ControlPoint
 
 - type: challenge
+  id: WinningTileChallenge
+  announcement: challenge-winning-tile
+  duration: 5
+  challengeModifiers:
+  - type: ControlPointModifier
+  - type: SpawnEntityModifier
+    spawnPerPlayer: true
+    spawnPerPlayerMultiplier: 0.75
+    clumpSize: 1
+    spawns:
+    - id: WinningTile
+      amount: 100
+
+- type: challenge
   id: GetRichChallenge
   announcement: challenge-get-rich
   duration: 10

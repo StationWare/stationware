@@ -1,5 +1,6 @@
 challenge-freeze = Freeze! Don't move!
 challenge-king-of-the-hill = End the challenge inside the circle.
+challenge-winning-tile = Don't stand on the bright red tiles... Psyche! Hop on! Quick!
 challenge-get-rich = Have the most wealth at the end to win.
 challenge-musical-chairs = Hop in a chair! Quick! Make sure you aren't left standing.
 challenge-not-spleef = The walls aren't solid. Knock people off the bus to win.
