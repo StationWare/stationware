@@ -8,6 +8,8 @@ using Content.Server.GameTicking.Rules;
 using Content.Server.Hands.Systems;
 using Content.Shared.CCVar;
 using Content.Shared.Interaction.Components;
+using Content.Shared.Mobs;
+using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
@@ -42,6 +44,8 @@ public sealed class StationWareRuleSystem : GameRuleSystem
 
     private readonly Dictionary<NetUserId, PlayerInfo> _points = new();
 
+    private readonly HashSet<IPlayerSession> _queuedRespawns = new();
+
     public override string Prototype => "StationWare";
 
     public override void Initialize()
@@ -49,6 +53,7 @@ public sealed class StationWareRuleSystem : GameRuleSystem
         base.Initialize();
 
         SubscribeLocalEvent<ChallengeEndEvent>(OnChallengeEnd);
+        SubscribeLocalEvent<MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<RoundEndTextAppendEvent>(OnRoundEndText);
 
         _configuration.OnValueChanged(CCVars.StationWareTotalChallenges, e => _totalChallenges = e, true);
@@ -57,6 +62,9 @@ public sealed class StationWareRuleSystem : GameRuleSystem
 
     private void OnChallengeEnd(ref ChallengeEndEvent ev)
     {
+        if (!RuleStarted)
+            return;
+
         if (ev.Challenge != _currentChallenge)
             return;
 
@@ -78,8 +86,30 @@ public sealed class StationWareRuleSystem : GameRuleSystem
         _nextChallengeTime = _timing.CurTime + _challengeDelay;
     }
 
+    private void OnMobStateChanged(MobStateChangedEvent ev)
+    {
+        if (!RuleStarted)
+            return;
+
+        // only do it between challenges
+        if (_currentChallenge != null)
+            return;
+
+        if (ev.NewMobState != MobState.Dead)
+            return;
+
+        if (!TryComp<ActorComponent>(ev.Target, out var actor))
+            return;
+
+        if (!_queuedRespawns.Contains(actor.PlayerSession))
+            _queuedRespawns.Add(actor.PlayerSession);
+    }
+
     private void OnRoundEndText(RoundEndTextAppendEvent ev)
     {
+        if (!RuleAdded)
+            return;
+
         if (_points.Count == 0)
             return;
 
@@ -138,6 +168,12 @@ public sealed class StationWareRuleSystem : GameRuleSystem
 
         if (GameTicker.RunLevel != GameRunLevel.InRound)
             return;
+
+        foreach (var queued in _queuedRespawns)
+        {
+            _stationWareChallenge.RespawnPlayer(queued);
+        }
+        _queuedRespawns.Clear();
 
         if (_currentChallenge != null)
             return;

@@ -1,11 +1,11 @@
 - type: gameMap
-  id: Dome
-  mapName: 'Dome'
-  mapPath: /Maps/dome.yml
+  id: Hydra
+  mapName: 'Hydra'
+  mapPath: /Maps/hydra.yml
   minPlayers: 0
   stations:
     Stationware:
-      mapNameTemplate: '{0} Dome {1}'
+      mapNameTemplate: '{0} Hydra {1}'
       nameGenerator:
         !type:NanotrasenNameGenerator
         prefixCreator: 'SW'

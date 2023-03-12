@@ -1,11 +1,11 @@
 - type: gameMap
-  id: Dome
-  mapName: 'Dome'
-  mapPath: /Maps/dome.yml
+  id: Dumbbell
+  mapName: 'Dumbbell'
+  mapPath: /Maps/dumbbell.yml
   minPlayers: 0
   stations:
     Stationware:
-      mapNameTemplate: '{0} Dome {1}'
+      mapNameTemplate: '{0} Dumbbell {1}'
       nameGenerator:
         !type:NanotrasenNameGenerator
         prefixCreator: 'SW'
