@@ -30,7 +30,7 @@ public sealed class DeleteOnDeathSystem : EntitySystem
         if (ev.NewMobState != MobState.Dead)
             return;
 
-        QueueDel(ev.Target);
+        Del(ev.Target);
     }
 
     private void OnBeingGibbed(BeingGibbedEvent ev)
@@ -40,7 +40,7 @@ public sealed class DeleteOnDeathSystem : EntitySystem
 
         foreach (var part in ev.GibbedParts)
         {
-            QueueDel(part);
+            Del(part);
         }
     }
 }
