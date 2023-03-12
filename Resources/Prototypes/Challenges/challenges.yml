@@ -171,6 +171,8 @@
     spawnLocationScalar: 0.8
     spawns:
     - id: MobXenoQueen
+      amount: 3
+      maxAmount: 10
 
 - type: challenge
   id: TheButtonChallenge
@@ -315,19 +317,19 @@
     spawns:
     - id: MobFleshJared
       amount: 3
-      maxAmount: 8
+      maxAmount: 12
     - id: MobFleshGolem
       amount: 3
-      maxAmount: 8
+      maxAmount: 12
     - id: MobFleshClamp
       amount: 3
-      maxAmount: 8
+      maxAmount: 12
     - id: MobFleshLover
       amount: 3
-      maxAmount: 8
+      maxAmount: 12
     - id: FleshBlocker
       amount: 3
-      maxAmount: 8
+      maxAmount: 18
 
 - type: challenge
   id: XenosChallenge
@@ -341,15 +343,15 @@
     spawns:
     - id: MobXenoDrone
       amount: 3
-      maxAmount: 5
+      maxAmount: 15
     - id: MobXenoRavager
       prob: 0.125
       amount: 3
-      maxAmount: 5
+      maxAmount: 15
     - id: MobXenoRunner
       prob: 0.125
       amount: 3
-      maxAmount: 5
+      maxAmount: 15
     - id: MobXenoQueen
       prob: 0.125
       amount: 1
@@ -357,15 +359,15 @@
     - id: MobXenoPraetorian
       prob: 0.35
       amount: 1
-      maxAmount: 3
+      maxAmount: 13
     - id: MobXenoSpitter
       prob: 0.5
       amount: 1
-      maxAmount: 3
+      maxAmount: 13
     - id: MobXenoRouny # rouny!
       prob: 0.01
       amount: 1
-      maxAmount: 3
+      maxAmount: 15
   - type: GiveItemModifier
     items:
     - id: WeaponPulseCarbine
