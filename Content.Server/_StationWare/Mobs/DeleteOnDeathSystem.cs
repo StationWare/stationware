@@ -1,6 +1,7 @@
 using Content.Server.Body.Components;
 using Content.Shared.CCVar;
 using Content.Shared.Mobs;
+using Content.Shared.Spawners.Components;
 using Robust.Shared.Configuration;
 
 namespace Content.Server._StationWare.Mobs;
@@ -40,8 +41,7 @@ public sealed class DeleteOnDeathSystem : EntitySystem
 
         foreach (var part in ev.GibbedParts)
         {
-            if (Exists(part) && !Deleted(part) && MetaData(part).LifeStage != ComponentLifeStage.Deleted)
-                QueueDel(part);
+            EnsureComp<TimedDespawnComponent>(part).Lifetime = 2.5f;
         }
     }
 }
