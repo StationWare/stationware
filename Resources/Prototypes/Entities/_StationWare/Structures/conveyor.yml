@@ -2,6 +2,7 @@
 - type: entity
   id: SWConveyorBelt
   name: conveyor belt
+  suffix: Always Powered, Stationware
   description: An always-powered conveyor belt, commonly used to help you escape from your pursuers.
   placement:
     mode: SnapgridCenter

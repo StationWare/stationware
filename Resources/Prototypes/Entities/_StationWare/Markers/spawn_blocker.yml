@@ -1,5 +1,6 @@
 ﻿- type: entity
-  name: Stationware Spawn Block Marker
+  name: Spawn Block Marker
+  suffix: Stationware
   id: SWSpawnBlockMarker
   parent: MarkerBase
   components:
