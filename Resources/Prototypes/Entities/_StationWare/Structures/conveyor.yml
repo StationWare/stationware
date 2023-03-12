@@ -35,6 +35,11 @@
   - type: Conveyor
     powered: true
     state: Forward
+  - type: SignalReceiver
+    inputs:
+      Reverse: [ ]
+      Forward: [ ]
+      Off: [ ]
   - type: Appearance
   - type: GenericVisualizer
     visuals:
