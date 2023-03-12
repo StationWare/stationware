@@ -100,9 +100,16 @@ public sealed class SpawnEntityModifierSystem : EntitySystem
 
             // don't spawn inside of solid objects
             var physQuery = GetEntityQuery<PhysicsComponent>();
+            var markerQuery = GetEntityQuery<SpawnBlockMarkerComponent>();
             var valid = true;
             foreach (var ent in mapGridComp.GetAnchoredEntities(tile))
             {
+                if (markerQuery.HasComponent(ent))
+                {
+                    valid = false;
+                    break;
+                }
+
                 if (!physQuery.TryGetComponent(ent, out var body))
                     continue;
                 if (body.BodyType != BodyType.Static ||

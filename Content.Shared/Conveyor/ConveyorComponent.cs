@@ -25,10 +25,10 @@ public sealed class ConveyorComponent : Component
     /// <summary>
     ///     The current state of this conveyor
     /// </summary>
-    [ViewVariables(VVAccess.ReadWrite)]
+    [ViewVariables(VVAccess.ReadWrite), DataField("state")]
     public ConveyorState State;
 
-    [ViewVariables]
+    [ViewVariables, DataField("powered")]
     public bool Powered;
 
     [DataField("forwardPort", customTypeSerializer: typeof(PrototypeIdSerializer<ReceiverPortPrototype>))]
