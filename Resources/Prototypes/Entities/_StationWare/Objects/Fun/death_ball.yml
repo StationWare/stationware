@@ -21,7 +21,6 @@
     angularVelocity: 15
   - type: GibOnCollide
   - type: Physics
-    restitution: 1.5
     bodyType: Dynamic
     linearDamping: 0
     angularDamping: 0
