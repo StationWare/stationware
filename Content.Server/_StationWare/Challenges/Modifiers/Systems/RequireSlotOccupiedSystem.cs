@@ -3,9 +3,6 @@ using Content.Shared.Inventory;
 
 namespace Content.Server._StationWare.Challenges.Modifiers.Systems;
 
-/// <summary>
-/// This handles...
-/// </summary>
 public sealed class RequireSlotOccupiedSystem : EntitySystem
 {
     [Dependency] private readonly StationWareChallengeSystem _stationWareChallenge = default!;
@@ -27,15 +24,8 @@ public sealed class RequireSlotOccupiedSystem : EntitySystem
             if (slotEntity == null)
                 continue;
 
-            if (component.Whitelist == null)
-            {
+            if (component.Whitelist?.IsValid(slotEntity.Value) ?? true)
                 _stationWareChallenge.SetPlayerChallengeState(player, uid, true, args.Component);
-            }
-            else
-            {
-                if (component.Whitelist.IsValid(slotEntity.Value))
-                    _stationWareChallenge.SetPlayerChallengeState(player, uid, true, args.Component);
-            }
         }
     }
 }
