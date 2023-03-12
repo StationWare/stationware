@@ -1,4 +1,18 @@
 - type: challenge
+  id: DeathBallChallenge
+  announcement: challenge-death-ball
+  duration: 10
+  challengeModifiers:
+  - type: StayAliveModifier
+  - type: SpawnEntityModifier
+    spawnLocationScalar: 0.8
+    spawnPerPlayer: true
+    spawnPerPlayerMultiplier: 0.1 #one every 10 players
+    spawns:
+    - id: DeathBall
+      amount: 100
+
+- type: challenge
   id: FreezeChallenge
   announcement: challenge-freeze
   winByDefault: true

@@ -50,7 +50,7 @@ public sealed class SpawnEntityModifierSystem : EntitySystem
             if (component.SpawnPerPlayer)
             {
                 var amount = (int) MathF.Round(players * component.SpawnPerPlayerMultiplier);
-                spawns = spawns.Take(Math.Min(spawns.Count, amount)).ToList();
+                spawns = spawns.Take(Math.Clamp(amount, 1, spawns.Count)).ToList();
             }
 
             var positions = new List<EntityCoordinates>();
