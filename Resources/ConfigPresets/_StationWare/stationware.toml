@@ -9,7 +9,7 @@ lobbyenabled        = true
 lobbyduration       = 30
 fallbackpreset      = "StationWare"
 defaultpreset       = "StationWare"
-soft_max_players    = 30
+soft_max_players    = 40
 desc                = "A WarioWare-esque fork of Space Station 14, oriented on low-no roleplay and unbalanced fun."
 map_rotation        = false
 
