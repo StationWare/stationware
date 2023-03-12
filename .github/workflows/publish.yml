@@ -56,3 +56,10 @@ jobs:
           username: maid
           key: ${{ secrets.CENTCOMM_WIZARDS_BUILDS_PUSH_KEY }}
           script: python3 /var/www/builds.421034.xyz/manifest.py -c stationware -v ${{ github.sha }}
+
+      - name: Publish changelog
+        run: Tools/actions_changelogs_since_last_run.py
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.CHANGELOG_DISCORD_WEBHOOK }}
+
