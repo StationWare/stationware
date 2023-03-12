@@ -178,11 +178,8 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
 
     public void RespawnPlayer(IPlayerSession session)
     {
-        // they belong to the void now
-        if (session.AttachedEntity is not { } entity)
-            return;
-
-        if (HasComp<GhostComponent>(entity) || // are you a ghostie?
+        if (session.AttachedEntity is not { } entity ||
+            HasComp<GhostComponent>(entity) || // are you a ghostie?
             !HasComp<MobStateComponent>(entity)) // or did you get your ass gibbed
         {
             _gameTicker.SpawnPlayer(session, EntityUid.Invalid, null, false, false);
