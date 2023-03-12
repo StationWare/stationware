@@ -195,7 +195,7 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
                 .Where(s => s.SpawnType == SpawnPointType.LateJoin)
                 .Select(s => Transform(s.Owner)).ToList();
             var spawn = _random.Pick(validSpawns);
-            _transform.SetCoordinates(xform, spawn.Coordinates);
+            _transform.SetCoordinates(entity, xform, spawn.Coordinates);
         }
     }
 
