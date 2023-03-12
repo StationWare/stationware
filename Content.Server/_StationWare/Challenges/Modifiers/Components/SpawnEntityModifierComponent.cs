@@ -38,7 +38,7 @@ public sealed class SpawnEntityModifierComponent : Component
     /// Whether or not an entity is spawned for each player.
     /// </summary>
     [DataField("spawnPerPlayer")]
-    public bool SpawnPerPlayer = false;
+    public bool SpawnPerPlayer;
 
     [DataField("spawnPerPlayerMultiplier")]
     public float SpawnPerPlayerMultiplier = 1.0f;
