@@ -1,0 +1,15 @@
+﻿- type: gameMap
+  id: MagmaFactory
+  mapName: 'Magma Factory'
+  mapPath: /Maps/magma-factory.yml
+  minPlayers: 15
+  stations:
+    MagmaFactory:
+      mapNameTemplate: '{0} Magma Factory {1}'
+      nameGenerator:
+        !type:NanotrasenNameGenerator
+        prefixCreator: 'SW'
+      overflowJobs:
+      - Passenger
+      availableJobs:
+        Passenger: [ -1, -1 ]

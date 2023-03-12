@@ -168,6 +168,8 @@ entities:
     forceEnabled: True
     enabled: True
     type: Gravity
+  - id: MagmaFactory
+    type: BecomesStation
   - chunkCollection: {}
     type: DecalGrid
   - tiles:

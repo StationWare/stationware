@@ -1,5 +1,7 @@
 - type: gameMapPool
   id: DefaultMapPool
   maps:
-  - SWDome
-  - SWMagmaFactory
+  - Dome
+  - Dumbbell
+  - Hydra
+  - MagmaFactory

@@ -1,0 +1,15 @@
+- type: gameMap
+  id: Dome
+  mapName: 'Dome'
+  mapPath: /Maps/dome.yml
+  minPlayers: 0
+  stations:
+    Stationware:
+      mapNameTemplate: '{0} Dome {1}'
+      nameGenerator:
+        !type:NanotrasenNameGenerator
+        prefixCreator: 'SW'
+      overflowJobs:
+        - Passenger
+      availableJobs:
+        Passenger: [ -1, -1 ]
