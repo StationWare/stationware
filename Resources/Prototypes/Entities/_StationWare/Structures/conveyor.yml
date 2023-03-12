@@ -1,0 +1,44 @@
+﻿# Conveyor belt that is always on and indestructible.
+- type: entity
+  id: SWConveyorBelt
+  name: conveyor belt
+  description: An always-powered conveyor belt, commonly used to help you escape from your pursuers.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Transform
+    anchored: true
+  - type: Sprite
+    netsync: false
+    sprite: Structures/conveyor.rsi
+    state: conveyor_started_cw
+    drawdepth: FloorObjects
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+    - id: conveyor
+      shape: !type:PolygonShape
+        vertices:
+        - -0.55,-0.55
+        - 0.55,-0.55
+        - 0.55,0.55
+        - -0.55,0.55
+      layer:
+      - Impassable
+      - MidImpassable
+      - LowImpassable
+      hard: False
+  - type: Conveyor
+    powered: true
+    state: Forward
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ConveyorVisuals.State:
+        enum.ConveyorState.Off:
+          Off: { state: conveyor_stopped_cw }
+          Forward: { state: conveyor_started_cw }
+          Reverse: { state: conveyor_started_cw_r }

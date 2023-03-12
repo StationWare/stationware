@@ -1,0 +1,11 @@
+﻿- type: entity
+  name: Stationware Spawn Block Marker
+  id: SWSpawnBlockMarker
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - sprite: Markers/cross.rsi
+      state: red
+      shader: unshaded
+  - type: SpawnBlockMarker
