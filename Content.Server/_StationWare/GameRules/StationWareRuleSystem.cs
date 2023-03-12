@@ -100,14 +100,14 @@ public sealed class StationWareRuleSystem : GameRuleSystem
 
         if (!TryComp<ActorComponent>(ev.Target, out var actor))
             return;
-        
+
         if (!_queuedRespawns.Contains(actor.PlayerSession))
             _queuedRespawns.Add(actor.PlayerSession);
     }
 
     private void OnRoundEndText(RoundEndTextAppendEvent ev)
     {
-        if (!RuleStarted)
+        if (!RuleAdded)
             return;
 
         if (_points.Count == 0)
