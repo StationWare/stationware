@@ -1,0 +1,2041 @@
+meta:
+  format: 3
+  name: DemoStation
+  author: Space-Wizards
+  postmapinit: false
+tilemap:
+  0: Space
+  1: FloorArcadeBlue
+  2: FloorArcadeBlue2
+  3: FloorArcadeRed
+  4: FloorAsteroidCoarseSand0
+  5: FloorAsteroidCoarseSandDug
+  6: FloorAsteroidIronsand1
+  7: FloorAsteroidIronsand2
+  8: FloorAsteroidIronsand3
+  9: FloorAsteroidIronsand4
+  10: FloorAsteroidSand
+  11: FloorAsteroidTile
+  12: FloorBar
+  13: FloorBasalt
+  14: FloorBasaslt
+  15: FloorBlue
+  16: FloorBlueCircuit
+  17: FloorBoxing
+  18: FloorCarpetClown
+  19: FloorCarpetOffice
+  20: FloorCave
+  21: FloorCaveDrought
+  22: FloorClown
+  23: FloorDark
+  24: FloorDarkDiagonal
+  25: FloorDarkDiagonalMini
+  26: FloorDarkHerringbone
+  27: FloorDarkMini
+  28: FloorDarkMono
+  29: FloorDarkOffset
+  30: FloorDarkPavement
+  31: FloorDarkPavementVertical
+  32: FloorDarkPlastic
+  33: FloorDesert
+  34: FloorDirt
+  35: FloorEighties
+  36: FloorElevatorShaft
+  37: FloorFlesh
+  38: FloorFreezer
+  39: FloorGlass
+  40: FloorGold
+  41: FloorGrass
+  42: FloorGrassDark
+  43: FloorGrassJungle
+  44: FloorGrassLight
+  45: FloorGreenCircuit
+  46: FloorGym
+  47: FloorHydro
+  48: FloorKitchen
+  49: FloorLaundry
+  50: FloorLino
+  51: FloorLowDesert
+  52: FloorMetalDiamond
+  53: FloorMime
+  54: FloorMono
+  55: FloorPlanetGrass
+  56: FloorPlastic
+  57: FloorRGlass
+  58: FloorReinforced
+  59: FloorRockVault
+  60: FloorShowroom
+  61: FloorShuttleBlue
+  62: FloorShuttleOrange
+  63: FloorShuttlePurple
+  64: FloorShuttleRed
+  65: FloorShuttleWhite
+  66: FloorSilver
+  67: FloorSnow
+  68: FloorSteel
+  69: FloorSteelDiagonal
+  70: FloorSteelDiagonalMini
+  71: FloorSteelDirty
+  72: FloorSteelHerringbone
+  73: FloorSteelMini
+  74: FloorSteelMono
+  75: FloorSteelOffset
+  76: FloorSteelPavement
+  77: FloorSteelPavementVertical
+  78: FloorTechMaint
+  79: FloorTechMaint2
+  80: FloorTechMaint3
+  81: FloorWhite
+  82: FloorWhiteDiagonal
+  83: FloorWhiteDiagonalMini
+  84: FloorWhiteHerringbone
+  85: FloorWhiteMini
+  86: FloorWhiteMono
+  87: FloorWhiteOffset
+  88: FloorWhitePavement
+  89: FloorWhitePavementVertical
+  90: FloorWhitePlastic
+  91: FloorWood
+  92: FloorWoodTile
+  93: Lattice
+  94: Plating
+entities:
+- uid: 0
+  components:
+  - type: MetaData
+  - pos: 2.2710133,-2.4148211
+    parent: 1
+    type: Transform
+  - chunks:
+      -1,0:
+        ind: -1,0
+        tiles: AAAAAAAAAAAAAAAAXgAAAFIAAABSAAAAUgAAAFIAAABSAAAAUgAAAF4AAABeAAAAXgAAAF4AAABeAAAAXgAAAAAAAAAAAAAAAAAAAF4AAABSAAAAUgAAAFIAAABSAAAAUgAAAFIAAABVAAAAVQAAAFYAAABWAAAAVgAAAFUAAAAAAAAAAAAAAAAAAABeAAAAUgAAAFIAAABSAAAAUgAAAFIAAABSAAAAXgAAAFUAAABWAAAAVgAAAFYAAABVAAAAAAAAAAAAAAAAAAAAXgAAAFIAAABSAAAAUgAAAFIAAABSAAAAUgAAAFUAAABVAAAAVgAAAFYAAABWAAAAVQAAAAAAAAAAAAAAAAAAAF4AAABSAAAAUgAAAFIAAABSAAAAUgAAAFIAAABeAAAAXgAAAF4AAABeAAAAXgAAAF4AAAAAAAAAAAAAAAAAAABeAAAAXgAAAFIAAABSAAAAUgAAAFIAAABSAAAAXgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF4AAABeAAAAXgAAAF4AAABeAAAAXgAAAF4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+      -1,-1:
+        ind: -1,-1
+        tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXgAAAF4AAABeAAAAXgAAAF4AAABeAAAAXgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXgAAAF4AAABSAAAAUgAAAFIAAABSAAAAUgAAAF4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+      0,-1:
+        ind: 0,-1
+        tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABeAAAAXgAAAF4AAABeAAAAXgAAAF4AAABeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXgAAAFEAAABRAAAAUQAAAFEAAABRAAAAXgAAAF4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+      0,0:
+        ind: 0,0
+        tiles: XgAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAF4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFUAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABeAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAXgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAF4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF4AAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABeAAAAUQAAAFEAAABRAAAAUQAAAFEAAABeAAAAXgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXgAAAF4AAABeAAAAXgAAAF4AAABeAAAAXgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+    type: MapGrid
+  - type: Broadphase
+  - angularDamping: 0.05
+    linearDamping: 0.05
+    fixedRotation: False
+    bodyType: Dynamic
+    type: Physics
+  - fixtures: []
+    type: Fixtures
+  - gravityShakeSound: !type:SoundPathSpecifier
+      path: /Audio/Effects/alert.ogg
+    forceEnabled: True
+    enabled: True
+    type: Gravity
+  - chunkCollection:
+      0,-1:
+        183:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 1,-1
+        184:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 2,-1
+        197:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 3,-1
+        198:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 4,-1
+        199:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 5,-1
+        224:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineS
+          coordinates: 2,-1
+        225:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineS
+          coordinates: 3,-1
+        226:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineS
+          coordinates: 4,-1
+        233:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteCornerSe
+          coordinates: 5,-1
+        240:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteCornerSw
+          coordinates: 1,-1
+      -1,-1:
+        119:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -7,-1
+        120:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -8,-1
+        121:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -9,-1
+        122:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -10,-1
+        123:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -11,-1
+        161:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineS
+          coordinates: -10,-1
+        162:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineS
+          coordinates: -9,-1
+        163:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineS
+          coordinates: -8,-1
+        167:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteCornerSe
+          coordinates: -7,-1
+        170:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteCornerSw
+          coordinates: -11,-1
+      -1,0:
+        262:
+          color: '#0069B3FF'
+          id: MiniTileWhiteLineE
+          coordinates: -1,2
+        252:
+          color: '#0069B3FF'
+          id: MiniTileWhiteLineE
+          coordinates: -5,2
+        260:
+          color: '#0069B3FF'
+          id: MiniTileWhiteLineN
+          coordinates: -6,3
+        253:
+          color: '#0069B3FF'
+          id: MiniTileWhiteLineS
+          coordinates: -6,3
+        173:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteCornerNw
+          coordinates: -12,4
+        256:
+          color: '#0069B3FF'
+          id: MiniTileWhiteLineS
+          coordinates: -6,1
+        257:
+          color: '#0069B3FF'
+          id: MiniTileWhiteLineN
+          coordinates: -6,1
+        251:
+          color: '#0069B3FF'
+          id: MiniTileWhiteLineW
+          coordinates: -1,2
+        172:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteInnerSw
+          coordinates: -11,0
+        171:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteCornerSw
+          coordinates: -12,0
+        261:
+          color: '#0069B3FF'
+          id: MiniTileWhiteLineW
+          coordinates: -5,2
+        113:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -7,5
+        114:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -7,4
+        115:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -7,3
+        116:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -7,2
+        117:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -7,1
+        118:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -7,0
+        124:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -11,0
+        125:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -12,0
+        126:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -12,1
+        127:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -12,2
+        128:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -12,3
+        129:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -12,4
+        130:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -11,4
+        131:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -11,5
+        132:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -10,5
+        133:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -9,5
+        134:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -8,5
+        135:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -8,4
+        136:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -9,4
+        137:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -10,4
+        138:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -11,3
+        139:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -10,3
+        140:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -9,3
+        141:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -8,3
+        142:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -8,2
+        143:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -9,2
+        144:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -10,2
+        145:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -11,2
+        146:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -11,1
+        147:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -10,1
+        148:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -10,0
+        149:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -9,0
+        150:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -9,1
+        151:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -8,1
+        152:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -8,0
+        153:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineE
+          coordinates: -7,2
+        154:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineE
+          coordinates: -7,3
+        155:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineE
+          coordinates: -7,1
+        156:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineE
+          coordinates: -7,0
+        157:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineE
+          coordinates: -7,4
+        158:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineN
+          coordinates: -8,5
+        159:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineN
+          coordinates: -9,5
+        160:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineN
+          coordinates: -10,5
+        164:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineW
+          coordinates: -12,1
+        165:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineW
+          coordinates: -12,2
+        166:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineW
+          coordinates: -12,3
+        174:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteCornerNw
+          coordinates: -11,5
+        175:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteInnerNw
+          coordinates: -11,4
+        176:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteCornerNe
+          coordinates: -7,5
+        241:
+          color: '#FFFFFFFF'
+          id: StationWareLogo4
+          coordinates: -4,2
+        242:
+          color: '#FFFFFFFF'
+          id: StationWareLogo5
+          coordinates: -3,2
+        243:
+          color: '#FFFFFFFF'
+          id: StationWareLogo6
+          coordinates: -2,2
+        244:
+          color: '#FFFFFFFF'
+          id: StationWareLogo2
+          coordinates: -3,3
+        245:
+          color: '#FFFFFFFF'
+          id: StationWareLogo3
+          coordinates: -2,3
+        246:
+          color: '#FFFFFFFF'
+          id: StationWareLogo1
+          coordinates: -4,3
+        247:
+          color: '#FFFFFFFF'
+          id: StationWareLogo7
+          coordinates: -4,1
+        248:
+          color: '#FFFFFFFF'
+          id: StationWareLogo8
+          coordinates: -3,1
+        249:
+          color: '#FFFFFFFF'
+          id: StationWareLogo9
+          coordinates: -2,1
+        263:
+          color: '#0069B3FF'
+          id: MiniTileWhiteCornerNw
+          coordinates: -1,3
+        264:
+          color: '#0069B3FF'
+          id: MiniTileWhiteCornerSe
+          coordinates: -5,1
+        265:
+          color: '#0069B3FF'
+          id: MiniTileWhiteCornerSw
+          coordinates: -1,1
+        266:
+          color: '#0069B3FF'
+          id: MiniTileWhiteCornerNe
+          coordinates: -5,3
+        267:
+          color: '#0069B3FF'
+          id: MiniTileWhiteInnerSe
+          coordinates: -1,3
+        268:
+          color: '#0069B3FF'
+          id: MiniTileWhiteInnerSw
+          coordinates: -5,3
+        269:
+          color: '#0069B3FF'
+          id: MiniTileWhiteInnerNw
+          coordinates: -5,1
+        270:
+          color: '#0069B3FF'
+          id: MiniTileWhiteInnerNe
+          coordinates: -1,1
+      0,0:
+        177:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 1,5
+        178:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 1,4
+        179:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 1,3
+        180:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 1,2
+        181:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 1,1
+        182:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 1,0
+        185:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 2,0
+        186:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 2,1
+        187:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 2,2
+        188:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 2,3
+        189:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 2,4
+        190:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 2,5
+        191:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 3,5
+        192:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 3,4
+        193:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 3,3
+        194:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 3,2
+        195:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 3,1
+        196:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 3,0
+        200:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 5,0
+        201:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 4,0
+        202:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 6,0
+        203:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 6,1
+        204:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 5,1
+        205:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 4,1
+        206:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 4,2
+        207:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 5,2
+        208:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 6,2
+        209:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 6,3
+        210:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 5,3
+        211:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 4,3
+        212:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 4,4
+        213:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 5,4
+        214:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 6,4
+        215:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 5,5
+        216:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 4,5
+        254:
+          color: '#0069B3FF'
+          id: MiniTileWhiteLineS
+          coordinates: 0,3
+        255:
+          color: '#0069B3FF'
+          id: MiniTileWhiteLineS
+          coordinates: 0,1
+        219:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineW
+          coordinates: 1,4
+        220:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineW
+          coordinates: 1,3
+        221:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineW
+          coordinates: 1,2
+        222:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineW
+          coordinates: 1,1
+        223:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineW
+          coordinates: 1,0
+        227:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineN
+          coordinates: 2,5
+        228:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineN
+          coordinates: 3,5
+        229:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineN
+          coordinates: 4,5
+        230:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineE
+          coordinates: 6,3
+        231:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineE
+          coordinates: 6,2
+        232:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineE
+          coordinates: 6,1
+        234:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteCornerSe
+          coordinates: 6,0
+        235:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteInnerSe
+          coordinates: 5,0
+        236:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteInnerNe
+          coordinates: 5,4
+        237:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteCornerNe
+          coordinates: 5,5
+        238:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteCornerNe
+          coordinates: 6,4
+        239:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteCornerNw
+          coordinates: 1,5
+        258:
+          color: '#0069B3FF'
+          id: MiniTileWhiteLineN
+          coordinates: 0,1
+        259:
+          color: '#0069B3FF'
+          id: MiniTileWhiteLineN
+          coordinates: 0,3
+    type: DecalGrid
+  - tiles:
+      -5,-2: 0
+      -5,-1: 0
+      -4,-10: 0
+      -4,-4: 0
+      -4,-3: 0
+      -3,-11: 0
+      -3,-8: 0
+      -3,-7: 0
+      -3,-6: 0
+      -2,-11: 0
+      -2,-9: 0
+      -2,-8: 0
+      -2,-7: 0
+      -2,-6: 0
+      -2,-5: 0
+      -2,-4: 0
+      -2,-3: 0
+      -2,-1: 0
+      -1,-11: 0
+      -1,-9: 0
+      -1,-8: 0
+      -1,-7: 0
+      -1,-6: 0
+      -1,-5: 0
+      -1,-4: 0
+      -1,-3: 0
+      -1,-1: 0
+      -5,5: 0
+      -5,6: 0
+      -5,7: 0
+      -4,1: 0
+      -4,2: 0
+      -4,3: 0
+      -4,7: 0
+      -4,8: 0
+      -4,9: 0
+      -3,12: 0
+      -3,13: 0
+      -3,14: 0
+      -2,0: 0
+      -2,1: 0
+      -2,2: 0
+      -2,3: 0
+      -2,4: 0
+      -2,5: 0
+      -2,7: 0
+      -2,8: 0
+      -2,9: 0
+      -2,10: 0
+      -1,0: 0
+      -1,1: 0
+      -1,2: 0
+      -1,3: 0
+      -1,4: 0
+      -1,5: 0
+      -1,7: 0
+      -1,8: 0
+      -1,9: 0
+      -1,10: 0
+      -1,12: 0
+      -1,13: 0
+      -1,14: 0
+      0,-11: 0
+      0,-9: 0
+      0,-8: 0
+      0,-7: 0
+      0,-6: 0
+      0,-5: 0
+      0,-4: 0
+      0,-3: 0
+      1,-11: 0
+      1,-9: 0
+      1,-8: 0
+      1,-7: 0
+      1,-6: 0
+      1,-5: 0
+      1,-4: 0
+      1,-3: 0
+      1,-1: 0
+      2,-11: 0
+      2,-9: 0
+      2,-8: 0
+      2,-7: 0
+      2,-6: 0
+      2,-5: 0
+      2,-4: 0
+      2,-3: 0
+      2,-1: 0
+      3,-11: 0
+      3,-9: 0
+      3,-8: 0
+      3,-7: 0
+      3,-6: 0
+      3,-5: 0
+      3,-4: 0
+      3,-3: 0
+      3,-1: 0
+      4,-11: 0
+      4,-8: 0
+      4,-7: 0
+      4,-6: 0
+      5,-10: 0
+      5,-4: 0
+      5,-3: 0
+      6,-2: 0
+      6,-1: 0
+      0,7: 0
+      0,8: 0
+      0,9: 0
+      0,10: 0
+      0,12: 0
+      0,13: 0
+      0,14: 0
+      0,15: 0
+      1,0: 0
+      1,1: 0
+      1,2: 0
+      1,3: 0
+      1,4: 0
+      1,5: 0
+      1,7: 0
+      1,8: 0
+      1,9: 0
+      1,10: 0
+      1,12: 0
+      1,13: 0
+      1,14: 0
+      1,15: 0
+      2,0: 0
+      2,1: 0
+      2,2: 0
+      2,3: 0
+      2,4: 0
+      2,5: 0
+      2,7: 0
+      2,8: 0
+      2,9: 0
+      2,10: 0
+      2,12: 0
+      2,13: 0
+      2,14: 0
+      3,0: 0
+      3,1: 0
+      3,2: 0
+      3,3: 0
+      3,4: 0
+      3,5: 0
+      3,7: 0
+      3,8: 0
+      3,9: 0
+      3,10: 0
+      4,12: 0
+      4,13: 0
+      4,14: 0
+      5,1: 0
+      5,2: 0
+      5,3: 0
+      5,7: 0
+      5,8: 0
+      5,9: 0
+      6,1: 0
+      6,2: 0
+      6,3: 0
+      6,5: 0
+      6,6: 0
+      6,7: 0
+      0,17: 0
+      1,17: 0
+      2,17: 0
+      3,16: 0
+      -2,16: 0
+      -1,17: 0
+      -4,-9: 0
+      -4,-8: 0
+      -4,-7: 0
+      -4,-6: 0
+      -4,-5: 0
+      -3,-10: 0
+      -3,-9: 0
+      -3,-5: 0
+      -3,-4: 0
+      -3,-3: 0
+      -3,-2: 0
+      -3,-1: 0
+      -2,-10: 0
+      -2,-2: 0
+      -1,-10: 0
+      -1,-2: 0
+      -5,0: 0
+      -5,1: 0
+      -5,2: 0
+      -5,3: 0
+      -5,4: 0
+      -4,0: 0
+      -4,4: 0
+      -3,0: 0
+      -3,1: 0
+      -3,2: 0
+      -3,3: 0
+      -3,4: 0
+      -3,5: 0
+      -3,6: 0
+      -3,7: 0
+      -3,8: 0
+      -3,9: 0
+      -3,10: 0
+      -3,11: 0
+      -2,6: 0
+      -2,11: 0
+      -2,12: 0
+      -2,13: 0
+      -2,14: 0
+      -2,15: 0
+      -1,6: 0
+      -1,11: 0
+      -1,15: 0
+      0,-10: 0
+      0,-2: 1
+      0,-1: 1
+      1,-10: 0
+      1,-2: 0
+      2,-10: 0
+      2,-2: 0
+      3,-10: 0
+      3,-2: 0
+      4,-10: 0
+      4,-9: 0
+      4,-5: 0
+      4,-4: 0
+      4,-3: 0
+      4,-2: 0
+      4,-1: 0
+      5,-9: 0
+      5,-8: 0
+      5,-7: 0
+      5,-6: 0
+      5,-5: 0
+      0,0: 0
+      0,1: 0
+      0,2: 0
+      0,3: 0
+      0,4: 0
+      0,5: 0
+      0,6: 0
+      0,11: 0
+      1,6: 0
+      1,11: 0
+      2,6: 0
+      2,11: 0
+      2,15: 0
+      3,6: 0
+      3,11: 0
+      3,12: 0
+      3,13: 0
+      3,14: 0
+      3,15: 0
+      4,0: 0
+      4,1: 0
+      4,2: 0
+      4,3: 0
+      4,4: 0
+      4,5: 0
+      4,6: 0
+      4,7: 0
+      4,8: 0
+      4,9: 0
+      4,10: 0
+      4,11: 0
+      5,0: 0
+      5,4: 0
+      6,0: 0
+      6,4: 0
+      0,16: 0
+      1,16: 0
+      2,16: 0
+      -1,16: 0
+      -8,0: 0
+      -8,1: 0
+      -8,2: 0
+      -8,3: 0
+      -8,4: 0
+      -8,5: 0
+      -8,6: 0
+      -8,7: 0
+      -8,8: 0
+      -8,9: 0
+      -8,10: 0
+      -7,0: 0
+      -7,1: 0
+      -7,2: 0
+      -7,3: 0
+      -7,4: 0
+      -7,5: 0
+      -7,6: 0
+      -7,7: 0
+      -7,8: 0
+      -7,9: 0
+      -7,10: 0
+      -7,11: 0
+      -7,12: 0
+      -7,13: 0
+      -6,0: 0
+      -6,1: 0
+      -6,2: 0
+      -6,3: 0
+      -6,4: 0
+      -6,5: 0
+      -6,6: 0
+      -6,7: 0
+      -6,8: 0
+      -6,9: 0
+      -6,10: 0
+      -6,11: 1
+      -6,12: 0
+      -6,13: 0
+      -6,14: 0
+      -5,8: 0
+      -5,9: 0
+      -5,10: 0
+      -5,11: 0
+      -5,12: 0
+      -5,13: 0
+      -5,14: 0
+      -4,5: 0
+      -4,6: 0
+      -4,10: 0
+      -4,11: 0
+      -4,12: 0
+      -4,13: 0
+      -4,14: 0
+      -8,-6: 0
+      -8,-5: 0
+      -8,-4: 0
+      -8,-3: 0
+      -8,-2: 0
+      -8,-1: 0
+      -7,-6: 0
+      -7,-5: 0
+      -7,-4: 0
+      -7,-3: 0
+      -7,-2: 0
+      -7,-1: 0
+      -6,-6: 0
+      -6,-5: 0
+      -6,-4: 0
+      -6,-3: 0
+      -6,-2: 2
+      -6,-1: 1
+      -5,-6: 0
+      -5,-5: 0
+      -5,-4: 0
+      -5,-3: 0
+      -4,-2: 0
+      -4,-1: 0
+      -8,11: 0
+      -8,12: 0
+      -9,0: 3
+      -9,1: 3
+      -9,2: 3
+      -9,3: 3
+      -9,4: 3
+      -9,5: 3
+      -9,-1: 3
+    uniqueMixes:
+    - volume: 2500
+      temperature: 293.15
+      moles:
+      - 21.824879
+      - 82.10312
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+    - volume: 2500
+      temperature: 293.15
+      moles:
+      - 19.481253
+      - 73.28662
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+    - volume: 2500
+      temperature: 293.15
+      moles:
+      - 20.619795
+      - 77.56971
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+    - volume: 2500
+      temperature: 293.15
+      moles:
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+    type: GridAtmosphere
+  - type: OccluderTree
+  - type: Shuttle
+  - nextUpdate: 4309.2135629
+    type: GridPathfinding
+  - type: RadiationGridResistance
+  - nextShake: 0
+    shakeTimes: 10
+    type: GravityShake
+  - type: GasTileOverlay
+  - id: Stationware
+    type: BecomesStation
+- uid: 1
+  components:
+  - type: MetaData
+  - type: Transform
+  - index: 2
+    type: Map
+  - type: PhysicsMap
+  - type: Broadphase
+  - type: OccluderTree
+- uid: 2
+  type: SWGrilleIndestructible
+  components:
+  - pos: -8.5,-1.5
+    parent: 0
+    type: Transform
+- uid: 3
+  type: SWGrilleIndestructible
+  components:
+  - pos: -1.5,0.5
+    parent: 0
+    type: Transform
+- uid: 4
+  type: SWGrilleIndestructible
+  components:
+  - pos: -3.5,0.5
+    parent: 0
+    type: Transform
+- uid: 5
+  type: SWWindowIndestructible
+  components:
+  - pos: -3.5,4.5
+    parent: 0
+    type: Transform
+- uid: 6
+  type: SWGrilleIndestructible
+  components:
+  - pos: -9.5,-1.5
+    parent: 0
+    type: Transform
+- uid: 7
+  type: SWGrilleIndestructible
+  components:
+  - pos: -0.5,4.5
+    parent: 0
+    type: Transform
+- uid: 8
+  type: SWGrilleIndestructible
+  components:
+  - pos: -11.5,-0.5
+    parent: 0
+    type: Transform
+- uid: 9
+  type: SWGrilleIndestructible
+  components:
+  - pos: -2.5,0.5
+    parent: 0
+    type: Transform
+- uid: 10
+  type: SWGrilleIndestructible
+  components:
+  - pos: -12.5,0.5
+    parent: 0
+    type: Transform
+- uid: 11
+  type: SWWindowIndestructible
+  components:
+  - pos: 2.5,-1.5
+    parent: 0
+    type: Transform
+- uid: 12
+  type: SWGrilleIndestructible
+  components:
+  - pos: 7.5,-0.5
+    parent: 0
+    type: Transform
+- uid: 13
+  type: WallRiveted
+  components:
+  - pos: -5.5,4.5
+    parent: 0
+    type: Transform
+- uid: 14
+  type: SWGrilleIndestructible
+  components:
+  - pos: -10.5,6.5
+    parent: 0
+    type: Transform
+- uid: 15
+  type: WallRiveted
+  components:
+  - pos: 7.5,3.5
+    parent: 0
+    type: Transform
+- uid: 16
+  type: SWGrilleIndestructible
+  components:
+  - pos: -9.5,6.5
+    parent: 0
+    type: Transform
+- uid: 17
+  type: SWGrilleIndestructible
+  components:
+  - pos: -4.5,0.5
+    parent: 0
+    type: Transform
+- uid: 18
+  type: SWGrilleIndestructible
+  components:
+  - pos: -0.5,0.5
+    parent: 0
+    type: Transform
+- uid: 19
+  type: SWWindowIndestructible
+  components:
+  - pos: 5.5,6.5
+    parent: 0
+    type: Transform
+- uid: 20
+  type: SWWindowIndestructible
+  components:
+  - pos: 4.5,6.5
+    parent: 0
+    type: Transform
+- uid: 21
+  type: SWGrilleIndestructible
+  components:
+  - pos: 4.5,6.5
+    parent: 0
+    type: Transform
+- uid: 22
+  type: SWGrilleIndestructible
+  components:
+  - pos: -7.5,-1.5
+    parent: 0
+    type: Transform
+- uid: 23
+  type: SWGrilleIndestructible
+  components:
+  - pos: -8.5,6.5
+    parent: 0
+    type: Transform
+- uid: 24
+  type: SWWindowIndestructible
+  components:
+  - pos: 6.5,5.5
+    parent: 0
+    type: Transform
+- uid: 25
+  type: SWWindowIndestructible
+  components:
+  - pos: 4.5,-1.5
+    parent: 0
+    type: Transform
+- uid: 26
+  type: SWWindowIndestructible
+  components:
+  - pos: -10.5,-1.5
+    parent: 0
+    type: Transform
+- uid: 27
+  type: SWWindowIndestructible
+  components:
+  - pos: -9.5,-1.5
+    parent: 0
+    type: Transform
+- uid: 28
+  type: SWWindowIndestructible
+  components:
+  - pos: -7.5,6.5
+    parent: 0
+    type: Transform
+- uid: 29
+  type: SWGrilleIndestructible
+  components:
+  - pos: 2.5,6.5
+    parent: 0
+    type: Transform
+- uid: 30
+  type: SWGrilleIndestructible
+  components:
+  - pos: 6.5,-0.5
+    parent: 0
+    type: Transform
+- uid: 31
+  type: SWWindowIndestructible
+  components:
+  - pos: 7.5,4.5
+    parent: 0
+    type: Transform
+- uid: 32
+  type: SWWindowIndestructible
+  components:
+  - pos: -11.5,6.5
+    parent: 0
+    type: Transform
+- uid: 33
+  type: SWWindowIndestructible
+  components:
+  - pos: 6.5,-0.5
+    parent: 0
+    type: Transform
+- uid: 34
+  type: WallRiveted
+  components:
+  - pos: 7.5,1.5
+    parent: 0
+    type: Transform
+- uid: 35
+  type: SWWindowIndestructible
+  components:
+  - pos: 7.5,-0.5
+    parent: 0
+    type: Transform
+- uid: 36
+  type: SWGrilleIndestructible
+  components:
+  - pos: -11.5,5.5
+    parent: 0
+    type: Transform
+- uid: 37
+  type: SWGrilleIndestructible
+  components:
+  - pos: -11.5,6.5
+    parent: 0
+    type: Transform
+- uid: 38
+  type: SWWindowIndestructible
+  components:
+  - pos: -11.5,5.5
+    parent: 0
+    type: Transform
+- uid: 39
+  type: SWGrilleIndestructible
+  components:
+  - pos: 3.5,6.5
+    parent: 0
+    type: Transform
+- uid: 40
+  type: SWWindowIndestructible
+  components:
+  - pos: -4.5,4.5
+    parent: 0
+    type: Transform
+- uid: 41
+  type: SWWindowIndestructible
+  components:
+  - pos: -8.5,6.5
+    parent: 0
+    type: Transform
+- uid: 42
+  type: SWGrilleIndestructible
+  components:
+  - pos: 5.5,6.5
+    parent: 0
+    type: Transform
+- uid: 43
+  type: SWWindowIndestructible
+  components:
+  - pos: 2.5,6.5
+    parent: 0
+    type: Transform
+- uid: 44
+  type: SWWindowIndestructible
+  components:
+  - pos: 5.5,-1.5
+    parent: 0
+    type: Transform
+- uid: 45
+  type: SWGrilleIndestructible
+  components:
+  - pos: 6.5,6.5
+    parent: 0
+    type: Transform
+- uid: 46
+  type: SWGrilleIndestructible
+  components:
+  - pos: -10.5,-1.5
+    parent: 0
+    type: Transform
+- uid: 47
+  type: SWGrilleIndestructible
+  components:
+  - pos: -11.5,-1.5
+    parent: 0
+    type: Transform
+- uid: 48
+  type: SWGrilleIndestructible
+  components:
+  - pos: -12.5,4.5
+    parent: 0
+    type: Transform
+- uid: 49
+  type: SWWindowIndestructible
+  components:
+  - pos: 6.5,-1.5
+    parent: 0
+    type: Transform
+- uid: 50
+  type: SWGrilleIndestructible
+  components:
+  - pos: -7.5,6.5
+    parent: 0
+    type: Transform
+- uid: 51
+  type: AlwaysPoweredWallLight
+  components:
+  - rot: -1.5707963267948966 rad
+    pos: -6.5,4.5
+    parent: 0
+    type: Transform
+- uid: 52
+  type: SWGrilleIndestructible
+  components:
+  - pos: 7.5,0.5
+    parent: 0
+    type: Transform
+- uid: 53
+  type: SWWindowIndestructible
+  components:
+  - pos: -12.5,5.5
+    parent: 0
+    type: Transform
+- uid: 54
+  type: SWGrilleIndestructible
+  components:
+  - pos: 4.5,-1.5
+    parent: 0
+    type: Transform
+- uid: 55
+  type: SWGrilleIndestructible
+  components:
+  - pos: 6.5,-1.5
+    parent: 0
+    type: Transform
+- uid: 56
+  type: SWWindowIndestructible
+  components:
+  - pos: -12.5,0.5
+    parent: 0
+    type: Transform
+- uid: 57
+  type: SWWindowIndestructible
+  components:
+  - pos: -4.5,0.5
+    parent: 0
+    type: Transform
+- uid: 58
+  type: SWWindowIndestructible
+  components:
+  - pos: 7.5,0.5
+    parent: 0
+    type: Transform
+- uid: 59
+  type: SWWindowIndestructible
+  components:
+  - pos: -12.5,-0.5
+    parent: 0
+    type: Transform
+- uid: 60
+  type: SWWindowIndestructible
+  components:
+  - pos: 3.5,-1.5
+    parent: 0
+    type: Transform
+- uid: 61
+  type: SWWindowIndestructible
+  components:
+  - pos: -2.5,0.5
+    parent: 0
+    type: Transform
+- uid: 62
+  type: SWWindowIndestructible
+  components:
+  - pos: -1.5,0.5
+    parent: 0
+    type: Transform
+- uid: 63
+  type: SWWindowIndestructible
+  components:
+  - pos: -9.5,6.5
+    parent: 0
+    type: Transform
+- uid: 64
+  type: SWGrilleIndestructible
+  components:
+  - pos: 7.5,5.5
+    parent: 0
+    type: Transform
+- uid: 65
+  type: SWWindowIndestructible
+  components:
+  - pos: -11.5,-0.5
+    parent: 0
+    type: Transform
+- uid: 66
+  type: SWWindowIndestructible
+  components:
+  - pos: -11.5,-1.5
+    parent: 0
+    type: Transform
+- uid: 67
+  type: SWGrilleIndestructible
+  components:
+  - pos: -12.5,5.5
+    parent: 0
+    type: Transform
+- uid: 68
+  type: SWGrilleIndestructible
+  components:
+  - pos: 6.5,5.5
+    parent: 0
+    type: Transform
+- uid: 69
+  type: SWWindowIndestructible
+  components:
+  - pos: -8.5,-1.5
+    parent: 0
+    type: Transform
+- uid: 70
+  type: SWWindowIndestructible
+  components:
+  - pos: 6.5,6.5
+    parent: 0
+    type: Transform
+- uid: 71
+  type: AlwaysPoweredWallLight
+  components:
+  - rot: -1.5707963267948966 rad
+    pos: -6.5,0.5
+    parent: 0
+    type: Transform
+- uid: 72
+  type: SWWindowIndestructible
+  components:
+  - pos: 3.5,6.5
+    parent: 0
+    type: Transform
+- uid: 73
+  type: SWWindowIndestructible
+  components:
+  - pos: -10.5,6.5
+    parent: 0
+    type: Transform
+- uid: 74
+  type: SWWindowIndestructible
+  components:
+  - pos: 7.5,5.5
+    parent: 0
+    type: Transform
+- uid: 75
+  type: SWWindowIndestructible
+  components:
+  - pos: -0.5,0.5
+    parent: 0
+    type: Transform
+- uid: 76
+  type: AlwaysPoweredWallLight
+  components:
+  - rot: 1.5707963267948966 rad
+    pos: 1.5,4.5
+    parent: 0
+    type: Transform
+- uid: 77
+  type: SWWindowIndestructible
+  components:
+  - pos: -12.5,4.5
+    parent: 0
+    type: Transform
+- uid: 78
+  type: SWWindowIndestructible
+  components:
+  - pos: -0.5,4.5
+    parent: 0
+    type: Transform
+- uid: 79
+  type: SWWindowIndestructible
+  components:
+  - pos: -3.5,0.5
+    parent: 0
+    type: Transform
+- uid: 80
+  type: SWGrilleIndestructible
+  components:
+  - pos: 3.5,-1.5
+    parent: 0
+    type: Transform
+- uid: 81
+  type: SWGrilleIndestructible
+  components:
+  - pos: 7.5,4.5
+    parent: 0
+    type: Transform
+- uid: 82
+  type: AlwaysPoweredWallLight
+  components:
+  - rot: 1.5707963267948966 rad
+    pos: -11.5,2.5
+    parent: 0
+    type: Transform
+- uid: 83
+  type: SWGrilleIndestructible
+  components:
+  - pos: 5.5,-1.5
+    parent: 0
+    type: Transform
+- uid: 84
+  type: SWGrilleIndestructible
+  components:
+  - pos: 2.5,-1.5
+    parent: 0
+    type: Transform
+- uid: 85
+  type: SWWindowIndestructible
+  components:
+  - pos: -2.5,4.5
+    parent: 0
+    type: Transform
+- uid: 86
+  type: SWWindowIndestructible
+  components:
+  - pos: -7.5,-1.5
+    parent: 0
+    type: Transform
+- uid: 87
+  type: SWWindowIndestructible
+  components:
+  - pos: -1.5,4.5
+    parent: 0
+    type: Transform
+- uid: 88
+  type: SWGrilleIndestructible
+  components:
+  - pos: -12.5,-0.5
+    parent: 0
+    type: Transform
+- uid: 89
+  type: WallRiveted
+  components:
+  - pos: 0.5,4.5
+    parent: 0
+    type: Transform
+- uid: 90
+  type: WallRiveted
+  components:
+  - pos: 0.5,5.5
+    parent: 0
+    type: Transform
+- uid: 91
+  type: WallRiveted
+  components:
+  - pos: -6.5,-1.5
+    parent: 0
+    type: Transform
+- uid: 92
+  type: WallRiveted
+  components:
+  - pos: 0.5,0.5
+    parent: 0
+    type: Transform
+- uid: 93
+  type: WallRiveted
+  components:
+  - pos: 0.5,-0.5
+    parent: 0
+    type: Transform
+- uid: 94
+  type: WallRiveted
+  components:
+  - pos: 0.5,-1.5
+    parent: 0
+    type: Transform
+- uid: 95
+  type: WallRiveted
+  components:
+  - pos: 1.5,-1.5
+    parent: 0
+    type: Transform
+- uid: 96
+  type: WallRiveted
+  components:
+  - pos: 7.5,2.5
+    parent: 0
+    type: Transform
+- uid: 97
+  type: SWGrilleIndestructible
+  components:
+  - pos: -4.5,4.5
+    parent: 0
+    type: Transform
+- uid: 98
+  type: WallRiveted
+  components:
+  - pos: -12.5,3.5
+    parent: 0
+    type: Transform
+- uid: 99
+  type: WallRiveted
+  components:
+  - pos: -12.5,2.5
+    parent: 0
+    type: Transform
+- uid: 100
+  type: WallRiveted
+  components:
+  - pos: -5.5,6.5
+    parent: 0
+    type: Transform
+- uid: 101
+  type: WallRiveted
+  components:
+  - pos: -5.5,0.5
+    parent: 0
+    type: Transform
+- uid: 102
+  type: WallRiveted
+  components:
+  - pos: -5.5,-0.5
+    parent: 0
+    type: Transform
+- uid: 103
+  type: WallRiveted
+  components:
+  - pos: -5.5,-1.5
+    parent: 0
+    type: Transform
+- uid: 104
+  type: WallRiveted
+  components:
+  - pos: -12.5,1.5
+    parent: 0
+    type: Transform
+- uid: 105
+  type: SWGrilleIndestructible
+  components:
+  - pos: -3.5,4.5
+    parent: 0
+    type: Transform
+- uid: 106
+  type: SWGrilleIndestructible
+  components:
+  - pos: -2.5,4.5
+    parent: 0
+    type: Transform
+- uid: 107
+  type: WallRiveted
+  components:
+  - pos: 0.5,6.5
+    parent: 0
+    type: Transform
+- uid: 108
+  type: WallRiveted
+  components:
+  - pos: 1.5,6.5
+    parent: 0
+    type: Transform
+- uid: 109
+  type: WallRiveted
+  components:
+  - pos: -6.5,6.5
+    parent: 0
+    type: Transform
+- uid: 110
+  type: WallRiveted
+  components:
+  - pos: -5.5,5.5
+    parent: 0
+    type: Transform
+- uid: 111
+  type: SWGrilleIndestructible
+  components:
+  - pos: -1.5,4.5
+    parent: 0
+    type: Transform
+- uid: 112
+  type: AlwaysPoweredWallLight
+  components:
+  - rot: 1.5707963267948966 rad
+    pos: 1.5,0.5
+    parent: 0
+    type: Transform
+- uid: 113
+  type: AlwaysPoweredWallLight
+  components:
+  - rot: -1.5707963267948966 rad
+    pos: 6.5,2.5
+    parent: 0
+    type: Transform
+- uid: 114
+  type: AlwaysPoweredWallLight
+  components:
+  - pos: -2.5,3.5
+    parent: 0
+    type: Transform
+- uid: 115
+  type: AlwaysPoweredWallLight
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -2.5,1.5
+    parent: 0
+    type: Transform
+- uid: 116
+  type: SWGrilleIndestructible
+  components:
+  - pos: -5.5,2.5
+    parent: 0
+    type: Transform
+- uid: 117
+  type: SWGrilleIndestructible
+  components:
+  - pos: 0.5,2.5
+    parent: 0
+    type: Transform
+- uid: 118
+  type: SWWindowIndestructible
+  components:
+  - pos: -5.5,2.5
+    parent: 0
+    type: Transform
+- uid: 119
+  type: SWWindowIndestructible
+  components:
+  - pos: 0.5,2.5
+    parent: 0
+    type: Transform
+- uid: 120
+  type: SpawnPointObserver
+  components:
+  - pos: -2.5,2.5
+    parent: 0
+    type: Transform
+- uid: 121
+  type: SpawnPointLatejoin
+  components:
+  - pos: -2.5,2.5
+    parent: 0
+    type: Transform
+- uid: 122
+  type: WarpPoint
+  components:
+  - pos: -2.5,2.5
+    parent: 0
+    type: Transform
+- uid: 123
+  type: SpawnPointAssistant
+  components:
+  - pos: -10.5,2.5
+    parent: 0
+    type: Transform
+- uid: 124
+  type: SpawnPointAssistant
+  components:
+  - pos: -8.5,4.5
+    parent: 0
+    type: Transform
+- uid: 125
+  type: SpawnPointAssistant
+  components:
+  - pos: -7.5,4.5
+    parent: 0
+    type: Transform
+- uid: 126
+  type: SpawnPointAssistant
+  components:
+  - pos: -9.5,4.5
+    parent: 0
+    type: Transform
+- uid: 127
+  type: SpawnPointAssistant
+  components:
+  - pos: -10.5,3.5
+    parent: 0
+    type: Transform
+- uid: 128
+  type: SpawnPointAssistant
+  components:
+  - pos: -10.5,1.5
+    parent: 0
+    type: Transform
+- uid: 129
+  type: SpawnPointAssistant
+  components:
+  - pos: -9.5,0.5
+    parent: 0
+    type: Transform
+- uid: 130
+  type: SpawnPointAssistant
+  components:
+  - pos: -8.5,0.5
+    parent: 0
+    type: Transform
+- uid: 131
+  type: SpawnPointAssistant
+  components:
+  - pos: -7.5,0.5
+    parent: 0
+    type: Transform
+- uid: 132
+  type: SpawnPointAssistant
+  components:
+  - pos: 2.5,4.5
+    parent: 0
+    type: Transform
+- uid: 133
+  type: SpawnPointAssistant
+  components:
+  - pos: 3.5,4.5
+    parent: 0
+    type: Transform
+- uid: 134
+  type: SpawnPointAssistant
+  components:
+  - pos: 4.5,4.5
+    parent: 0
+    type: Transform
+- uid: 135
+  type: SpawnPointAssistant
+  components:
+  - pos: 5.5,3.5
+    parent: 0
+    type: Transform
+- uid: 136
+  type: SpawnPointAssistant
+  components:
+  - pos: 5.5,2.5
+    parent: 0
+    type: Transform
+- uid: 137
+  type: SpawnPointAssistant
+  components:
+  - pos: 5.5,1.5
+    parent: 0
+    type: Transform
+- uid: 138
+  type: SpawnPointAssistant
+  components:
+  - pos: 4.5,0.5
+    parent: 0
+    type: Transform
+- uid: 139
+  type: SpawnPointAssistant
+  components:
+  - pos: 3.5,0.5
+    parent: 0
+    type: Transform
+- uid: 140
+  type: SpawnPointAssistant
+  components:
+  - pos: 2.5,0.5
+    parent: 0
+    type: Transform
+...
