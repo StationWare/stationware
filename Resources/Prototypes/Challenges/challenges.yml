@@ -220,6 +220,8 @@
     - id: RGBStaff
       orGroup: weapon
       prob: 0.165
+  - type: EquipClothingModifier
+    spawns:
     - id: ClothingHeadHatWizard
       orGroup: hat
       prob: 0.33
@@ -267,9 +269,11 @@
   duration: 5
   challengeModifiers:
   - type: SpawnEntityModifier
+    spawnPerPlayer: true
+    spawnPerPlayerMultiplier: 0.25
     spawns:
     - id: ClothingOuterHardsuitSpatio
-      amount: 3
+      amount: 100
   - type: RequireSlotOccupied
     slot: "head"
 
@@ -281,9 +285,10 @@
   challengeModifiers:
   - type: StayAliveModifier
   - type: SpawnEntityModifier
+    spawnPerPlayer: true
     spawns:
     - id: SWToolboxGreytide
-      amount: 25
+      amount: 100
 
 - type: challenge
   id: LandmineChallenge
@@ -371,4 +376,6 @@
   - type: GiveItemModifier
     items:
     - id: WeaponPulseCarbine
+  - type: EquipClothingModifier
+    spawns:
     - id: ClothingOuterHardsuitDeathsquad
