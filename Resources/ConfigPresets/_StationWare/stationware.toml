@@ -11,6 +11,7 @@ fallbackpreset      = "StationWare"
 defaultpreset       = "StationWare"
 soft_max_players    = 30
 desc                = "A WarioWare-esque fork of Space Station 14, oriented on low-no roleplay and unbalanced fun."
+map_rotation        = false
 
 [infolinks]
 bug_report          = "https://github.com/frigid14/stationware/issues/new/choose"
@@ -26,7 +27,11 @@ enabled             = false # Re-enable when we have actual tips.
 
 [vote]
 preset_enabled      = false
-map_enabled         = false
+map_enabled         = true
+
+[shuttle]
+cargo = false
+emergency_enabled = false
 
 [stationware] # Stationware cvars
-total_challenges    = 7
+total_challenges    = 15
