@@ -36,6 +36,7 @@
 - type: entity
   id: WinningTile
   name: exploding tile
+  suffix: Fake
   description: boom?
   placement:
     mode: SnapgridCenter
