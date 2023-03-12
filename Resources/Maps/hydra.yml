@@ -18,87 +18,86 @@ tilemap:
   11: FloorAsteroidTile
   12: FloorBar
   13: FloorBasalt
-  14: FloorBasaslt
-  15: FloorBlue
-  16: FloorBlueCircuit
-  17: FloorBoxing
-  18: FloorCarpetClown
-  19: FloorCarpetOffice
-  20: FloorCave
-  21: FloorCaveDrought
-  22: FloorClown
-  23: FloorDark
-  24: FloorDarkDiagonal
-  25: FloorDarkDiagonalMini
-  26: FloorDarkHerringbone
-  27: FloorDarkMini
-  28: FloorDarkMono
-  29: FloorDarkOffset
-  30: FloorDarkPavement
-  31: FloorDarkPavementVertical
-  32: FloorDarkPlastic
-  33: FloorDesert
-  34: FloorDirt
-  35: FloorEighties
-  36: FloorElevatorShaft
-  37: FloorFlesh
-  38: FloorFreezer
-  39: FloorGlass
-  40: FloorGold
-  41: FloorGrass
-  42: FloorGrassDark
-  43: FloorGrassJungle
-  44: FloorGrassLight
-  45: FloorGreenCircuit
-  46: FloorGym
-  47: FloorHydro
-  48: FloorKitchen
-  49: FloorLaundry
-  50: FloorLino
-  51: FloorLowDesert
-  52: FloorMetalDiamond
-  53: FloorMime
-  54: FloorMono
-  55: FloorPlanetGrass
-  56: FloorPlastic
-  57: FloorRGlass
-  58: FloorReinforced
-  59: FloorRockVault
-  60: FloorShowroom
-  61: FloorShuttleBlue
-  62: FloorShuttleOrange
-  63: FloorShuttlePurple
-  64: FloorShuttleRed
-  65: FloorShuttleWhite
-  66: FloorSilver
-  67: FloorSnow
-  68: FloorSteel
-  69: FloorSteelDiagonal
-  70: FloorSteelDiagonalMini
-  71: FloorSteelDirty
-  72: FloorSteelHerringbone
-  73: FloorSteelMini
-  74: FloorSteelMono
-  75: FloorSteelOffset
-  76: FloorSteelPavement
-  77: FloorSteelPavementVertical
-  78: FloorTechMaint
-  79: FloorTechMaint2
-  80: FloorTechMaint3
-  81: FloorWhite
-  82: FloorWhiteDiagonal
-  83: FloorWhiteDiagonalMini
-  84: FloorWhiteHerringbone
-  85: FloorWhiteMini
-  86: FloorWhiteMono
-  87: FloorWhiteOffset
-  88: FloorWhitePavement
-  89: FloorWhitePavementVertical
-  90: FloorWhitePlastic
-  91: FloorWood
-  92: FloorWoodTile
-  93: Lattice
-  94: Plating
+  14: FloorBlue
+  15: FloorBlueCircuit
+  16: FloorBoxing
+  17: FloorCarpetClown
+  18: FloorCarpetOffice
+  19: FloorCave
+  20: FloorCaveDrought
+  21: FloorClown
+  22: FloorDark
+  23: FloorDarkDiagonal
+  24: FloorDarkDiagonalMini
+  25: FloorDarkHerringbone
+  26: FloorDarkMini
+  27: FloorDarkMono
+  28: FloorDarkOffset
+  29: FloorDarkPavement
+  30: FloorDarkPavementVertical
+  31: FloorDarkPlastic
+  32: FloorDesert
+  33: FloorDirt
+  34: FloorEighties
+  35: FloorElevatorShaft
+  36: FloorFlesh
+  37: FloorFreezer
+  38: FloorGlass
+  39: FloorGold
+  40: FloorGrass
+  41: FloorGrassDark
+  42: FloorGrassJungle
+  43: FloorGrassLight
+  44: FloorGreenCircuit
+  45: FloorGym
+  46: FloorHydro
+  47: FloorKitchen
+  48: FloorLaundry
+  49: FloorLino
+  50: FloorLowDesert
+  51: FloorMetalDiamond
+  52: FloorMime
+  53: FloorMono
+  54: FloorPlanetGrass
+  55: FloorPlastic
+  56: FloorRGlass
+  57: FloorReinforced
+  58: FloorRockVault
+  59: FloorShowroom
+  60: FloorShuttleBlue
+  61: FloorShuttleOrange
+  62: FloorShuttlePurple
+  63: FloorShuttleRed
+  64: FloorShuttleWhite
+  65: FloorSilver
+  66: FloorSnow
+  67: FloorSteel
+  68: FloorSteelDiagonal
+  69: FloorSteelDiagonalMini
+  70: FloorSteelDirty
+  71: FloorSteelHerringbone
+  72: FloorSteelMini
+  73: FloorSteelMono
+  74: FloorSteelOffset
+  75: FloorSteelPavement
+  76: FloorSteelPavementVertical
+  77: FloorTechMaint
+  78: FloorTechMaint2
+  79: FloorTechMaint3
+  80: FloorWhite
+  81: FloorWhiteDiagonal
+  82: FloorWhiteDiagonalMini
+  83: FloorWhiteHerringbone
+  84: FloorWhiteMini
+  85: FloorWhiteMono
+  86: FloorWhiteOffset
+  87: FloorWhitePavement
+  88: FloorWhitePavementVertical
+  89: FloorWhitePlastic
+  90: FloorWood
+  91: FloorWoodTile
+  92: Lattice
+  93: Plating
 entities:
 - uid: 0
   components:
@@ -109,16 +108,16 @@ entities:
   - chunks:
       -1,0:
         ind: -1,0
-        tiles: AAAAAAAAAAAAAAAAAAAAAF4AAABOAAAAXgAAABcAAABeAAAATgAAAF4AAAAaAAAAGgAAABoAAAAaAAAAGgAAAAAAAAAAAAAAAAAAAAAAAABeAAAAXgAAAF4AAABeAAAAXgAAABcAAABeAAAAGgAAABwAAAAcAAAAHAAAABoAAAAAAAAAAAAAAAAAAAAAAAAAXgAAAE4AAABeAAAAFwAAABcAAAAXAAAAXgAAABoAAAAcAAAAHAAAABwAAAAaAAAAAAAAAAAAAAAAAAAAAAAAAF4AAAAXAAAAXgAAAF4AAABeAAAAXgAAAF4AAAAaAAAAHAAAABwAAAAcAAAAGgAAAAAAAAAAAAAAAAAAAAAAAABeAAAAXgAAABcAAAAXAAAAXgAAABcAAABOAAAAGgAAABoAAAAaAAAAGgAAABoAAAAAAAAAAAAAAAAAAAAAAAAAXgAAAF4AAABeAAAAXgAAAE4AAABeAAAAXgAAAF4AAABOAAAAXgAAAF4AAABeAAAAAAAAAAAAAAAAAAAAAAAAAF4AAABOAAAAFwAAAF4AAABeAAAAXgAAABcAAAAXAAAAFwAAAF4AAABOAAAAFwAAAAAAAAAAAAAAAAAAAAAAAABeAAAAXgAAAF4AAABeAAAATgAAABcAAAAXAAAAXgAAAF4AAABeAAAAXgAAABcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXgAAAF4AAABeAAAAXgAAAF4AAABeAAAATgAAAF4AAAAXAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF4AAABOAAAAXgAAAF4AAAAXAAAAXgAAABcAAABeAAAAXgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABeAAAAFwAAAF4AAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXgAAAF4AAABeAAAAXgAAAF4AAABeAAAAXgAAAF4AAABeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+        tiles: AAAAAAAAAAAAAAAAAAAAAF0AAABNAAAAXQAAABYAAABdAAAATQAAAF0AAAAZAAAAGQAAABkAAAAZAAAAGQAAAAAAAAAAAAAAAAAAAAAAAABdAAAAXQAAAF0AAABdAAAAXQAAABYAAABdAAAAGQAAABsAAAAbAAAAGwAAABkAAAAAAAAAAAAAAAAAAAAAAAAAXQAAAE0AAABdAAAAFgAAABYAAAAWAAAAXQAAABkAAAAbAAAAGwAAABsAAAAZAAAAAAAAAAAAAAAAAAAAAAAAAF0AAAAWAAAAXQAAAF0AAABdAAAAXQAAAF0AAAAZAAAAGwAAABsAAAAbAAAAGQAAAAAAAAAAAAAAAAAAAAAAAABdAAAAXQAAABYAAAAWAAAAXQAAABYAAABNAAAAGQAAABkAAAAZAAAAGQAAABkAAAAAAAAAAAAAAAAAAAAAAAAAXQAAAF0AAABdAAAAXQAAAE0AAABdAAAAXQAAAF0AAABNAAAAXQAAAF0AAABdAAAAAAAAAAAAAAAAAAAAAAAAAF0AAABNAAAAFgAAAF0AAABdAAAAXQAAABYAAAAWAAAAFgAAAF0AAABNAAAAFgAAAAAAAAAAAAAAAAAAAAAAAABdAAAAXQAAAF0AAABdAAAATQAAABYAAAAWAAAAXQAAAF0AAABdAAAAXQAAABYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXQAAAF0AAABdAAAAXQAAAF0AAABdAAAATQAAAF0AAAAWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF0AAABNAAAAXQAAAF0AAAAWAAAAXQAAABYAAABdAAAAXQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABdAAAAFgAAAF0AAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXQAAAF0AAABdAAAAXQAAAF0AAABdAAAAXQAAAF0AAABdAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
       -1,-1:
         ind: -1,-1
-        tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABeAAAAXgAAAF4AAABeAAAAXgAAAF4AAABeAAAAXgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF4AAABeAAAAXgAAABcAAAAXAAAATgAAAF4AAABOAAAAXgAAABcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABeAAAATgAAAF4AAAAXAAAAXgAAAF4AAABeAAAAXgAAAF4AAABeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXgAAAF4AAABeAAAAFwAAAF4AAABeAAAAFwAAABcAAAAXAAAAFwAAAAAAAAAAAAAAAAAAAAAAAABeAAAAXgAAAF4AAAAXAAAAFwAAABcAAABeAAAAFwAAAF4AAABeAAAAXgAAABcAAAAAAAAAAAAAAAAAAAAAAAAAXgAAABcAAABeAAAAFwAAAF4AAABeAAAAFwAAABcAAAAXAAAAFwAAAF4AAABOAAAAAAAAAAAAAAAAAAAAAAAAAF4AAABeAAAAXgAAABcAAABeAAAAXgAAAF4AAABeAAAAXgAAAE4AAABeAAAAXgAAAA==
+        tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABdAAAAXQAAAF0AAABdAAAAXQAAAF0AAABdAAAAXQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF0AAABdAAAAXQAAABYAAAAWAAAATQAAAF0AAABNAAAAXQAAABYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABdAAAATQAAAF0AAAAWAAAAXQAAAF0AAABdAAAAXQAAAF0AAABdAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXQAAAF0AAABdAAAAFgAAAF0AAABdAAAAFgAAABYAAAAWAAAAFgAAAAAAAAAAAAAAAAAAAAAAAABdAAAAXQAAAF0AAAAWAAAAFgAAABYAAABdAAAAFgAAAF0AAABdAAAAXQAAABYAAAAAAAAAAAAAAAAAAAAAAAAAXQAAABYAAABdAAAAFgAAAF0AAABdAAAAFgAAABYAAAAWAAAAFgAAAF0AAABNAAAAAAAAAAAAAAAAAAAAAAAAAF0AAABdAAAAXQAAABYAAABdAAAAXQAAAF0AAABdAAAAXQAAAE0AAABdAAAAXQAAAA==
       0,-1:
         ind: 0,-1
-        tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXgAAAF4AAABeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABcAAABOAAAAXgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABeAAAAXgAAAF4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFwAAABcAAABeAAAAXgAAAF4AAABeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF4AAAAXAAAAXgAAAF4AAAAXAAAAXgAAAF4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABeAAAAXgAAAF4AAABeAAAAFwAAAE4AAABeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXgAAABcAAAAXAAAAFwAAABcAAABeAAAAXgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+        tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXQAAAF0AAABdAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYAAABNAAAAXQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABdAAAAXQAAAF0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFgAAABYAAABdAAAAXQAAAF0AAABdAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF0AAAAWAAAAXQAAAF0AAAAWAAAAXQAAAF0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABdAAAAXQAAAF0AAABdAAAAFgAAAE0AAABdAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXQAAABYAAAAWAAAAFgAAABYAAABdAAAAXQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
       0,0:
         ind: 0,0
-        tiles: XgAAAF4AAABeAAAAXgAAABcAAABeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE4AAAAXAAAAXgAAABcAAABeAAAAXgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABeAAAAXgAAAF4AAAAXAAAAXgAAAF4AAABeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATgAAABcAAABeAAAAFwAAABcAAAAXAAAAXgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF4AAABeAAAAXgAAABcAAABeAAAATgAAAF4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABeAAAAFwAAAF4AAABeAAAAXgAAAF4AAABeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFwAAABcAAAAXAAAAXgAAABcAAABOAAAAXgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF4AAABeAAAAXgAAAF4AAABeAAAAXgAAAF4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXAAAAFwAAAF4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXgAAABcAAABeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF4AAABOAAAAXgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABeAAAAXgAAAF4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+        tiles: XQAAAF0AAABdAAAAXQAAABYAAABdAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE0AAAAWAAAAXQAAABYAAABdAAAAXQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABdAAAAXQAAAF0AAAAWAAAAXQAAAF0AAABdAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATQAAABYAAABdAAAAFgAAABYAAAAWAAAAXQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF0AAABdAAAAXQAAABYAAABdAAAATQAAAF0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABdAAAAFgAAAF0AAABdAAAAXQAAAF0AAABdAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFgAAABYAAAAWAAAAXQAAABYAAABNAAAAXQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF0AAABdAAAAXQAAAF0AAABdAAAAXQAAAF0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWAAAAFgAAAF0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXQAAABYAAABdAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF0AAABNAAAAXQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABdAAAAXQAAAF0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
     type: MapGrid
   - type: Broadphase
   - angularDamping: 0.05
@@ -134,450 +133,450 @@ entities:
     enabled: True
     type: Gravity
   - chunkCollection:
-      -1,-1:
-        159:
-          color: '#FFFFFFFF'
-          id: DirtHeavy
-          coordinates: -3,-1
-        160:
-          color: '#FFFFFFFF'
-          id: DirtHeavy
-          coordinates: -5,-3
-        161:
-          color: '#FFFFFFFF'
-          id: DirtHeavy
-          coordinates: -7,-5
-        162:
-          color: '#FFFFFFFF'
-          id: DirtHeavy
-          coordinates: -7,-4
-        163:
-          color: '#FFFFFFFF'
-          id: DirtHeavy
-          coordinates: -11,-2
-        179:
-          color: '#FFFFFFFF'
-          id: DirtHeavy
-          coordinates: -3,-6
-        182:
-          color: '#FFFFFFFF'
-          id: DirtMedium
-          coordinates: -1,-4
-        183:
-          color: '#FFFFFFFF'
-          id: DirtMedium
-          coordinates: -1,-2
-        184:
-          color: '#FFFFFFFF'
-          id: DirtLight
-          coordinates: -9,-3
-        195:
-          color: '#FFFFFFFF'
-          id: DirtLight
-          coordinates: -4,-2
-        196:
-          color: '#FFFFFFFF'
-          id: DirtLight
-          coordinates: -6,-2
-        197:
-          color: '#FFFFFFFF'
-          id: DirtLight
-          coordinates: -9,-2
-        215:
-          color: '#FFFFFFFF'
-          id: Dirt
-          coordinates: -5,-4
-        216:
-          color: '#FFFFFFFF'
-          id: Dirt
-          coordinates: -11,-1
-        223:
-          color: '#FFFFFFFF'
-          id: Dirt
-          coordinates: -5,-2
-      0,-1:
-        157:
-          color: '#FFFFFFFF'
-          id: DirtHeavy
-          coordinates: 3,-1
-        178:
-          color: '#FFFFFFFF'
-          id: DirtHeavy
-          coordinates: 5,-2
-        214:
-          color: '#FFFFFFFF'
-          id: DirtHeavy
-          coordinates: 0,-6
-        181:
-          color: '#FFFFFFFF'
-          id: DirtLight
-          coordinates: 1,-6
-        192:
-          color: '#FFFFFFFF'
-          id: DirtLight
-          coordinates: 1,-1
-        193:
-          color: '#FFFFFFFF'
-          id: DirtLight
-          coordinates: 1,-4
-        194:
-          color: '#FFFFFFFF'
-          id: DirtLight
-          coordinates: 1,-3
-        220:
-          color: '#FFFFFFFF'
-          id: Dirt
-          coordinates: 4,-2
-        222:
-          color: '#FFFFFFFF'
-          id: Dirt
-          coordinates: 0,-6
       -1,0:
-        114:
+        0:
           color: '#FFFFFFFF'
           id: MiniTileDarkCornerNe
           coordinates: -2,3
-        115:
+        1:
           color: '#FFFFFFFF'
           id: MiniTileDarkCornerNw
           coordinates: -4,3
-        116:
+        2:
           color: '#FFFFFFFF'
           id: MiniTileDarkCornerSw
           coordinates: -4,1
-        117:
+        3:
           color: '#FFFFFFFF'
           id: MiniTileDarkLineE
           coordinates: -2,2
-        118:
+        4:
           color: '#FFFFFFFF'
           id: MiniTileDarkLineN
           coordinates: -3,3
-        119:
+        5:
           color: '#FFFFFFFF'
           id: MiniTileDarkLineS
           coordinates: -3,1
-        120:
+        6:
           color: '#FFFFFFFF'
           id: MiniTileDarkLineW
           coordinates: -4,2
-        121:
+        7:
           color: '#FFFFFFFF'
           id: MiniTileDarkCornerSe
           coordinates: -2,1
-        122:
+        8:
           color: '#FFFFFFFF'
           id: StationWareLogo4
           coordinates: -4,2
-        123:
+        9:
           color: '#FFFFFFFF'
           id: StationWareLogo5
           coordinates: -3,2
-        124:
+        10:
           color: '#FFFFFFFF'
           id: StationWareLogo6
           coordinates: -2,2
-        125:
+        11:
           color: '#FFFFFFFF'
           id: StationWareLogo7
           coordinates: -4,1
-        126:
+        12:
           color: '#FFFFFFFF'
           id: StationWareLogo8
           coordinates: -3,1
-        127:
+        13:
           color: '#FFFFFFFF'
           id: StationWareLogo9
           coordinates: -2,1
-        128:
+        14:
           color: '#FFFFFFFF'
           id: StationWareLogo1
           coordinates: -4,3
-        129:
+        15:
           color: '#FFFFFFFF'
           id: StationWareLogo2
           coordinates: -3,3
-        130:
+        16:
           color: '#FFFFFFFF'
           id: StationWareLogo3
           coordinates: -2,3
-        131:
+        17:
           color: '#0069B3FF'
           id: MiniTileWhiteLineE
           coordinates: -1,3
-        132:
+        18:
           color: '#0069B3FF'
           id: MiniTileWhiteLineE
           coordinates: -1,2
-        133:
+        19:
           color: '#0069B3FF'
           id: MiniTileWhiteLineE
           coordinates: -1,1
-        134:
+        20:
           color: '#0069B3FF'
           id: MiniTileWhiteLineS
           coordinates: -4,0
-        135:
+        21:
           color: '#0069B3FF'
           id: MiniTileWhiteLineS
           coordinates: -3,0
-        136:
+        22:
           color: '#0069B3FF'
           id: MiniTileWhiteLineS
           coordinates: -2,0
-        137:
+        23:
           color: '#0069B3FF'
           id: MiniTileWhiteLineW
           coordinates: -5,1
-        138:
+        24:
           color: '#0069B3FF'
           id: MiniTileWhiteLineW
           coordinates: -5,2
-        139:
+        25:
           color: '#0069B3FF'
           id: MiniTileWhiteLineW
           coordinates: -5,3
-        140:
+        26:
           color: '#0069B3FF'
           id: MiniTileWhiteLineN
           coordinates: -4,4
-        141:
+        27:
           color: '#0069B3FF'
           id: MiniTileWhiteLineN
           coordinates: -3,4
-        142:
+        28:
           color: '#0069B3FF'
           id: MiniTileWhiteLineN
           coordinates: -2,4
-        143:
+        29:
           color: '#0069B3FF'
           id: MiniTileWhiteCornerNw
           coordinates: -5,4
-        144:
+        30:
           color: '#0069B3FF'
           id: MiniTileWhiteCornerSe
           coordinates: -1,0
-        145:
+        31:
           color: '#0069B3FF'
           id: MiniTileWhiteCornerSw
           coordinates: -5,0
-        146:
+        32:
           color: '#0069B3FF'
           id: MiniTileWhiteCornerNe
           coordinates: -1,4
-        147:
+        33:
           color: '#FFFFFFFF'
           id: DirtHeavy
           coordinates: -6,10
-        148:
+        34:
           color: '#FFFFFFFF'
           id: DirtMedium
           coordinates: -5,9
-        149:
+        35:
           color: '#FFFFFFFF'
           id: DirtMedium
           coordinates: -6,7
-        164:
+        50:
           color: '#FFFFFFFF'
           id: DirtHeavy
           coordinates: -9,0
-        165:
+        51:
           color: '#FFFFFFFF'
           id: DirtHeavy
           coordinates: -7,2
-        166:
+        52:
           color: '#FFFFFFFF'
           id: DirtHeavy
           coordinates: -10,4
-        169:
-          color: '#FFFFFFFF'
-          id: DirtHeavy
-          coordinates: -8,7
-        168:
+        53:
           color: '#FFFFFFFF'
           id: DirtHeavy
           coordinates: -11,6
-        170:
+        54:
+          color: '#FFFFFFFF'
+          id: DirtHeavy
+          coordinates: -8,7
+        55:
           color: '#FFFFFFFF'
           id: DirtLight
           coordinates: -5,10
-        171:
+        56:
           color: '#FFFFFFFF'
           id: DirtLight
           coordinates: -4,10
-        172:
+        57:
           color: '#FFFFFFFF'
           id: DirtLight
           coordinates: -3,10
-        174:
+        59:
           color: '#FFFFFFFF'
           id: DirtLight
           coordinates: -1,8
-        175:
+        60:
           color: '#FFFFFFFF'
           id: DirtMedium
           coordinates: -1,7
-        176:
+        61:
           color: '#FFFFFFFF'
           id: DirtMedium
           coordinates: -2,6
-        185:
+        69:
           color: '#FFFFFFFF'
           id: DirtMedium
           coordinates: -11,2
-        186:
+        70:
           color: '#FFFFFFFF'
           id: DirtMedium
           coordinates: -8,9
-        187:
+        71:
           color: '#FFFFFFFF'
           id: DirtMedium
           coordinates: -8,10
-        188:
+        72:
           color: '#FFFFFFFF'
           id: DirtLight
           coordinates: -4,6
-        189:
+        73:
           color: '#FFFFFFFF'
           id: DirtLight
           coordinates: -4,5
-        190:
+        74:
           color: '#FFFFFFFF'
           id: DirtLight
           coordinates: -6,4
-        198:
+        82:
           color: '#FFFFFFFF'
           id: DirtHeavy
           coordinates: -9,0
-        199:
+        83:
           color: '#FFFFFFFF'
           id: DirtHeavy
           coordinates: -9,2
-        200:
+        84:
           color: '#FFFFFFFF'
           id: DirtHeavy
           coordinates: -9,2
-        201:
+        85:
           color: '#FFFFFFFF'
           id: DirtHeavy
           coordinates: -8,2
-        202:
+        86:
           color: '#FFFFFFFF'
           id: DirtHeavy
           coordinates: -9,4
-        203:
+        87:
           color: '#FFFFFFFF'
           id: DirtHeavy
           coordinates: -9,4
-        204:
+        88:
           color: '#FFFFFFFF'
           id: DirtHeavy
           coordinates: -7,4
-        205:
+        89:
           color: '#FFFFFFFF'
           id: DirtHeavy
           coordinates: -8,5
-        206:
+        90:
           color: '#FFFFFFFF'
           id: DirtHeavy
           coordinates: -7,7
-        207:
+        91:
           color: '#FFFFFFFF'
           id: DirtHeavy
           coordinates: -3,8
-        208:
+        92:
           color: '#FFFFFFFF'
           id: DirtHeavy
           coordinates: -1,10
-        209:
+        93:
           color: '#FFFFFFFF'
           id: DirtHeavy
           coordinates: -1,10
-        210:
+        94:
           color: '#FFFFFFFF'
           id: DirtHeavy
           coordinates: -1,8
-        217:
+        101:
           color: '#FFFFFFFF'
           id: Dirt
           coordinates: -8,10
-        224:
+        108:
           color: '#FFFFFFFF'
           id: Dirt
           coordinates: -7,1
-        225:
+        109:
           color: '#FFFFFFFF'
           id: Dirt
           coordinates: -6,6
       0,0:
-        150:
+        36:
           color: '#FFFFFFFF'
           id: DirtMedium
           coordinates: 1,5
-        151:
+        37:
           color: '#FFFFFFFF'
           id: DirtMedium
           coordinates: 2,6
-        152:
+        38:
           color: '#FFFFFFFF'
           id: DirtMedium
           coordinates: 1,6
-        153:
+        39:
           color: '#FFFFFFFF'
           id: DirtLight
           coordinates: 3,4
-        154:
+        40:
           color: '#FFFFFFFF'
           id: DirtLight
           coordinates: 3,3
-        155:
+        41:
           color: '#FFFFFFFF'
           id: DirtHeavy
           coordinates: 4,6
-        156:
+        42:
           color: '#FFFFFFFF'
           id: DirtHeavy
           coordinates: 5,4
-        158:
+        44:
           color: '#FFFFFFFF'
           id: DirtHeavy
           coordinates: 1,1
-        173:
+        58:
           color: '#FFFFFFFF'
           id: DirtLight
           coordinates: 0,8
-        177:
+        62:
           color: '#FFFFFFFF'
           id: DirtHeavy
           coordinates: 1,10
-        191:
+        75:
           color: '#FFFFFFFF'
           id: DirtLight
           coordinates: 0,3
-        211:
+        95:
           color: '#FFFFFFFF'
           id: DirtMedium
           coordinates: 1,8
-        212:
+        96:
           color: '#FFFFFFFF'
           id: DirtMedium
           coordinates: 2,6
-        213:
+        97:
           color: '#FFFFFFFF'
           id: DirtMedium
           coordinates: 1,3
-        218:
+        102:
           color: '#FFFFFFFF'
           id: Dirt
           coordinates: 3,6
-        219:
+        103:
           color: '#FFFFFFFF'
           id: Dirt
           coordinates: 5,6
-        221:
+        105:
           color: '#FFFFFFFF'
           id: Dirt
           coordinates: 1,0
+      0,-1:
+        43:
+          color: '#FFFFFFFF'
+          id: DirtHeavy
+          coordinates: 3,-1
+        63:
+          color: '#FFFFFFFF'
+          id: DirtHeavy
+          coordinates: 5,-2
+        65:
+          color: '#FFFFFFFF'
+          id: DirtLight
+          coordinates: 1,-6
+        76:
+          color: '#FFFFFFFF'
+          id: DirtLight
+          coordinates: 1,-1
+        77:
+          color: '#FFFFFFFF'
+          id: DirtLight
+          coordinates: 1,-4
+        78:
+          color: '#FFFFFFFF'
+          id: DirtLight
+          coordinates: 1,-3
+        98:
+          color: '#FFFFFFFF'
+          id: DirtHeavy
+          coordinates: 0,-6
+        104:
+          color: '#FFFFFFFF'
+          id: Dirt
+          coordinates: 4,-2
+        106:
+          color: '#FFFFFFFF'
+          id: Dirt
+          coordinates: 0,-6
+      -1,-1:
+        45:
+          color: '#FFFFFFFF'
+          id: DirtHeavy
+          coordinates: -3,-1
+        46:
+          color: '#FFFFFFFF'
+          id: DirtHeavy
+          coordinates: -5,-3
+        47:
+          color: '#FFFFFFFF'
+          id: DirtHeavy
+          coordinates: -7,-5
+        48:
+          color: '#FFFFFFFF'
+          id: DirtHeavy
+          coordinates: -7,-4
+        49:
+          color: '#FFFFFFFF'
+          id: DirtHeavy
+          coordinates: -11,-2
+        64:
+          color: '#FFFFFFFF'
+          id: DirtHeavy
+          coordinates: -3,-6
+        66:
+          color: '#FFFFFFFF'
+          id: DirtMedium
+          coordinates: -1,-4
+        67:
+          color: '#FFFFFFFF'
+          id: DirtMedium
+          coordinates: -1,-2
+        68:
+          color: '#FFFFFFFF'
+          id: DirtLight
+          coordinates: -9,-3
+        79:
+          color: '#FFFFFFFF'
+          id: DirtLight
+          coordinates: -4,-2
+        80:
+          color: '#FFFFFFFF'
+          id: DirtLight
+          coordinates: -6,-2
+        81:
+          color: '#FFFFFFFF'
+          id: DirtLight
+          coordinates: -9,-2
+        99:
+          color: '#FFFFFFFF'
+          id: Dirt
+          coordinates: -5,-4
+        100:
+          color: '#FFFFFFFF'
+          id: Dirt
+          coordinates: -11,-1
+        107:
+          color: '#FFFFFFFF'
+          id: Dirt
+          coordinates: -5,-2
     type: DecalGrid
   - tiles:
       -5,-2: 0
@@ -797,8 +796,8 @@ entities:
       -1,11: 0
       -1,15: 0
       0,-10: 0
-      0,-2: 1
-      0,-1: 1
+      0,-2: 0
+      0,-1: 0
       1,-10: 0
       1,-2: 0
       2,-10: 0
@@ -892,7 +891,7 @@ entities:
       -6,8: 0
       -6,9: 0
       -6,10: 0
-      -6,11: 1
+      -6,11: 0
       -6,12: 0
       -6,13: 0
       -6,14: 0
@@ -926,8 +925,8 @@ entities:
       -6,-5: 0
       -6,-4: 0
       -6,-3: 0
-      -6,-2: 2
-      -6,-1: 1
+      -6,-2: 0
+      -6,-1: 0
       -5,-6: 0
       -5,-5: 0
       -5,-4: 0
@@ -936,64 +935,75 @@ entities:
       -4,-1: 0
       -8,11: 0
       -8,12: 0
-      -9,0: 3
-      -9,1: 3
-      -9,2: 3
-      -9,3: 3
-      -9,4: 3
-      -9,5: 3
-      -9,-1: 3
+      -9,0: 0
+      -9,1: 0
+      -9,2: 0
+      -9,3: 0
+      -9,4: 0
+      -9,5: 0
+      -9,-1: 0
+      -12,0: 0
+      -12,1: 0
+      -12,2: 0
+      -12,3: 0
+      -12,4: 0
+      -12,5: 0
+      -12,6: 0
+      -12,7: 0
+      -11,0: 0
+      -11,1: 0
+      -11,2: 0
+      -11,3: 0
+      -11,4: 0
+      -11,5: 0
+      -11,6: 0
+      -11,7: 0
+      -10,0: 0
+      -10,1: 0
+      -10,2: 0
+      -10,3: 0
+      -10,4: 0
+      -10,5: 0
+      -10,6: 0
+      -10,7: 0
+      -9,6: 0
+      -9,7: 0
+      -9,8: 0
+      -9,9: 0
+      -9,10: 0
+      -9,11: 0
+      -12,-3: 0
+      -12,-2: 0
+      -12,-1: 0
+      -11,-3: 0
+      -11,-2: 0
+      -11,-1: 0
+      -10,-6: 0
+      -10,-5: 0
+      -10,-4: 0
+      -10,-3: 0
+      -10,-2: 0
+      -10,-1: 0
+      -9,-6: 0
+      -9,-5: 0
+      -9,-4: 0
+      -9,-3: 0
+      -9,-2: 0
+      -8,-7: 0
+      -7,-7: 0
+      -6,-7: 0
+      -5,-7: 0
+      5,-2: 0
+      5,-1: 0
+      6,-3: 0
+      5,5: 0
+      5,6: 0
     uniqueMixes:
     - volume: 2500
       temperature: 293.15
       moles:
       - 21.824879
       - 82.10312
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-    - volume: 2500
-      temperature: 293.15
-      moles:
-      - 19.481253
-      - 73.28662
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-    - volume: 2500
-      temperature: 293.15
-      moles:
-      - 20.619795
-      - 77.56971
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-    - volume: 2500
-      temperature: 293.15
-      moles:
-      - 0
-      - 0
       - 0
       - 0
       - 0

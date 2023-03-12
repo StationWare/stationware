@@ -29,10 +29,11 @@ public sealed class StayAliveModifierSystem : EntitySystem
 
     private void OnMobStateChanged(MobStateChangedEvent ev)
     {
-        foreach (var (stayAlive, challenge) in EntityQuery<StayAliveModifierComponent, StationWareChallengeComponent>())
+        var enumerator = EntityQueryEnumerator<StayAliveModifierComponent, StationWareChallengeComponent>();
+        while (enumerator.MoveNext(out var uid, out _, out var challenge))
         {
             if (_mobState.IsIncapacitated(ev.Target, ev.Component))
-                _stationWareChallenge.SetPlayerChallengeState(ev.Target, stayAlive.Owner, false, challenge);
+                _stationWareChallenge.SetPlayerChallengeState(ev.Target, uid, false, challenge);
         }
     }
 }

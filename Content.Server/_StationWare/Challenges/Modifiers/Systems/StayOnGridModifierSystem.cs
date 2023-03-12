@@ -24,10 +24,11 @@ public sealed class StayOnGridModifierSystem : EntitySystem
 
     private void OnChallengeEnd(EntityUid uid, StayOnGridModifierComponent component, ref ChallengeEndEvent args)
     {
-        foreach (var tracker in EntityQuery<StayOnGridTrackerComponent>())
+        var enumerator = EntityQueryEnumerator<StayOnGridTrackerComponent>();
+        while (enumerator.MoveNext(out var ent, out var tracker))
         {
             if (tracker.Challenge == uid)
-                RemComp(tracker.Owner, tracker);
+                RemComp(ent, tracker);
         }
     }
 
@@ -40,9 +41,10 @@ public sealed class StayOnGridModifierSystem : EntitySystem
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
-        foreach (var tracker in EntityQuery<StayOnGridTrackerComponent>())
+
+        var enumerator = EntityQueryEnumerator<StayOnGridTrackerComponent>();
+        while (enumerator.MoveNext(out var uid, out var tracker))
         {
-            var uid = tracker.Owner;
             if (!tracker.Lost)
                 continue;
             _stationWareChallenge.SetPlayerChallengeState(uid, tracker.Challenge, false);

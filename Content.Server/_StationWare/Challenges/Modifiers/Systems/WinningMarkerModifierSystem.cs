@@ -37,9 +37,9 @@ public sealed class WinningMarkerModifierSystem : EntitySystem
 
     private void OnBeforeChallengeEnd(EntityUid uid, WinningMarkerModifierComponent component, ref BeforeChallengeEndEvent args)
     {
-        foreach (var winning in EntityQuery<WinningMarkerComponent>())
+        var enumerator = EntityQueryEnumerator<WinningMarkerComponent>();
+        while (enumerator.MoveNext(out var ent, out var winning))
         {
-            var ent = winning.Owner;
             if (winning.Challenge != uid)
                 continue;
 

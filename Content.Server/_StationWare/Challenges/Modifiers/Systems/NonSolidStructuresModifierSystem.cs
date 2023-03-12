@@ -19,9 +19,9 @@ public sealed class NonSolidStructuresModifierSystem : EntitySystem
 
     private void OnChallengeStart(EntityUid uid, NonSolidStructuresModifierComponent component, ref ChallengeStartEvent args)
     {
-        foreach (var (tag, fixtures) in EntityQuery<TagComponent, FixturesComponent>())
+        var enumerator = EntityQueryEnumerator<TagComponent, FixturesComponent>();
+        while (enumerator.MoveNext(out var ent, out var tag, out var fixtures))
         {
-            var ent = tag.Owner;
             if (!_tag.HasTag(tag, component.TargetTag))
                 continue;
 
