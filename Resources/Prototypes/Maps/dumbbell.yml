@@ -1,0 +1,15 @@
+- type: gameMap
+  id: Dumbbell
+  mapName: 'Dumbbell'
+  mapPath: /Maps/dumbbell.yml
+  minPlayers: 0
+  stations:
+    Stationware:
+      mapNameTemplate: '{0} Dumbbell {1}'
+      nameGenerator:
+        !type:NanotrasenNameGenerator
+        prefixCreator: 'SW'
+      overflowJobs:
+      - Passenger
+      availableJobs:
+        Passenger: [ -1, -1 ]

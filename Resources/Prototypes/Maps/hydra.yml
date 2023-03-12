@@ -1,15 +1,15 @@
 - type: gameMap
-  id: Stationware
-  mapName: 'Dome'
-  mapPath: /Maps/stationware.yml
+  id: Hydra
+  mapName: 'Hydra'
+  mapPath: /Maps/hydra.yml
   minPlayers: 0
   stations:
     Stationware:
-      mapNameTemplate: '{0} Dome {1}'
+      mapNameTemplate: '{0} Hydra {1}'
       nameGenerator:
         !type:NanotrasenNameGenerator
         prefixCreator: 'SW'
       overflowJobs:
-        - Passenger
+      - Passenger
       availableJobs:
         Passenger: [ -1, -1 ]
