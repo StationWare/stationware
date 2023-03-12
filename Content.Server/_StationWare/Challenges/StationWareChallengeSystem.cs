@@ -62,9 +62,9 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
             EntityManager.AddComponent(uid, (Component) temp!, true);
         }
 
-        foreach (var session in participants.Keys)
+        foreach (var id in participants.Keys)
         {
-            challengeComp.Completions.Add(session.UserId, null);
+            challengeComp.Completions.Add(id, null);
         }
 
         var announcement = Loc.GetString(challengePrototype.Announcement);
@@ -143,21 +143,19 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
         return true;
     }
 
-    private Dictionary<IPlayerSession, EntityUid> GetParticipants()
+    private Dictionary<NetUserId, EntityUid> GetParticipants()
     {
-        var participants = new Dictionary<IPlayerSession, EntityUid>();
-        var query = EntityQuery<ActorComponent, MobStateComponent>().ToList();
-        _random.Shuffle(query);
-        foreach (var (actor, mobState) in query)
+        var participants = new Dictionary<NetUserId, EntityUid>();
+        var enumerator = EntityQueryEnumerator<ActorComponent, MobStateComponent>();
+        while (enumerator.MoveNext(out var uid, out var actor, out var mobState))
         {
-            var ent = actor.Owner;
-            if (_mobState.IsDead(ent, mobState))
+            if (_mobState.IsDead(uid, mobState))
                 continue;
 
-            if (participants.ContainsKey(actor.PlayerSession))
+            if (participants.ContainsKey(actor.PlayerSession.UserId))
                 continue;
 
-            participants.Add(actor.PlayerSession, ent);
+            participants.Add(actor.PlayerSession.UserId, uid);
         }
         return participants;
     }
@@ -216,10 +214,9 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        foreach (var challenge in EntityQuery<StationWareChallengeComponent>())
+        var enumerator = EntityQueryEnumerator<StationWareChallengeComponent>();
+        while (enumerator.MoveNext(out var uid, out var challenge))
         {
-            var uid = challenge.Owner;
-
             if (challenge.StartTime != null && _timing.CurTime >= challenge.StartTime)
             {
                 var ev = new ChallengeStartEvent(GetEntitiesFromNetUserIds(challenge.Completions.Keys).ToList(), uid, challenge);

@@ -18,9 +18,9 @@ public sealed class InteractionWinSystem : EntitySystem
     private void OnInteractHand(EntityUid uid, InteractionWinComponent component, InteractHandEvent args)
     {
         var player = args.User;
-        foreach (var challenge in EntityQuery<StationWareChallengeComponent>())
+        var enumerator = EntityQueryEnumerator<StationWareChallengeComponent>();
+        while (enumerator.MoveNext(out var challengeEnt, out var challenge))
         {
-            var challengeEnt = challenge.Owner;
             var won = _random.Prob(component.WinChance);
             if (!won && !component.FailOnNoWin)
                 continue;

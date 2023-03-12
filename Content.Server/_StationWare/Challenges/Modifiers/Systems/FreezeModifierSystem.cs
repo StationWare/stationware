@@ -25,10 +25,11 @@ public sealed class FreezeModifierSystem : EntitySystem
 
     private void OnChallengeEnd(EntityUid uid, FreezeModifierComponent component, ref ChallengeEndEvent args)
     {
-        foreach (var freezePlayer in EntityQuery<FreezePlayerComponent>())
+        var enumerator = EntityQueryEnumerator<FreezePlayerComponent>();
+        while (enumerator.MoveNext(out var ent, out var freezePlayer))
         {
             if (freezePlayer.Challenge == uid)
-                RemComp(freezePlayer.Owner, freezePlayer);
+                RemComp(ent, freezePlayer);
         }
     }
 
