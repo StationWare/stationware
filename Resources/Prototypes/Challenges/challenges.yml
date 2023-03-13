@@ -393,3 +393,15 @@
   - type: EquipClothingModifier
     spawns:
     - id: ClothingOuterHardsuitDeathsquad
+
+- type: challenge
+  id: HideInALockerChallenge
+  announcement: challenge-hide
+  startDelay: 0
+  duration: 5
+  challengeModifiers:
+  - type: SpawnEntityModifier
+    spawns:
+    - id: ClosetBase
+      amount: 3
+  - type: IsInsideStorageModifier
