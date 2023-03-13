@@ -402,6 +402,6 @@
   challengeModifiers:
   - type: SpawnEntityModifier
     spawns:
-      - id: ClosetBase
-        amount: 3
+    - id: ClosetBase
+      amount: 3
   - type: IsInsideStorageModifier
