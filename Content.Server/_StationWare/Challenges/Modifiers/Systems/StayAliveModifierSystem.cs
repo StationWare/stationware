@@ -23,7 +23,8 @@ public sealed class StayAliveModifierSystem : EntitySystem
 
         foreach (var player in args.Players)
         {
-            _stationWareChallenge.SetPlayerChallengeState(player, uid, _mobState.IsAlive(player), challenge);
+            if (_mobState.IsAlive(player))
+                _stationWareChallenge.SetPlayerChallengeState(player, uid, true, challenge);
         }
     }
 
