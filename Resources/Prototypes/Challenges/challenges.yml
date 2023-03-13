@@ -1,6 +1,7 @@
 - type: challenge
   id: DeathBallChallenge
   announcement: challenge-death-ball
+  winByDefault: true
   duration: 10
   challengeModifiers:
   - type: StayAliveModifier
@@ -145,6 +146,7 @@
 - type: challenge
   id: ShootoutChallenge
   announcement: challenge-shootout
+  winByDefault: true
   duration: 15
   challengeModifiers:
   - type: StayAliveModifier
@@ -202,6 +204,7 @@
 - type: challenge
   id: WizardDuelChallenge
   announcement: challenge-wizard-duel
+  winByDefault: true
   duration: 10
   challengeModifiers:
   - type: StayAliveModifier
@@ -249,6 +252,7 @@
 - type: challenge
   id: OneShotGunChallenge
   announcement: challenge-one-shot-gun
+  winByDefault: true
   duration: 10
   startDelay: 1
   challengeModifiers:
@@ -269,6 +273,7 @@
 - type: challenge
   id: AcidTripChallenge
   announcement: challenge-acid-trip
+  winByDefault: true
   duration: 15
   challengeModifiers:
   - type: StayAliveModifier
@@ -279,6 +284,7 @@
 - type: challenge
   id: PutThatHelmetOnChallenge
   announcement: challenge-put-that-helmet-on
+  winByDefault: true
   startDelay: 0
   duration: 5
   challengeModifiers:
@@ -294,6 +300,7 @@
 - type: challenge
   id: GreytideChallenge
   announcement: challenge-greytide
+  winByDefault: true
   duration: 5
   startDelay: 0
   challengeModifiers:
@@ -307,6 +314,7 @@
 - type: challenge
   id: LandmineChallenge
   announcement: challenge-landmine
+  winByDefault: true
   duration: 5
   startDelay: 3
   challengeModifiers:
@@ -327,6 +335,7 @@
 - type: challenge
   id: MorbChallenge
   announcement: challenge-morb
+  winByDefault: true
   duration: 10
   startDelay: 3
   challengeModifiers:
@@ -353,6 +362,7 @@
 - type: challenge
   id: XenosChallenge
   announcement: challenge-xenos
+  winByDefault: true
   duration: 10
   startDelay: 3
   challengeModifiers:
