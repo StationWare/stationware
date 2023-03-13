@@ -1,3 +1,4 @@
+challenge-death-ball = Don't get hit!
 challenge-freeze = Freeze! Don't move!
 challenge-king-of-the-hill = End the challenge inside the circle.
 challenge-winning-tile = Don't stand on the bright red tiles... Psyche! Hop on! Quick!

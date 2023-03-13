@@ -18,87 +18,86 @@ tilemap:
   11: FloorAsteroidTile
   12: FloorBar
   13: FloorBasalt
-  14: FloorBasaslt
-  15: FloorBlue
-  16: FloorBlueCircuit
-  17: FloorBoxing
-  18: FloorCarpetClown
-  19: FloorCarpetOffice
-  20: FloorCave
-  21: FloorCaveDrought
-  22: FloorClown
-  23: FloorDark
-  24: FloorDarkDiagonal
-  25: FloorDarkDiagonalMini
-  26: FloorDarkHerringbone
-  27: FloorDarkMini
-  28: FloorDarkMono
-  29: FloorDarkOffset
-  30: FloorDarkPavement
-  31: FloorDarkPavementVertical
-  32: FloorDarkPlastic
-  33: FloorDesert
-  34: FloorDirt
-  35: FloorEighties
-  36: FloorElevatorShaft
-  37: FloorFlesh
-  38: FloorFreezer
-  39: FloorGlass
-  40: FloorGold
-  41: FloorGrass
-  42: FloorGrassDark
-  43: FloorGrassJungle
-  44: FloorGrassLight
-  45: FloorGreenCircuit
-  46: FloorGym
-  47: FloorHydro
-  48: FloorKitchen
-  49: FloorLaundry
-  50: FloorLino
-  51: FloorLowDesert
-  52: FloorMetalDiamond
-  53: FloorMime
-  54: FloorMono
-  55: FloorPlanetGrass
-  56: FloorPlastic
-  57: FloorRGlass
-  58: FloorReinforced
-  59: FloorRockVault
-  60: FloorShowroom
-  61: FloorShuttleBlue
-  62: FloorShuttleOrange
-  63: FloorShuttlePurple
-  64: FloorShuttleRed
-  65: FloorShuttleWhite
-  66: FloorSilver
-  67: FloorSnow
-  68: FloorSteel
-  69: FloorSteelDiagonal
-  70: FloorSteelDiagonalMini
-  71: FloorSteelDirty
-  72: FloorSteelHerringbone
-  73: FloorSteelMini
-  74: FloorSteelMono
-  75: FloorSteelOffset
-  76: FloorSteelPavement
-  77: FloorSteelPavementVertical
-  78: FloorTechMaint
-  79: FloorTechMaint2
-  80: FloorTechMaint3
-  81: FloorWhite
-  82: FloorWhiteDiagonal
-  83: FloorWhiteDiagonalMini
-  84: FloorWhiteHerringbone
-  85: FloorWhiteMini
-  86: FloorWhiteMono
-  87: FloorWhiteOffset
-  88: FloorWhitePavement
-  89: FloorWhitePavementVertical
-  90: FloorWhitePlastic
-  91: FloorWood
-  92: FloorWoodTile
-  93: Lattice
-  94: Plating
+  14: FloorBlue
+  15: FloorBlueCircuit
+  16: FloorBoxing
+  17: FloorCarpetClown
+  18: FloorCarpetOffice
+  19: FloorCave
+  20: FloorCaveDrought
+  21: FloorClown
+  22: FloorDark
+  23: FloorDarkDiagonal
+  24: FloorDarkDiagonalMini
+  25: FloorDarkHerringbone
+  26: FloorDarkMini
+  27: FloorDarkMono
+  28: FloorDarkOffset
+  29: FloorDarkPavement
+  30: FloorDarkPavementVertical
+  31: FloorDarkPlastic
+  32: FloorDesert
+  33: FloorDirt
+  34: FloorEighties
+  35: FloorElevatorShaft
+  36: FloorFlesh
+  37: FloorFreezer
+  38: FloorGlass
+  39: FloorGold
+  40: FloorGrass
+  41: FloorGrassDark
+  42: FloorGrassJungle
+  43: FloorGrassLight
+  44: FloorGreenCircuit
+  45: FloorGym
+  46: FloorHydro
+  47: FloorKitchen
+  48: FloorLaundry
+  49: FloorLino
+  50: FloorLowDesert
+  51: FloorMetalDiamond
+  52: FloorMime
+  53: FloorMono
+  54: FloorPlanetGrass
+  55: FloorPlastic
+  56: FloorRGlass
+  57: FloorReinforced
+  58: FloorRockVault
+  59: FloorShowroom
+  60: FloorShuttleBlue
+  61: FloorShuttleOrange
+  62: FloorShuttlePurple
+  63: FloorShuttleRed
+  64: FloorShuttleWhite
+  65: FloorSilver
+  66: FloorSnow
+  67: FloorSteel
+  68: FloorSteelDiagonal
+  69: FloorSteelDiagonalMini
+  70: FloorSteelDirty
+  71: FloorSteelHerringbone
+  72: FloorSteelMini
+  73: FloorSteelMono
+  74: FloorSteelOffset
+  75: FloorSteelPavement
+  76: FloorSteelPavementVertical
+  77: FloorTechMaint
+  78: FloorTechMaint2
+  79: FloorTechMaint3
+  80: FloorWhite
+  81: FloorWhiteDiagonal
+  82: FloorWhiteDiagonalMini
+  83: FloorWhiteHerringbone
+  84: FloorWhiteMini
+  85: FloorWhiteMono
+  86: FloorWhiteOffset
+  87: FloorWhitePavement
+  88: FloorWhitePavementVertical
+  89: FloorWhitePlastic
+  90: FloorWood
+  91: FloorWoodTile
+  92: Lattice
+  93: Plating
 entities:
 - uid: 0
   components:
@@ -109,16 +108,16 @@ entities:
   - chunks:
       -1,0:
         ind: -1,0
-        tiles: AAAAAAAAAAAAAAAAXgAAAFIAAABSAAAAUgAAAFIAAABSAAAAUgAAAF4AAABeAAAAXgAAAF4AAABeAAAAXgAAAAAAAAAAAAAAAAAAAF4AAABSAAAAUgAAAFIAAABSAAAAUgAAAFIAAABVAAAAVQAAAFYAAABWAAAAVgAAAFUAAAAAAAAAAAAAAAAAAABeAAAAUgAAAFIAAABSAAAAUgAAAFIAAABSAAAAXgAAAFUAAABWAAAAVgAAAFYAAABVAAAAAAAAAAAAAAAAAAAAXgAAAFIAAABSAAAAUgAAAFIAAABSAAAAUgAAAFUAAABVAAAAVgAAAFYAAABWAAAAVQAAAAAAAAAAAAAAAAAAAF4AAABSAAAAUgAAAFIAAABSAAAAUgAAAFIAAABeAAAAXgAAAF4AAABeAAAAXgAAAF4AAAAAAAAAAAAAAAAAAABeAAAAXgAAAFIAAABSAAAAUgAAAFIAAABSAAAAXgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF4AAABeAAAAXgAAAF4AAABeAAAAXgAAAF4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+        tiles: AAAAAAAAAAAAAAAAXQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAF0AAABdAAAAXQAAAF0AAABdAAAAXQAAAAAAAAAAAAAAAAAAAF0AAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABUAAAAVAAAAFUAAABVAAAAVQAAAFQAAAAAAAAAAAAAAAAAAABdAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAXQAAAFQAAABVAAAAVQAAAFUAAABUAAAAAAAAAAAAAAAAAAAAXQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFQAAABUAAAAVQAAAFUAAABVAAAAVAAAAAAAAAAAAAAAAAAAAF0AAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABdAAAAXQAAAF0AAABdAAAAXQAAAF0AAAAAAAAAAAAAAAAAAABdAAAAXQAAAFEAAABRAAAAUQAAAFEAAABRAAAAXQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF0AAABdAAAAXQAAAF0AAABdAAAAXQAAAF0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
       -1,-1:
         ind: -1,-1
-        tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXgAAAF4AAABeAAAAXgAAAF4AAABeAAAAXgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXgAAAF4AAABSAAAAUgAAAFIAAABSAAAAUgAAAF4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+        tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXQAAAF0AAABdAAAAXQAAAF0AAABdAAAAXQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXQAAAF0AAABRAAAAUQAAAFEAAABRAAAAUQAAAF0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
       0,-1:
         ind: 0,-1
-        tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABeAAAAXgAAAF4AAABeAAAAXgAAAF4AAABeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXgAAAFEAAABRAAAAUQAAAFEAAABRAAAAXgAAAF4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+        tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABdAAAAXQAAAF0AAABdAAAAXQAAAF0AAABdAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXQAAAFAAAABQAAAAUAAAAFAAAABQAAAAXQAAAF0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
       0,0:
         ind: 0,0
-        tiles: XgAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAF4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFUAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABeAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAXgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAF4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF4AAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABeAAAAUQAAAFEAAABRAAAAUQAAAFEAAABeAAAAXgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXgAAAF4AAABeAAAAXgAAAF4AAABeAAAAXgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+        tiles: XQAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAF0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFQAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABdAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABdAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAXQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAF0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF0AAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABdAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABdAAAAUAAAAFAAAABQAAAAUAAAAFAAAABdAAAAXQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXQAAAF0AAABdAAAAXQAAAF0AAABdAAAAXQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
     type: MapGrid
   - type: Broadphase
   - angularDamping: 0.05
@@ -134,622 +133,622 @@ entities:
     enabled: True
     type: Gravity
   - chunkCollection:
-      0,-1:
-        183:
-          color: '#0069B3FF'
-          id: CheckerNESW
-          coordinates: 1,-1
-        184:
-          color: '#0069B3FF'
-          id: CheckerNESW
-          coordinates: 2,-1
-        197:
-          color: '#0069B3FF'
-          id: CheckerNESW
-          coordinates: 3,-1
-        198:
-          color: '#0069B3FF'
-          id: CheckerNESW
-          coordinates: 4,-1
-        199:
-          color: '#0069B3FF'
-          id: CheckerNESW
-          coordinates: 5,-1
-        224:
-          color: '#FFFFFFFF'
-          id: BrickTileWhiteLineS
-          coordinates: 2,-1
-        225:
-          color: '#FFFFFFFF'
-          id: BrickTileWhiteLineS
-          coordinates: 3,-1
-        226:
-          color: '#FFFFFFFF'
-          id: BrickTileWhiteLineS
-          coordinates: 4,-1
-        233:
-          color: '#FFFFFFFF'
-          id: BrickTileWhiteCornerSe
-          coordinates: 5,-1
-        240:
-          color: '#FFFFFFFF'
-          id: BrickTileWhiteCornerSw
-          coordinates: 1,-1
-      -1,-1:
-        119:
-          color: '#0069B3FF'
-          id: DiagonalCheckerBOverlay
-          coordinates: -7,-1
-        120:
-          color: '#0069B3FF'
-          id: DiagonalCheckerBOverlay
-          coordinates: -8,-1
-        121:
-          color: '#0069B3FF'
-          id: DiagonalCheckerBOverlay
-          coordinates: -9,-1
-        122:
-          color: '#0069B3FF'
-          id: DiagonalCheckerBOverlay
-          coordinates: -10,-1
-        123:
-          color: '#0069B3FF'
-          id: DiagonalCheckerBOverlay
-          coordinates: -11,-1
-        161:
-          color: '#FFFFFFFF'
-          id: BrickTileWhiteLineS
-          coordinates: -10,-1
-        162:
-          color: '#FFFFFFFF'
-          id: BrickTileWhiteLineS
-          coordinates: -9,-1
-        163:
-          color: '#FFFFFFFF'
-          id: BrickTileWhiteLineS
-          coordinates: -8,-1
-        167:
-          color: '#FFFFFFFF'
-          id: BrickTileWhiteCornerSe
-          coordinates: -7,-1
-        170:
-          color: '#FFFFFFFF'
-          id: BrickTileWhiteCornerSw
-          coordinates: -11,-1
       -1,0:
-        262:
-          color: '#0069B3FF'
-          id: MiniTileWhiteLineE
-          coordinates: -1,2
-        252:
-          color: '#0069B3FF'
-          id: MiniTileWhiteLineE
-          coordinates: -5,2
-        260:
-          color: '#0069B3FF'
-          id: MiniTileWhiteLineN
-          coordinates: -6,3
-        253:
-          color: '#0069B3FF'
-          id: MiniTileWhiteLineS
-          coordinates: -6,3
-        173:
-          color: '#FFFFFFFF'
-          id: BrickTileWhiteCornerNw
-          coordinates: -12,4
-        256:
-          color: '#0069B3FF'
-          id: MiniTileWhiteLineS
-          coordinates: -6,1
-        257:
-          color: '#0069B3FF'
-          id: MiniTileWhiteLineN
-          coordinates: -6,1
-        251:
-          color: '#0069B3FF'
-          id: MiniTileWhiteLineW
-          coordinates: -1,2
-        172:
-          color: '#FFFFFFFF'
-          id: BrickTileWhiteInnerSw
-          coordinates: -11,0
-        171:
-          color: '#FFFFFFFF'
-          id: BrickTileWhiteCornerSw
-          coordinates: -12,0
-        261:
-          color: '#0069B3FF'
-          id: MiniTileWhiteLineW
-          coordinates: -5,2
-        113:
+        0:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -7,5
-        114:
+        1:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -7,4
-        115:
+        2:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -7,3
-        116:
+        3:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -7,2
-        117:
+        4:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -7,1
-        118:
+        5:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -7,0
-        124:
+        11:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -11,0
-        125:
+        12:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -12,0
-        126:
+        13:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -12,1
-        127:
+        14:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -12,2
-        128:
+        15:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -12,3
-        129:
+        16:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -12,4
-        130:
+        17:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -11,4
-        131:
+        18:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -11,5
-        132:
+        19:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -10,5
-        133:
+        20:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -9,5
-        134:
+        21:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -8,5
-        135:
+        22:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -8,4
-        136:
+        23:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -9,4
-        137:
+        24:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -10,4
-        138:
+        25:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -11,3
-        139:
+        26:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -10,3
-        140:
+        27:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -9,3
-        141:
+        28:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -8,3
-        142:
+        29:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -8,2
-        143:
+        30:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -9,2
-        144:
+        31:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -10,2
-        145:
+        32:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -11,2
-        146:
+        33:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -11,1
-        147:
+        34:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -10,1
-        148:
+        35:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -10,0
-        149:
+        36:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -9,0
-        150:
+        37:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -9,1
-        151:
+        38:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -8,1
-        152:
+        39:
           color: '#0069B3FF'
           id: DiagonalCheckerBOverlay
           coordinates: -8,0
-        153:
+        40:
           color: '#FFFFFFFF'
           id: BrickTileWhiteLineE
           coordinates: -7,2
-        154:
+        41:
           color: '#FFFFFFFF'
           id: BrickTileWhiteLineE
           coordinates: -7,3
-        155:
+        42:
           color: '#FFFFFFFF'
           id: BrickTileWhiteLineE
           coordinates: -7,1
-        156:
+        43:
           color: '#FFFFFFFF'
           id: BrickTileWhiteLineE
           coordinates: -7,0
-        157:
+        44:
           color: '#FFFFFFFF'
           id: BrickTileWhiteLineE
           coordinates: -7,4
-        158:
+        45:
           color: '#FFFFFFFF'
           id: BrickTileWhiteLineN
           coordinates: -8,5
-        159:
+        46:
           color: '#FFFFFFFF'
           id: BrickTileWhiteLineN
           coordinates: -9,5
-        160:
+        47:
           color: '#FFFFFFFF'
           id: BrickTileWhiteLineN
           coordinates: -10,5
-        164:
+        51:
           color: '#FFFFFFFF'
           id: BrickTileWhiteLineW
           coordinates: -12,1
-        165:
+        52:
           color: '#FFFFFFFF'
           id: BrickTileWhiteLineW
           coordinates: -12,2
-        166:
+        53:
           color: '#FFFFFFFF'
           id: BrickTileWhiteLineW
           coordinates: -12,3
-        174:
+        56:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteCornerSw
+          coordinates: -12,0
+        57:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteInnerSw
+          coordinates: -11,0
+        58:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteCornerNw
+          coordinates: -12,4
+        59:
           color: '#FFFFFFFF'
           id: BrickTileWhiteCornerNw
           coordinates: -11,5
-        175:
+        60:
           color: '#FFFFFFFF'
           id: BrickTileWhiteInnerNw
           coordinates: -11,4
-        176:
+        61:
           color: '#FFFFFFFF'
           id: BrickTileWhiteCornerNe
           coordinates: -7,5
-        241:
+        124:
           color: '#FFFFFFFF'
           id: StationWareLogo4
           coordinates: -4,2
-        242:
+        125:
           color: '#FFFFFFFF'
           id: StationWareLogo5
           coordinates: -3,2
-        243:
+        126:
           color: '#FFFFFFFF'
           id: StationWareLogo6
           coordinates: -2,2
-        244:
+        127:
           color: '#FFFFFFFF'
           id: StationWareLogo2
           coordinates: -3,3
-        245:
+        128:
           color: '#FFFFFFFF'
           id: StationWareLogo3
           coordinates: -2,3
-        246:
+        129:
           color: '#FFFFFFFF'
           id: StationWareLogo1
           coordinates: -4,3
-        247:
+        130:
           color: '#FFFFFFFF'
           id: StationWareLogo7
           coordinates: -4,1
-        248:
+        131:
           color: '#FFFFFFFF'
           id: StationWareLogo8
           coordinates: -3,1
-        249:
+        132:
           color: '#FFFFFFFF'
           id: StationWareLogo9
           coordinates: -2,1
-        263:
+        133:
+          color: '#0069B3FF'
+          id: MiniTileWhiteLineW
+          coordinates: -1,2
+        134:
+          color: '#0069B3FF'
+          id: MiniTileWhiteLineE
+          coordinates: -5,2
+        135:
+          color: '#0069B3FF'
+          id: MiniTileWhiteLineS
+          coordinates: -6,3
+        138:
+          color: '#0069B3FF'
+          id: MiniTileWhiteLineS
+          coordinates: -6,1
+        139:
+          color: '#0069B3FF'
+          id: MiniTileWhiteLineN
+          coordinates: -6,1
+        142:
+          color: '#0069B3FF'
+          id: MiniTileWhiteLineN
+          coordinates: -6,3
+        143:
+          color: '#0069B3FF'
+          id: MiniTileWhiteLineW
+          coordinates: -5,2
+        144:
+          color: '#0069B3FF'
+          id: MiniTileWhiteLineE
+          coordinates: -1,2
+        145:
           color: '#0069B3FF'
           id: MiniTileWhiteCornerNw
           coordinates: -1,3
-        264:
+        146:
           color: '#0069B3FF'
           id: MiniTileWhiteCornerSe
           coordinates: -5,1
-        265:
+        147:
           color: '#0069B3FF'
           id: MiniTileWhiteCornerSw
           coordinates: -1,1
-        266:
+        148:
           color: '#0069B3FF'
           id: MiniTileWhiteCornerNe
           coordinates: -5,3
-        267:
+        149:
           color: '#0069B3FF'
           id: MiniTileWhiteInnerSe
           coordinates: -1,3
-        268:
+        150:
           color: '#0069B3FF'
           id: MiniTileWhiteInnerSw
           coordinates: -5,3
-        269:
+        151:
           color: '#0069B3FF'
           id: MiniTileWhiteInnerNw
           coordinates: -5,1
-        270:
+        152:
           color: '#0069B3FF'
           id: MiniTileWhiteInnerNe
           coordinates: -1,1
+      -1,-1:
+        6:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -7,-1
+        7:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -8,-1
+        8:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -9,-1
+        9:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -10,-1
+        10:
+          color: '#0069B3FF'
+          id: DiagonalCheckerBOverlay
+          coordinates: -11,-1
+        48:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineS
+          coordinates: -10,-1
+        49:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineS
+          coordinates: -9,-1
+        50:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineS
+          coordinates: -8,-1
+        54:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteCornerSe
+          coordinates: -7,-1
+        55:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteCornerSw
+          coordinates: -11,-1
       0,0:
-        177:
+        62:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 1,5
-        178:
+        63:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 1,4
-        179:
+        64:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 1,3
-        180:
+        65:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 1,2
-        181:
+        66:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 1,1
-        182:
+        67:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 1,0
-        185:
+        70:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 2,0
-        186:
+        71:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 2,1
-        187:
+        72:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 2,2
-        188:
+        73:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 2,3
-        189:
+        74:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 2,4
-        190:
+        75:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 2,5
-        191:
+        76:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 3,5
-        192:
+        77:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 3,4
-        193:
+        78:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 3,3
-        194:
+        79:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 3,2
-        195:
+        80:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 3,1
-        196:
+        81:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 3,0
-        200:
+        85:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 5,0
-        201:
+        86:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 4,0
-        202:
+        87:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 6,0
-        203:
+        88:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 6,1
-        204:
+        89:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 5,1
-        205:
+        90:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 4,1
-        206:
+        91:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 4,2
-        207:
+        92:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 5,2
-        208:
+        93:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 6,2
-        209:
+        94:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 6,3
-        210:
+        95:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 5,3
-        211:
+        96:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 4,3
-        212:
+        97:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 4,4
-        213:
+        98:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 5,4
-        214:
+        99:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 6,4
-        215:
+        100:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 5,5
-        216:
+        101:
           color: '#0069B3FF'
           id: CheckerNESW
           coordinates: 4,5
-        254:
-          color: '#0069B3FF'
-          id: MiniTileWhiteLineS
-          coordinates: 0,3
-        255:
-          color: '#0069B3FF'
-          id: MiniTileWhiteLineS
-          coordinates: 0,1
-        219:
+        102:
           color: '#FFFFFFFF'
           id: BrickTileWhiteLineW
           coordinates: 1,4
-        220:
+        103:
           color: '#FFFFFFFF'
           id: BrickTileWhiteLineW
           coordinates: 1,3
-        221:
+        104:
           color: '#FFFFFFFF'
           id: BrickTileWhiteLineW
           coordinates: 1,2
-        222:
+        105:
           color: '#FFFFFFFF'
           id: BrickTileWhiteLineW
           coordinates: 1,1
-        223:
+        106:
           color: '#FFFFFFFF'
           id: BrickTileWhiteLineW
           coordinates: 1,0
-        227:
+        110:
           color: '#FFFFFFFF'
           id: BrickTileWhiteLineN
           coordinates: 2,5
-        228:
+        111:
           color: '#FFFFFFFF'
           id: BrickTileWhiteLineN
           coordinates: 3,5
-        229:
+        112:
           color: '#FFFFFFFF'
           id: BrickTileWhiteLineN
           coordinates: 4,5
-        230:
+        113:
           color: '#FFFFFFFF'
           id: BrickTileWhiteLineE
           coordinates: 6,3
-        231:
+        114:
           color: '#FFFFFFFF'
           id: BrickTileWhiteLineE
           coordinates: 6,2
-        232:
+        115:
           color: '#FFFFFFFF'
           id: BrickTileWhiteLineE
           coordinates: 6,1
-        234:
+        117:
           color: '#FFFFFFFF'
           id: BrickTileWhiteCornerSe
           coordinates: 6,0
-        235:
+        118:
           color: '#FFFFFFFF'
           id: BrickTileWhiteInnerSe
           coordinates: 5,0
-        236:
+        119:
           color: '#FFFFFFFF'
           id: BrickTileWhiteInnerNe
           coordinates: 5,4
-        237:
+        120:
           color: '#FFFFFFFF'
           id: BrickTileWhiteCornerNe
           coordinates: 5,5
-        238:
+        121:
           color: '#FFFFFFFF'
           id: BrickTileWhiteCornerNe
           coordinates: 6,4
-        239:
+        122:
           color: '#FFFFFFFF'
           id: BrickTileWhiteCornerNw
           coordinates: 1,5
-        258:
+        136:
+          color: '#0069B3FF'
+          id: MiniTileWhiteLineS
+          coordinates: 0,3
+        137:
+          color: '#0069B3FF'
+          id: MiniTileWhiteLineS
+          coordinates: 0,1
+        140:
           color: '#0069B3FF'
           id: MiniTileWhiteLineN
           coordinates: 0,1
-        259:
+        141:
           color: '#0069B3FF'
           id: MiniTileWhiteLineN
           coordinates: 0,3
+      0,-1:
+        68:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 1,-1
+        69:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 2,-1
+        82:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 3,-1
+        83:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 4,-1
+        84:
+          color: '#0069B3FF'
+          id: CheckerNESW
+          coordinates: 5,-1
+        107:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineS
+          coordinates: 2,-1
+        108:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineS
+          coordinates: 3,-1
+        109:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteLineS
+          coordinates: 4,-1
+        116:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteCornerSe
+          coordinates: 5,-1
+        123:
+          color: '#FFFFFFFF'
+          id: BrickTileWhiteCornerSw
+          coordinates: 1,-1
     type: DecalGrid
   - tiles:
       -5,-2: 0
@@ -969,8 +968,8 @@ entities:
       -1,11: 0
       -1,15: 0
       0,-10: 0
-      0,-2: 1
-      0,-1: 1
+      0,-2: 0
+      0,-1: 0
       1,-10: 0
       1,-2: 0
       2,-10: 0
@@ -1064,7 +1063,7 @@ entities:
       -6,8: 0
       -6,9: 0
       -6,10: 0
-      -6,11: 1
+      -6,11: 0
       -6,12: 0
       -6,13: 0
       -6,14: 0
@@ -1098,8 +1097,8 @@ entities:
       -6,-5: 0
       -6,-4: 0
       -6,-3: 0
-      -6,-2: 2
-      -6,-1: 1
+      -6,-2: 0
+      -6,-1: 0
       -5,-6: 0
       -5,-5: 0
       -5,-4: 0
@@ -1108,64 +1107,66 @@ entities:
       -4,-1: 0
       -8,11: 0
       -8,12: 0
-      -9,0: 3
-      -9,1: 3
-      -9,2: 3
-      -9,3: 3
-      -9,4: 3
-      -9,5: 3
-      -9,-1: 3
+      -9,0: 0
+      -9,1: 0
+      -9,2: 0
+      -9,3: 0
+      -9,4: 0
+      -9,5: 0
+      -9,-1: 0
+      -13,0: 0
+      -13,1: 0
+      -13,2: 0
+      -13,3: 0
+      -13,4: 0
+      -13,5: 0
+      -12,0: 0
+      -12,1: 0
+      -12,2: 0
+      -12,3: 0
+      -12,4: 0
+      -12,5: 0
+      -12,6: 0
+      -11,0: 0
+      -11,1: 0
+      -11,2: 0
+      -11,3: 0
+      -11,4: 0
+      -11,5: 0
+      -11,6: 0
+      -10,0: 0
+      -10,1: 0
+      -10,2: 0
+      -10,3: 0
+      -10,4: 0
+      -10,5: 0
+      -10,6: 0
+      -9,6: 0
+      -13,-1: 0
+      -12,-2: 0
+      -12,-1: 0
+      -11,-2: 0
+      -11,-1: 0
+      -10,-2: 0
+      -10,-1: 0
+      -9,-2: 0
+      5,-2: 0
+      5,-1: 0
+      7,-1: 0
+      5,5: 0
+      5,6: 0
+      7,0: 0
+      7,1: 0
+      7,2: 0
+      7,3: 0
+      7,4: 0
+      7,5: 0
     uniqueMixes:
     - volume: 2500
       temperature: 293.15
       moles:
       - 21.824879
       - 82.10312
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-    - volume: 2500
-      temperature: 293.15
-      moles:
-      - 19.481253
-      - 73.28662
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-    - volume: 2500
-      temperature: 293.15
-      moles:
-      - 20.619795
-      - 77.56971
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-    - volume: 2500
-      temperature: 293.15
-      moles:
-      - 0
-      - 0
       - 0
       - 0
       - 0
@@ -1192,7 +1193,7 @@ entities:
   components:
   - type: MetaData
   - type: Transform
-  - index: 2
+  - index: 3
     type: Map
   - type: PhysicsMap
   - type: Broadphase

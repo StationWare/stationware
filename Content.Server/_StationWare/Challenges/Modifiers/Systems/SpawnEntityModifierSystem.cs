@@ -50,7 +50,7 @@ public sealed class SpawnEntityModifierSystem : EntitySystem
             if (component.SpawnPerPlayer)
             {
                 var amount = (int) MathF.Round(players * component.SpawnPerPlayerMultiplier);
-                spawns = spawns.Take(Math.Min(spawns.Count, amount)).ToList();
+                spawns = spawns.Take(Math.Clamp(amount, 1, spawns.Count)).ToList();
             }
 
             var positions = new List<EntityCoordinates>();
@@ -138,14 +138,16 @@ public sealed class SpawnEntityModifierSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        foreach (var (timer, spawn, challenge) in EntityQuery<RepeatSpawnEntityModifierComponent, SpawnEntityModifierComponent, StationWareChallengeComponent>())
+        var enumerator = EntityQueryEnumerator<RepeatSpawnEntityModifierComponent, SpawnEntityModifierComponent,
+                StationWareChallengeComponent>();
+        while (enumerator.MoveNext(out var uid, out var timer, out var spawn, out var challenge))
         {
             if (!timer.Started)
                 continue;
             if (_timing.CurTime < timer.NextSpawn)
                 continue;
             timer.NextSpawn = _timing.CurTime + timer.Interval;
-            SpawnEntities(spawn.Owner, spawn, challenge.Completions.Count);
+            SpawnEntities(uid, spawn, challenge.Completions.Count);
         }
     }
 }

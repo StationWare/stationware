@@ -11,11 +11,11 @@ public sealed partial class StationWareChallengeSystem
 
     private void OnChallengeEnd(ref ChallengeEndEvent ev)
     {
-        foreach (var challengeEffect in EntityQuery<ChallengeStateEffectComponent>())
+        var enumerator = EntityQueryEnumerator<ChallengeStateEffectComponent>();
+        while (enumerator.MoveNext(out var ent, out var challengeEffect))
         {
             if (challengeEffect.Challenge != ev.Challenge)
                 continue;
-            var ent = challengeEffect.Owner;
             EnsureComp<TimedDespawnComponent>(ent).Lifetime = challengeEffect.DisappearDelay;
         }
     }

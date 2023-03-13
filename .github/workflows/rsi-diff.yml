@@ -1,4 +1,7 @@
 name: Diff RSIs
+permissions:
+      contents: read
+      issues: write
 
 on:
   pull_request_target:
