@@ -226,7 +226,7 @@ namespace Content.Server.Polymorph.Systems
             if (Deleted(uid))
                 return;
 
-            if (!Resolve(uid, ref component))
+            if (!Resolve(uid, ref component, false))
                 return;
 
             var parent = component.Parent;
