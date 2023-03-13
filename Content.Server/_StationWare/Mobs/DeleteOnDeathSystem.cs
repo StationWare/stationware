@@ -40,7 +40,7 @@ public sealed class DeleteOnDeathSystem : EntitySystem
 
         foreach (var part in ev.GibbedParts)
         {
-            if (Exists(part) && !Deleted(part) && !Terminating(part))
+            if (!Deleted(part) && !Terminating(part))
                 QueueDel(part);
         }
     }
