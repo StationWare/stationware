@@ -264,12 +264,12 @@
   startDelay: 0
   duration: 5
   challengeModifiers:
-  - type: SpawnEntityModifier
-    spawns:
-    - id: ClothingOuterHardsuitSpatio
-      amount: 3
-  - type: RequireSlotOccupied
-    slot: "head"
+    - type: SpawnEntityModifier
+      spawns:
+        - id: ClothingOuterHardsuitSpatio
+          amount: 3
+    - type: RequireSlotOccupied
+      slot: "head"
 
 - type: challenge
   id: GreytideChallenge
@@ -370,3 +370,15 @@
     items:
     - id: WeaponPulseCarbine
     - id: ClothingOuterHardsuitDeathsquad
+
+- type: challenge
+  id: HideInALockerChallenge
+  announcement: challenge-hide
+  startDelay: 0
+  duration: 5
+  challengeModifiers:
+    - type: SpawnEntityModifier
+      spawns:
+        - id: ClosetBase
+          amount: 3
+    - type: IsInsideStorageModifier
