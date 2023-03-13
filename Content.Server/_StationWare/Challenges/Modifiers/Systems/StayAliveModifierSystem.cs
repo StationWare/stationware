@@ -12,20 +12,7 @@ public sealed class StayAliveModifierSystem : EntitySystem
     /// <inheritdoc/>
     public override void Initialize()
     {
-        SubscribeLocalEvent<StayAliveModifierComponent, BeforeChallengeEndEvent>(OnBeforeChallengeEnd);
         SubscribeLocalEvent<MobStateChangedEvent>(OnMobStateChanged);
-    }
-
-    private void OnBeforeChallengeEnd(EntityUid uid, StayAliveModifierComponent component, ref BeforeChallengeEndEvent args)
-    {
-        if (!TryComp<StationWareChallengeComponent>(uid, out var challenge))
-            return;
-
-        foreach (var player in args.Players)
-        {
-            if (_mobState.IsAlive(player))
-                _stationWareChallenge.SetPlayerChallengeState(player, uid, true, challenge);
-        }
     }
 
     private void OnMobStateChanged(MobStateChangedEvent ev)
