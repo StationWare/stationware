@@ -6,7 +6,7 @@ namespace Content.Server._StationWare.ChallengeOverlay;
 
 public sealed class ChallengeOverlaySystem : SharedChallengeOverlaySystem
 {
-    public void BroadcastText(string text, bool shown, Color textColor, IPlayerSession? session)
+    public void BroadcastText(string text, bool shown, Color textColor, IPlayerSession? session = null)
     {
         var filter = Filter.Empty();
 

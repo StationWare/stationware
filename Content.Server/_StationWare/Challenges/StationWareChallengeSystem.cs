@@ -85,7 +85,6 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
         var beforeEv = new BeforeChallengeEndEvent(GetEntitiesFromNetUserIds(component.Completions.Keys).ToList(), component);
         RaiseLocalEvent(uid, ref beforeEv);
 
-        _overlay.BroadcastText(Loc.GetString("overlay-lost"), true, Color.Red, null);
 
         foreach (var (player, completion) in component.Completions)
         {
@@ -97,7 +96,6 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
             {
                 component.Completions[player] = component.WinByDefault;
             }
-            _overlay.BroadcastText(Loc.GetString("overlay-won"), true, Color.Green, session);
         }
 
         Dictionary<NetUserId, bool> finalCompletions = new();
@@ -144,6 +142,15 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
             : component.LoseEffectPrototypeId;
         var effectEnt = Spawn(effect, new EntityCoordinates(uid, 0, 0));
         EnsureComp<ChallengeStateEffectComponent>(effectEnt).Challenge = challengeEnt;
+
+        if (win)
+        {
+            _overlay.BroadcastText(Loc.GetString("overlay-won"), true, Color.Green, actor.PlayerSession);
+        }
+        else
+        {
+            _overlay.BroadcastText(Loc.GetString("overlay-lost"), true, Color.Red, actor.PlayerSession);
+        }
 
         var ev = new PlayerChallengeStateSetEvent(challengeEnt, actor.PlayerSession, win);
         RaiseLocalEvent(uid, ref ev);
