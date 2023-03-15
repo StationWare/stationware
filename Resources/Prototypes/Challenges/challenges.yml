@@ -284,8 +284,6 @@
 - type: challenge
   id: PutThatHelmetOnChallenge
   announcement: challenge-put-that-helmet-on
-  winByDefault: true
-  startDelay: 0
   duration: 5
   challengeModifiers:
   - type: SpawnEntityModifier
