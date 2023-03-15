@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Content.Server._StationWare.ChallengeOverlay;
 using Content.Server._StationWare.Challenges;
+using Content.Server._StationWare.Points;
 using Content.Server.Chat.Managers;
 using Content.Server.CombatMode;
 using Content.Server.Damage.Systems;
@@ -32,6 +33,7 @@ public sealed class StationWareRuleSystem : GameRuleSystem
     [Dependency] private readonly HandsSystem _hands = default!;
     [Dependency] private readonly StationWareChallengeSystem _stationWareChallenge = default!;
     [Dependency] private readonly ChallengeOverlaySystem _overlay = default!;
+    [Dependency] private readonly PointSystem _point = default!;
 
     private TimeSpan _nextChallengeTime;
     private TimeSpan? _restartRoundTime;
@@ -43,8 +45,6 @@ public sealed class StationWareRuleSystem : GameRuleSystem
 
     private int _totalChallenges = 10;
     private int _challengeCount = 1;
-
-    private readonly Dictionary<NetUserId, PlayerInfo> _points = new();
 
     private readonly HashSet<IPlayerSession> _queuedRespawns = new();
 
@@ -58,8 +58,7 @@ public sealed class StationWareRuleSystem : GameRuleSystem
         SubscribeLocalEvent<MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<RoundEndTextAppendEvent>(OnRoundEndText);
 
-        _overlay.BroadcastText("", false, Color.Green, null);
-
+        _overlay.BroadcastText("", false, Color.Green);
 
         _configuration.OnValueChanged(CCVars.StationWareTotalChallenges, e => _totalChallenges = e, true);
         _configuration.OnValueChanged(CCVars.StationWareChallengeCooldownLength, e => _challengeDelay = TimeSpan.FromSeconds(e), true);
@@ -72,11 +71,6 @@ public sealed class StationWareRuleSystem : GameRuleSystem
 
         if (ev.Challenge != _currentChallenge)
             return;
-
-        foreach (var (netUserId, won) in ev.Completions)
-        {
-            AdjustPlayerScore(netUserId, won ? 1 : 0);
-        }
 
         if (_challengeCount == _totalChallenges)
         {
@@ -116,40 +110,18 @@ public sealed class StationWareRuleSystem : GameRuleSystem
         if (!RuleAdded)
             return;
 
-        if (_points.Count == 0)
+        ev.AddLine(_point.GetPointScoreBoard().ToMarkup());
+
+        if (!_point.TryGetHighestScoringPlayer(null, out var pair))
             return;
-
-        var orderedList = _points.OrderByDescending(x => x.Value.Points).ToList();
-
-        for (var i = 0; i < orderedList.Count; i++)
-        {
-            var (_, playerInfo) = orderedList[i];
-            ev.AddLine(Loc.GetString("stationware-report-score",
-                ("place", i + 1),
-                ("name", playerInfo.Name),
-                ("points", playerInfo.Points)));
-        }
-
-        var (_, fPlayerInfo) = orderedList.First();
-        ev.AddLine("");
+        var info = pair.Value.Value;
         ev.AddLine(Loc.GetString("stationware-report-winner",
-            ("name", fPlayerInfo.Name),
-            ("points", fPlayerInfo.Points)));
-    }
-
-    private void AdjustPlayerScore(NetUserId id, int amount = 1)
-    {
-        if (!_points.ContainsKey(id))
-        {
-            _player.TryGetSessionById(id, out var session);
-            _points[id] = new PlayerInfo(session?.Name ?? "Unknown");
-        }
-        _points[id].Points += amount;
+            ("name", info.Name),
+            ("points", info.Points)));
     }
 
     public override void Started()
     {
-        _points.Clear();
         _previousChallenges.Clear();
         _challengeCount = 1;
         _currentChallenge = null;
@@ -214,7 +186,10 @@ public sealed class StationWareRuleSystem : GameRuleSystem
                 players.Add(id, (session, attachedEntity));
         }
 
-        var firstNetUserId = _points.MaxBy(x => x.Value.Points).Key;
+        if (!_point.TryGetHighestScoringPlayer(null, out var highest))
+            return;
+
+        var firstNetUserId = highest.Value.Key;
         if (players.TryGetValue(firstNetUserId, out var s))
         {
             var playerEnt = s.Item2;
@@ -233,22 +208,6 @@ public sealed class StationWareRuleSystem : GameRuleSystem
                 continue;
             combatMode.IsInCombatMode = false;
             RemComp(ent, combatMode);
-        }
-    }
-
-    /// <summary>
-    /// A little class used to associate a player's netUserId
-    /// with their name and point amount.
-    /// </summary>
-    private sealed class PlayerInfo
-    {
-        public readonly string Name;
-        public int Points;
-
-        public PlayerInfo(string name, int points = 0)
-        {
-            Name = name;
-            Points = points;
         }
     }
 }
