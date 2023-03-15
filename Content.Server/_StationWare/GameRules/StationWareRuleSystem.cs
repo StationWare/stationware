@@ -42,8 +42,6 @@ public sealed class StationWareRuleSystem : GameRuleSystem
     private int _totalChallenges = 10;
     private int _challengeCount = 1;
 
-    private readonly Dictionary<NetUserId, PlayerInfo> _points = new();
-
     private readonly HashSet<IPlayerSession> _queuedRespawns = new();
 
     public override string Prototype => "StationWare";
@@ -67,11 +65,6 @@ public sealed class StationWareRuleSystem : GameRuleSystem
 
         if (ev.Challenge != _currentChallenge)
             return;
-
-        foreach (var (netUserId, won) in ev.Completions)
-        {
-            AdjustPlayerScore(netUserId, won ? 1 : 0);
-        }
 
         if (_challengeCount == _totalChallenges)
         {
@@ -131,19 +124,8 @@ public sealed class StationWareRuleSystem : GameRuleSystem
             ("points", fPlayerInfo.Points)));
     }
 
-    private void AdjustPlayerScore(NetUserId id, int amount = 1)
-    {
-        if (!_points.ContainsKey(id))
-        {
-            _player.TryGetSessionById(id, out var session);
-            _points[id] = new PlayerInfo(session?.Name ?? "Unknown");
-        }
-        _points[id].Points += amount;
-    }
-
     public override void Started()
     {
-        _points.Clear();
         _previousChallenges.Clear();
         _challengeCount = 1;
         _currentChallenge = null;
@@ -226,22 +208,6 @@ public sealed class StationWareRuleSystem : GameRuleSystem
                 continue;
             combatMode.IsInCombatMode = false;
             RemComp(ent, combatMode);
-        }
-    }
-
-    /// <summary>
-    /// A little class used to associate a player's netUserId
-    /// with their name and point amount.
-    /// </summary>
-    private sealed class PlayerInfo
-    {
-        public readonly string Name;
-        public int Points;
-
-        public PlayerInfo(string name, int points = 0)
-        {
-            Name = name;
-            Points = points;
         }
     }
 }
