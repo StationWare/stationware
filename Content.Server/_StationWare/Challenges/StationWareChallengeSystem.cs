@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Content.Server._StationWare.ChallengeOverlay;
 using Content.Server.Administration.Commands;
 using Content.Server.Chat.Systems;
 using Content.Server.GameTicking;
@@ -31,6 +32,7 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
     [Dependency] private readonly GameTicker _gameTicker = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
+    [Dependency] private readonly ChallengeOverlaySystem _overlay = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -69,6 +71,9 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
 
         var announcement = Loc.GetString(challengePrototype.Announcement);
         _chat.DispatchGlobalAnnouncement(announcement, announcementSound: challengePrototype.AnnouncementSound, colorOverride: Color.Fuchsia);
+
+        _overlay.BroadcastText(announcement, true, Color.Fuchsia, null);
+
         return uid;
     }
 
@@ -79,6 +84,7 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
 
         var beforeEv = new BeforeChallengeEndEvent(GetEntitiesFromNetUserIds(component.Completions.Keys).ToList(), component);
         RaiseLocalEvent(uid, ref beforeEv);
+
 
         foreach (var (player, completion) in component.Completions)
         {
@@ -136,6 +142,15 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
             : component.LoseEffectPrototypeId;
         var effectEnt = Spawn(effect, new EntityCoordinates(uid, 0, 0));
         EnsureComp<ChallengeStateEffectComponent>(effectEnt).Challenge = challengeEnt;
+
+        if (win)
+        {
+            _overlay.BroadcastText(Loc.GetString("overlay-won"), true, Color.Green, actor.PlayerSession);
+        }
+        else
+        {
+            _overlay.BroadcastText(Loc.GetString("overlay-lost"), true, Color.Red, actor.PlayerSession);
+        }
 
         var ev = new PlayerChallengeStateSetEvent(challengeEnt, actor.PlayerSession, win);
         RaiseLocalEvent(uid, ref ev);
