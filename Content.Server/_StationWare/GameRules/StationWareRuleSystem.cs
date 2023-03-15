@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Content.Server._StationWare.ChallengeOverlay;
 using Content.Server._StationWare.Challenges;
 using Content.Server.Chat.Managers;
 using Content.Server.CombatMode;
@@ -30,6 +31,7 @@ public sealed class StationWareRuleSystem : GameRuleSystem
     [Dependency] private readonly GodmodeSystem _godmode = default!;
     [Dependency] private readonly HandsSystem _hands = default!;
     [Dependency] private readonly StationWareChallengeSystem _stationWareChallenge = default!;
+    [Dependency] private readonly ChallengeOverlaySystem _overlay = default!;
 
     private TimeSpan _nextChallengeTime;
     private TimeSpan? _restartRoundTime;
@@ -54,6 +56,9 @@ public sealed class StationWareRuleSystem : GameRuleSystem
         SubscribeLocalEvent<MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<RoundEndTextAppendEvent>(OnRoundEndText);
 
+        _overlay.BroadcastText("", false, Color.Green, null);
+
+
         _configuration.OnValueChanged(CCVars.StationWareTotalChallenges, e => _totalChallenges = e, true);
         _configuration.OnValueChanged(CCVars.StationWareChallengeCooldownLength, e => _challengeDelay = TimeSpan.FromSeconds(e), true);
     }
@@ -73,6 +78,7 @@ public sealed class StationWareRuleSystem : GameRuleSystem
             _restartRoundTime = _timing.CurTime + _postRoundDuration;
             return;
         }
+
         _challengeCount++;
 
         _currentChallenge = null;
@@ -196,6 +202,7 @@ public sealed class StationWareRuleSystem : GameRuleSystem
             var playerEnt = s.Item2;
             _godmode.EnableGodmode(playerEnt);
             _chatManager.DispatchServerMessage(s.Item1, Loc.GetString("stationware-you-won"));
+            _overlay.BroadcastText(Loc.GetString("stationware-you-won"), true, Color.Green, s.Item1);
             var minigun = Spawn("WeaponMinigun", Transform(playerEnt).Coordinates); // gamerules suck dick anyways idgaf
             EnsureComp<UnremoveableComponent>(minigun); // no stealing allowed
             _hands.TryPickup(playerEnt, minigun, checkActionBlocker: false);

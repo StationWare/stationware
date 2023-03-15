@@ -1,13 +1,13 @@
 ﻿The font file in this archive was created using Fontstruct the free, online
 font-building tool.
-This font was created by “ocheung”.
+This font was created by “Manu_Hedge”.
 This font has a homepage where this archive and other versions may be found:
-https://fontstruct.com/fontstructions/show/460365
+https://fontstruct.com/fontstructions/show/2216426
 
 Try Fontstruct at https://fontstruct.com
 It’s easy and it’s fun.
 
-Fontstruct is copyright ©2011-2022 Rob Meek
+Fontstruct is copyright ©2022-2023 Rob Meek
 
 LEGAL NOTICE:
 In using this font you must comply with the licensing terms described in the
