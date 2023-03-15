@@ -10,13 +10,13 @@ public sealed class ChallengeOverlaySystem : SharedChallengeOverlaySystem
     {
         var filter = Filter.Empty();
 
-        if (session == null)
+        if (session != null)
         {
-            filter.AddAllPlayers();
+            filter.AddPlayer(session);
         }
         else
         {
-            filter.AddPlayer(session);
+            filter.AddAllPlayers();
         }
 
         RaiseNetworkEvent(

@@ -41,7 +41,7 @@ internal sealed class ChallengeOverlay : Overlay
             var dimensions = args.ScreenHandle.GetDimensions(_font, ChallengeText, scale);
 
             // challenge text
-            var challengeScreenCoordinates = (_eyeManager.WorldToScreen(aabb.Center) - dimensions / 2f) + new Vector2(0, 250);
+            var challengeScreenCoordinates = (_eyeManager.WorldToScreen(aabb.Center) - dimensions / 2f) - new Vector2(0, 250);
             args.ScreenHandle.DrawString(_font, challengeScreenCoordinates, ChallengeText, scale, TextColor);
         }
 

@@ -58,6 +58,9 @@ public sealed class StationWareRuleSystem : GameRuleSystem
         SubscribeLocalEvent<MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<RoundEndTextAppendEvent>(OnRoundEndText);
 
+        _overlay.BroadcastText("", false, Color.Green, null);
+
+
         _configuration.OnValueChanged(CCVars.StationWareTotalChallenges, e => _totalChallenges = e, true);
         _configuration.OnValueChanged(CCVars.StationWareChallengeCooldownLength, e => _challengeDelay = TimeSpan.FromSeconds(e), true);
     }
@@ -82,6 +85,7 @@ public sealed class StationWareRuleSystem : GameRuleSystem
             _restartRoundTime = _timing.CurTime + _postRoundDuration;
             return;
         }
+
         _challengeCount++;
 
         _currentChallenge = null;

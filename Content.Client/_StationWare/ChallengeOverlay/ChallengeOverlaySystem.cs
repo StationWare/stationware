@@ -22,6 +22,8 @@ public sealed class ChallengeOverlaySystem : SharedChallengeOverlaySystem
         ChallengeOverlayOn();
 
         SubscribeNetworkEvent<UpdateChallengeText>(OnChallengeTextUpdate);
+
+        _challengeOverlay.UpdateText("", false, Color.Black);
     }
 
     private void OnChallengeTextUpdate(UpdateChallengeText ev)
