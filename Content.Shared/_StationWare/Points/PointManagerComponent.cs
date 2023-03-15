@@ -1,4 +1,6 @@
 ﻿using Robust.Shared.Network;
+using System;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._StationWare.Points;
 
@@ -16,14 +18,25 @@ public sealed class PointManagerComponent : Component
     /// All of the points for the players
     /// </summary>
     [DataField("points")]
-    public readonly Dictionary<NetUserId, PointInfo> Points = new();
+    public Dictionary<NetUserId, PointInfo> Points = new();
+}
+
+[Serializable, NetSerializable]
+public sealed class PointManagerComponentState : ComponentState
+{
+    public readonly Dictionary<NetUserId, PointInfo> Points;
+
+    public PointManagerComponentState(Dictionary<NetUserId, PointInfo> points)
+    {
+        Points = points;
+    }
 }
 
 /// <summary>
 /// A little class used to associate a player's netUserId
 /// with their name and point amount.
 /// </summary>
-[DataDefinition]
+[DataDefinition, Serializable]
 public sealed class PointInfo
 {
     /// <summary>

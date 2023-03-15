@@ -1,9 +1,7 @@
 ﻿using Content.Server._StationWare.Challenges;
 using Content.Shared._StationWare.Points;
-using JetBrains.Annotations;
-using Robust.Server.GameObjects;
 using Robust.Server.GameStates;
-using Robust.Server.Player;
+using Robust.Shared.GameStates;
 
 namespace Content.Server._StationWare.Points;
 
@@ -16,8 +14,14 @@ public sealed class PointSystem : SharedPointSystem
     {
         base.Initialize();
 
+        SubscribeLocalEvent<PointManagerComponent, ComponentGetState>(OnGetState);
         SubscribeLocalEvent<PointManagerComponent, ComponentInit>(OnInit);
         SubscribeLocalEvent<PlayerChallengeStateSetEvent>(OnPlayerChallengeStateSet);
+    }
+
+    private void OnGetState(EntityUid uid, PointManagerComponent component, ref ComponentGetState args)
+    {
+        args.State = new PointManagerComponentState(component.Points);
     }
 
     private void OnInit(EntityUid uid, PointManagerComponent component, ComponentInit args)

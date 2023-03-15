@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using JetBrains.Annotations;
 using Robust.Shared.Map;
 using Robust.Shared.Network;
@@ -109,6 +110,17 @@ public abstract class SharedPointSystem : EntitySystem
         Dirty(component);
     }
 
+    public bool TryGetHighestScoringPlayer(PointManagerComponent? component, [NotNullWhen(true)] out KeyValuePair<NetUserId, PointInfo>? highest)
+    {
+        component ??= GetPointManager();
+        highest = null;
+        if (!component.Points.Any())
+            return false;
+
+        highest = component.Points.MaxBy(p => p.Value.Points);
+        return true;
+    }
+
     /// <summary>
     /// Creates a formatted message of a scoreboard of all players, ordered from greatest to least.
     /// </summary>
@@ -126,13 +138,13 @@ public abstract class SharedPointSystem : EntitySystem
         {
             if (pointInfo.Points < placementThreshold)
                 placement++;
-            else
-                placement = pointInfo.Points;
+            placementThreshold = pointInfo.Points;
 
             msg.AddMarkup(Loc.GetString("stationware-report-score",
                 ("place", placement),
                 ("name", pointInfo.Name),
                 ("points", pointInfo.Points)));
+            msg.PushNewline();
         }
         return msg;
     }
