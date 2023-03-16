@@ -15,7 +15,7 @@ public sealed class PointSystem : SharedPointSystem
         base.Initialize();
 
         SubscribeLocalEvent<PointManagerComponent, ComponentGetState>(OnGetState);
-        SubscribeLocalEvent<PointManagerComponent, ComponentInit>(OnInit);
+        SubscribeLocalEvent<PointManagerComponent, ComponentStartup>(OnInit);
         SubscribeLocalEvent<PlayerChallengeStateSetEvent>(OnPlayerChallengeStateSet);
     }
 
@@ -24,7 +24,7 @@ public sealed class PointSystem : SharedPointSystem
         args.State = new PointManagerComponentState(component.Points);
     }
 
-    private void OnInit(EntityUid uid, PointManagerComponent component, ComponentInit args)
+    private void OnInit(EntityUid uid, PointManagerComponent component, ComponentStartup args)
     {
         _pvs.AddGlobalOverride(uid);
     }

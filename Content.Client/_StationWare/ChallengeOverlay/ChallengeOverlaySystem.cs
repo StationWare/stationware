@@ -1,13 +1,16 @@
 ﻿using Content.Shared._StationWare.ChallengeOverlay;
 using Robust.Client.Graphics;
+using Robust.Client.Player;
 using Robust.Client.ResourceManagement;
-using Robust.Shared.Timing;
+using Robust.Shared.Prototypes;
 
 namespace Content.Client._StationWare.ChallengeOverlay;
 
 /// <inheritdoc/>
 public sealed class ChallengeOverlaySystem : SharedChallengeOverlaySystem
 {
+    [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IResourceCache _resourceCache = default!;
     [Dependency] private readonly IOverlayManager _overlayManager = default!;
     [Dependency] private readonly IEyeManager _eyeManager = default!;
@@ -24,6 +27,13 @@ public sealed class ChallengeOverlaySystem : SharedChallengeOverlaySystem
         SubscribeNetworkEvent<UpdateChallengeText>(OnChallengeTextUpdate);
 
         _challengeOverlay.UpdateText("", false, Color.Black);
+    }
+
+    public override void Shutdown()
+    {
+        base.Shutdown();
+
+        ChallengeOverlayOff();
     }
 
     private void OnChallengeTextUpdate(UpdateChallengeText ev)
@@ -45,6 +55,6 @@ public sealed class ChallengeOverlaySystem : SharedChallengeOverlaySystem
 
     private void InitializeOverlay()
     {
-        _challengeOverlay = new ChallengeOverlay(this, _resourceCache, _eyeManager);
+        _challengeOverlay = new ChallengeOverlay(EntityManager, _prototype, _resourceCache, _eyeManager, _playerManager);
     }
 }

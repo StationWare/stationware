@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Content.Shared._StationWare.ChallengeOverlay;
 using JetBrains.Annotations;
 using Robust.Shared.Map;
 using Robust.Shared.Network;
@@ -10,7 +11,9 @@ namespace Content.Shared._StationWare.Points;
 
 public abstract class SharedPointSystem : EntitySystem
 {
+    [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly ISharedPlayerManager _player = default!;
+    [Dependency] private readonly SharedChallengeOverlaySystem _challengeOverlay = default!;
 
     /// <summary>
     /// Gets the point manager for the round.
@@ -19,8 +22,8 @@ public abstract class SharedPointSystem : EntitySystem
     /// <returns></returns>
     public PointManagerComponent GetPointManager()
     {
-        var query = EntityQuery<PointManagerComponent>(true).ToList();
-        if (!query.Any())
+        var query = EntityQuery<PointManagerComponent>().ToList();
+        if (!query.Any() && _net.IsServer)
         {
             var manager = Spawn(null, MapCoordinates.Nullspace);
             var managerComp = EnsureComp<PointManagerComponent>(manager);
@@ -38,8 +41,8 @@ public abstract class SharedPointSystem : EntitySystem
 
         _player.TryGetSessionByEntity(uid.Value, out var session);
         return GetPoints(session?.UserId, component);
-
     }
+
     [PublicAPI]
     public int GetPoints(ICommonSession? session, PointManagerComponent? component = null)
     {
@@ -64,6 +67,7 @@ public abstract class SharedPointSystem : EntitySystem
         var info = GetPointInfo(component, id);
         info.Points = value;
         Dirty(component);
+        _challengeOverlay.BroadcastText(string.Empty, false, Color.Black, id);
     }
 
     [PublicAPI]
@@ -79,6 +83,28 @@ public abstract class SharedPointSystem : EntitySystem
         var info = GetPointInfo(component, id);
         info.Points += delta;
         Dirty(component);
+        _challengeOverlay.BroadcastText(string.Empty, false, Color.Black, id);
+    }
+
+    /// <summary>
+    /// Gets the pointinfo class for a specified NetUserId.
+    /// Creates a new one if it doesn't exist.
+    /// </summary>
+    public PointInfo? GetPointInfo(PointManagerComponent? component, EntityUid uid)
+    {
+        if (!_player.TryGetSessionByEntity(uid, out var session))
+            return null;
+        return GetPointInfo(component, session.UserId);
+    }
+
+    /// <summary>
+    /// Gets the pointinfo class for a specified NetUserId.
+    /// Creates a new one if it doesn't exist.
+    /// </summary>
+    [PublicAPI]
+    public PointInfo GetPointInfo(PointManagerComponent? component, ICommonSession session)
+    {
+        return GetPointInfo(component, session.UserId);
     }
 
     /// <summary>
@@ -92,9 +118,9 @@ public abstract class SharedPointSystem : EntitySystem
         return component.Points[id];
     }
 
-    protected void EnsurePointInfo(PointManagerComponent? component, ICommonSession id)
+    protected void EnsurePointInfo(PointManagerComponent? component, ICommonSession session)
     {
-        EnsurePointInfo(component, id.UserId);
+        EnsurePointInfo(component, session.UserId);
     }
 
     protected void EnsurePointInfo(PointManagerComponent? component, NetUserId id)

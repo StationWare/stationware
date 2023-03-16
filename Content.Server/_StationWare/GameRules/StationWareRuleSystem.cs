@@ -127,9 +127,13 @@ public sealed class StationWareRuleSystem : GameRuleSystem
         _currentChallenge = null;
         _restartRoundTime = null;
         _nextChallengeTime = _timing.CurTime + _challengeDelay;
+        _point.GetPointManager(); //initialize it for the overlay
     }
 
-    public override void Ended() { }
+    public override void Ended()
+    {
+        _overlay.BroadcastText("", false, Color.Green);
+    }
 
     public override void Update(float frameTime)
     {
