@@ -1,4 +1,5 @@
 ﻿using Content.Client._StationWare.Points;
+using Content.Shared._StationWare.Points;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Client.ResourceManagement;
@@ -55,19 +56,22 @@ internal sealed class ChallengeOverlay : Overlay
 
         args.ScreenHandle.UseShader(_shader);
 
+        // display the challenge announcement text
         if (DisplayChallengeText)
         {
             var dimensions = args.ScreenHandle.GetDimensions(_font, ChallengeText, scale);
-            // challenge text
-            var challengeScreenCoordinates = _eyeManager.WorldToScreen(aabb.Center) - dimensions / 2f - new Vector2(0, height / 2f * 0.8f);
-            var offset = new Vector2((dimensions.X * 1.1f - dimensions.X) / 2, 0);
-            args.ScreenHandle.DrawRect(UIBox2.FromDimensions(challengeScreenCoordinates - offset, dimensions * 1.1f), ChallengeBoxColor);
-            args.ScreenHandle.DrawString(_font, challengeScreenCoordinates, ChallengeText, scale, TextColor);
+            var textCoords = _eyeManager.WorldToScreen(aabb.Center) - dimensions / 2f - new Vector2(0, height / 2f * 0.8f);
+
+            var backgroundDimensions = dimensions * new Vector2(1.05f, 1.1f);
+            var offset = new Vector2((backgroundDimensions.X - dimensions.X) / 2f, 0);
+            args.ScreenHandle.DrawRect(UIBox2.FromDimensions(textCoords - offset, backgroundDimensions), ChallengeBoxColor);
+            args.ScreenHandle.DrawString(_font, textCoords, ChallengeText, scale, TextColor);
         }
 
+        // update the point count
         var local = _playerMgr.LocalPlayer?.UserId;
-        var manager = _point.GetPointManagerClient();
-        if (local != null && manager != null)
+        PointManagerComponent? manager = null;
+        if (local != null && _point.TryGetPointManager(ref manager))
         {
             var points = _point.GetPoints(local, manager);
             var text = Loc.GetString("overlay-point-display", ("points", points));

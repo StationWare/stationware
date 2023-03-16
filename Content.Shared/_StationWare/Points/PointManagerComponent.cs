@@ -1,5 +1,4 @@
 ﻿using Robust.Shared.Network;
-using System;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 
@@ -37,7 +36,7 @@ public sealed class PointManagerComponentState : ComponentState
 /// A little class used to associate a player's netUserId
 /// with their name and point amount.
 /// </summary>
-[DataDefinition, Serializable]
+[Serializable]
 public sealed class PointInfo
 {
     /// <summary>
