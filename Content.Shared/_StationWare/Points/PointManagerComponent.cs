@@ -1,5 +1,5 @@
 ﻿using Robust.Shared.Network;
-using System;
+using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._StationWare.Points;
@@ -11,7 +11,7 @@ namespace Content.Shared._StationWare.Points;
 /// Yes this is a singleton
 /// No i don't give a shit
 /// </remarks>
-[RegisterComponent]
+[RegisterComponent, NetworkedComponent]
 public sealed class PointManagerComponent : Component
 {
     /// <summary>
@@ -36,7 +36,7 @@ public sealed class PointManagerComponentState : ComponentState
 /// A little class used to associate a player's netUserId
 /// with their name and point amount.
 /// </summary>
-[DataDefinition, Serializable]
+[Serializable]
 public sealed class PointInfo
 {
     /// <summary>
