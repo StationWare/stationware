@@ -19,10 +19,12 @@ discord             = "https://discord.gg/TutAsX6JnY"
 github              = "https://github.com/frigid14/stationware"
 patreon             = "https://www.patreon.com/raincaldwell"
 
-[rules]
-time                = 15
+[server]
 rules_file          = "SW_Rules.txt"
 rules_header        = "ui-rules-header-stationware"
+
+[rules]
+time                = 15
 
 [ooc]
 enable_during_round = true
