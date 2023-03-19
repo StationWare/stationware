@@ -1,5 +1,8 @@
 challenge-death-ball = Don't get hit!
 challenge-freeze = Freeze! Don't move!
+challenge-say-stationware = Say "StationWare"!
+challenge-keep-moving = Don't stop moving!
+challenge-break-barrel = Break a barrel!
 challenge-king-of-the-hill = Stand in the circle.
 challenge-winning-tile = Don't stand on the bright red tiles... Psyche!
 challenge-get-rich = Pick up valuables!

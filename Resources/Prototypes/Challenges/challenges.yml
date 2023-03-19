@@ -23,6 +23,37 @@
   - type: FreezeModifier
 
 - type: challenge
+  id: SayStationWareChallenge
+  announcement: challenge-say-stationware
+  winByDefault: false
+  duration: 5
+  challengeModifiers:
+  - type: SayPhraseModifier
+    phrase: "StationWare"
+
+- type: challenge
+  id: KeepMovingChallenge
+  announcement: challenge-keep-moving
+  winByDefault: true
+  startDelay: 1
+  duration: 5
+  challengeModifiers:
+  - type: KeepMovingModifier
+
+- type: challenge
+  id: BreakBarrelChallenge
+  announcement: challenge-break-barrel
+  duration: 5
+  challengeModifiers:
+  - type: SpawnEntityModifier
+    spawnPerPlayer: true
+    spawnPerPlayerMultiplier: 0.5
+    clumpSize: 1
+    spawns:
+    - id: SWWinBarrel
+      amount: 100
+
+- type: challenge
   id: KingOfTheHillChallenge
   announcement: challenge-king-of-the-hill
   duration: 10
