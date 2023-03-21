@@ -1,7 +1,7 @@
 - type: soundCollection
   id: LobbyMusic
   files:
-     - /Audio/Lobby/atomicamnesiammx.ogg
+    - /Audio/Lobby/atomicamnesiammx.ogg
     - /Audio/Lobby/singuloose.ogg
     - /Audio/Lobby/comet_haley.ogg
     - /Audio/Lobby/marhaba.ogg
