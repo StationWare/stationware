@@ -1,6 +1,11 @@
 - type: soundCollection
   id: LobbyMusic
   files:
+     - /Audio/Lobby/atomicamnesiammx.ogg
+    - /Audio/Lobby/singuloose.ogg
+    - /Audio/Lobby/comet_haley.ogg
+    - /Audio/Lobby/marhaba.ogg
+    - /Audio/Lobby/thunderdome.ogg
     - /Audio/Lobby/space_asshole.ogg
     - /Audio/Lobby/title3.ogg
     - /Audio/Lobby/mod.flip-flap.ogg
