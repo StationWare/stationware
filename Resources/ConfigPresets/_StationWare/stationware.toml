@@ -39,6 +39,7 @@ map_enabled         = true
 [shuttle]
 cargo = false
 emergency_enabled = false
+arrivals = false
 
 [stationware] # Stationware cvars
 total_challenges    = 15
