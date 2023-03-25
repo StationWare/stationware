@@ -1,4 +1,4 @@
-﻿[game]
+[game]
 # Straight in-game baby
 lobbyenabled = false
 
@@ -14,6 +14,7 @@ preload = false
 auto_call_time = 0
 cargo = false
 emergency_enabled = false
+arrivals = false
 
 [server]
 rules_file = "SW_Rules.txt"
