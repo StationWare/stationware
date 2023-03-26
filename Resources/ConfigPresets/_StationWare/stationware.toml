@@ -30,7 +30,8 @@ time                = 15
 enable_during_round = true
 
 [tips]
-enabled             = false # Re-enable when we have actual tips.
+enabled             = true
+dataset             = "StationWareTips"
 
 [vote]
 preset_enabled      = false
