@@ -6,7 +6,7 @@ max_connections     = 100
 
 [game]
 lobbyenabled        = true
-lobbyduration       = 30
+lobbyduration       = 60
 fallbackpreset      = "StationWare"
 defaultpreset       = "StationWare"
 soft_max_players    = 40
