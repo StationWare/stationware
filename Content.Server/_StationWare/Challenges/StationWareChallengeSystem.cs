@@ -165,6 +165,9 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
         var enumerator = EntityQueryEnumerator<ActorComponent, MobStateComponent>();
         while (enumerator.MoveNext(out var uid, out var actor, out var mobState))
         {
+            if (HasComp<GhostComponent>(uid))
+                continue;
+
             if (_mobState.IsDead(uid, mobState))
                 continue;
 
