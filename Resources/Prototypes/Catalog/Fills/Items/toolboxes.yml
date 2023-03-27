@@ -69,8 +69,14 @@
   components:
   - type: StorageFill
     contents:
-      - id: ClothingBeltUtilityFilled
+      - id: Screwdriver
+      - id: Wrench
+      - id: Welder
+      - id: Crowbar
+      - id: Multitool
+      - id: Wirecutter
       - id: ClothingHandsGlovesCombat
+      - id: ClothingBeltSyndieHolster
       - id: ClothingMaskGasSyndicate
 
 - type: entity

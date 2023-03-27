@@ -15,7 +15,7 @@ namespace Content.Server.Explosion.Components
         public List<float>? DelayOptions = null;
 
         /// <summary>
-        ///     If not null, this timer will periodically play this sound while active.
+        ///     If not null, this timer will periodically play this sound wile active.
         /// </summary>
         [DataField("beepSound")]
         public SoundSpecifier? BeepSound;
@@ -44,11 +44,5 @@ namespace Content.Server.Explosion.Components
         /// </summary>
         [DataField("canToggleStartOnStick")]
         public bool AllowToggleStartOnStick;
-
-        /// <summary>
-        ///     Whether you can examine the item to see its timer or not.
-        /// </summary>
-        [DataField("examinable")]
-        public bool Examinable = true;
     }
 }

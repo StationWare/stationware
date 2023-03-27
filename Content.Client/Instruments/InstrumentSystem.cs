@@ -87,7 +87,7 @@ public sealed class InstrumentSystem : SharedInstrumentSystem
         if (!Resolve(uid, ref instrument) || instrument.Renderer == null)
             return;
 
-        instrument.Renderer.TrackingEntity = uid;
+        instrument.Renderer.TrackingEntity = instrument.Owner;
         instrument.Renderer.DisablePercussionChannel = !instrument.AllowPercussion;
         instrument.Renderer.DisableProgramChangeEvent = !instrument.AllowProgramChange;
 
@@ -127,9 +127,7 @@ public sealed class InstrumentSystem : SharedInstrumentSystem
 
         // We dispose of the synth two seconds from now to allow the last notes to stop from playing.
         // Don't use timers bound to the entity in case it is getting deleted.
-        if (renderer != null)
-            Timer.Spawn(2000, () => { renderer.Dispose(); });
-
+        Timer.Spawn(2000, () => { renderer?.Dispose(); });
         instrument.Renderer = null;
         instrument.MidiEventBuffer.Clear();
 

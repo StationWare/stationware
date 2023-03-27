@@ -57,7 +57,7 @@ public sealed class NPCSteeringComponent : Component
     [DataField("lastStuckTime", customTypeSerializer:typeof(TimeOffsetSerializer))]
     public TimeSpan LastStuckTime;
 
-    public const float StuckDistance = 1f;
+    public const float StuckDistance = 0.5f;
 
     /// <summary>
     /// Have we currently requested a path.

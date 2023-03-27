@@ -28,7 +28,6 @@ namespace Content.Server.Connection
         [Dependency] private readonly IServerNetManager _netMgr = default!;
         [Dependency] private readonly IServerDbManager _db = default!;
         [Dependency] private readonly IConfigurationManager _cfg = default!;
-        [Dependency] private readonly ILocalizationManager _loc = default!;
 
         public void Initialize()
         {
@@ -148,8 +147,7 @@ namespace Content.Server.Connection
             if (bans.Count > 0)
             {
                 var firstBan = bans[0];
-                var message = firstBan.FormatBanMessage(_cfg, _loc);
-                return (ConnectionDenyReason.Ban, message, bans);
+                return (ConnectionDenyReason.Ban, firstBan.DisconnectMessage, bans);
             }
 
             if (_cfg.GetCVar(CCVars.WhitelistEnabled))

@@ -10,12 +10,6 @@ public enum CargoConsoleUiKey : byte
     Telepad
 }
 
-[NetSerializable, Serializable]
-public enum CargoPalletConsoleUiKey : byte
-{
-    Sale
-}
-
 public abstract class SharedCargoSystem : EntitySystem {}
 
 [Serializable, NetSerializable]

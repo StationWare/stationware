@@ -15,6 +15,3 @@ ent-CrateSecuritySupplies = security supplies crate
 
 ent-CrateRestraints = restraints crate
     .desc = Contains two boxes each of handcuffs and zipties. Requires Security access to open.
-
-ent-CrateSecurityBiosuit = security bio suit crate
-    .desc = Contains 2 biohazard suits to ensure that no disease will distract you from your duties. Requires Security access to open.

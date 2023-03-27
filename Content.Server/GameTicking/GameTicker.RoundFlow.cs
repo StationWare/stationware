@@ -70,16 +70,6 @@ namespace Content.Server.GameTicking
         public int RoundId { get; private set; }
 
         /// <summary>
-        /// Returns true if the round's map is eligible to be updated.
-        /// </summary>
-        /// <returns></returns>
-        public bool CanUpdateMap()
-        {
-            return RunLevel == GameRunLevel.PreRoundLobby &&
-                   _roundStartTime - RoundPreloadTime > _gameTiming.CurTime;
-        }
-
-        /// <summary>
         ///     Loads all the maps for the given round.
         /// </summary>
         /// <remarks>
@@ -87,13 +77,11 @@ namespace Content.Server.GameTicking
         /// </remarks>
         private void LoadMaps()
         {
-            if (_mapManager.MapExists(DefaultMap))
-                return;
-
             AddGamePresetRules();
 
             DefaultMap = _mapManager.CreateMap();
             _mapManager.AddUninitializedMap(DefaultMap);
+            var startTime = _gameTiming.RealTime;
 
             var maps = new List<GameMapPrototype>();
 
@@ -133,6 +121,9 @@ namespace Content.Server.GameTicking
 
                 LoadGameMap(map, toLoad, null);
             }
+
+            var timeSpan = _gameTiming.RealTime - startTime;
+            _sawmill.Info($"Loaded maps in {timeSpan.TotalMilliseconds:N2}ms.");
         }
 
 
@@ -179,7 +170,6 @@ namespace Content.Server.GameTicking
 
             SendServerMessage(Loc.GetString("game-ticker-start-round"));
 
-            // Just in case it hasn't been loaded previously we'll try loading it.
             LoadMaps();
 
             // map has been selected so update the lobby info text
@@ -497,23 +487,14 @@ namespace Content.Server.GameTicking
                 RoundLengthMetric.Inc(frameTime);
             }
 
-            if (RunLevel != GameRunLevel.PreRoundLobby ||
-                Paused ||
-                _roundStartTime - RoundPreloadTime > _gameTiming.CurTime ||
+            if (RunLevel != GameRunLevel.PreRoundLobby || Paused ||
+                _roundStartTime > _gameTiming.CurTime ||
                 _roundStartCountdownHasNotStartedYetDueToNoPlayers)
             {
                 return;
             }
 
-            if (_roundStartTime < _gameTiming.CurTime)
-            {
-                StartRound();
-            }
-            // Preload maps so we can start faster
-            else if (_roundStartTime - RoundPreloadTime < _gameTiming.CurTime)
-            {
-                LoadMaps();
-            }
+            StartRound();
         }
 
         public TimeSpan RoundDuration()

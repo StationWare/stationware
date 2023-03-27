@@ -42,8 +42,6 @@
         prob: 0.1
       - id: ResearchDisk
         prob: 0.1
-      - id: ClothingBeltStorageWaistbag
-        prob: 0.1
         #  - Service
       - id: CrayonBox
         prob: 0.1

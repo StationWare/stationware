@@ -27,45 +27,41 @@ public sealed partial class AnomalySystem
 
     private void OnScannerAnomalyShutdown(ref AnomalyShutdownEvent args)
     {
-        var query = EntityQueryEnumerator<AnomalyScannerComponent>();
-        while (query.MoveNext(out var uid, out var component))
+        foreach (var component in EntityQuery<AnomalyScannerComponent>())
         {
             if (component.ScannedAnomaly != args.Anomaly)
                 continue;
-            _ui.TryCloseAll(uid, AnomalyScannerUiKey.Key);
+            _ui.TryCloseAll(component.Owner, AnomalyScannerUiKey.Key);
         }
     }
 
     private void OnScannerAnomalySeverityChanged(ref AnomalySeverityChangedEvent args)
     {
-        var query = EntityQueryEnumerator<AnomalyScannerComponent>();
-        while (query.MoveNext(out var uid, out var component))
+        foreach (var component in EntityQuery<AnomalyScannerComponent>())
         {
             if (component.ScannedAnomaly != args.Anomaly)
                 continue;
-            UpdateScannerUi(uid, component);
+            UpdateScannerUi(component.Owner, component);
         }
     }
 
     private void OnScannerAnomalyStabilityChanged(ref AnomalyStabilityChangedEvent args)
     {
-        var query = EntityQueryEnumerator<AnomalyScannerComponent>();
-        while (query.MoveNext(out var uid, out var component))
+        foreach (var component in EntityQuery<AnomalyScannerComponent>())
         {
             if (component.ScannedAnomaly != args.Anomaly)
                 continue;
-            UpdateScannerUi(uid, component);
+            UpdateScannerUi(component.Owner, component);
         }
     }
 
     private void OnScannerAnomalyHealthChanged(ref AnomalyHealthChangedEvent args)
     {
-        var query = EntityQueryEnumerator<AnomalyScannerComponent>();
-        while (query.MoveNext(out var uid, out var component))
+        foreach (var component in EntityQuery<AnomalyScannerComponent>())
         {
             if (component.ScannedAnomaly != args.Anomaly)
                 continue;
-            UpdateScannerUi(uid, component);
+            UpdateScannerUi(component.Owner, component);
         }
     }
 

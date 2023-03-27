@@ -1,16 +1,15 @@
-using Content.Server.Doors.Systems;
 using Content.Server.Shuttles.Components;
-using Content.Server.Stunnable;
+using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
 using Content.Shared.Shuttles.Systems;
 using JetBrains.Annotations;
 using Robust.Server.GameObjects;
+using Robust.Shared.Configuration;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
-using Robust.Shared.Random;
 
 namespace Content.Server.Shuttles.Systems
 {
@@ -18,18 +17,9 @@ namespace Content.Server.Shuttles.Systems
     public sealed partial class ShuttleSystem : SharedShuttleSystem
     {
         [Dependency] private readonly IMapManager _mapManager = default!;
-        [Dependency] private readonly IRobustRandom _random = default!;
-        [Dependency] private readonly AirlockSystem _airlock = default!;
-        [Dependency] private readonly DockingSystem _dockSystem = default!;
-        [Dependency] private readonly DoorSystem _doors = default!;
         [Dependency] private readonly FixtureSystem _fixtures = default!;
-        [Dependency] private readonly MapLoaderSystem _loader = default!;
         [Dependency] private readonly SharedAudioSystem _audio = default!;
         [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-        [Dependency] private readonly SharedTransformSystem _transform = default!;
-        [Dependency] private readonly ShuttleConsoleSystem _console = default!;
-        [Dependency] private readonly StunSystem _stuns = default!;
-        [Dependency] private readonly ThrusterSystem _thruster = default!;
         [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
 
         private ISawmill _sawmill = default!;
@@ -44,8 +34,9 @@ namespace Content.Server.Shuttles.Systems
             base.Initialize();
             _sawmill = Logger.GetSawmill("shuttles");
 
+            InitializeEmergencyConsole();
+            InitializeEscape();
             InitializeFTL();
-            InitializeGridFills();
             InitializeIFF();
             InitializeImpact();
 
@@ -62,12 +53,22 @@ namespace Content.Server.Shuttles.Systems
         public override void Update(float frameTime)
         {
             base.Update(frameTime);
+            UpdateEmergencyConsole(frameTime);
             UpdateHyperspace(frameTime);
         }
 
         private void OnRoundRestart(RoundRestartCleanupEvent ev)
         {
+            CleanupEmergencyConsole();
+            CleanupEmergencyShuttle();
             CleanupHyperspace();
+        }
+
+        public override void Shutdown()
+        {
+            base.Shutdown();
+            ShutdownEscape();
+            ShutdownEmergencyConsole();
         }
 
         private void OnShuttleAdd(EntityUid uid, ShuttleComponent component, ComponentAdd args)
@@ -82,8 +83,7 @@ namespace Content.Server.Shuttles.Systems
         private void OnGridFixtureChange(GridFixtureChangeEvent args)
         {
             // Look this is jank but it's a placeholder until we design it.
-            if (args.NewFixtures.Count == 0)
-                return;
+            if (args.NewFixtures.Count == 0) return;
 
             var uid = args.NewFixtures[0].Body.Owner;
             var manager = Comp<FixturesComponent>(uid);
@@ -107,12 +107,12 @@ namespace Content.Server.Shuttles.Systems
 
         private void OnShuttleStartup(EntityUid uid, ShuttleComponent component, ComponentStartup args)
         {
-            if (!EntityManager.HasComponent<MapGridComponent>(uid))
+            if (!EntityManager.HasComponent<MapGridComponent>(component.Owner))
             {
                 return;
             }
 
-            if (!EntityManager.TryGetComponent(uid, out PhysicsComponent? physicsComponent))
+            if (!EntityManager.TryGetComponent(component.Owner, out PhysicsComponent? physicsComponent))
             {
                 return;
             }
@@ -125,8 +125,7 @@ namespace Content.Server.Shuttles.Systems
 
         public void Toggle(EntityUid uid, ShuttleComponent component)
         {
-            if (!EntityManager.TryGetComponent(uid, out PhysicsComponent? physicsComponent))
-                return;
+            if (!EntityManager.TryGetComponent(component.Owner, out PhysicsComponent? physicsComponent)) return;
 
             component.Enabled = !component.Enabled;
 
@@ -165,7 +164,7 @@ namespace Content.Server.Shuttles.Systems
             // None of the below is necessary for any cleanup if we're just deleting.
             if (EntityManager.GetComponent<MetaDataComponent>(uid).EntityLifeStage >= EntityLifeStage.Terminating) return;
 
-            if (!EntityManager.TryGetComponent(uid, out PhysicsComponent? physicsComponent))
+            if (!EntityManager.TryGetComponent(component.Owner, out PhysicsComponent? physicsComponent))
             {
                 return;
             }

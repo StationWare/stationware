@@ -6,7 +6,6 @@ using Content.Server.Decals;
 using Content.Shared.Procedural;
 using Content.Shared.Procedural.DungeonGenerators;
 using Content.Shared.Procedural.PostGeneration;
-using Robust.Server.Physics;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
@@ -77,7 +76,6 @@ public sealed partial class DungeonJob : Job<Dungeon>
     {
         Dungeon dungeon;
         _sawmill.Info($"Generating dungeon {_gen.ID} with seed {_seed} on {_entManager.ToPrettyString(_gridUid)}");
-        _grid.CanSplit = false;
 
         switch (_gen.Generator)
         {
@@ -128,8 +126,6 @@ public sealed partial class DungeonJob : Job<Dungeon>
             ValidateResume();
         }
 
-        _grid.CanSplit = true;
-        _entManager.System<GridFixtureSystem>().CheckSplits(_gridUid);
         return dungeon;
     }
 

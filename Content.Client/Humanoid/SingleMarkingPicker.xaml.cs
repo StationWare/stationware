@@ -176,8 +176,7 @@ public sealed partial class SingleMarkingPicker : BoxContainer
 
         MarkingList.Clear();
 
-        var sortedMarkings = _markingPrototypeCache.OrderBy(p => Loc.GetString($"marking-{p.Key}"));
-        foreach (var (id, marking) in sortedMarkings)
+        foreach (var (id, marking) in _markingPrototypeCache)
         {
             var item = MarkingList.AddItem(Loc.GetString($"marking-{id}"), marking.Sprites[0].Frame0());
             item.Metadata = marking.ID;

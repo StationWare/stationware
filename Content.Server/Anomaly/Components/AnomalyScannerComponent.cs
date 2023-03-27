@@ -1,4 +1,4 @@
-﻿using Content.Shared.Anomaly;
+﻿using System.Threading;
 using Robust.Shared.Audio;
 
 namespace Content.Server.Anomaly.Components;
@@ -7,7 +7,7 @@ namespace Content.Server.Anomaly.Components;
 /// This is used for scanning anomalies and
 /// displaying information about them in the ui
 /// </summary>
-[RegisterComponent, Access(typeof(SharedAnomalySystem))]
+[RegisterComponent]
 public sealed class AnomalyScannerComponent : Component
 {
     /// <summary>

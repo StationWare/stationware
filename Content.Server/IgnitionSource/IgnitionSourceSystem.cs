@@ -23,6 +23,7 @@ public sealed class IgnitionSourceSystem : EntitySystem
 
     private void OnIsHot(EntityUid uid, IgnitionSourceComponent component, IsHotEvent args)
     {
+        Logger.Debug(args.IsHot.ToString());
         SetIgnited(uid,component,args.IsHot);
     }
 

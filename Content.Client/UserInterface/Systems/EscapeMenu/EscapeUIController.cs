@@ -1,10 +1,12 @@
 ﻿using Content.Client.Gameplay;
+using Content.Client.Guidebook;
+using Content.Client.Info;
 using Content.Client.UserInterface.Controls;
-using Content.Client.UserInterface.Systems.Guidebook;
 using Content.Client.UserInterface.Systems.Info;
 using Content.Shared.CCVar;
 using JetBrains.Annotations;
 using Robust.Client.Console;
+using Robust.Client.Input;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
 using Robust.Shared.Configuration;
@@ -24,7 +26,7 @@ public sealed class EscapeUIController : UIController, IOnStateEntered<GameplayS
     [Dependency] private readonly ChangelogUIController _changelog = default!;
     [Dependency] private readonly InfoUIController _info = default!;
     [Dependency] private readonly OptionsUIController _options = default!;
-    [Dependency] private readonly GuidebookUIController _guidebook = default!;
+    [UISystemDependency] private readonly GuidebookSystem? _guidebook = default!;
 
     private Options.UI.EscapeMenu? _escapeWindow;
 
@@ -100,7 +102,7 @@ public sealed class EscapeUIController : UIController, IOnStateEntered<GameplayS
 
         _escapeWindow.GuidebookButton.OnPressed += _ =>
         {
-            _guidebook.ToggleGuidebook();
+            _guidebook?.OpenGuidebook();
         };
 
         // Hide wiki button if we don't have a link for it.

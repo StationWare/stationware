@@ -49,7 +49,7 @@ public sealed class PyroclasticAnomalySystem : EntitySystem
         {
             foreach (var ind in _atmosphere.GetAdjacentTiles(grid.Value, indices))
             {
-                var mix = _atmosphere.GetTileMixture(grid, map, ind, true);
+                var mix = _atmosphere.GetTileMixture(grid, map, indices, true);
                 if (mix is not { })
                     continue;
 
@@ -65,9 +65,10 @@ public sealed class PyroclasticAnomalySystem : EntitySystem
     {
         base.Update(frameTime);
 
-        var query = EntityQueryEnumerator<PyroclasticAnomalyComponent, AnomalyComponent, TransformComponent>();
-        while (query.MoveNext(out var ent, out var pyro, out var anom, out var xform))
+        foreach (var (pyro, anom, xform) in EntityQuery<PyroclasticAnomalyComponent, AnomalyComponent, TransformComponent>())
         {
+            var ent = pyro.Owner;
+
             var grid = xform.GridUid;
             var map = xform.MapUid;
             var indices = _xform.GetGridOrMapTilePosition(ent, xform);

@@ -1,7 +1,6 @@
 using Content.Server.Xenoarchaeology.XenoArtifacts.Effects.Components;
 using Content.Server.Xenoarchaeology.XenoArtifacts.Events;
 using Content.Shared.Storage;
-using Robust.Server.GameObjects;
 using Robust.Shared.Random;
 
 namespace Content.Server.Xenoarchaeology.XenoArtifacts.Effects.Systems;
@@ -10,7 +9,6 @@ public sealed class SpawnArtifactSystem : EntitySystem
 {
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ArtifactSystem _artifact = default!;
-    [Dependency] private readonly TransformSystem _transform = default!;
 
     public const string NodeDataSpawnAmount = "nodeDataSpawnAmount";
 
@@ -37,8 +35,7 @@ public sealed class SpawnArtifactSystem : EntitySystem
             var dx = _random.NextFloat(-component.Range, component.Range);
             var dy = _random.NextFloat(-component.Range, component.Range);
             var spawnCord = artifactCord.Offset(new Vector2(dx, dy));
-            var ent = Spawn(spawn, spawnCord);
-            _transform.AttachToGridOrMap(ent);
+            EntityManager.SpawnEntity(spawn, spawnCord);
         }
         _artifact.SetNodeData(uid, NodeDataSpawnAmount, amount + 1);
     }

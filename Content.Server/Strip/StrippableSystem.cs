@@ -1,4 +1,4 @@
-using System.Linq;
+using Content.Server.Cuffs.Components;
 using Content.Server.DoAfter;
 using Content.Server.Ensnaring;
 using Content.Server.Hands.Components;
@@ -14,8 +14,6 @@ using Content.Shared.Verbs;
 using Robust.Server.GameObjects;
 using System.Threading;
 using Content.Server.Administration.Logs;
-using Content.Shared.Cuffs;
-using Content.Shared.Cuffs.Components;
 using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Shared.Ensnaring.Components;
@@ -27,7 +25,6 @@ namespace Content.Server.Strip
 {
     public sealed class StrippableSystem : SharedStrippableSystem
     {
-        [Dependency] private readonly SharedCuffableSystem _cuffable = default!;
         [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
         [Dependency] private readonly InventorySystem _inventorySystem = default!;
         [Dependency] private readonly DoAfterSystem _doAfterSystem = default!;
@@ -98,9 +95,9 @@ namespace Content.Server.Strip
             // is the target a handcuff?
             if (TryComp(hand.HeldEntity, out HandVirtualItemComponent? virt)
                 && TryComp(target, out CuffableComponent? cuff)
-                && _cuffable.GetAllCuffs(cuff).Contains(virt.BlockingEntity))
+                && cuff.Container.Contains(virt.BlockingEntity))
             {
-                _cuffable.TryUncuff(target, user, virt.BlockingEntity, cuffable: cuff);
+                cuff.TryUncuff(user, virt.BlockingEntity);
                 return;
             }
 

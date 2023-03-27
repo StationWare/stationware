@@ -3,39 +3,36 @@ using Content.Shared.Radio;
 
 namespace Content.Server.Radio;
 
-[ByRefEvent]
-public struct RadioReceiveEvent
+public sealed class RadioReceiveEvent : EntityEventArgs
 {
     public readonly string Message;
-    public readonly EntityUid MessageSource;
+    public readonly EntityUid Source;
     public readonly RadioChannelPrototype Channel;
     public readonly MsgChatMessage ChatMsg;
+    public readonly EntityUid? RadioSource;
 
-    public RadioReceiveEvent(string message, EntityUid messageSource, RadioChannelPrototype channel, MsgChatMessage chatMsg)
+    public RadioReceiveEvent(string message, EntityUid source, RadioChannelPrototype channel, MsgChatMessage chatMsg, EntityUid? radioSource)
     {
         Message = message;
-        MessageSource = messageSource;
+        Source = source;
         Channel = channel;
         ChatMsg = chatMsg;
+        RadioSource = radioSource;
     }
 }
 
-/// <summary>
-/// Use this event to cancel sending messages by doing various checks (e.g. range)
-/// </summary>
-[ByRefEvent]
-public struct RadioReceiveAttemptEvent
+public sealed class RadioReceiveAttemptEvent : CancellableEntityEventArgs
 {
+    public readonly string Message;
+    public readonly EntityUid Source;
     public readonly RadioChannelPrototype Channel;
-    public readonly EntityUid RadioSource;
-    public readonly EntityUid RadioReceiver;
+    public readonly EntityUid? RadioSource;
 
-    public bool Cancelled = false;
-
-    public RadioReceiveAttemptEvent(RadioChannelPrototype channel, EntityUid radioSource, EntityUid radioReceiver)
+    public RadioReceiveAttemptEvent(string message, EntityUid source, RadioChannelPrototype channel, EntityUid? radioSource)
     {
+        Message = message;
+        Source = source;
         Channel = channel;
         RadioSource = radioSource;
-        RadioReceiver = radioReceiver;
     }
 }

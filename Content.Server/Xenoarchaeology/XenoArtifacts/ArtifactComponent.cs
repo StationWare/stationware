@@ -1,6 +1,5 @@
 using Content.Shared.Xenoarchaeology.XenoArtifacts;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
+using Robust.Shared.Serialization.TypeSerializers.Implementations;
 
 namespace Content.Server.Xenoarchaeology.XenoArtifacts;
 
@@ -8,16 +7,16 @@ namespace Content.Server.Xenoarchaeology.XenoArtifacts;
 public sealed class ArtifactComponent : Component
 {
     /// <summary>
-    /// Every node contained in the tree
+    /// The artifact's node tree.
     /// </summary>
-    [DataField("nodeTree"), ViewVariables]
-    public List<ArtifactNode> NodeTree = new();
+    [ViewVariables]
+    public ArtifactTree? NodeTree;
 
     /// <summary>
     /// The current node the artifact is on.
     /// </summary>
-    [DataField("currentNodeId"), ViewVariables]
-    public int? CurrentNodeId;
+    [ViewVariables]
+    public ArtifactNode? CurrentNode;
 
     #region Node Tree Gen
     /// <summary>
@@ -36,20 +35,21 @@ public sealed class ArtifactComponent : Component
     /// <summary>
     /// Cooldown time between artifact activations (in seconds).
     /// </summary>
-    [DataField("timer"), ViewVariables(VVAccess.ReadWrite)]
+    [DataField("timer", customTypeSerializer: typeof(TimespanSerializer))]
+    [ViewVariables(VVAccess.ReadWrite)]
     public TimeSpan CooldownTime = TimeSpan.FromSeconds(5);
 
     /// <summary>
     /// Is this artifact under some suppression device?
     /// f true, will ignore all trigger activations attempts.
     /// </summary>
-    [DataField("isSuppressed"), ViewVariables(VVAccess.ReadWrite)]
+    [ViewVariables(VVAccess.ReadWrite)]
     public bool IsSuppressed;
 
     /// <summary>
     /// The last time the artifact was activated.
     /// </summary>
-    [DataField("lastActivationTime", customTypeSerializer: typeof(TimeOffsetSerializer))]
+    [DataField("lastActivationTime", customTypeSerializer: typeof(TimespanSerializer))]
     public TimeSpan LastActivationTime;
 
     /// <summary>
@@ -73,57 +73,76 @@ public sealed class ArtifactComponent : Component
 }
 
 /// <summary>
+/// A tree of nodes.
+/// </summary>
+[DataDefinition]
+public sealed class ArtifactTree
+{
+    /// <summary>
+    /// The first node of the tree
+    /// </summary>
+    [ViewVariables]
+    public ArtifactNode StartNode = default!;
+
+    /// <summary>
+    /// Every node contained in the tree
+    /// </summary>
+    [ViewVariables]
+    public readonly List<ArtifactNode> AllNodes = new();
+}
+
+/// <summary>
 /// A single "node" of an artifact that contains various data about it.
 /// </summary>
 [DataDefinition]
 public sealed class ArtifactNode : ICloneable
 {
     /// <summary>
-    /// A numeric id corresponding to each node.
+    /// A numeric id corresponding to each node. used for display purposes
     /// </summary>
-    [DataField("id"), ViewVariables]
+    [ViewVariables]
     public int Id;
 
     /// <summary>
     /// how "deep" into the node tree. used for generation and price/value calculations
     /// </summary>
-    [DataField("depth"), ViewVariables]
-    public int Depth;
+    [ViewVariables]
+    public int Depth = 0;
 
     /// <summary>
     /// A list of surrounding nodes. Used for tree traversal
     /// </summary>
-    [DataField("edges"), ViewVariables]
-    public HashSet<int> Edges = new();
+    [ViewVariables]
+    public List<ArtifactNode> Edges = new();
 
     /// <summary>
     /// Whether or not the node has been entered
     /// </summary>
-    [DataField("discovered"), ViewVariables(VVAccess.ReadWrite)]
-    public bool Discovered;
+    [ViewVariables(VVAccess.ReadWrite)]
+    public bool Discovered = false;
 
     /// <summary>
     /// The trigger for the node
     /// </summary>
-    [DataField("trigger", customTypeSerializer: typeof(PrototypeIdSerializer<ArtifactTriggerPrototype>), required: true), ViewVariables]
-    public string Trigger = default!;
+    [ViewVariables]
+    public ArtifactTriggerPrototype Trigger = default!;
 
     /// <summary>
     /// Whether or not the node has been triggered
     /// </summary>
-    [DataField("triggered"), ViewVariables(VVAccess.ReadWrite)]
-    public bool Triggered;
+    [ViewVariables(VVAccess.ReadWrite)]
+    public bool Triggered = false;
 
     /// <summary>
     /// The effect when the node is activated
     /// </summary>
-    [DataField("effect", customTypeSerializer: typeof(PrototypeIdSerializer<ArtifactEffectPrototype>), required: true), ViewVariables]
-    public string Effect = default!;
+    [ViewVariables]
+    public ArtifactEffectPrototype Effect = default!;
 
     /// <summary>
     /// Used for storing cumulative information about nodes
     /// </summary>
-    [DataField("nodeData"), ViewVariables]
+    [ViewVariables]
     public Dictionary<string, object> NodeData = new();
 
     public object Clone()

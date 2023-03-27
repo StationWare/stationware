@@ -17,7 +17,6 @@ public sealed class MoveToOperator : HTNOperator
     [Dependency] private readonly IMapManager _mapManager = default!;
     private NPCSteeringSystem _steering = default!;
     private PathfindingSystem _pathfind = default!;
-    private SharedTransformSystem _transform = default!;
 
     /// <summary>
     /// Should we assume the MovementTarget is reachable during planning or should we pathfind to it?
@@ -56,7 +55,6 @@ public sealed class MoveToOperator : HTNOperator
         base.Initialize(sysManager);
         _pathfind = sysManager.GetEntitySystem<PathfindingSystem>();
         _steering = sysManager.GetEntitySystem<NPCSteeringSystem>();
-        _transform = sysManager.GetEntitySystem<SharedTransformSystem>();
     }
 
     public override async Task<(bool Valid, Dictionary<string, object>? Effects)> Plan(NPCBlackboard blackboard,
@@ -128,10 +126,9 @@ public sealed class MoveToOperator : HTNOperator
         // Need to remove the planning value for execution.
         blackboard.Remove<EntityCoordinates>(NPCBlackboard.OwnerCoordinates);
         var targetCoordinates = blackboard.GetValue<EntityCoordinates>(TargetKey);
-        var uid = blackboard.GetValue<EntityUid>(NPCBlackboard.Owner);
 
         // Re-use the path we may have if applicable.
-        var comp = _steering.Register(uid, targetCoordinates);
+        var comp = _steering.Register(blackboard.GetValue<EntityUid>(NPCBlackboard.Owner), targetCoordinates);
 
         if (blackboard.TryGetValue<float>(RangeKey, out var range, _entManager))
         {
@@ -142,8 +139,8 @@ public sealed class MoveToOperator : HTNOperator
         {
             if (blackboard.TryGetValue<EntityCoordinates>(NPCBlackboard.OwnerCoordinates, out var coordinates, _entManager))
             {
-                var mapCoords = coordinates.ToMap(_entManager, _transform);
-                _steering.PrunePath(uid, mapCoords, targetCoordinates.ToMapPos(_entManager, _transform) - mapCoords.Position, result.Path);
+                var mapCoords = coordinates.ToMap(_entManager);
+                _steering.PrunePath(mapCoords, targetCoordinates.ToMapPos(_entManager) - mapCoords.Position, result.Path);
             }
 
             comp.CurrentPath = result.Path;

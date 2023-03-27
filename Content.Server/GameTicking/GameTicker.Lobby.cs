@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Shared.GameTicking;
+using Content.Server.Station.Systems;
 using Content.Server.Station.Components;
 using Robust.Server.Player;
 using Robust.Shared.Network;
@@ -16,12 +17,6 @@ namespace Content.Server.GameTicking
 
         [ViewVariables]
         private TimeSpan _roundStartTime;
-
-        /// <summary>
-        /// How long before RoundStartTime do we load maps.
-        /// </summary>
-        [ViewVariables]
-        public TimeSpan RoundPreloadTime { get; } = TimeSpan.FromSeconds(15);
 
         [ViewVariables]
         private TimeSpan _pauseTime;
@@ -98,7 +93,7 @@ namespace Content.Server.GameTicking
         private TickerLobbyStatusEvent GetStatusMsg(IPlayerSession session)
         {
             _playerGameStatuses.TryGetValue(session.UserId, out var status);
-            return new TickerLobbyStatusEvent(RunLevel != GameRunLevel.PreRoundLobby, LobbySong, LobbyBackground,status == PlayerGameStatus.ReadyToPlay, _roundStartTime, RoundPreloadTime, _roundStartTimeSpan, Paused);
+            return new TickerLobbyStatusEvent(RunLevel != GameRunLevel.PreRoundLobby, LobbySong, LobbyBackground,status == PlayerGameStatus.ReadyToPlay, _roundStartTime, _roundStartTimeSpan, Paused);
         }
 
         private void SendStatusToAll()

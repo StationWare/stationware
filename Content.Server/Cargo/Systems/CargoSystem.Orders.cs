@@ -263,25 +263,20 @@ namespace Content.Server.Cargo.Systems
         private void UpdateOrders(StationCargoOrderDatabaseComponent component)
         {
             // Order added so all consoles need updating.
-            var orderQuery = AllEntityQuery<CargoOrderConsoleComponent>();
-
-            while (orderQuery.MoveNext(out var uid, out var comp))
+            foreach (var comp in EntityQuery<CargoOrderConsoleComponent>(true))
             {
-                var station = _station.GetOwningStation(uid);
-                if (station != component.Owner)
-                    continue;
+                var station = _station.GetOwningStation(component.Owner);
+                if (station != component.Owner) continue;
 
                 UpdateOrderState(comp, station);
             }
 
-            var consoleQuery = AllEntityQuery<CargoShuttleConsoleComponent>();
-            while (consoleQuery.MoveNext(out var uid, out var comp))
+            foreach (var comp in EntityQuery<CargoShuttleConsoleComponent>(true))
             {
-                var station = _station.GetOwningStation(uid);
-                if (station != component.Owner)
-                    continue;
+                var station = _station.GetOwningStation(component.Owner);
+                if (station != component.Owner) continue;
 
-                UpdateShuttleState(uid, comp, station);
+                UpdateShuttleState(comp, station);
             }
         }
 

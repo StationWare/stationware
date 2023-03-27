@@ -4,73 +4,57 @@ using Content.Shared.Administration;
 using JetBrains.Annotations;
 using Robust.Shared.Console;
 
-namespace Content.Server.Nuke.Commands;
-
-[UsedImplicitly]
-[AdminCommand(AdminFlags.Fun)]
-public sealed class ToggleNukeCommand : LocalizedCommands
+namespace Content.Server.Nuke.Commands
 {
-    [Dependency] private readonly IEntityManager _entManager = default!;
-
-    public override string Command => "nukearm";
-
-    public override void Execute(IConsoleShell shell, string argStr, string[] args)
+    [UsedImplicitly]
+    [AdminCommand(AdminFlags.Fun)]
+    public sealed class ToggleNukeCommand : IConsoleCommand
     {
-        EntityUid bombUid;
-        NukeComponent? bomb = null;
+        public string Command => "nukearm";
+        public string Description => "Toggle nuclear bomb timer. You can set timer directly. Uid is optional.";
+        public string Help => "nukearm <timer> <uid>";
 
-        if (args.Length >= 2)
+        public void Execute(IConsoleShell shell, string argStr, string[] args)
         {
-            if (!EntityUid.TryParse(args[1], out bombUid))
+            EntityUid bombUid;
+            NukeComponent? bomb = null;
+
+            if (args.Length >= 2)
             {
-                shell.WriteError(Loc.GetString("shell-entity-uid-must-be-number"));
-                return;
+                if (!EntityUid.TryParse(args[1], out bombUid))
+                {
+                    shell.WriteError(Loc.GetString("shell-entity-uid-must-be-number"));
+                    return;
+                }
             }
-        }
-        else
-        {
-            var query = _entManager.EntityQueryEnumerator<NukeComponent>();
-
-            while (query.MoveNext(out bombUid, out bomb))
+            else
             {
-                break;
-            }
+                var entManager = IoCManager.Resolve<IEntityManager>();
+                var bombs = entManager.EntityQuery<NukeComponent>();
 
-            if (bomb == null)
-            {
-                shell.WriteError(Loc.GetString("cmd-nukearm-not-found"));
-                return;
-            }
-        }
+                bomb = bombs.FirstOrDefault();
+                if (bomb == null)
+                {
+                    shell.WriteError("Can't find any entity with a NukeComponent");
+                    return;
+                }
 
-        var nukeSys = _entManager.System<NukeSystem>();
-
-        if (args.Length >= 1)
-        {
-            if (!float.TryParse(args[0], out var timer))
-            {
-                shell.WriteError("shell-argument-must-be-number");
-                return;
+                bombUid = bomb.Owner;
             }
 
-            nukeSys.SetRemainingTime(bombUid, timer, bomb);
+            var nukeSys = EntitySystem.Get<NukeSystem>();
+            if (args.Length >= 1)
+            {
+                if (!float.TryParse(args[0], out var timer))
+                {
+                    shell.WriteError("shell-argument-must-be-number");
+                    return;
+                }
+
+                nukeSys.SetRemainingTime(bombUid, timer, bomb);
+            }
+
+            nukeSys.ToggleBomb(bombUid, bomb);
         }
-
-        nukeSys.ToggleBomb(bombUid, bomb);
-    }
-
-    public override CompletionResult GetCompletion(IConsoleShell shell, string[] args)
-    {
-        if (args.Length == 1)
-        {
-            return CompletionResult.FromHint(Loc.GetString(Loc.GetString("cmd-nukearm-1-help")));
-        }
-
-        if (args.Length == 2)
-        {
-            return CompletionResult.FromHintOptions(CompletionHelper.Components<NukeComponent>(args[1]), Loc.GetString("cmd-nukearm-2-help"));
-        }
-
-        return CompletionResult.Empty;
     }
 }

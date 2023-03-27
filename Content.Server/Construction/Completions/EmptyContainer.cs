@@ -1,5 +1,4 @@
-using Content.Server.Hands.Components;
-using Content.Server.Hands.Systems;
+﻿using System.Linq;
 using Content.Shared.Construction;
 using JetBrains.Annotations;
 using Robust.Server.Containers;
@@ -13,28 +12,14 @@ namespace Content.Server.Construction.Completions
     {
         [DataField("container")] public string Container { get; private set; } = string.Empty;
 
-        /// <summary>
-        ///     Whether or not the user should attempt to pick up the removed entities.
-        /// </summary>
-        [DataField("pickup")]
-        public bool Pickup = false;
-
         public void PerformAction(EntityUid uid, EntityUid? userUid, IEntityManager entityManager)
         {
             if (!entityManager.TryGetComponent(uid, out ContainerManagerComponent? containerManager) ||
                 !containerManager.TryGetContainer(Container, out var container)) return;
 
             var containerSys = entityManager.EntitySysManager.GetEntitySystem<ContainerSystem>();
-            var handSys = entityManager.EntitySysManager.GetEntitySystem<HandsSystem>();
-
-            HandsComponent? hands = null;
-            var pickup = Pickup && entityManager.TryGetComponent(userUid, out hands);
-
-            foreach (var ent in containerSys.EmptyContainer(container, true, reparent: !pickup))
-            {
-                if (pickup)
-                    handSys.PickupOrDrop(userUid, ent, handsComp: hands);
-            }
+            var transform = entityManager.GetComponent<TransformComponent>(uid);
+            containerSys.EmptyContainer(container, true, transform.Coordinates, true);
         }
     }
 }

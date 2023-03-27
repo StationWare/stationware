@@ -69,8 +69,6 @@ namespace Content.Server.Physics.Controllers
             foreach (var mover in EntityQuery<InputMoverComponent>(true))
             {
                 var uid = mover.Owner;
-                EntityUid physicsUid = uid;
-
                 if (relayQuery.HasComponent(uid))
                     continue;
 
@@ -89,15 +87,13 @@ namespace Content.Server.Physics.Controllers
                     {
                         continue;
                     }
-
-                    physicsUid = xform.ParentUid;
                 }
                 else if (!bodyQuery.TryGetComponent(uid, out body))
                 {
                     continue;
                 }
 
-                HandleMobMovement(uid, mover, physicsUid, body, xformMover, frameTime, xformQuery, moverQuery, relayTargetQuery);
+                HandleMobMovement(uid, mover, body, xformMover, frameTime, xformQuery, moverQuery, relayTargetQuery);
             }
 
             HandleShuttleMovement(frameTime);
@@ -264,7 +260,7 @@ namespace Content.Server.Physics.Controllers
             // Reset inputs for non-piloted shuttles.
             foreach (var (shuttle, _) in _shuttlePilots)
             {
-                if (newPilots.ContainsKey(shuttle) || CanPilot(shuttle)) continue;
+                if (newPilots.ContainsKey(shuttle) || FTLLocked(shuttle)) continue;
 
                 _thruster.DisableLinearThrusters(shuttle);
             }
@@ -275,7 +271,7 @@ namespace Content.Server.Physics.Controllers
             // then do the movement input once for it.
             foreach (var (shuttle, pilots) in _shuttlePilots)
             {
-                if (Paused(shuttle.Owner) || CanPilot(shuttle) || !TryComp(shuttle.Owner, out PhysicsComponent? body)) continue;
+                if (Paused(shuttle.Owner) || FTLLocked(shuttle) || !TryComp(shuttle.Owner, out PhysicsComponent? body)) continue;
 
                 var shuttleNorthAngle = Transform(body.Owner).WorldRotation;
 
@@ -559,11 +555,10 @@ namespace Content.Server.Physics.Controllers
             }
         }
 
-        private bool CanPilot(ShuttleComponent shuttle)
+        private bool FTLLocked(ShuttleComponent shuttle)
         {
-            return TryComp<FTLComponent>(shuttle.Owner, out var ftl) &&
-                   (ftl.State & (FTLState.Starting | FTLState.Travelling | FTLState.Arriving)) != 0x0 ||
-                   HasComp<PreventPilotComponent>(shuttle.Owner);
+            return (TryComp<FTLComponent>(shuttle.Owner, out var ftl) &&
+                    (ftl.State & (FTLState.Starting | FTLState.Travelling | FTLState.Arriving)) != 0x0);
         }
 
     }

@@ -2,7 +2,7 @@
 
 namespace Content.Shared.Anomaly.Effects.Components;
 
-[RegisterComponent, NetworkedComponent, Access(typeof(SharedGravityAnomalySystem))]
+[RegisterComponent, NetworkedComponent]
 public sealed class GravityAnomalyComponent : Component
 {
     /// <summary>

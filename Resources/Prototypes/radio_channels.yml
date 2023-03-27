@@ -11,7 +11,6 @@
   keycode: 'y'
   frequency: 1337
   color: "#2681a5"
-  longRange: true
 
 - type: radioChannel
   id: Command
@@ -68,4 +67,3 @@
   keycode: 't'
   frequency: 1213
   color: "#8f4a4b"
-  longRange: true
