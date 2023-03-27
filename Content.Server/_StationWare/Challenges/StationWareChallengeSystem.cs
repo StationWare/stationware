@@ -72,7 +72,7 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
         var announcement = Loc.GetString(challengePrototype.Announcement);
         _chat.DispatchGlobalAnnouncement(announcement, announcementSound: challengePrototype.AnnouncementSound, colorOverride: Color.Fuchsia);
 
-        _overlay.BroadcastText(announcement, true, Color.Fuchsia, null);
+        _overlay.BroadcastText(announcement, true, Color.Fuchsia);
 
         return uid;
     }
@@ -85,6 +85,7 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
         var beforeEv = new BeforeChallengeEndEvent(GetEntitiesFromNetUserIds(component.Completions.Keys).ToList(), component);
         RaiseLocalEvent(uid, ref beforeEv);
 
+        _overlay.BroadcastText(string.Empty, true, Color.White);
 
         foreach (var (player, completion) in component.Completions)
         {
@@ -164,6 +165,9 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
         var enumerator = EntityQueryEnumerator<ActorComponent, MobStateComponent>();
         while (enumerator.MoveNext(out var uid, out var actor, out var mobState))
         {
+            if (HasComp<GhostComponent>(uid))
+                continue;
+
             if (_mobState.IsDead(uid, mobState))
                 continue;
 
@@ -221,6 +225,13 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
 
             if (session.AttachedEntity is not {} ent)
                 continue;
+
+            if (HasComp<GhostComponent>(ent))
+                continue;
+
+            if (_mobState.IsIncapacitated(ent))
+                continue;
+
             yield return ent;
         }
     }
