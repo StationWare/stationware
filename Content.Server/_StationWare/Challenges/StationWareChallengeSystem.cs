@@ -7,6 +7,7 @@ using Content.Server.Ghost.Components;
 using Content.Server.Spawners.Components;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
+using JetBrains.Annotations;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared.Console;
@@ -112,6 +113,26 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
     }
 
     /// <summary>
+    /// Ends the challenge early if everyone has already completed it.
+    /// </summary>
+    /// <param name="uid"></param>
+    /// <param name="component"></param>
+    /// <returns></returns>
+    [PublicAPI]
+    public bool TryEndChallengeEarly(EntityUid uid, StationWareChallengeComponent? component = null)
+    {
+        if (!Resolve(uid, ref component))
+            return false;
+
+        if (component.Completions.Values.Any(v => v == null))
+            return false;
+
+        // Queues the challenge to end on the next tick.
+        component.EndTime = TimeSpan.Zero;
+        return true;
+    }
+
+    /// <summary>
     /// Sets a player as winning a challenge.
     /// </summary>
     /// <param name="uid"></param>
@@ -156,6 +177,7 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
         var ev = new PlayerChallengeStateSetEvent(challengeEnt, actor.PlayerSession, win);
         RaiseLocalEvent(uid, ref ev);
         RaiseLocalEvent(challengeEnt, ref ev, true);
+        TryEndChallengeEarly(challengeEnt, component);
         return true;
     }
 
