@@ -312,9 +312,10 @@ public abstract class SharedAnomalySystem : EntitySystem
     {
         base.Update(frameTime);
 
-        var anomalyQuery = EntityQueryEnumerator<AnomalyComponent>();
-        while (anomalyQuery.MoveNext(out var ent, out var anomaly))
+        foreach (var anomaly in EntityQuery<AnomalyComponent>())
         {
+            var ent = anomaly.Owner;
+
             // if the stability is under the death threshold,
             // update it every second to start killing it slowly.
             if (anomaly.Stability < anomaly.DecayThreshold)
@@ -328,9 +329,10 @@ public abstract class SharedAnomalySystem : EntitySystem
             }
         }
 
-        var pulseQuery = EntityQueryEnumerator<AnomalyPulsingComponent>();
-        while (pulseQuery.MoveNext(out var ent, out var pulse))
+        foreach (var pulse in EntityQuery<AnomalyPulsingComponent>())
         {
+            var ent = pulse.Owner;
+
             if (Timing.CurTime > pulse.EndTime)
             {
                 Appearance.SetData(ent, AnomalyVisuals.IsPulsing, false);
@@ -338,9 +340,10 @@ public abstract class SharedAnomalySystem : EntitySystem
             }
         }
 
-        var supercriticalQuery = EntityQueryEnumerator<AnomalySupercriticalComponent, AnomalyComponent>();
-        while (supercriticalQuery.MoveNext(out var ent, out var super, out var anom))
+        foreach (var (super, anom) in EntityQuery<AnomalySupercriticalComponent, AnomalyComponent>())
         {
+            var ent = anom.Owner;
+
             if (Timing.CurTime <= super.EndTime)
                 continue;
             DoAnomalySupercriticalEvent(ent, anom);

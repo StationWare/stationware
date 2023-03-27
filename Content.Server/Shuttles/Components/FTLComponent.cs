@@ -1,8 +1,6 @@
 using Content.Shared.Shuttles.Systems;
-using Content.Shared.Tag;
 using Robust.Shared.Audio;
 using Robust.Shared.Map;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Server.Shuttles.Components;
 
@@ -38,12 +36,6 @@ public sealed class FTLComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField("dock")]
     public bool Dock;
-
-    /// <summary>
-    /// If we're docking after FTL what is the prioritised dock tag (if applicable).
-    /// </summary>
-    [ViewVariables(VVAccess.ReadWrite), DataField("priorityTag", customTypeSerializer:typeof(PrototypeIdSerializer<TagPrototype>))]
-    public string? PriorityTag;
 
     [ViewVariables(VVAccess.ReadWrite), DataField("soundTravel")]
     public SoundSpecifier? TravelSound = new SoundPathSpecifier("/Audio/Effects/Shuttle/hyperspace_progress.ogg")

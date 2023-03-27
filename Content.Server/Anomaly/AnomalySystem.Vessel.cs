@@ -100,9 +100,10 @@ public sealed partial class AnomalySystem
 
     private void OnVesselAnomalyShutdown(ref AnomalyShutdownEvent args)
     {
-        var query = EntityQueryEnumerator<AnomalyVesselComponent>();
-        while (query.MoveNext(out var ent, out var component))
+        foreach (var component in EntityQuery<AnomalyVesselComponent>())
         {
+            var ent = component.Owner;
+
             if (args.Anomaly != component.Anomaly)
                 continue;
 
@@ -117,9 +118,9 @@ public sealed partial class AnomalySystem
 
     private void OnVesselAnomalyStabilityChanged(ref AnomalyStabilityChangedEvent args)
     {
-        var query = EntityQueryEnumerator<AnomalyVesselComponent>();
-        while (query.MoveNext(out var ent, out var component))
+        foreach (var component in EntityQuery<AnomalyVesselComponent>())
         {
+            var ent = component.Owner;
             if (args.Anomaly != component.Anomaly)
                 continue;
 
@@ -170,9 +171,9 @@ public sealed partial class AnomalySystem
 
     private void UpdateVessels()
     {
-        var query = EntityQueryEnumerator<AnomalyVesselComponent>();
-        while (query.MoveNext(out var vesselEnt, out var vessel))
+        foreach (var vessel in EntityQuery<AnomalyVesselComponent>())
         {
+            var vesselEnt = vessel.Owner;
             if (vessel.Anomaly is not { } anomUid)
                 continue;
 

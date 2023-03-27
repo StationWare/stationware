@@ -199,7 +199,7 @@ namespace Content.Server.Voting.Managers
 
                 _adminLogger.Add(LogType.Vote, LogImpact.Medium, $"Map vote finished: {picked.MapName}");
                 var ticker = _entityManager.EntitySysManager.GetEntitySystem<GameTicker>();
-                if (ticker.CanUpdateMap())
+                if (ticker.RunLevel == GameRunLevel.PreRoundLobby)
                 {
                     if (_gameMapManager.TrySelectMapIfEligible(picked.ID))
                     {
@@ -208,14 +208,7 @@ namespace Content.Server.Voting.Managers
                 }
                 else
                 {
-                    if (ticker.RoundPreloadTime <= TimeSpan.Zero)
-                    {
-                        _chatManager.DispatchServerAnnouncement(Loc.GetString("ui-vote-map-notlobby"));
-                    }
-                    else
-                    {
-                        _chatManager.DispatchServerAnnouncement(Loc.GetString("ui-vote-map-notlobby-time"));
-                    }
+                    _chatManager.DispatchServerAnnouncement(Loc.GetString("ui-vote-map-notlobby"));
                 }
             };
         }

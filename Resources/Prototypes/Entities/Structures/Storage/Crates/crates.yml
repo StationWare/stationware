@@ -240,9 +240,6 @@
   id: CrateLivestock
   name: livestock crate
   components:
-  - type: EntityStorage
-    air:
-      volume: 800
   - type: Sprite
     sprite: Structures/Storage/Crates/livestock.rsi
     layers:

@@ -6,7 +6,6 @@ using Content.Server.Atmos;
 using Content.Server.Atmos.Components;
 using Content.Server.Cargo.Components;
 using Content.Server.Cargo.Systems;
-using Content.Server.Damage.Components;
 using Content.Server.Doors.Components;
 using Content.Server.Doors.Systems;
 using Content.Server.Hands.Components;
@@ -124,7 +123,7 @@ public sealed partial class AdminVerbSystem
                 args.Verbs.Add(rejuvenate);
             }
 
-            if (!HasComp<GodmodeComponent>(args.Target))
+            if (!_godmodeSystem.HasGodmode(args.Target))
             {
                 Verb makeIndestructible = new()
                 {

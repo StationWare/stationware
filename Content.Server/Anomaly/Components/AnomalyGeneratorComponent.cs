@@ -1,5 +1,4 @@
-﻿using Content.Shared.Anomaly;
-using Content.Shared.Materials;
+﻿using Content.Shared.Materials;
 using Content.Shared.Radio;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
@@ -12,7 +11,7 @@ namespace Content.Server.Anomaly.Components;
 /// This is used for a machine that is able to generate
 /// anomalies randomly on the station.
 /// </summary>
-[RegisterComponent, Access(typeof(SharedAnomalySystem))]
+[RegisterComponent]
 public sealed class AnomalyGeneratorComponent : Component
 {
     /// <summary>

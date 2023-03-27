@@ -42,10 +42,3 @@
   desc: reagent-desc-ash
   physicalDesc: reagent-physical-desc-powdery
   color: white
-
-- type: reagent
-  id: SodiumCarbonate
-  name: reagent-name-sodium-carbonate
-  desc: reagent-desc-sodium-carbonate
-  physicalDesc: reagent-physical-desc-powdery
-  color: white

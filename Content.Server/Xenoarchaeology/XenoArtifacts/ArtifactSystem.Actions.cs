@@ -42,10 +42,10 @@ public partial class ArtifactSystem
 
     private void OnSelfActivate(EntityUid uid, ArtifactComponent component, ArtifactSelfActivateEvent args)
     {
-        if (component.CurrentNodeId == null)
+        if (component.CurrentNode == null)
             return;
 
-        var curNode = GetNodeFromId(component.CurrentNodeId.Value, component).Id;
+        var curNode = component.CurrentNode.Id;
         _popup.PopupEntity(Loc.GetString("activate-artifact-popup-self", ("node", curNode)), uid, uid);
         TryActivateArtifact(uid, uid, component);
 

@@ -1,7 +1,6 @@
 using System.Linq;
 using Content.Server.Xenoarchaeology.XenoArtifacts.Events;
 using Content.Shared.Xenoarchaeology.XenoArtifacts;
-using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Serialization.Manager;
@@ -16,15 +15,13 @@ public sealed partial class ArtifactSystem
 
     private const int MaxEdgesPerNode = 4;
 
-    private readonly HashSet<int> _usedNodeIds = new();
-
     /// <summary>
     /// Generate an Artifact tree with fully developed nodes.
     /// </summary>
     /// <param name="artifact"></param>
-    /// <param name="allNodes"></param>
+    /// <param name="tree">The tree being generated.</param>
     /// <param name="nodeAmount">The amount of nodes it has.</param>
-    private void GenerateArtifactNodeTree(EntityUid artifact, ref List<ArtifactNode> allNodes, int nodeAmount)
+    private void GenerateArtifactNodeTree(EntityUid artifact, ref ArtifactTree tree, int nodeAmount)
     {
         if (nodeAmount < 1)
         {
@@ -32,36 +29,19 @@ public sealed partial class ArtifactSystem
             return;
         }
 
-        _usedNodeIds.Clear();
+        var uninitializedNodes = new List<ArtifactNode> { new() };
+        tree.StartNode = uninitializedNodes.First(); //the first node
 
-
-        var rootNode = new ArtifactNode
-        {
-            Id = GetValidNodeId()
-        };
-        var uninitializedNodes = new List<ArtifactNode> { rootNode };
         while (uninitializedNodes.Any())
         {
-            GenerateNode(artifact, ref uninitializedNodes, ref allNodes, nodeAmount);
+            GenerateNode(artifact, ref uninitializedNodes, ref tree, nodeAmount);
         }
-    }
-
-    private int GetValidNodeId()
-    {
-        var id = _random.Next(10000, 100000);
-        while (_usedNodeIds.Contains(id))
-        {
-            id = _random.Next(10000, 100000);
-        }
-
-        _usedNodeIds.Add(id);
-        return id;
     }
 
     /// <summary>
     /// Generate an individual node on the tree.
     /// </summary>
-    private void GenerateNode(EntityUid artifact, ref List<ArtifactNode> uninitializedNodes, ref List<ArtifactNode> allNodes, int targetNodeAmount)
+    private void GenerateNode(EntityUid artifact, ref List<ArtifactNode> uninitializedNodes, ref ArtifactTree tree, int targetNodeAmount)
     {
         if (!uninitializedNodes.Any())
             return;
@@ -69,10 +49,13 @@ public sealed partial class ArtifactSystem
         var node = uninitializedNodes.First();
         uninitializedNodes.Remove(node);
 
+        //random 5-digit number
+        node.Id = _random.Next(10000, 100000);
+
         //Generate the connected nodes
-        var maxEdges = Math.Max(1, targetNodeAmount - allNodes.Count - uninitializedNodes.Count - 1);
+        var maxEdges = Math.Max(1, targetNodeAmount - tree.AllNodes.Count - uninitializedNodes.Count - 1);
         maxEdges = Math.Min(maxEdges, MaxEdgesPerNode);
-        var minEdges = Math.Clamp(targetNodeAmount - allNodes.Count - uninitializedNodes.Count - 1, 0, 1);
+        var minEdges = Math.Clamp(targetNodeAmount - tree.AllNodes.Count - uninitializedNodes.Count - 1, 0, 1);
 
         var edgeAmount = _random.Next(minEdges, maxEdges);
 
@@ -80,11 +63,10 @@ public sealed partial class ArtifactSystem
         {
             var neighbor = new ArtifactNode
             {
-                Depth = node.Depth + 1,
-                Id = GetValidNodeId()
+                Depth = node.Depth + 1
             };
-            node.Edges.Add(neighbor.Id);
-            neighbor.Edges.Add(node.Id);
+            node.Edges.Add(neighbor);
+            neighbor.Edges.Add(node);
 
             uninitializedNodes.Add(neighbor);
         }
@@ -92,13 +74,13 @@ public sealed partial class ArtifactSystem
         node.Trigger = GetRandomTrigger(artifact, ref node);
         node.Effect = GetRandomEffect(artifact, ref node);
 
-        allNodes.Add(node);
+        tree.AllNodes.Add(node);
     }
 
     //yeah these two functions are near duplicates but i don't
     //want to implement an interface or abstract parent
 
-    private string GetRandomTrigger(EntityUid artifact, ref ArtifactNode node)
+    private ArtifactTriggerPrototype GetRandomTrigger(EntityUid artifact, ref ArtifactNode node)
     {
         var allTriggers = _prototype.EnumeratePrototypes<ArtifactTriggerPrototype>()
             .Where(x => (x.Whitelist?.IsValid(artifact, EntityManager) ?? true) && (!x.Blacklist?.IsValid(artifact, EntityManager) ?? true)).ToList();
@@ -109,10 +91,10 @@ public sealed partial class ArtifactSystem
         var targetTriggers = allTriggers
             .Where(x => x.TargetDepth == selectedRandomTargetDepth).ToList();
 
-        return _random.Pick(targetTriggers).ID;
+        return _random.Pick(targetTriggers);
     }
 
-    private string GetRandomEffect(EntityUid artifact, ref ArtifactNode node)
+    private ArtifactEffectPrototype GetRandomEffect(EntityUid artifact, ref ArtifactNode node)
     {
         var allEffects = _prototype.EnumeratePrototypes<ArtifactEffectPrototype>()
             .Where(x => (x.Whitelist?.IsValid(artifact, EntityManager) ?? true) && (!x.Blacklist?.IsValid(artifact, EntityManager) ?? true)).ToList();
@@ -123,7 +105,7 @@ public sealed partial class ArtifactSystem
         var targetEffects = allEffects
             .Where(x => x.TargetDepth == selectedRandomTargetDepth).ToList();
 
-        return _random.Pick(targetEffects).ID;
+        return _random.Pick(targetEffects);
     }
 
     /// <remarks>
@@ -174,17 +156,14 @@ public sealed partial class ArtifactSystem
         if (!Resolve(uid, ref component))
             return;
 
-        if (component.CurrentNodeId != null)
+        if (component.CurrentNode != null)
         {
             ExitNode(uid, component);
         }
 
-        component.CurrentNodeId = node.Id;
+        component.CurrentNode = node;
 
-        var trigger = _prototype.Index<ArtifactTriggerPrototype>(node.Trigger);
-        var effect = _prototype.Index<ArtifactEffectPrototype>(node.Effect);
-
-        var allComponents = effect.Components.Concat(effect.PermanentComponents).Concat(trigger.Components);
+        var allComponents = node.Effect.Components.Concat(node.Effect.PermanentComponents).Concat(node.Trigger.Components);
         foreach (var (name, entry) in allComponents)
         {
             var reg = _componentFactory.GetRegistration(name);
@@ -192,7 +171,7 @@ public sealed partial class ArtifactSystem
             if (node.Discovered && EntityManager.HasComponent(uid, reg.Type))
             {
                 // Don't re-add permanent components unless this is the first time you've entered this node
-                if (effect.PermanentComponents.ContainsKey(name))
+                if (node.Effect.PermanentComponents.ContainsKey(name))
                     continue;
 
                 EntityManager.RemoveComponent(uid, reg.Type);
@@ -208,7 +187,7 @@ public sealed partial class ArtifactSystem
         }
 
         node.Discovered = true;
-        RaiseLocalEvent(uid, new ArtifactNodeEnteredEvent(component.CurrentNodeId.Value));
+        RaiseLocalEvent(uid, new ArtifactNodeEnteredEvent(component.CurrentNode.Id));
     }
 
     /// <summary>
@@ -219,31 +198,16 @@ public sealed partial class ArtifactSystem
         if (!Resolve(uid, ref component))
             return;
 
-        if (component.CurrentNodeId == null)
+        var node = component.CurrentNode;
+        if (node == null)
             return;
-        var currentNode = GetNodeFromId(component.CurrentNodeId.Value, component);
 
-        var trigger = _prototype.Index<ArtifactTriggerPrototype>(currentNode.Trigger);
-        var effect = _prototype.Index<ArtifactEffectPrototype>(currentNode.Effect);
-
-        foreach (var name in effect.Components.Keys.Concat(trigger.Components.Keys))
+        foreach (var name in node.Effect.Components.Keys.Concat(node.Trigger.Components.Keys))
         {
             var comp = _componentFactory.GetRegistration(name);
             EntityManager.RemoveComponentDeferred(uid, comp.Type);
         }
 
-        component.CurrentNodeId = null;
-    }
-
-    [PublicAPI]
-    public ArtifactNode GetNodeFromId(int id, ArtifactComponent component)
-    {
-        return component.NodeTree.First(x => x.Id == id);
-    }
-
-    [PublicAPI]
-    public ArtifactNode GetNodeFromId(int id, IEnumerable<ArtifactNode> nodes)
-    {
-        return nodes.First(x => x.Id == id);
+        component.CurrentNode = null;
     }
 }

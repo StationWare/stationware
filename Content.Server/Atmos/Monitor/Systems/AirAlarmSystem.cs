@@ -7,6 +7,7 @@ using Content.Server.DeviceNetwork.Systems;
 using Content.Server.Popups;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
+using Content.Server.Wires;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Atmos;
@@ -15,8 +16,8 @@ using Content.Shared.Atmos.Monitor.Components;
 using Content.Shared.Atmos.Piping.Unary.Components;
 using Content.Shared.DeviceNetwork;
 using Content.Shared.Interaction;
-using Content.Shared.Wires;
 using Robust.Server.GameObjects;
+using Robust.Shared.Player;
 
 namespace Content.Server.Atmos.Monitor.Systems;
 
@@ -226,10 +227,10 @@ public sealed class AirAlarmSystem : EntitySystem
         if (!_interactionSystem.InRangeUnobstructed(args.User, args.Target))
             return;
 
-        if (!TryComp<ActorComponent>(args.User, out var actor))
+        if (!EntityManager.TryGetComponent(args.User, out ActorComponent? actor))
             return;
 
-        if (TryComp<WiresPanelComponent>(uid, out var panel) && panel.Open)
+        if (EntityManager.TryGetComponent(uid, out WiresComponent? wire) && wire.IsPanelOpen)
         {
             args.Handled = false;
             return;
@@ -238,9 +239,7 @@ public sealed class AirAlarmSystem : EntitySystem
         if (!this.IsPowered(uid, EntityManager))
             return;
 
-        var ui = _uiSystem.GetUiOrNull(uid, SharedAirAlarmInterfaceKey.Key);
-        if (ui != null)
-            _uiSystem.OpenUi(ui, actor.PlayerSession);
+        _uiSystem.GetUiOrNull(component.Owner, SharedAirAlarmInterfaceKey.Key)?.Open(actor.PlayerSession);
         component.ActivePlayers.Add(actor.PlayerSession.UserId);
         AddActiveInterface(uid);
         SyncAllDevices(uid);

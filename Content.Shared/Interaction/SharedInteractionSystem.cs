@@ -240,12 +240,7 @@ namespace Content.Shared.Interaction
         {
             if (TryComp<InteractionRelayComponent>(user, out var relay) && relay.RelayEntity is not null)
             {
-                // TODO this needs to be handled better. This probably bypasses many complex can-interact checks in weird roundabout ways.
-                if (_actionBlockerSystem.CanInteract(user, target))
-                {
-                    UserInteraction(relay.RelayEntity.Value, coordinates, target, altInteract, checkCanInteract, checkAccess, checkCanUse);
-                    return;
-                }
+                UserInteraction(relay.RelayEntity.Value, coordinates, target, altInteract, checkCanInteract, checkAccess, checkCanUse);
             }
 
             if (target != null && Deleted(target.Value))

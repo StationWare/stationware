@@ -1,5 +1,4 @@
 lobby-state-paused = Paused
-lobby-state-preloading = Soon
 lobby-state-right-now-question = Right Now?
 lobby-state-right-now-confirmation = Right Now
 lobby-state-round-start-countdown-text = Round Starts In: {$timeLeft}

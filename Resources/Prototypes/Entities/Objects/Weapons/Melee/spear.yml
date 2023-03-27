@@ -15,7 +15,7 @@
   - type: MeleeWeapon
     damage:
       types:
-        Piercing: 12
+        Piercing: 10
     angle: 0
     animation: WeaponArcThrust
   - type: DamageOtherOnHit
@@ -23,7 +23,7 @@
       types:
         Piercing: 15
   - type: Item
-    size: 25
+    size: 40
   - type: Clothing
     quickEquip: false
     slots:
@@ -48,7 +48,7 @@
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Piercing: 4
+        Piercing: 7
   - type: Damageable
     damageContainer: Inorganic
   - type: Destructible

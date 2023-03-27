@@ -11,14 +11,12 @@ namespace Content.Server.Shuttles.Commands;
 [AdminCommand(AdminFlags.Fun)]
 public sealed class LaunchEmergencyShuttleCommand : IConsoleCommand
 {
-    [Dependency] private readonly IEntitySystemManager _sysManager = default!;
-
     public string Command => "launchemergencyshuttle";
     public string Description => Loc.GetString("emergency-shuttle-command-launch-desc");
     public string Help => $"{Command}";
     public void Execute(IConsoleShell shell, string argStr, string[] args)
     {
-        var system = _sysManager.GetEntitySystem<EmergencyShuttleSystem>();
+        var system = IoCManager.Resolve<IEntitySystemManager>().GetEntitySystem<ShuttleSystem>();
         system.EarlyLaunch();
     }
 }

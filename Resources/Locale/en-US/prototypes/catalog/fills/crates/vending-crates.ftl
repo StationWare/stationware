@@ -46,9 +46,6 @@ ent-CrateVendingMachineRestockSnacksFilled = Snack restock crate
 ent-CrateVendingMachineRestockVendomatFilled = Vendomat restock crate
     .desc = Contains a restock box for a Vendomat vending machine.
 
-ent-CrateVendingMachineRestockRoboticsFilled = Robotech Deluxe restock crate
-    .desc = Contains a restock box for a Robotech Deluxe vending machine.
-
 ent-CrateVendingMachineRestockTankDispenserFilled = Tank dispenser restock crate
     .desc = Contains a restock box for an Engineering or Atmospherics tank dispenser.
 

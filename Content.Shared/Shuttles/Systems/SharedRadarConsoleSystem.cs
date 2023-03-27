@@ -6,9 +6,6 @@ namespace Content.Shared.Shuttles.Systems;
 
 public abstract class SharedRadarConsoleSystem : EntitySystem
 {
-    public const float DefaultMinRange = 64f;
-    public const float DefaultMaxRange = 256f;
-
     public override void Initialize()
     {
         base.Initialize();

@@ -1,4 +1,4 @@
-using Content.Server.Access.Systems;
+﻿using Content.Server.Access.Systems;
 using Content.Server.DetailExaminable;
 using Content.Server.Hands.Components;
 using Content.Server.Hands.Systems;
@@ -8,7 +8,6 @@ using Content.Server.PDA;
 using Content.Server.Roles;
 using Content.Server.Station.Components;
 using Content.Server.Mind.Commands;
-using Content.Server.Shuttles.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.CCVar;
 using Content.Shared.Humanoid.Prototypes;
@@ -106,12 +105,9 @@ public sealed class StationSpawningSystem : EntitySystem
             return jobEntity;
         }
 
-        if (!_prototypeManager.TryIndex(profile?.Species ?? HumanoidAppearanceSystem.DefaultSpecies, out SpeciesPrototype? species))
-        {
-            species = _prototypeManager.Index<SpeciesPrototype>(HumanoidAppearanceSystem.DefaultSpecies);
-        }
-
-        var entity = EntityManager.SpawnEntity(species.Prototype, coordinates);
+        var entity = EntityManager.SpawnEntity(
+            _prototypeManager.Index<SpeciesPrototype>(profile?.Species ?? HumanoidAppearanceSystem.DefaultSpecies).Prototype,
+            coordinates);
 
         if (job?.StartingGear != null)
         {

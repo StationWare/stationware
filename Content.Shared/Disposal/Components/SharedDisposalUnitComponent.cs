@@ -21,12 +21,6 @@ namespace Content.Shared.Disposal.Components
         [DataField("mobsCanEnter")]
         public bool MobsCanEnter = true;
 
-        /// <summary>
-        /// Removes the pressure requirement for flushing.
-        /// </summary>
-        [DataField("disablePressure"), ViewVariables(VVAccess.ReadWrite)]
-        public bool DisablePressure = false;
-
         [Serializable, NetSerializable]
         public enum Visuals : byte
         {

@@ -1,5 +1,4 @@
 using System.Globalization;
-using System.Linq;
 using Robust.Shared.Map;
 using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.Manager;
@@ -63,16 +62,9 @@ namespace Content.Shared.Decals
 
             var uids = new SortedSet<uint>();
             var uidChunkMap = new Dictionary<uint, Vector2i>();
-            var allIndices = dictionary.Keys.ToList();
-            allIndices.Sort((x, y) => x.X == y.X ? x.Y.CompareTo(y.Y) : x.X.CompareTo(y.X));
-
-            foreach (var indices in allIndices)
+            foreach (var (indices, decals) in dictionary)
             {
-                var decals = dictionary[indices];
-                var decalUids = decals.Decals.Keys.ToList();
-                decalUids.Sort();
-
-                foreach (var uid in decalUids)
+                foreach (var uid in decals.Decals.Keys)
                 {
                     uids.Add(uid);
                     uidChunkMap[uid] = indices;
@@ -134,12 +126,9 @@ namespace Content.Shared.Decals
             }
 
             var lookupIndex = 0;
-            var lookupNodes = lookup.Keys.ToList();
-            lookupNodes.Sort();
 
-            foreach (var data in lookupNodes)
+            foreach (var (data, uids) in lookup)
             {
-                var uids = lookup[data];
                 var lookupNode = new MappingDataNode { { "node", serializationManager.WriteValue(data, alwaysWrite, context) } };
                 var decks = new MappingDataNode();
 
@@ -163,7 +152,7 @@ namespace Content.Shared.Decals
         }
 
         [DataDefinition]
-        private readonly struct DecalData : IEquatable<DecalData>, IComparable<DecalData>
+        private readonly struct DecalData : IEquatable<DecalData>
         {
             [DataField("id")]
             public readonly string Id = string.Empty;
@@ -215,19 +204,6 @@ namespace Content.Shared.Decals
             public override int GetHashCode()
             {
                 return HashCode.Combine(Id, Color, Angle, ZIndex, Cleanable);
-            }
-
-            public int CompareTo(DecalData other)
-            {
-                var idComparison = string.Compare(Id, other.Id, StringComparison.Ordinal);
-                if (idComparison != 0)
-                    return idComparison;
-
-                var zIndexComparison = ZIndex.CompareTo(other.ZIndex);
-                if (zIndexComparison != 0)
-                    return zIndexComparison;
-
-                return Cleanable.CompareTo(other.Cleanable);
             }
         }
     }

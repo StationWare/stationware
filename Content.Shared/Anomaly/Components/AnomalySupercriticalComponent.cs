@@ -7,7 +7,7 @@ namespace Content.Shared.Anomaly.Components;
 /// <summary>
 /// Tracks anomalies going supercritical
 /// </summary>
-[RegisterComponent, NetworkedComponent, Access(typeof(SharedAnomalySystem))]
+[RegisterComponent, NetworkedComponent]
 public sealed class AnomalySupercriticalComponent : Component
 {
     /// <summary>

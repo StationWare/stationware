@@ -183,8 +183,7 @@ public sealed partial class MarkingPicker : Control
             ? _markingManager.MarkingsByCategory(_selectedMarkingCategory)
             : _markingManager.MarkingsByCategoryAndSpecies(_selectedMarkingCategory, _currentSpecies);
 
-        var sortedMarkings = markings.OrderBy(p => Loc.GetString(GetMarkingName(p.Value)));
-        foreach (var (_, marking) in sortedMarkings)
+        foreach (var marking in markings.Values)
         {
             if (_currentMarkings.TryGetMarking(_selectedMarkingCategory, marking.ID, out _))
             {
@@ -208,7 +207,7 @@ public sealed partial class MarkingPicker : Control
 
         if (!IgnoreSpecies)
         {
-            _currentMarkings.EnsureSpecies(_currentSpecies, null, _markingManager);
+            _currentMarkings.EnsureSpecies(_currentSpecies, null, _markingManager); 
         }
 
         // walk backwards through the list for visual purposes
@@ -427,7 +426,7 @@ public sealed partial class MarkingPicker : Control
         {
             markingSet.AddBack(MarkingCategories.Hair, HairMarking);
         }
-        if (FacialHairMarking != null)
+        if (FacialHairMarking != null) 
         {
             markingSet.AddBack(MarkingCategories.FacialHair, FacialHairMarking);
         }

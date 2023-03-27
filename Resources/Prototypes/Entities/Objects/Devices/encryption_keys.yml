@@ -10,6 +10,7 @@
     sprite: Objects/Devices/encryption_keys.rsi
   - type: Sprite
     sprite: Objects/Devices/encryption_keys.rsi
+    state: cypherkey
     netsync: false
 
 - type: entity
@@ -23,9 +24,8 @@
     - Common
     defaultChannel: Common
   - type: Sprite
-    layers:
-    - state: crypt_gray
-    - state: common_label
+    sprite: Objects/Devices/encryption_keys.rsi
+    state: cypherkey
 
 - type: entity
   parent: EncryptionKey
@@ -38,9 +38,8 @@
     - Supply
     defaultChannel: Supply
   - type: Sprite
-    layers:
-    - state: crypt_gray
-    - state: cargo_label
+    sprite: Objects/Devices/encryption_keys.rsi
+    state: cargo_cypherkey
 
 - type: entity
   parent: EncryptionKey
@@ -53,9 +52,8 @@
     - CentCom
     defaultChannel: CentCom
   - type: Sprite
-    layers:
-    - state: crypt_blue
-    - state: nano_label
+    sprite: Objects/Devices/encryption_keys.rsi
+    state: bin_cypherkey
 
 - type: entity
   parent: EncryptionKey
@@ -75,9 +73,8 @@
     - Supply
     defaultChannel: Command
   - type: Sprite
-    layers:
-    - state: crypt_gold
-    - state: cap_label
+    sprite: Objects/Devices/encryption_keys.rsi
+    state: cap_cypherkey
 
 - type: entity
   parent: EncryptionKey
@@ -90,9 +87,8 @@
     - Command
     defaultChannel: Command
   - type: Sprite
-    layers:
-    - state: crypt_silver
-    - state: com_label
+    sprite: Objects/Devices/encryption_keys.rsi
+    state: com_cypherkey
 
 - type: entity
   parent: EncryptionKey
@@ -105,9 +101,8 @@
     - Engineering
     defaultChannel: Engineering
   - type: Sprite
-    layers:
-    - state: crypt_gray
-    - state: eng_label
+    sprite: Objects/Devices/encryption_keys.rsi
+    state: eng_cypherkey
 
 - type: entity
   parent: EncryptionKey
@@ -120,9 +115,8 @@
     - Medical
     defaultChannel: Medical
   - type: Sprite
-    layers:
-    - state: crypt_gray
-    - state: med_label
+    sprite: Objects/Devices/encryption_keys.rsi
+    state: med_cypherkey
 
 - type: entity
   parent: EncryptionKey
@@ -136,9 +130,8 @@
     - Science
     defaultChannel: Science
   - type: Sprite
-    layers:
-    - state: crypt_gray
-    - state: medsci_label
+    sprite: Objects/Devices/encryption_keys.rsi
+    state: medsci_cypherkey
 
 - type: entity
   parent: EncryptionKey
@@ -151,9 +144,8 @@
     - Science
     defaultChannel: Science
   - type: Sprite
-    layers:
-    - state: crypt_gray
-    - state: sci_label
+    sprite: Objects/Devices/encryption_keys.rsi
+    state: sci_cypherkey
 
 - type: entity
   parent: EncryptionKey
@@ -166,9 +158,8 @@
     - Science
     defaultChannel: Science
   - type: Sprite
-    layers:
-    - state: crypt_gray
-    - state: robotics_label
+    sprite: Objects/Devices/encryption_keys.rsi
+    state: rob_cypherkey
 
 - type: entity
   parent: EncryptionKey
@@ -181,9 +172,8 @@
     - Security
     defaultChannel: Security
   - type: Sprite
-    layers:
-    - state: crypt_gray
-    - state: sec_label
+    sprite: Objects/Devices/encryption_keys.rsi
+    state: sec_cypherkey
 
 - type: entity
   parent: EncryptionKey
@@ -196,9 +186,8 @@
     - Service
     defaultChannel: Service
   - type: Sprite
-    layers:
-    - state: crypt_gray
-    - state: service_label
+    sprite: Objects/Devices/encryption_keys.rsi
+    state: srv_cypherkey
 
 - type: entity
   parent: EncryptionKey
@@ -211,6 +200,5 @@
     - Syndicate
     defaultChannel: Syndicate
   - type: Sprite
-    layers:
-    - state: crypt_red
-    - state: synd_label
+    sprite: Objects/Devices/encryption_keys.rsi
+    state: syn_cypherkey

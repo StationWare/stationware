@@ -254,13 +254,6 @@
   - type: Drink
   - type: Sprite
     sprite: Objects/Consumable/Drinks/water_cup.rsi
-    layers:
-      - state: icon-0
-      - map: ["enum.SolutionContainerLayers.Fill"]
-        state: icon-1
-  - type: Appearance
-  - type: SolutionContainerVisuals
-    maxFillLevels: 1
-    fillBaseName: icon-
+    state: icon-1
   - type: TrashOnEmpty
     solution: drink

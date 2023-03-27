@@ -23,9 +23,6 @@
     interfaces:
     - key: enum.StorageUiKey.Key
       type: StorageBoundUserInterface
-  # to prevent bag open/honk spam
-  - type: UseDelay
-    delay: 0.5
 
 - type: entity
   parent: ClothingBackpack
@@ -96,11 +93,11 @@
 - type: entity
   parent: ClothingBackpack
   id: ClothingBackpackHydroponics
-  name: hydroponics backpack
+  name: botany backpack
   description: It's a backpack made of all-natural fibers.
   components:
   - type: Sprite
-    sprite: Clothing/Back/Backpacks/hydroponics.rsi
+    sprite: Clothing/Back/Backpacks/botany.rsi
 
 - type: entity
   parent: ClothingBackpack

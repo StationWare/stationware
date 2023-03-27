@@ -354,11 +354,7 @@ namespace Content.Shared.Preferences
         {
             var prototypeManager = IoCManager.Resolve<IPrototypeManager>();
 
-            if (!prototypeManager.TryIndex<SpeciesPrototype>(Species, out var speciesPrototype))
-            {
-                Species = SharedHumanoidAppearanceSystem.DefaultSpecies;
-                speciesPrototype = prototypeManager.Index<SpeciesPrototype>(Species);
-            }
+            prototypeManager.TryIndex<SpeciesPrototype>(Species, out var speciesPrototype);
 
             var sex = Sex switch
             {

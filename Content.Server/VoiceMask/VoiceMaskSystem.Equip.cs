@@ -18,12 +18,7 @@ public sealed partial class VoiceMaskSystem
 
     private void OnEquip(EntityUid uid, VoiceMaskerComponent component, GotEquippedEvent args)
     {
-        var user = args.Equipee;
-        // have to be wearing the mask to use it, duh.
-        if (!_inventory.TryGetSlotEntity(user, MaskSlot, out var maskEntity) || maskEntity != uid)
-            return;
-
-        var comp = EnsureComp<VoiceMaskComponent>(user);
+        var comp = EnsureComp<VoiceMaskComponent>(args.Equipee);
         comp.VoiceName = component.LastSetName;
 
         if (!_prototypeManager.TryIndex<InstantActionPrototype>(component.Action, out var action))
@@ -31,7 +26,7 @@ public sealed partial class VoiceMaskSystem
             throw new ArgumentException("Could not get voice masking prototype.");
         }
 
-        _actions.AddAction(user, (InstantAction) action.Clone(), uid);
+        _actions.AddAction(args.Equipee, (InstantAction) action.Clone(), uid);
     }
 
     private void OnUnequip(EntityUid uid, VoiceMaskerComponent compnent, GotUnequippedEvent args)
