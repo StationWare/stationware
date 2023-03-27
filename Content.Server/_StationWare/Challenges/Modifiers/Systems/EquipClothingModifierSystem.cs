@@ -39,7 +39,7 @@ public sealed class EquipClothingModifierSystem : EntitySystem
             {
                 var clothing = Spawn(spawn, xform.Coordinates);
                 if (slots.Any(slot => _inventory.CanEquip(player, clothing, slot.Name, out _, slot) &&
-                                      _inventory.TryEquip(player, clothing, slot.Name, true)))
+                                      _inventory.TryEquip(player, clothing, slot.Name, true, inventory: inventory)))
                 {
                     component.SpawnedEntities.Add(clothing);
                 }
