@@ -31,15 +31,21 @@ public sealed class EquipClothingModifierSystem : EntitySystem
         foreach (var player in args.Players.Take(playerAmount))
         {
             var xform = Transform(player);
-            var slots = _inventory.GetSlots(player);
+            if (!TryComp<InventoryComponent>(player, out var inventory))
+                continue;
+            var slots = _inventory.GetSlots(player, inventory);
             var spawns = EntitySpawnCollection.GetSpawns(component.Spawns, _random);
             foreach (var spawn in spawns)
             {
                 var clothing = Spawn(spawn, xform.Coordinates);
                 if (slots.Any(slot => _inventory.CanEquip(player, clothing, slot.Name, out _, slot) &&
-                                      _inventory.TryEquip(player, clothing, slot.Name, true, true)))
+                                      _inventory.TryEquip(player, clothing, slot.Name, true)))
                 {
                     component.SpawnedEntities.Add(clothing);
+                }
+                else
+                {
+                    Del(clothing);
                 }
             }
         }
