@@ -40,9 +40,24 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
     {
         InitializeEffects();
 
+        SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerSpawned);
+
         _consoleHost.RegisterCommand("startchallenge", "Starts the specified challenge", "startchallenge <prototype ID>",
             StartChallengeCommand,
             StartChallengeCommandCompletions);
+    }
+
+    /// <remarks>
+    /// if someone spawns midround, just add them to every active challenge
+    /// </remarks>
+    private void OnPlayerSpawned(PlayerSpawnCompleteEvent ev)
+    {
+        var netuserId = ev.Player.UserId;
+        foreach (var challenge in EntityQuery<StationWareChallengeComponent>())
+        {
+            if (!challenge.Completions.ContainsKey(netuserId))
+                challenge.Completions[netuserId] = null;
+        }
     }
 
     public EntityUid StartChallenge(ChallengePrototype challengePrototype)
