@@ -7,3 +7,5 @@ stationware-report-winner = {$points ->
     [one] [color=cyan]{$name}[/color] was the winner with a measly [color=yellow]{$points} point![/color]
     *[other] [color=cyan]{$name}[/color] was the winner with a total of [color=yellow]{$points} points![/color]
 }
+
+stationware-speed-up = Speeding up!

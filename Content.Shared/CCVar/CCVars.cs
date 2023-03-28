@@ -1205,7 +1205,19 @@ namespace Content.Shared.CCVar
         ///     How many challenges are in a single stationware round
         /// </summary>
         public static readonly CVarDef<int> StationWareTotalChallenges =
-            CVarDef.Create("stationware.total_challenges", 10, CVar.SERVERONLY);
+            CVarDef.Create("stationware.total_challenges", 15, CVar.SERVERONLY);
+
+        /// <summary>
+        ///     Every X challenges, the challenges themselves will speedup
+        /// </summary>
+        public static readonly CVarDef<float> StationWareAmountPerSpeedup =
+            CVarDef.Create("stationware.amount_per_speedup", 0.15f, CVar.SERVERONLY);
+
+        /// <summary>
+        ///     Every X challenges, the challenges themselves will speedup
+        /// </summary>
+        public static readonly CVarDef<int> StationWareSpeedupInterval =
+            CVarDef.Create("stationware.speedup_interval", 5, CVar.SERVERONLY);
 
         /// <summary>
         ///     How much time do we wait between each challenge
