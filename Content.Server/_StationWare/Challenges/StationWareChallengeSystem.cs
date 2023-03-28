@@ -40,11 +40,26 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
     {
         InitializeEffects();
 
+        SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerSpawned);
+
         _consoleHost.RegisterCommand("startchallenge", "Starts the specified challenge", "startchallenge <prototype ID>",
             StartChallengeCommand,
             StartChallengeCommandCompletions);
     }
 
+    /// <remarks>
+    /// if someone spawns midround, just add them to every active challenge
+    /// </remarks>
+    private void OnPlayerSpawned(PlayerSpawnCompleteEvent ev)
+    {
+        var netuserId = ev.Player.UserId;
+        foreach (var challenge in EntityQuery<StationWareChallengeComponent>())
+        {
+            if (!challenge.Completions.ContainsKey(netuserId))
+                challenge.Completions[netuserId] = null;
+        }
+    }
+    
     public EntityUid StartChallenge(ChallengePrototype challengePrototype, float challengeTimeMultiplier = 1)
     {
         var uid = Spawn(null, MapCoordinates.Nullspace);
@@ -112,7 +127,7 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
 
         var ev = new ChallengeEndEvent(GetEntitiesFromNetUserIds(component.Completions.Keys).ToList(), finalCompletions, uid, component);
         RaiseLocalEvent(uid, ref ev, true);
-        RespawnPlayers(component.Completions.Keys);
+        RespawnPlayers(component.Completions.Keys.ToHashSet());
         Del(uid);
     }
 
@@ -205,40 +220,47 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
         return participants;
     }
 
-    public void RespawnPlayers(IEnumerable<NetUserId> players)
+    public void RespawnPlayers(HashSet<NetUserId> players)
     {
+        if (!players.Any())
+            return;
+
+        HashSet<IPlayerSession> sessions = new();
         foreach (var id in players)
         {
-            RespawnPlayer(id);
+            if (_player.TryGetSessionById(id, out var session))
+                sessions.Add(session);
         }
+        RespawnPlayers(sessions);
     }
 
-    public void RespawnPlayer(NetUserId id)
+    public void RespawnPlayers(HashSet<IPlayerSession> players)
     {
-        if (_player.TryGetSessionById(id, out var session))
-            RespawnPlayer(session);
-    }
-
-    public void RespawnPlayer(IPlayerSession session)
-    {
-        if (session.AttachedEntity is not { } entity ||
-            HasComp<GhostComponent>(entity) || // are you a ghostie?
-            !HasComp<MobStateComponent>(entity)) // or did you get your ass gibbed
-        {
-            _gameTicker.SpawnPlayer(session, EntityUid.Invalid, null, false, false);
+        if (!players.Any())
             return;
-        }
 
-        RejuvenateCommand.PerformRejuvenate(entity);
+        var validSpawns = EntityQuery<SpawnPointComponent, TransformComponent>()
+            .Where(p => p.Item1.SpawnType == SpawnPointType.LateJoin)
+            .Select(p => p.Item2).ToList();
 
-        var xform = Transform(entity);
-        if (xform.GridUid == null)
+        foreach (var session in players)
         {
-            var validSpawns = EntityQuery<SpawnPointComponent>()
-                .Where(s => s.SpawnType == SpawnPointType.LateJoin)
-                .Select(s => Transform(s.Owner)).ToList();
-            var spawn = _random.Pick(validSpawns);
-            _transform.SetCoordinates(entity, xform, spawn.Coordinates);
+            if (session.AttachedEntity is not { } entity ||
+                HasComp<GhostComponent>(entity) || // are you a ghostie?
+                !HasComp<MobStateComponent>(entity)) // or did you get your ass gibbed
+            {
+                _gameTicker.SpawnPlayer(session, EntityUid.Invalid, null, false, false);
+                return;
+            }
+
+            RejuvenateCommand.PerformRejuvenate(entity);
+
+            var xform = Transform(entity);
+            if (xform.GridUid == null)
+            {
+                var spawn = _random.Pick(validSpawns);
+                _transform.SetCoordinates(entity, xform, spawn.Coordinates);
+            }
         }
     }
 

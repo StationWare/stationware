@@ -130,6 +130,7 @@
   challengeModifiers:
   - type: NonSolidStructuresModifier
   - type: StayOnGridModifier
+  - type: ResetPositionModifier
   - type: GiveItemModifier
     items:
     - id: SWBaseBallBatKnockback

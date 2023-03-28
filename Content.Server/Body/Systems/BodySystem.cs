@@ -10,7 +10,9 @@ using Content.Shared.Body.Part;
 using Content.Shared.Body.Prototypes;
 using Content.Shared.Body.Systems;
 using Content.Shared.Coordinates;
+using Content.Shared.Damage;
 using Content.Shared.Humanoid;
+using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Events;
 using Content.Shared.Random.Helpers;
@@ -28,6 +30,7 @@ public sealed class BodySystem : SharedBodySystem
     [Dependency] private readonly HumanoidAppearanceSystem _humanoidSystem = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
 
     public override void Initialize()
     {
@@ -135,6 +138,13 @@ public sealed class BodySystem : SharedBodySystem
     {
         if (bodyId == null || !Resolve(bodyId.Value, ref body, false))
             return new HashSet<EntityUid>();
+
+        if (TryComp<DamageableComponent>(bodyId.Value, out var damageable) &&
+            _mobThreshold.TryGetDeadThreshold(bodyId.Value, out var threshold))
+        {
+            Damageable.SetAllDamage(bodyId.Value, damageable, threshold.Value);
+            _mobState.ChangeMobState(bodyId.Value, MobState.Dead);
+        }
 
         var gibs = base.GibBody(bodyId, gibOrgans, body, deleteItems);
 
