@@ -43,8 +43,12 @@ public sealed class StationWareRuleSystem : GameRuleSystem
 
     private readonly HashSet<string> _previousChallenges = new();
 
-    private int _totalChallenges = 10;
+    private int _totalChallenges = 15;
     private int _challengeCount = 1;
+    private int _speedupInterval = 5;
+    private float _amountPerSpeedup = 0.15f;
+
+    private float _speedMultiplier = 1f;
 
     private readonly HashSet<IPlayerSession> _queuedRespawns = new();
 
@@ -62,6 +66,8 @@ public sealed class StationWareRuleSystem : GameRuleSystem
 
         _configuration.OnValueChanged(CCVars.StationWareTotalChallenges, e => _totalChallenges = e, true);
         _configuration.OnValueChanged(CCVars.StationWareChallengeCooldownLength, e => _challengeDelay = TimeSpan.FromSeconds(e), true);
+        _configuration.OnValueChanged(CCVars.StationWareSpeedupInterval, e => _speedupInterval = e, true);
+        _configuration.OnValueChanged(CCVars.StationWareAmountPerSpeedup, e => _amountPerSpeedup = e, true);
     }
 
     private void OnChallengeEnd(ref ChallengeEndEvent ev)
@@ -80,10 +86,16 @@ public sealed class StationWareRuleSystem : GameRuleSystem
             return;
         }
 
+        if (_challengeCount % _speedupInterval == 0)
+        {
+            _speedMultiplier -= _amountPerSpeedup;
+            _chatManager.DispatchServerAnnouncement(Loc.GetString("stationware-speed-up"), Color.Cyan);
+            //todo: sfx
+        }
         _challengeCount++;
 
         _currentChallenge = null;
-        _nextChallengeTime = _timing.CurTime + _challengeDelay;
+        _nextChallengeTime = _timing.CurTime + _challengeDelay * _speedMultiplier;
     }
 
     private void OnMobStateChanged(MobStateChangedEvent ev)
@@ -127,6 +139,7 @@ public sealed class StationWareRuleSystem : GameRuleSystem
         _currentChallenge = null;
         _restartRoundTime = null;
         _nextChallengeTime = _timing.CurTime + _challengeDelay;
+        _speedMultiplier = 1;
         _point.CreatePointManager(); //initialize it for the overlay
     }
 
@@ -161,7 +174,7 @@ public sealed class StationWareRuleSystem : GameRuleSystem
             return;
 
         var challenge = GetRandomChallenge();
-        _currentChallenge = _stationWareChallenge.StartChallenge(challenge);
+        _currentChallenge = _stationWareChallenge.StartChallenge(challenge, _speedMultiplier);
         _previousChallenges.Add(challenge.ID);
     }
 

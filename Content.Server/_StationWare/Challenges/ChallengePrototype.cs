@@ -42,6 +42,13 @@ public sealed class ChallengePrototype : IPrototype
     public readonly TimeSpan StartDelay = TimeSpan.Zero;
 
     /// <summary>
+    /// If true, the duration of a challenge will
+    /// increase with speedup rather than decrease.
+    /// </summary>
+    [DataField("invertSpeedup")]
+    public bool InvertSpeedup;
+
+    /// <summary>
     /// The announcement played when the event starts
     /// </summary>
     [DataField("announcement")]
