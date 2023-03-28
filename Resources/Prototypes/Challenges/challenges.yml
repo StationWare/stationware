@@ -2,7 +2,7 @@
   id: DeathBallChallenge
   announcement: challenge-death-ball
   winByDefault: true
-  duration: 10
+  duration: 5
   challengeModifiers:
   - type: StayAliveModifier
   - type: SpawnEntityModifier
@@ -80,6 +80,20 @@
     spawns:
     - id: WinningTile
       amount: 100
+
+- type: challenge
+  id: DIYMusicalChairsChallenge
+  announcement: challenge-diy-chairs
+  duration: 10
+  challengeModifiers:
+  - type: BuckledWinModifier
+  - type: SpawnEntityModifier
+    spawnPerPlayer: true
+    spawnPerPlayerMultiplier: 0.75
+    clumpSize: 1
+    spawns:
+    - id: SheetSteel1
+      amount: 5
 
 - type: challenge
   id: GetRichChallenge

@@ -23,3 +23,4 @@ challenge-landmine = Don't blow up!
 challenge-xenos = Fight off the Xenos!
 challenge-morb = Survive the flesh!
 challenge-hide = Hide in a locker!
+challenge-diy-chairs = Build your own chair!
