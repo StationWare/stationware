@@ -459,3 +459,30 @@
     - id: ClosetBase
       amount: 3
   - type: IsInsideStorageModifier
+
+- type: challenge
+  id: SayAnythingLiterallyChallenge
+  announcement: challenge-say-anything-literally
+  winByDefault: false
+  duration: 5
+  challengeModifiers:
+  - type: SayPhraseModifier
+    phrase: "Anything"
+
+- type: challenge
+  id: SayAnythingChallenge
+  announcement: challenge-say-anything
+  winByDefault: false
+  duration: 5
+  challengeModifiers:
+  - type: SayAnythingModifier
+
+- type: challenge
+  id: ShutUpChallenge
+  announcement: challenge-shut-up
+  winByDefault: true
+  duration: 5
+  challengeModifiers:
+  - type: SayAnythingModifier
+    shouldSpeak: false
+  - type: GibOnFailModifier # funny!
