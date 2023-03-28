@@ -250,7 +250,7 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
                 !HasComp<MobStateComponent>(entity)) // or did you get your ass gibbed
             {
                 _gameTicker.SpawnPlayer(session, EntityUid.Invalid, null, false, false);
-                return;
+                continue;
             }
 
             RejuvenateCommand.PerformRejuvenate(entity);
