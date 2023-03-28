@@ -59,7 +59,7 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
                 challenge.Completions[netuserId] = null;
         }
     }
-    
+
     public EntityUid StartChallenge(ChallengePrototype challengePrototype, float challengeTimeMultiplier = 1)
     {
         var uid = Spawn(null, MapCoordinates.Nullspace);
