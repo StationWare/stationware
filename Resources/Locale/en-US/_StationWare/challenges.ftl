@@ -24,3 +24,6 @@ challenge-xenos = Fight off the Xenos!
 challenge-morb = Survive the flesh!
 challenge-hide = Hide in a locker!
 challenge-diy-chairs = Build your own chair!
+challenge-math-1 = 18-23
+challenge-math-2 = 4x9
+challenge-math-3 = 59/10
