@@ -3,6 +3,7 @@
   announcement: challenge-death-ball
   winByDefault: true
   duration: 10
+  invertSpeedup: true
   challengeModifiers:
   - type: StayAliveModifier
   - type: SpawnEntityModifier
@@ -37,6 +38,7 @@
   winByDefault: true
   startDelay: 1
   duration: 5
+  invertSpeedup: true
   challengeModifiers:
   - type: KeepMovingModifier
 
@@ -163,6 +165,7 @@
   winByDefault: true
   startDelay: 3
   duration: 10
+  invertSpeedup: true
   challengeModifiers:
   - type: StayAliveModifier
   - type: StayOnGridModifier
@@ -211,6 +214,7 @@
   announcement: challenge-xeno-queen
   winByDefault: true
   duration: 15
+  invertSpeedup: true
   challengeModifiers:
   - type: StayAliveModifier
   - type: StayOnGridModifier
@@ -366,6 +370,7 @@
   announcement: challenge-morb
   winByDefault: true
   duration: 10
+  invertSpeedup: true
   startDelay: 3
   challengeModifiers:
   - type: StayAliveModifier
@@ -393,6 +398,7 @@
   announcement: challenge-xenos
   winByDefault: true
   duration: 10
+  invertSpeedup: true
   startDelay: 3
   challengeModifiers:
   - type: StayAliveModifier

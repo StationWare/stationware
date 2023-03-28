@@ -45,14 +45,18 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
             StartChallengeCommandCompletions);
     }
 
-    public EntityUid StartChallenge(ChallengePrototype challengePrototype)
+    public EntityUid StartChallenge(ChallengePrototype challengePrototype, float challengeTimeMultiplier = 1)
     {
         var uid = Spawn(null, MapCoordinates.Nullspace);
         var challengeComp = AddComp<StationWareChallengeComponent>(uid);
-        challengeComp.StartTime = _timing.CurTime + challengePrototype.StartDelay;
-        challengeComp.EndTime = _timing.CurTime + challengePrototype.Duration + challengePrototype.StartDelay; // time modifiers?
+        var duration = challengePrototype.Duration * (challengePrototype.InvertSpeedup
+            ? 1f + (1f - challengeTimeMultiplier)
+            : challengeTimeMultiplier);
+        var startDelay = challengePrototype.StartDelay * challengeTimeMultiplier;
+        challengeComp.StartTime = _timing.CurTime + startDelay;
+        challengeComp.EndTime = _timing.CurTime + duration + startDelay;
         challengeComp.WinByDefault = challengePrototype.WinByDefault;
-        var participants = GetParticipants(); // get all of the players for this challenge
+        var participants = GetParticipants();
 
         // copy all our modifiers from the challenge component to the entity
         foreach (var (name, entry) in challengePrototype.ChallengeModifiers)
