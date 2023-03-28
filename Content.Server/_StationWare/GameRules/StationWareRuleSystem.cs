@@ -151,10 +151,7 @@ public sealed class StationWareRuleSystem : GameRuleSystem
         if (GameTicker.RunLevel != GameRunLevel.InRound)
             return;
 
-        foreach (var queued in _queuedRespawns)
-        {
-            _stationWareChallenge.RespawnPlayer(queued);
-        }
+        _stationWareChallenge.RespawnPlayers(_queuedRespawns);
         _queuedRespawns.Clear();
 
         if (_currentChallenge != null)
