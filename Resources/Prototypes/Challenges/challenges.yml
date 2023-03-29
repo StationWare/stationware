@@ -492,3 +492,11 @@
   - type: SayAnythingModifier
     shouldSpeak: false
   - type: GibOnFailModifier # funny!
+
+- type: challenge
+  id: MathChallenge
+  winByDefault: false
+  announcement: challenge-math
+  duration: 3
+  challengeModifiers:
+    - type: MathModifier
