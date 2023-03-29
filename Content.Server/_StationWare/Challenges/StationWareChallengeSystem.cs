@@ -73,6 +73,10 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
         challengeComp.WinByDefault = challengePrototype.WinByDefault;
         var participants = GetParticipants();
 
+        var announcement = Loc.GetString(challengePrototype.Announcement);
+        _overlay.BroadcastText(announcement, true, Color.Fuchsia);
+        _chat.DispatchGlobalAnnouncement(announcement, announcementSound: challengePrototype.AnnouncementSound, colorOverride: Color.Fuchsia);
+
         // copy all our modifiers from the challenge component to the entity
         foreach (var (name, entry) in challengePrototype.ChallengeModifiers)
         {
@@ -88,11 +92,6 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
         {
             challengeComp.Completions.Add(id, null);
         }
-
-        var announcement = Loc.GetString(challengePrototype.Announcement);
-        _chat.DispatchGlobalAnnouncement(announcement, announcementSound: challengePrototype.AnnouncementSound, colorOverride: Color.Fuchsia);
-
-        _overlay.BroadcastText(announcement, true, Color.Fuchsia);
 
         return uid;
     }

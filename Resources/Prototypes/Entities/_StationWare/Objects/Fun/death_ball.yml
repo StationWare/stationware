@@ -16,9 +16,9 @@
     color: white
     energy: 2.0
   - type: Bouncy
-    minLinearVelocity: 20
-    maxLinearVelocity: 20
-    angularVelocity: 15
+    minLinearVelocity: 10
+    maxLinearVelocity: 10
+    angularVelocity: 5
   - type: GibOnCollide
   - type: Physics
     bodyType: Dynamic

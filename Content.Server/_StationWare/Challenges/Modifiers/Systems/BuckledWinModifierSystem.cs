@@ -25,5 +25,12 @@ public sealed class BuckledWinModifierSystem : EntitySystem
                 _stationWareChallenge.SetPlayerChallengeState(player, uid, true, args.Component);
             }
         }
+
+        var query = EntityQueryEnumerator<BuckleComponent>();
+        while (query.MoveNext(out var buckle, out _))
+        {
+            if (!Terminating(buckle) && Exists(buckle))
+                Del(buckle);
+        }
     }
 }

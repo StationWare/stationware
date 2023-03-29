@@ -2,7 +2,7 @@
   id: DeathBallChallenge
   announcement: challenge-death-ball
   winByDefault: true
-  duration: 10
+  duration: 5
   invertSpeedup: true
   challengeModifiers:
   - type: StayAliveModifier
@@ -82,6 +82,16 @@
     spawns:
     - id: WinningTile
       amount: 100
+
+- type: challenge
+  id: DIYMusicalChairsChallenge
+  announcement: challenge-diy-chairs
+  duration: 10
+  challengeModifiers:
+  - type: BuckledWinModifier
+  - type: GiveItemModifier
+    items:
+    - id: SheetSteel
 
 - type: challenge
   id: GetRichChallenge
@@ -339,11 +349,9 @@
   startDelay: 0
   challengeModifiers:
   - type: StayAliveModifier
-  - type: SpawnEntityModifier
-    spawnPerPlayer: true
-    spawns:
+  - type: GiveItemModifier
+    items:
     - id: SWToolboxGreytide
-      amount: 100
 
 - type: challenge
   id: LandmineChallenge
@@ -451,3 +459,70 @@
     - id: ClosetBase
       amount: 3
   - type: IsInsideStorageModifier
+
+- type: challenge
+  id: SayAnythingLiterallyChallenge
+  announcement: challenge-say-anything-literally
+  winByDefault: false
+  duration: 5
+  challengeModifiers:
+  - type: SayPhraseModifier
+    phrase: "Anything"
+
+- type: challenge
+  id: SayAnythingChallenge
+  announcement: challenge-say-anything
+  winByDefault: false
+  duration: 5
+  challengeModifiers:
+  - type: SayAnythingModifier
+
+- type: challenge
+  id: ShutUpChallenge
+  announcement: challenge-shut-up
+  winByDefault: true
+  duration: 5
+  challengeModifiers:
+  - type: SayAnythingModifier
+    shouldSpeak: false
+  - type: EmoteModifier
+    shouldEmote: false
+  - type: GibOnFailModifier # funny!
+
+- type: challenge
+  id: MathChallenge
+  winByDefault: false
+  announcement: challenge-math
+  duration: 4
+  challengeModifiers:
+  - type: MathModifier
+
+- type: challenge
+  id: ClapChallenge
+  announcement: challenge-clap
+  winByDefault: false
+  duration: 4
+  challengeModifiers:
+  - type: EmoteModifier
+    targetEmotes:
+    - Clap
+
+- type: challenge
+  id: ScreamChallenge
+  announcement: challenge-scream
+  winByDefault: false
+  duration: 4
+  challengeModifiers:
+  - type: EmoteModifier
+    targetEmotes:
+    - Scream
+
+- type: challenge
+  id: SnapChallenge
+  announcement: challenge-snap
+  winByDefault: false
+  duration: 4
+  challengeModifiers:
+  - type: EmoteModifier
+    targetEmotes:
+    - Snap
