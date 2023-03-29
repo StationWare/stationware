@@ -5,7 +5,7 @@ public sealed class MathModifierComponent : Component
 {
     [DataField("minRange")] public int MinimumRange = 1;
     [DataField("maxRange")] public int MaximumRange = 10;
-    public float Answer = 0;
+    public int Answer = 0;
 }
 
 [RegisterComponent]

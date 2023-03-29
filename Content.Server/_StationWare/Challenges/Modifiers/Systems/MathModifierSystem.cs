@@ -1,4 +1,5 @@
-﻿using Content.Server._StationWare.ChallengeOverlay;
+﻿using System.Globalization;
+using Content.Server._StationWare.ChallengeOverlay;
 using Content.Server._StationWare.Challenges.Modifiers.Components;
 using Content.Server.Chat.Systems;
 using Robust.Shared.Random;
@@ -16,7 +17,7 @@ public sealed class MathModifierSystem : EntitySystem
     {
         SubscribeLocalEvent<MathModifierComponent, ChallengeStartEvent>(OnChallengeStart);
         SubscribeLocalEvent<MathPlayerComponent, PlayerChallengeStateSetEvent>(OnChallengeStateSet);
-        SubscribeLocalEvent<MathPlayerComponent, EntitySpokeEvent>(OnTransformSpeech);
+        SubscribeLocalEvent<MathPlayerComponent, EntitySpokeEvent>(OnSpoke);
     }
 
     private void OnChallengeStart(EntityUid uid, MathModifierComponent component, ref ChallengeStartEvent args)
@@ -35,25 +36,21 @@ public sealed class MathModifierSystem : EntitySystem
         switch (operand)
         {
             case 0:
-                equation = leftHand + "+" + rightHand;
+                equation = leftHand + " + " + rightHand;
                 answer = leftHand + rightHand;
                 break;
             case 1:
-                equation = leftHand + "-" + rightHand;
+                equation = leftHand + " - " + rightHand;
                 answer = leftHand - rightHand;
                 break;
             case 2:
-                equation = leftHand + "*" + rightHand;
+                equation = leftHand + " * " + rightHand;
                 answer = leftHand * rightHand;
-                break;
-            case 3:
-                equation = leftHand + "/" + rightHand;
-                answer = leftHand / rightHand;
                 break;
         }
 
-        component.Answer = (float) Math.Round((decimal) answer);
-        _overlay.BroadcastText($"What's {equation} rounded?", true, Color.Fuchsia);
+        component.Answer = (int) MathF.Round(answer);
+        _overlay.BroadcastText(Loc.GetString("challenge-math-equation", ("equation", equation)), true, Color.Fuchsia);
     }
 
     private void OnChallengeStateSet(EntityUid uid, MathPlayerComponent component, ref PlayerChallengeStateSetEvent args)
@@ -61,11 +58,14 @@ public sealed class MathModifierSystem : EntitySystem
         RemComp(uid, component);
     }
 
-    private void OnTransformSpeech(EntityUid uid, MathPlayerComponent component, EntitySpokeEvent args)
+    private void OnSpoke(EntityUid uid, MathPlayerComponent component, EntitySpokeEvent args)
     {
         if (!TryComp<MathModifierComponent>(component.Challenge, out var modifier))
             return;
 
-        _stationWareChallenge.SetPlayerChallengeState(uid, component.Challenge, args.Message == modifier.Answer.ToString());
+        if (args.Message != modifier.Answer.ToString(CultureInfo.InvariantCulture))
+            return;
+
+        _stationWareChallenge.SetPlayerChallengeState(uid, component.Challenge, true);
     }
 }

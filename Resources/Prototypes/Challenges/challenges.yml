@@ -89,13 +89,9 @@
   duration: 10
   challengeModifiers:
   - type: BuckledWinModifier
-  - type: SpawnEntityModifier
-    spawnPerPlayer: true
-    spawnPerPlayerMultiplier: 0.75
-    clumpSize: 1
-    spawns:
-    - id: SheetSteel1
-      amount: 5
+  - type: GiveItemModifier
+    items:
+    - id: SheetSteel
 
 - type: challenge
   id: GetRichChallenge
@@ -353,11 +349,9 @@
   startDelay: 0
   challengeModifiers:
   - type: StayAliveModifier
-  - type: SpawnEntityModifier
-    spawnPerPlayer: true
-    spawns:
+  - type: GiveItemModifier
+    items:
     - id: SWToolboxGreytide
-      amount: 100
 
 - type: challenge
   id: LandmineChallenge
@@ -491,12 +485,44 @@
   challengeModifiers:
   - type: SayAnythingModifier
     shouldSpeak: false
+  - type: EmoteModifier
+    shouldEmote: false
   - type: GibOnFailModifier # funny!
 
 - type: challenge
   id: MathChallenge
   winByDefault: false
   announcement: challenge-math
-  duration: 3
+  duration: 4
   challengeModifiers:
-    - type: MathModifier
+  - type: MathModifier
+
+- type: challenge
+  id: ClapChallenge
+  announcement: challenge-clap
+  winByDefault: false
+  duration: 4
+  challengeModifiers:
+  - type: EmoteModifier
+    targetEmotes:
+    - Clap
+
+- type: challenge
+  id: ScreamChallenge
+  announcement: challenge-scream
+  winByDefault: false
+  duration: 4
+  challengeModifiers:
+  - type: EmoteModifier
+    targetEmotes:
+    - Scream
+
+- type: challenge
+  id: SnapChallenge
+  announcement: challenge-snap
+  winByDefault: false
+  duration: 4
+  challengeModifiers:
+  - type: EmoteModifier
+    targetEmotes:
+    - Snap
