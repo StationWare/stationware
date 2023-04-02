@@ -28,18 +28,18 @@ async function main() {
     const matches = [];
     entries = [];
 
-    for (const match of description.matchAll(EntryRegex)) {
+    for (const match of body.matchAll(EntryRegex)) {
         matches.push([match[1], match[2]]);
     }
 
-    if (!changes)
+    if (!matches)
     {
         console.log("No changes found, skipping");
         return;
     }
 
     // Check change types and construct changelog entry
-    changes.forEach((entry) => {
+    matches.forEach((entry) => {
         let type;
 
         switch (entry[0].toLowerCase()) {
