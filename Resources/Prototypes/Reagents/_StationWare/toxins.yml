@@ -23,7 +23,7 @@
         scaleByQuantity: true
         ignoreResistances: false
         damage:
-          groups:
+          types:
             Caustic: 2.5
       - !type:Emote
         emote: Scream
