@@ -15,7 +15,7 @@ preload = false
 # Wastes startup time
 auto_call_time = 0
 cargo = false
-emergency_enabled = false
+emergency = false
 arrivals = false
 
 [server]
