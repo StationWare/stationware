@@ -611,6 +611,12 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
+        damage: 600
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
         damage: 300
       behaviors:
       - !type:PlaySoundBehavior
@@ -636,6 +642,12 @@
     sprite: Structures/Walls/shuttle.rsi
   - type: Destructible
     thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 1000
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
     - trigger:
         !type:DamageTrigger
         damage: 500
@@ -671,7 +683,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 600 # #excess damage (nuke?). avoid computational cost of spawning entities.
+        damage: 600
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
@@ -784,7 +796,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 300 # #excess damage (nuke?). avoid computational cost of spawning entities.
+        damage: 300
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
