@@ -1,8 +1,6 @@
 ﻿using System.Linq;
 using Content.Server._StationWare.Challenges.Modifiers.Components;
 using Content.Server.Atmos.EntitySystems;
-using Content.Server.Station.Components;
-using Content.Server.Station.Systems;
 using Content.Shared.Physics;
 using Content.Shared.Storage;
 using Robust.Shared.Map;
@@ -19,8 +17,6 @@ public sealed class SpawnEntityModifierSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly AtmosphereSystem _atmosphere = default!;
-    [Dependency] private readonly StationSystem _station = default!;
-
     /// <inheritdoc/>
     public override void Initialize()
     {
@@ -31,21 +27,14 @@ public sealed class SpawnEntityModifierSystem : EntitySystem
 
     private void OnChallengeStart(EntityUid uid, SpawnEntityModifierComponent component, ref ChallengeStartEvent args)
     {
-        SpawnEntities(uid, component, args.Players.Count);
+        SpawnEntities(component, args.Players.Count);
     }
 
-    public void SpawnEntities(EntityUid uid, SpawnEntityModifierComponent component, int players)
+    public void SpawnEntities(SpawnEntityModifierComponent component, int players)
     {
-        var gridQuery = GetEntityQuery<MapGridComponent>();
-        foreach (var station in _station.Stations)
+        var query = EntityQueryEnumerator<MapGridComponent>();
+        while (query.MoveNext(out var grid, out var gridComp))
         {
-            if (!TryComp<StationDataComponent>(station, out var stationData))
-                continue;
-
-            var grid = _station.GetLargestGrid(stationData);
-            if (!gridQuery.TryGetComponent(grid, out var gridComp))
-                continue;
-
             var spawns = EntitySpawnCollection.GetSpawns(component.Spawns);
             if (component.SpawnPerPlayer)
             {
@@ -56,7 +45,7 @@ public sealed class SpawnEntityModifierSystem : EntitySystem
             var positions = new List<EntityCoordinates>();
             for (var i = 0; i < spawns.Count / (component.ClumpSize ?? 1); i++)
             {
-                positions.Add(GetRandomPositionOnGrid(grid.Value, gridComp, component.SpawnLocationScalar));
+                positions.Add(GetRandomPositionOnGrid(grid, gridComp, component.SpawnLocationScalar));
             }
 
             for (var i = 0; i < spawns.Count; i++)
@@ -147,7 +136,7 @@ public sealed class SpawnEntityModifierSystem : EntitySystem
             if (_timing.CurTime < timer.NextSpawn)
                 continue;
             timer.NextSpawn = _timing.CurTime + timer.Interval;
-            SpawnEntities(uid, spawn, challenge.Completions.Count);
+            SpawnEntities(spawn, challenge.Completions.Count);
         }
     }
 }

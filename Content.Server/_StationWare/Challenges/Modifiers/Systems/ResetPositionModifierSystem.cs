@@ -19,11 +19,16 @@ public sealed class ResetPositionModifierSystem : EntitySystem
 
     private void OnChallengeEnd(EntityUid uid, ResetPositionModifierComponent component, ref ChallengeEndEvent args)
     {
+        ResetPositions(args.Players);
+    }
+
+    public void ResetPositions(List<EntityUid> players)
+    {
         var validSpawns = EntityQuery<SpawnPointComponent, TransformComponent>()
             .Where(p => p.Item1.SpawnType == SpawnPointType.LateJoin)
             .Select(p => p.Item2).ToList();
 
-        foreach (var player in args.Players)
+        foreach (var player in players)
         {
             var spawn = _random.Pick(validSpawns).Coordinates;
             _transform.SetCoordinates(player, spawn);

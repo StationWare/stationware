@@ -1,0 +1,16 @@
+﻿- type: entity
+  id: SWMapPlayerSpawnMarker
+  parent: MarkerBase
+  name: Map Player Spawn Marker
+  description: A marker used for maps in map-specific challenges.
+  suffix: Stationware
+  components:
+  - type: Sprite
+    layers:
+    - sprite: Markers/cross.rsi
+      state: blue
+      shader: unshaded
+    - sprite: _StationWare/Decals/swsign.rsi
+      state: full32
+      shader: unshaded
+  - type: MapPlayerSpawner

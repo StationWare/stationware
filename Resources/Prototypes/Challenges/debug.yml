@@ -1,0 +1,9 @@
+# may in fact be useful in the future.
+#- type: challenge
+#  id: TestMapLoad
+#  announcement: challenge-death-ball
+#  winByDefault: true
+#  duration: 5
+#  challengeModifiers:
+#  - type: LoadMapModifier
+#    mapPath: Maps/ChallengeMaps/map-test.yml
