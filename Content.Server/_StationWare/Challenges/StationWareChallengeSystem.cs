@@ -112,7 +112,7 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
                 continue;
             if (!_player.TryGetSessionById(player, out var session) ||
                 session.AttachedEntity is not { } attachedEntity ||
-                SetPlayerChallengeState(attachedEntity, uid, component.WinByDefault, component))
+                !SetPlayerChallengeState(attachedEntity, uid, component.WinByDefault, component))
             {
                 // Automatically make players fail if they're not in the game
                 component.Completions[player] = false;
