@@ -110,18 +110,25 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
         {
             if (completion != null)
                 continue;
-            if (!_player.TryGetSessionById(player, out var session) || session.AttachedEntity is not { } attachedEntity)
-                continue;
-            if (!SetPlayerChallengeState(attachedEntity, uid, component.WinByDefault, component))
+            if (!_player.TryGetSessionById(player, out var session) ||
+                session.AttachedEntity is not { } attachedEntity ||
+                !SetPlayerChallengeState(attachedEntity, uid, component.WinByDefault, component))
             {
-                component.Completions[player] = component.WinByDefault;
+                // Automatically make players fail if they're not in the game
+                component.Completions[player] = false;
             }
         }
 
         Dictionary<NetUserId, bool> finalCompletions = new();
         foreach (var (player, completion)  in component.Completions)
         {
-            finalCompletions.Add(player, completion!.Value);
+            if (completion == null)
+            {
+                Logger.Error($"Null completion for challenge {ToPrettyString(uid)}: {player}, {player.UserId}");
+                continue;
+            }
+
+            finalCompletions.Add(player, completion.Value);
         }
 
         var ev = new ChallengeEndEvent(GetEntitiesFromNetUserIds(component.Completions.Keys).ToList(), finalCompletions, uid, component);
