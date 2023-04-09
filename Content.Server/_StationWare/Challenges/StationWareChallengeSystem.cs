@@ -157,6 +157,18 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
         return true;
     }
 
+    public bool SetPlayerChallengeState(NetUserId id,
+        EntityUid challengeEnt,
+        bool win,
+        StationWareChallengeComponent? component = null,
+        ActorComponent? actor = null)
+    {
+        if (!_player.TryGetSessionById(id, out var session) || session.AttachedEntity is not { } attached)
+            return false;
+
+        return SetPlayerChallengeState(attached, challengeEnt, win, component, actor);
+    }
+
     /// <summary>
     /// Sets a player as winning a challenge.
     /// </summary>
@@ -199,7 +211,7 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
             _overlay.BroadcastText(Loc.GetString("overlay-lost"), true, Color.Red, actor.PlayerSession);
         }
 
-        var ev = new PlayerChallengeStateSetEvent(challengeEnt, actor.PlayerSession, win);
+        var ev = new PlayerChallengeStateSetEvent(challengeEnt, component, actor.PlayerSession, win);
         RaiseLocalEvent(uid, ref ev);
         RaiseLocalEvent(challengeEnt, ref ev, true);
         TryEndChallengeEarly(challengeEnt, component);
@@ -344,4 +356,4 @@ public readonly record struct ChallengeEndEvent(List<EntityUid> Players, Diction
 /// <param name="Player"></param>
 /// <param name="Won"></param>
 [ByRefEvent]
-public readonly record struct PlayerChallengeStateSetEvent(EntityUid Challenge, IPlayerSession Player, bool Won);
+public readonly record struct PlayerChallengeStateSetEvent(EntityUid Challenge, StationWareChallengeComponent Component, IPlayerSession Player, bool Won);
