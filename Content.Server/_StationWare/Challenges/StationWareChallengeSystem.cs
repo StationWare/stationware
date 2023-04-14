@@ -56,7 +56,7 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
         foreach (var challenge in EntityQuery<StationWareChallengeComponent>())
         {
             if (!challenge.Completions.ContainsKey(netuserId))
-                challenge.Completions[netuserId] = null;
+                challenge.Completions[netuserId] = false; // fail on latejoin
         }
     }
 
