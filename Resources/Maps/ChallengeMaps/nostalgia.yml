@@ -1,0 +1,1875 @@
+meta:
+  format: 3
+  name: DemoStation
+  author: Space-Wizards
+  postmapinit: false
+tilemap:
+  0: Space
+  22: FloorDark
+  40: FloorGrass
+  68: FloorSteel
+  81: FloorWhite
+entities:
+- uid: 0
+  components:
+  - type: MetaData
+  - type: Transform
+  - type: Map
+  - type: PhysicsMap
+  - type: Broadphase
+  - type: OccluderTree
+- uid: 1
+  components:
+  - type: MetaData
+  - pos: -0.51595736,-0.48404193
+    parent: 0
+    type: Transform
+  - chunks:
+      0,0:
+        ind: 0,0
+        tiles: FgAAARYAAAEoAAAAKAAAAEQAAAJEAAAARAAAASgAAAAoAAAAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYAAAEWAAACKAAAACgAAABEAAACRAAAAEQAAAMoAAAAKAAAACgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEQAAAJEAAABKAAAACgAAABRAAAAUQAAAFEAAAAoAAAAKAAAACgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEAAABRAAAASgAAAAoAAAAUQAAAVEAAANRAAADKAAAACgAAAAoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARAAAAEQAAAMoAAAAKAAAAFEAAAJRAAAAUQAAACgAAAAoAAAAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+      -1,0:
+        ind: -1,0
+        tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgAAAAoAAAAKAAAAEQAAANEAAACRAAAACgAAAAoAAAAFgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAAAAKAAAACgAAABEAAAARAAAAEQAAAEoAAAAKAAAABYAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAAAAKAAAACgAAABRAAACUQAAAlEAAAIoAAAAKAAAAEQAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAAAACgAAAAoAAAAUQAAAVEAAAFRAAADKAAAACgAAABEAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgAAAAoAAAAKAAAAFEAAAJRAAAAUQAAASgAAAAoAAAARAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+      -1,-1:
+        ind: -1,-1
+        tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAAAAKAAAACgAAABRAAABUQAAA1EAAAIoAAAAKAAAAEQAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAAAACgAAAAoAAAAUQAAAFEAAABRAAACKAAAACgAAABEAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgAAAAoAAAAKAAAAFEAAABRAAACUQAAACgAAAAoAAAARAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgAAAAoAAAAKAAAAEQAAAJEAAABRAAAASgAAAAoAAAAFgAAAw==
+      0,-1:
+        ind: 0,-1
+        tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEQAAAJEAAAAKAAAACgAAABRAAADUQAAAVEAAAIoAAAAKAAAACgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEAAADRAAAAygAAAAoAAAAUQAAAVEAAABRAAABKAAAACgAAAAoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARAAAAEQAAAAoAAAAKAAAAFEAAANRAAAAUQAAAygAAAAoAAAAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFgAAARYAAAMoAAAAKAAAAEQAAABEAAADRAAAASgAAAAoAAAAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+    type: MapGrid
+  - type: Broadphase
+  - angularDamping: 0.05
+    linearDamping: 0.05
+    fixedRotation: False
+    bodyType: Dynamic
+    type: Physics
+  - fixtures: []
+    type: Fixtures
+  - type: OccluderTree
+  - type: Shuttle
+  - nextUpdate: 904.1359017
+    type: GridPathfinding
+  - gravityShakeSound: !type:SoundPathSpecifier
+      path: /Audio/Effects/alert.ogg
+    forceEnabled: True
+    enabled: True
+    type: Gravity
+  - chunkCollection:
+      version: 2
+      nodes:
+      - node:
+          color: '#951710FF'
+          id: FullTileOverlayGreyscale
+        decals:
+          9: -1,6
+          10: 0,6
+          11: 1,6
+          12: 1,5
+          13: 0,5
+          14: -1,5
+          15: -1,4
+          16: 0,4
+          17: 1,4
+          18: 1,-4
+          19: 0,-4
+          20: -1,-4
+          21: -1,-5
+          22: 0,-5
+          23: 1,-5
+          24: 1,-6
+          25: 0,-6
+          26: -1,-6
+      - node:
+          color: '#1861D5FF'
+          id: FullTileOverlayGreyscale
+        decals:
+          27: -4,1
+          28: -5,1
+          29: -6,1
+          30: -6,0
+          31: -4,-1
+          32: -4,0
+          33: -5,0
+          34: -5,-1
+          35: -6,-1
+          36: 4,1
+          37: 5,1
+          38: 6,1
+          39: 6,0
+          40: 4,0
+          41: 4,-1
+          42: 5,-1
+          43: 6,-1
+          44: 5,0
+      - node:
+          color: '#D58C18FF'
+          id: FullTileOverlayGreyscale
+        decals:
+          45: -6,-4
+          46: -5,-4
+          47: -4,-4
+          48: -4,-5
+          49: -5,-5
+          50: -6,-5
+          51: -6,-6
+          52: -5,-6
+          53: -4,-6
+          54: 4,-4
+          55: 5,-4
+          56: 6,-4
+          57: 6,-5
+          58: 5,-5
+          59: 4,-5
+          60: 4,-6
+          61: 5,-6
+          62: 6,-6
+          63: 5,4
+          64: 6,4
+          65: 6,5
+          66: 5,5
+          67: 4,5
+          68: 4,4
+          69: 4,6
+          70: 5,6
+          71: 6,6
+          72: -4,6
+          73: -5,6
+          74: -6,6
+          75: -6,5
+          76: -5,5
+          77: -4,5
+          78: -4,4
+          79: -5,4
+          80: -6,4
+      - node:
+          color: '#FFFFFFFF'
+          id: StationWareLogo1
+        decals:
+          0: -1,1
+      - node:
+          color: '#FFFFFFFF'
+          id: StationWareLogo2
+        decals:
+          1: 0,1
+      - node:
+          color: '#FFFFFFFF'
+          id: StationWareLogo3
+        decals:
+          2: 1,1
+      - node:
+          color: '#FFFFFFFF'
+          id: StationWareLogo4
+        decals:
+          3: -1,0
+      - node:
+          color: '#FFFFFFFF'
+          id: StationWareLogo5
+        decals:
+          4: 0,0
+      - node:
+          color: '#FFFFFFFF'
+          id: StationWareLogo6
+        decals:
+          5: 1,0
+      - node:
+          color: '#FFFFFFFF'
+          id: StationWareLogo7
+        decals:
+          6: -1,-1
+      - node:
+          color: '#FFFFFFFF'
+          id: StationWareLogo8
+        decals:
+          7: 0,-1
+      - node:
+          color: '#FFFFFFFF'
+          id: StationWareLogo9
+        decals:
+          8: 1,-1
+      - node:
+          color: '#FFFFFFFF'
+          id: a
+        decals:
+          84: -0.7420863,1.8110304
+          89: 1.195282,1.2791152
+      - node:
+          zIndex: 3
+          color: '#FF1710FF'
+          id: body
+        decals:
+          96: 2.6721425,-0.13985527
+      - node:
+          color: '#FFFFFFFF'
+          id: e
+        decals:
+          91: 2.0888991,1.2152858
+      - node:
+          zIndex: 3
+          color: '#FF1710FF'
+          id: exclamationmark
+        decals:
+          93: 2.3529935,1.1473786
+          94: 2.5338445,1.1580168
+          95: 2.735973,1.1367403
+      - node:
+          zIndex: 3
+          angle: 0.29670597283903605 rad
+          color: '#FF1710FF'
+          id: fireaxe
+        decals:
+          97: 2.87427,0.009080529
+      - node:
+          color: '#FFFFFFFF'
+          id: i
+        decals:
+          85: -0.068035185,1.8003919
+      - node:
+          color: '#FFFFFFFF'
+          id: n
+        decals:
+          87: 0.687284,1.7791154
+      - node:
+          color: '#FFFFFFFF'
+          id: o
+        decals:
+          86: 0.28302854,1.7684772
+      - node:
+          color: '#FFFFFFFF'
+          id: r
+        decals:
+          90: 1.6314521,1.2365623
+      - node:
+          color: '#FFFFFFFF'
+          id: s
+        decals:
+          81: -1.3910226,1.7791154
+      - node:
+          zIndex: 3
+          color: '#FF1710FF'
+          id: stickman
+        decals:
+          98: 1.8210788,-0.03347242
+      - node:
+          color: '#FFFFFFFF'
+          id: t
+        decals:
+          82: -1.09315,1.8110304
+          83: -0.3910221,1.8110304
+      - node:
+          color: '#FFFFFFFF'
+          id: w
+        decals:
+          88: 0.695282,1.3110304
+      - node:
+          zIndex: 3
+          angle: 0.3141592653589793 rad
+          color: '#FF1710FF'
+          id: x
+        decals:
+          92: 2.0357075,1.225924
+    type: DecalGrid
+  - version: 2
+    data:
+      tiles:
+        0,0:
+          0: 65535
+        -1,0:
+          0: 65535
+        -1,-1:
+          0: 65535
+        0,-1:
+          0: 65535
+        0,1:
+          0: 65535
+        0,2:
+          0: 255
+        1,0:
+          0: 65535
+        1,1:
+          0: 65535
+        1,2:
+          0: 255
+        2,0:
+          0: 13107
+        2,1:
+          0: 13107
+        2,2:
+          0: 51
+        -3,0:
+          0: 34952
+        -3,1:
+          0: 34952
+        -3,2:
+          0: 136
+        -2,0:
+          0: 65535
+        -2,1:
+          0: 65535
+        -2,2:
+          0: 255
+        -1,1:
+          0: 65535
+        -1,2:
+          0: 255
+        -3,-3:
+          0: 32768
+        -3,-2:
+          0: 34952
+        -3,-1:
+          0: 34952
+        -2,-3:
+          0: 61440
+        -2,-2:
+          0: 65535
+        -2,-1:
+          0: 65535
+        -1,-3:
+          0: 61440
+        -1,-2:
+          0: 65535
+        0,-3:
+          0: 61440
+        0,-2:
+          0: 65535
+        1,-3:
+          0: 61440
+        1,-2:
+          0: 65535
+        1,-1:
+          0: 65535
+        2,-3:
+          0: 12288
+        2,-2:
+          0: 13107
+        2,-1:
+          0: 13107
+      uniqueMixes:
+      - volume: 2500
+        temperature: 293.15
+        moles:
+        - 21.824879
+        - 82.10312
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+      chunkSize: 4
+    type: GridAtmosphere
+  - type: GasTileOverlay
+  - type: RadiationGridResistance
+  - nextShake: 0
+    shakeTimes: 10
+    type: GravityShake
+- uid: 2
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 8.5,9.5
+    parent: 1
+    type: Transform
+- uid: 3
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 7.5,9.5
+    parent: 1
+    type: Transform
+- uid: 4
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 6.5,9.5
+    parent: 1
+    type: Transform
+- uid: 5
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 5.5,9.5
+    parent: 1
+    type: Transform
+- uid: 6
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 4.5,9.5
+    parent: 1
+    type: Transform
+- uid: 7
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 3.5,9.5
+    parent: 1
+    type: Transform
+- uid: 8
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 2.5,9.5
+    parent: 1
+    type: Transform
+- uid: 9
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 1.5,9.5
+    parent: 1
+    type: Transform
+- uid: 10
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 0.5,9.5
+    parent: 1
+    type: Transform
+- uid: 11
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -0.5,9.5
+    parent: 1
+    type: Transform
+- uid: 12
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -1.5,9.5
+    parent: 1
+    type: Transform
+- uid: 13
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -2.5,9.5
+    parent: 1
+    type: Transform
+- uid: 14
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -3.5,9.5
+    parent: 1
+    type: Transform
+- uid: 15
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -4.5,9.5
+    parent: 1
+    type: Transform
+- uid: 16
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -5.5,9.5
+    parent: 1
+    type: Transform
+- uid: 17
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -6.5,9.5
+    parent: 1
+    type: Transform
+- uid: 18
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -7.5,9.5
+    parent: 1
+    type: Transform
+- uid: 19
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,8.5
+    parent: 1
+    type: Transform
+- uid: 20
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,7.5
+    parent: 1
+    type: Transform
+- uid: 21
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,6.5
+    parent: 1
+    type: Transform
+- uid: 22
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,5.5
+    parent: 1
+    type: Transform
+- uid: 23
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,4.5
+    parent: 1
+    type: Transform
+- uid: 24
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,3.5
+    parent: 1
+    type: Transform
+- uid: 25
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,2.5
+    parent: 1
+    type: Transform
+- uid: 26
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,1.5
+    parent: 1
+    type: Transform
+- uid: 27
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,0.5
+    parent: 1
+    type: Transform
+- uid: 28
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,-0.5
+    parent: 1
+    type: Transform
+- uid: 29
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,-1.5
+    parent: 1
+    type: Transform
+- uid: 30
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,-2.5
+    parent: 1
+    type: Transform
+- uid: 31
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,-3.5
+    parent: 1
+    type: Transform
+- uid: 32
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,-4.5
+    parent: 1
+    type: Transform
+- uid: 33
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,-5.5
+    parent: 1
+    type: Transform
+- uid: 34
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,-6.5
+    parent: 1
+    type: Transform
+- uid: 35
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,-7.5
+    parent: 1
+    type: Transform
+- uid: 36
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -7.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 37
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -6.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 38
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -5.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 39
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -4.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 40
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -3.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 41
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -2.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 42
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -1.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 43
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -0.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 44
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 0.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 45
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 1.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 46
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 2.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 47
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 3.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 48
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 4.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 49
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 5.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 50
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 6.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 51
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 7.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 52
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 8.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 53
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,-7.5
+    parent: 1
+    type: Transform
+- uid: 54
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,-6.5
+    parent: 1
+    type: Transform
+- uid: 55
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,-5.5
+    parent: 1
+    type: Transform
+- uid: 56
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,-4.5
+    parent: 1
+    type: Transform
+- uid: 57
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,-3.5
+    parent: 1
+    type: Transform
+- uid: 58
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,-2.5
+    parent: 1
+    type: Transform
+- uid: 59
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,-1.5
+    parent: 1
+    type: Transform
+- uid: 60
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,-0.5
+    parent: 1
+    type: Transform
+- uid: 61
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,0.5
+    parent: 1
+    type: Transform
+- uid: 62
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,1.5
+    parent: 1
+    type: Transform
+- uid: 63
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,2.5
+    parent: 1
+    type: Transform
+- uid: 64
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,3.5
+    parent: 1
+    type: Transform
+- uid: 65
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,4.5
+    parent: 1
+    type: Transform
+- uid: 66
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,5.5
+    parent: 1
+    type: Transform
+- uid: 67
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,6.5
+    parent: 1
+    type: Transform
+- uid: 68
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,7.5
+    parent: 1
+    type: Transform
+- uid: 69
+  type: SWWindowIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,8.5
+    parent: 1
+    type: Transform
+- uid: 70
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,8.5
+    parent: 1
+    type: Transform
+- uid: 71
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,7.5
+    parent: 1
+    type: Transform
+- uid: 72
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,6.5
+    parent: 1
+    type: Transform
+- uid: 73
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,5.5
+    parent: 1
+    type: Transform
+- uid: 74
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,4.5
+    parent: 1
+    type: Transform
+- uid: 75
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,3.5
+    parent: 1
+    type: Transform
+- uid: 76
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,2.5
+    parent: 1
+    type: Transform
+- uid: 77
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,1.5
+    parent: 1
+    type: Transform
+- uid: 78
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,0.5
+    parent: 1
+    type: Transform
+- uid: 79
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,-0.5
+    parent: 1
+    type: Transform
+- uid: 80
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,-1.5
+    parent: 1
+    type: Transform
+- uid: 81
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,-2.5
+    parent: 1
+    type: Transform
+- uid: 82
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,-3.5
+    parent: 1
+    type: Transform
+- uid: 83
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,-4.5
+    parent: 1
+    type: Transform
+- uid: 84
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,-5.5
+    parent: 1
+    type: Transform
+- uid: 85
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,-6.5
+    parent: 1
+    type: Transform
+- uid: 86
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,-7.5
+    parent: 1
+    type: Transform
+- uid: 87
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 8.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 88
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 7.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 89
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 6.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 90
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 5.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 91
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 4.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 92
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 3.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 93
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 2.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 94
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 1.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 95
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 0.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 96
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -0.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 97
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -1.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 98
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -2.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 99
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -3.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 100
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -4.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 101
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -5.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 102
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -6.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 103
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -7.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 104
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,-7.5
+    parent: 1
+    type: Transform
+- uid: 105
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,-6.5
+    parent: 1
+    type: Transform
+- uid: 106
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,-5.5
+    parent: 1
+    type: Transform
+- uid: 107
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,-4.5
+    parent: 1
+    type: Transform
+- uid: 108
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,-3.5
+    parent: 1
+    type: Transform
+- uid: 109
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,-2.5
+    parent: 1
+    type: Transform
+- uid: 110
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,-1.5
+    parent: 1
+    type: Transform
+- uid: 111
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,-0.5
+    parent: 1
+    type: Transform
+- uid: 112
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,0.5
+    parent: 1
+    type: Transform
+- uid: 113
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,1.5
+    parent: 1
+    type: Transform
+- uid: 114
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,2.5
+    parent: 1
+    type: Transform
+- uid: 115
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,3.5
+    parent: 1
+    type: Transform
+- uid: 116
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,4.5
+    parent: 1
+    type: Transform
+- uid: 117
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,5.5
+    parent: 1
+    type: Transform
+- uid: 118
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,6.5
+    parent: 1
+    type: Transform
+- uid: 119
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,7.5
+    parent: 1
+    type: Transform
+- uid: 120
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,8.5
+    parent: 1
+    type: Transform
+- uid: 121
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 8.5,9.5
+    parent: 1
+    type: Transform
+- uid: 122
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 7.5,9.5
+    parent: 1
+    type: Transform
+- uid: 123
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 6.5,9.5
+    parent: 1
+    type: Transform
+- uid: 124
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 5.5,9.5
+    parent: 1
+    type: Transform
+- uid: 125
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 4.5,9.5
+    parent: 1
+    type: Transform
+- uid: 126
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 3.5,9.5
+    parent: 1
+    type: Transform
+- uid: 127
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 2.5,9.5
+    parent: 1
+    type: Transform
+- uid: 128
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 1.5,9.5
+    parent: 1
+    type: Transform
+- uid: 129
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 0.5,9.5
+    parent: 1
+    type: Transform
+- uid: 130
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -0.5,9.5
+    parent: 1
+    type: Transform
+- uid: 131
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -1.5,9.5
+    parent: 1
+    type: Transform
+- uid: 132
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -2.5,9.5
+    parent: 1
+    type: Transform
+- uid: 133
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -3.5,9.5
+    parent: 1
+    type: Transform
+- uid: 134
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -4.5,9.5
+    parent: 1
+    type: Transform
+- uid: 135
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -5.5,9.5
+    parent: 1
+    type: Transform
+- uid: 136
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -6.5,9.5
+    parent: 1
+    type: Transform
+- uid: 137
+  type: SWGrilleIndestructible
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -7.5,9.5
+    parent: 1
+    type: Transform
+- uid: 138
+  type: WallRiveted
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,9.5
+    parent: 1
+    type: Transform
+- uid: 139
+  type: WallRiveted
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,9.5
+    parent: 1
+    type: Transform
+- uid: 140
+  type: WallRiveted
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -8.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 141
+  type: WallRiveted
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 9.5,-8.5
+    parent: 1
+    type: Transform
+- uid: 142
+  type: AlwaysPoweredWallLight
+  components:
+  - pos: 0.5,8.5
+    parent: 1
+    type: Transform
+- uid: 143
+  type: AlwaysPoweredWallLight
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 0.5,-7.5
+    parent: 1
+    type: Transform
+- uid: 144
+  type: AlwaysPoweredWallLight
+  components:
+  - rot: 1.5707963267948966 rad
+    pos: -7.5,0.5
+    parent: 1
+    type: Transform
+- uid: 145
+  type: AlwaysPoweredWallLight
+  components:
+  - rot: -1.5707963267948966 rad
+    pos: 8.5,0.5
+    parent: 1
+    type: Transform
+- uid: 146
+  type: AlwaysPoweredWallLight
+  components:
+  - pos: -4.5,8.5
+    parent: 1
+    type: Transform
+- uid: 147
+  type: AlwaysPoweredWallLight
+  components:
+  - rot: 3.141592653589793 rad
+    pos: -4.5,-7.5
+    parent: 1
+    type: Transform
+- uid: 148
+  type: AlwaysPoweredWallLight
+  components:
+  - rot: 3.141592653589793 rad
+    pos: 5.5,-7.5
+    parent: 1
+    type: Transform
+- uid: 149
+  type: AlwaysPoweredWallLight
+  components:
+  - pos: 5.5,8.5
+    parent: 1
+    type: Transform
+- uid: 150
+  type: AlwaysPoweredWallLight
+  components:
+  - rot: -1.5707963267948966 rad
+    pos: 8.5,5.5
+    parent: 1
+    type: Transform
+- uid: 151
+  type: AlwaysPoweredWallLight
+  components:
+  - rot: -1.5707963267948966 rad
+    pos: 8.5,-4.5
+    parent: 1
+    type: Transform
+- uid: 152
+  type: AlwaysPoweredWallLight
+  components:
+  - rot: 1.5707963267948966 rad
+    pos: -7.5,-4.5
+    parent: 1
+    type: Transform
+- uid: 153
+  type: AlwaysPoweredWallLight
+  components:
+  - rot: 1.5707963267948966 rad
+    pos: -7.5,5.5
+    parent: 1
+    type: Transform
+- uid: 154
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 1.5,4.5
+    parent: 1
+    type: Transform
+- uid: 155
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 1.5,5.5
+    parent: 1
+    type: Transform
+- uid: 156
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 1.5,6.5
+    parent: 1
+    type: Transform
+- uid: 157
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 0.5,4.5
+    parent: 1
+    type: Transform
+- uid: 158
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 0.5,5.5
+    parent: 1
+    type: Transform
+- uid: 159
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 0.5,6.5
+    parent: 1
+    type: Transform
+- uid: 160
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -0.5,4.5
+    parent: 1
+    type: Transform
+- uid: 161
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -0.5,5.5
+    parent: 1
+    type: Transform
+- uid: 162
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -0.5,6.5
+    parent: 1
+    type: Transform
+- uid: 163
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 4.5,6.5
+    parent: 1
+    type: Transform
+- uid: 164
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 4.5,5.5
+    parent: 1
+    type: Transform
+- uid: 165
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 4.5,4.5
+    parent: 1
+    type: Transform
+- uid: 166
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 5.5,6.5
+    parent: 1
+    type: Transform
+- uid: 167
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 5.5,5.5
+    parent: 1
+    type: Transform
+- uid: 168
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 5.5,4.5
+    parent: 1
+    type: Transform
+- uid: 169
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 6.5,6.5
+    parent: 1
+    type: Transform
+- uid: 170
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 6.5,5.5
+    parent: 1
+    type: Transform
+- uid: 171
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 6.5,4.5
+    parent: 1
+    type: Transform
+- uid: 172
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 6.5,1.5
+    parent: 1
+    type: Transform
+- uid: 173
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 6.5,0.5
+    parent: 1
+    type: Transform
+- uid: 174
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 6.5,-0.5
+    parent: 1
+    type: Transform
+- uid: 175
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 5.5,1.5
+    parent: 1
+    type: Transform
+- uid: 176
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 5.5,0.5
+    parent: 1
+    type: Transform
+- uid: 177
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 5.5,-0.5
+    parent: 1
+    type: Transform
+- uid: 178
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 4.5,1.5
+    parent: 1
+    type: Transform
+- uid: 179
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 4.5,0.5
+    parent: 1
+    type: Transform
+- uid: 180
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 4.5,-0.5
+    parent: 1
+    type: Transform
+- uid: 181
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 6.5,-5.5
+    parent: 1
+    type: Transform
+- uid: 182
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 6.5,-4.5
+    parent: 1
+    type: Transform
+- uid: 183
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 6.5,-3.5
+    parent: 1
+    type: Transform
+- uid: 184
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 5.5,-5.5
+    parent: 1
+    type: Transform
+- uid: 185
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 5.5,-4.5
+    parent: 1
+    type: Transform
+- uid: 186
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 5.5,-3.5
+    parent: 1
+    type: Transform
+- uid: 187
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 4.5,-5.5
+    parent: 1
+    type: Transform
+- uid: 188
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 4.5,-4.5
+    parent: 1
+    type: Transform
+- uid: 189
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 4.5,-3.5
+    parent: 1
+    type: Transform
+- uid: 190
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 1.5,-5.5
+    parent: 1
+    type: Transform
+- uid: 191
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 1.5,-4.5
+    parent: 1
+    type: Transform
+- uid: 192
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 1.5,-3.5
+    parent: 1
+    type: Transform
+- uid: 193
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 0.5,-5.5
+    parent: 1
+    type: Transform
+- uid: 194
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 0.5,-4.5
+    parent: 1
+    type: Transform
+- uid: 195
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: 0.5,-3.5
+    parent: 1
+    type: Transform
+- uid: 196
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -0.5,-5.5
+    parent: 1
+    type: Transform
+- uid: 197
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -0.5,-4.5
+    parent: 1
+    type: Transform
+- uid: 198
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -0.5,-3.5
+    parent: 1
+    type: Transform
+- uid: 199
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -3.5,-5.5
+    parent: 1
+    type: Transform
+- uid: 200
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -3.5,-4.5
+    parent: 1
+    type: Transform
+- uid: 201
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -3.5,-3.5
+    parent: 1
+    type: Transform
+- uid: 202
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -4.5,-5.5
+    parent: 1
+    type: Transform
+- uid: 203
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -4.5,-4.5
+    parent: 1
+    type: Transform
+- uid: 204
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -4.5,-3.5
+    parent: 1
+    type: Transform
+- uid: 205
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -5.5,-5.5
+    parent: 1
+    type: Transform
+- uid: 206
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -5.5,-4.5
+    parent: 1
+    type: Transform
+- uid: 207
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -5.5,-3.5
+    parent: 1
+    type: Transform
+- uid: 208
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -3.5,-0.5
+    parent: 1
+    type: Transform
+- uid: 209
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -3.5,0.5
+    parent: 1
+    type: Transform
+- uid: 210
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -3.5,1.5
+    parent: 1
+    type: Transform
+- uid: 211
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -4.5,-0.5
+    parent: 1
+    type: Transform
+- uid: 212
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -4.5,0.5
+    parent: 1
+    type: Transform
+- uid: 213
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -4.5,1.5
+    parent: 1
+    type: Transform
+- uid: 214
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -5.5,-0.5
+    parent: 1
+    type: Transform
+- uid: 215
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -5.5,0.5
+    parent: 1
+    type: Transform
+- uid: 216
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -5.5,1.5
+    parent: 1
+    type: Transform
+- uid: 217
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -3.5,4.5
+    parent: 1
+    type: Transform
+- uid: 218
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -3.5,5.5
+    parent: 1
+    type: Transform
+- uid: 219
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -3.5,6.5
+    parent: 1
+    type: Transform
+- uid: 220
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -4.5,4.5
+    parent: 1
+    type: Transform
+- uid: 221
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -4.5,5.5
+    parent: 1
+    type: Transform
+- uid: 222
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -4.5,6.5
+    parent: 1
+    type: Transform
+- uid: 223
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -5.5,4.5
+    parent: 1
+    type: Transform
+- uid: 224
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -5.5,5.5
+    parent: 1
+    type: Transform
+- uid: 225
+  type: SWMapPlayerSpawnMarker
+  components:
+  - pos: -5.5,6.5
+    parent: 1
+    type: Transform
+- uid: 226
+  type: Rack
+  components:
+  - pos: 0.5,0.5
+    parent: 1
+    type: Transform
+- uid: 227
+  type: SWToolboxGreytide
+  components:
+  - pos: 0.48885512,0.49652898
+    parent: 1
+    type: Transform
+...

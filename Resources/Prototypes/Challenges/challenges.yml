@@ -194,6 +194,8 @@
   winByDefault: true
   duration: 15
   challengeModifiers:
+  - type: LoadMapModifier
+    mapPath: /Maps/ChallengeMaps/nostalgia.yml
   - type: StayAliveModifier
   - type: GiveItemModifier
     items:
@@ -410,6 +412,8 @@
   invertSpeedup: true
   startDelay: 3
   challengeModifiers:
+  - type: LoadMapModifier
+    mapPath: /Maps/ChallengeMaps/beach.yml
   - type: StayAliveModifier
   - type: SpawnEntityModifier
     spawnLocationScalar: 0.8
