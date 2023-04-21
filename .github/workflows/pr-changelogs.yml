@@ -4,7 +4,6 @@ on:
     types: [closed]
 
 env:
-  GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
   CHANGELOG_DIR: Resources/Changelog/Changelog.yml
   PR_NUMBER: ${{ github.event.number }}
 
@@ -18,7 +17,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
         with:
-          token: ${{ vars.GITHUB_TOKEN }}
+          token: ${{secrets.GITHUB_TOKEN}}
           ref: master
 
       - name: git
