@@ -1,11 +1,4 @@
 Entries:
-- author: Carbonhell
-  changes:
-  - message: Examining a humanoid with an age between 30 and 60 years old now properly
-      shows them as middle-aged instead of old.
-    type: Fix
-  id: 2548
-  time: '2022-10-30T18:54:20.0000000+00:00'
 - author: Interrobang01
   changes:
   - message: Made it easier to see codewords in the character menu and syndicate agent
@@ -5374,3 +5367,9 @@ Entries:
     type: add
   id: 3325
   time: '2023-04-21T15:14:31Z'
+- author: eclips_e
+  changes:
+  - message: Added a new match for the Shootout and the CM challenge.
+    type: add
+  id: 3326
+  time: '2023-04-21T15:19:55Z'
