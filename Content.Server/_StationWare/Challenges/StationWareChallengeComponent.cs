@@ -16,6 +16,12 @@ public sealed class StationWareChallengeComponent : Component
     public bool WinByDefault;
 
     /// <summary>
+    /// How many points are awarded to the winners.
+    /// </summary>
+    [DataField("pointsAwarded")]
+    public int PointsAwarded;
+
+    /// <summary>
     /// Dictionary that stores whether or not each player has complete the challenge.
     /// </summary>
     [DataField("completions"), ViewVariables(VVAccess.ReadWrite)]

@@ -1,0 +1,11 @@
+- type: challenge
+  id: TestBossRound
+  announcement: challenge-boss-juggernaut-hunter
+  winByDefault: true
+  duration: 60
+  pointsAwarded: 5
+  tags:
+    - BossRound
+  challengeModifiers:
+  - type: LoadMapModifier
+    mapPath: Maps/ChallengeMaps/map-test.yml

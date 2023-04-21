@@ -71,10 +71,11 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
         challengeComp.StartTime = _timing.CurTime + startDelay;
         challengeComp.EndTime = _timing.CurTime + duration + startDelay;
         challengeComp.WinByDefault = challengePrototype.WinByDefault;
+        challengeComp.PointsAwarded = challengePrototype.PointsAwarded;
         var participants = GetParticipants();
 
         var announcement = Loc.GetString(challengePrototype.Announcement);
-        _overlay.BroadcastText(announcement, true, Color.Fuchsia);
+        _overlay.BroadcastText(announcement, true, challengePrototype.Tags.Contains("BossRound") ? Color.Red : Color.Fuchsia);
         _chat.DispatchGlobalAnnouncement(announcement, announcementSound: challengePrototype.AnnouncementSound, colorOverride: Color.Fuchsia);
 
         // copy all our modifiers from the challenge component to the entity
@@ -211,7 +212,7 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
             _overlay.BroadcastText(Loc.GetString("overlay-lost"), true, Color.Red, actor.PlayerSession);
         }
 
-        var ev = new PlayerChallengeStateSetEvent(challengeEnt, component, actor.PlayerSession, win);
+        var ev = new PlayerChallengeStateSetEvent(challengeEnt, component, actor.PlayerSession, win, component.PointsAwarded);
         RaiseLocalEvent(uid, ref ev);
         RaiseLocalEvent(challengeEnt, ref ev, true);
         TryEndChallengeEarly(challengeEnt, component);
@@ -356,4 +357,4 @@ public readonly record struct ChallengeEndEvent(List<EntityUid> Players, Diction
 /// <param name="Player"></param>
 /// <param name="Won"></param>
 [ByRefEvent]
-public readonly record struct PlayerChallengeStateSetEvent(EntityUid Challenge, StationWareChallengeComponent Component, IPlayerSession Player, bool Won);
+public readonly record struct PlayerChallengeStateSetEvent(EntityUid Challenge, StationWareChallengeComponent Component, IPlayerSession Player, bool Won, int Points = 1);

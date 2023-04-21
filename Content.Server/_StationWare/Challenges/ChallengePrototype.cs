@@ -29,6 +29,12 @@ public sealed class ChallengePrototype : IPrototype
     public readonly List<string> Tags = new();
 
     /// <summary>
+    /// How many points are awarded to the winners.
+    /// </summary>
+    [DataField("pointsAwarded")]
+    public readonly int PointsAwarded = 1;
+
+    /// <summary>
     /// How long the challenge lasts.
     /// </summary>
     [DataField("duration")]
