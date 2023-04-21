@@ -33,7 +33,7 @@ jobs:
 
       - name: install pyyaml
         run: |
-          pip3 install pyyaml==6.0
+          pip3 install pyyaml==6.0 requests==2.28.1
         shell: bash
 
       - name: run cl script
