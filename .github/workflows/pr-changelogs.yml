@@ -1,0 +1,49 @@
+name: PR Changelogs
+on:
+  pull_request_target:
+    types: [closed]
+
+env:
+  GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
+  CHANGELOG_DIR: Resources/Changelog/Changelog.yml
+  PR_NUMBER: ${{ github.event.number }}
+
+jobs:
+  changelog:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    permissions:
+      contents: write
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
+          ref: master
+
+      - name: git
+        run: |
+          git config --global user.name github-actions
+          git config --global user.email github-actions@github.com
+        shell: bash
+
+      - name: setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 'pypy3.9'
+
+      - name: install pyyaml
+        run: |
+          pip3 install pyyaml==6.0
+        shell: bash
+
+      - name: run cl script
+        run: python3 Tools/log_changelog.py
+        shell: bash
+
+      - name: commit file
+        run: |
+          git add Resources/Changelog/Changelog.yml
+          git commit -m "automated changelog update (#${{ env.PR_NUMBER }})"
+          git push
+        shell: bash
