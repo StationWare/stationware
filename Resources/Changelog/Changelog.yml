@@ -1,13 +1,4 @@
 Entries:
-- author: Interrobang01
-  changes:
-  - message: Made it easier to see codewords in the character menu and syndicate agent
-      briefing.
-    type: Tweak
-  - message: The Syndicate hates Nanotrasen slightly more.
-    type: Tweak
-  id: 2549
-  time: '2022-10-30T18:56:41.0000000+00:00'
 - author: Rane
   changes:
   - message: Fixed several items of clothing making your entire head invisible.
@@ -5373,3 +5364,9 @@ Entries:
     type: add
   id: 3326
   time: '2023-04-21T15:19:55Z'
+- author: eclips_e
+  changes:
+  - message: Added boss round support.
+    type: add
+  id: 3327
+  time: '2023-04-22T23:16:01Z'
