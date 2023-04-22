@@ -7,5 +7,4 @@
   tags:
     - BossRound
   challengeModifiers:
-  - type: LoadMapModifier
-    mapPath: Maps/ChallengeMaps/map-test.yml
+  - type: StayAliveModifier
