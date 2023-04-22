@@ -40,7 +40,7 @@ public sealed class PointSystem : SharedPointSystem
 
         EnsurePointInfo(manager, ev.Player);
         if (ev.Won)
-            AdjustPoints(ev.Player, 1, manager);
+            AdjustPoints(ev.Player, ev.Points, manager);
     }
 
     public override bool TryGetPointManager([NotNullWhen(true)] ref PointManagerComponent? component)
