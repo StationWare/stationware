@@ -78,12 +78,20 @@ public sealed class StationWareRuleSystem : GameRuleSystem
         if (ev.Challenge != _currentChallenge)
             return;
 
-        if (_challengeCount == _totalChallenges)
+        if (_challengeCount >= _totalChallenges)
         {
-            GameTicker.EndRound();
-            StartPostRoundSlaughter(ev.Completions.Keys.ToList());
-            _restartRoundTime = _timing.CurTime + _postRoundDuration;
-            return;
+            if (CheckForTies())
+            {
+                // there's a tie!
+
+            }
+            else
+            {
+                GameTicker.EndRound();
+                StartPostRoundSlaughter(ev.Completions.Keys.ToList());
+                _restartRoundTime = _timing.CurTime + _postRoundDuration;
+                return;
+            }
         }
 
         if (_challengeCount % _speedupInterval == 0)
@@ -96,6 +104,19 @@ public sealed class StationWareRuleSystem : GameRuleSystem
 
         _currentChallenge = null;
         _nextChallengeTime = _timing.CurTime + _challengeDelay * _speedMultiplier;
+    }
+
+    private bool CheckForTies()
+    {
+        if (!_point.TryGetTiedPlayers(null, out var tiedPlayers))
+            return false;
+
+        if (tiedPlayers.Count > 1)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     private void OnMobStateChanged(MobStateChangedEvent ev)
