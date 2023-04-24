@@ -120,6 +120,9 @@
   id: Catwalk
 
 - type: Tag
+  id: ChallengePreventPick
+
+- type: Tag
   id: Cigarette
 
 - type: Tag

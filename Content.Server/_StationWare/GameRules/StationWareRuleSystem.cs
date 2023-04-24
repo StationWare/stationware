@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Content.Server._StationWare.ChallengeOverlay;
 using Content.Server._StationWare.Challenges;
+using Content.Server._StationWare.Challenges.Modifiers.Components;
 using Content.Server._StationWare.Points;
 using Content.Server.Chat.Managers;
 using Content.Server.CombatMode;
@@ -34,6 +36,7 @@ public sealed class StationWareRuleSystem : GameRuleSystem
     [Dependency] private readonly StationWareChallengeSystem _stationWareChallenge = default!;
     [Dependency] private readonly ChallengeOverlaySystem _overlay = default!;
     [Dependency] private readonly PointSystem _point = default!;
+    [Dependency] private readonly IPlayerManager _playerManager = default!;
 
     private TimeSpan _nextChallengeTime;
     private TimeSpan? _restartRoundTime;
@@ -80,10 +83,22 @@ public sealed class StationWareRuleSystem : GameRuleSystem
 
         if (_challengeCount >= _totalChallenges)
         {
-            if (CheckForTies())
+            if (CheckForTies(out var tiedPlayers))
             {
                 // there's a tie!
+                foreach (var player in tiedPlayers)
+                {
+                    if (_playerManager.TryGetSessionById(player, out var playerSession))
+                    {
+                        if (playerSession.AttachedEntity == null)
+                            return;
 
+                        var entity = playerSession.AttachedEntity.Value;
+
+                        AddComp<TiebreakerTrackerComponent>(entity);
+                    }
+                }
+                _stationWareChallenge.StartChallenge(_prototype.Index<ChallengePrototype>("TiebreakerChallenge"));
             }
             else
             {
@@ -106,13 +121,15 @@ public sealed class StationWareRuleSystem : GameRuleSystem
         _nextChallengeTime = _timing.CurTime + _challengeDelay * _speedMultiplier;
     }
 
-    private bool CheckForTies()
+    private bool CheckForTies([NotNullWhen(true)] out List<NetUserId>? players)
     {
+        players = null;
         if (!_point.TryGetTiedPlayers(null, out var tiedPlayers))
             return false;
 
         if (tiedPlayers.Count > 1)
         {
+            players = tiedPlayers;
             return true;
         }
 
@@ -211,7 +228,9 @@ public sealed class StationWareRuleSystem : GameRuleSystem
         var available = _prototype.EnumeratePrototypes<ChallengePrototype>()
             .Where(p => !_previousChallenges.Contains(p.ID))
             .Where(p => p.Tags.Contains("BossRound") == bossRound)
+            .Where(p => !p.Tags.Contains("ChallengePreventPick"))
             .ToList();
+
         if (!available.Any())
         {
             _previousChallenges.Clear();
@@ -231,17 +250,23 @@ public sealed class StationWareRuleSystem : GameRuleSystem
 
         if (!_point.TryGetHighestScoringPlayer(null, out var highest))
             return;
-
         var firstNetUserId = highest.Value.Key;
         if (players.TryGetValue(firstNetUserId, out var s))
         {
             var playerEnt = s.Item2;
-            _godmode.EnableGodmode(playerEnt);
+
+            // notify players
             _chatManager.DispatchServerMessage(s.Item1, Loc.GetString("stationware-you-won"));
+            _overlay.BroadcastText(Loc.GetString("overlay-player-won",
+                        ("player", MetaData(playerEnt).EntityName)
+                    ), true, Color.Yellow);
             _overlay.BroadcastText(Loc.GetString("stationware-you-won"), true, Color.Green, s.Item1);
+
+            // actual slaughter
             var minigun = Spawn("WeaponMinigun", Transform(playerEnt).Coordinates); // gamerules suck dick anyways idgaf
             EnsureComp<UnremoveableComponent>(minigun); // no stealing allowed
             _hands.TryPickup(playerEnt, minigun, checkActionBlocker: false);
+            _godmode.EnableGodmode(playerEnt);
         }
 
         players.Remove(firstNetUserId);

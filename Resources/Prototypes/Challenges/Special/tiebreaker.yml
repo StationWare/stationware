@@ -1,0 +1,16 @@
+- type: challenge
+  id: TiebreakerChallenge
+  announcement: challenge-tiebreaker-message
+  winByDefault: true
+  duration: 60
+  startDelay: 0
+  tags:
+    - ChallengePreventPick
+  challengeModifiers:
+  - type: StayAliveModifier
+  - type: GiveItemModifier
+    items:
+      - id: ToolboxMechanical
+      - id: SoapSyndie
+  - type: LoadMapModifier
+    mapPath: Maps/ChallengeMaps/deathmatch.yml

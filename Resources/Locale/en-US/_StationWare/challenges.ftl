@@ -32,6 +32,9 @@ challenge-clap = Clap your hands!
 challenge-scream = Scream!
 challenge-snap = Snap your fingers!
 
+# Tiebreaker
+challenge-tiebreaker-message = Tiebreaker, kill your opponent!
+
 # Boss rounds
 challenge-boss-juggernaut-hunter = Kill {$idiot} to death!
 challenge-boss-juggernaut-juggernaut = Objective: Survive.
