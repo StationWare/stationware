@@ -194,20 +194,28 @@ public sealed class StationWareRuleSystem : GameRuleSystem
         if (_timing.CurTime < _nextChallengeTime)
             return;
 
-        var challenge = GetRandomChallenge();
+        var challenge = GetRandomChallenge(_challengeCount == _totalChallenges);
         _currentChallenge = _stationWareChallenge.StartChallenge(challenge, _speedMultiplier);
         _previousChallenges.Add(challenge.ID);
     }
 
-    private ChallengePrototype GetRandomChallenge()
+    private ChallengePrototype GetRandomChallenge(bool bossRound, int? triedAmount = 0)
     {
+        if (triedAmount >= 5)
+        {
+            // uhhhhhhhhhhh
+            GameTicker.EndRound();
+            return _prototype.EnumeratePrototypes<ChallengePrototype>().ToList()[0];
+        }
+
         var available = _prototype.EnumeratePrototypes<ChallengePrototype>()
             .Where(p => !_previousChallenges.Contains(p.ID))
+            .Where(p => p.Tags.Contains("BossRound") == bossRound)
             .ToList();
         if (!available.Any())
         {
             _previousChallenges.Clear();
-            return GetRandomChallenge();
+            return GetRandomChallenge(bossRound, triedAmount + 1);
         }
         return _random.Pick(available);
     }

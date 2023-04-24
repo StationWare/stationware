@@ -35,6 +35,9 @@
   id: BorgArm
 
 - type: Tag
+  id: BossRound
+
+- type: Tag
   id: BotanyHatchet
 
 - type: Tag

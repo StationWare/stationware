@@ -31,3 +31,7 @@ challenge-math = Solve the equation on-screen!
 challenge-clap = Clap your hands!
 challenge-scream = Scream!
 challenge-snap = Snap your fingers!
+
+# Boss rounds
+challenge-boss-juggernaut-hunter = Kill {$idiot} to death!
+challenge-boss-juggernaut-juggernaut = Objective: Survive.
