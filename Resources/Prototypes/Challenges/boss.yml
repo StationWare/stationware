@@ -5,6 +5,6 @@
   duration: 60
   pointsAwarded: 5
   tags:
-    - BossRound
+    - BossRound # we don't use ChallengePreventPick because BossRound already does that for us
   challengeModifiers:
   - type: StayAliveModifier
