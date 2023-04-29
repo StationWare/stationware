@@ -13,4 +13,4 @@
       - id: ToolboxMechanical
       - id: SoapSyndie
   - type: LoadMapModifier
-    mapPath: Maps/ChallengeMaps/deathmatch.yml
+    mapPath: /Maps/ChallengeMaps/deathmatch.yml
