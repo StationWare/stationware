@@ -8,10 +8,13 @@ using Content.Server.GameTicking;
 using Content.Server.Maps;
 using Content.Server.Spawners.Components;
 using Content.Server.Station.Components;
+using Content.Server.Station.Systems;
+using Content.Shared.CCVar;
 using Content.Shared.Roles;
 using NUnit.Framework;
 using Robust.Server.GameObjects;
 using Robust.Server.Maps;
+using Robust.Shared.Configuration;
 using Robust.Shared.ContentPack;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Utility;
@@ -52,6 +55,8 @@ namespace Content.IntegrationTests.Tests
 
             var mapLoader = server.ResolveDependency<IEntitySystemManager>().GetEntitySystem<MapLoaderSystem>();
             var mapManager = server.ResolveDependency<IMapManager>();
+            var cfg = server.ResolveDependency<IConfigurationManager>();
+            Assert.That(cfg.GetCVar(CCVars.DisableGridFill), Is.False);
 
             await server.WaitPost(() =>
             {
@@ -178,6 +183,8 @@ namespace Content.IntegrationTests.Tests
             var protoManager = server.ResolveDependency<IPrototypeManager>();
             var ticker = entManager.EntitySysManager.GetEntitySystem<GameTicker>();
             var xformQuery = entManager.GetEntityQuery<TransformComponent>();
+            var cfg = server.ResolveDependency<IConfigurationManager>();
+            Assert.That(cfg.GetCVar(CCVars.DisableGridFill), Is.False);
 
             await server.WaitPost(() =>
             {
@@ -322,6 +329,8 @@ namespace Content.IntegrationTests.Tests
 
             var mapLoader = server.ResolveDependency<IEntitySystemManager>().GetEntitySystem<MapLoaderSystem>();
             var mapManager = server.ResolveDependency<IMapManager>();
+            var cfg = server.ResolveDependency<IConfigurationManager>();
+            Assert.That(cfg.GetCVar(CCVars.DisableGridFill), Is.False);
 
             await server.WaitPost(() =>
             {
