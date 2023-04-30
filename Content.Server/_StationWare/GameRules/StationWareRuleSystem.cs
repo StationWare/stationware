@@ -11,6 +11,7 @@ using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Server.Hands.Systems;
 using Content.Shared.CCVar;
+using Content.Shared.CombatMode;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Mobs;
 using Robust.Server.GameObjects;
@@ -31,6 +32,7 @@ public sealed class StationWareRuleSystem : GameRuleSystem
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly CombatModeSystem _combatMode = default!;
     [Dependency] private readonly GodmodeSystem _godmode = default!;
     [Dependency] private readonly HandsSystem _hands = default!;
     [Dependency] private readonly StationWareChallengeSystem _stationWareChallenge = default!;
@@ -151,8 +153,7 @@ public sealed class StationWareRuleSystem : GameRuleSystem
         if (!TryComp<ActorComponent>(ev.Target, out var actor))
             return;
 
-        if (!_queuedRespawns.Contains(actor.PlayerSession))
-            _queuedRespawns.Add(actor.PlayerSession);
+        _queuedRespawns.Add(actor.PlayerSession);
     }
 
     private void OnRoundEndText(RoundEndTextAppendEvent ev)
@@ -274,7 +275,7 @@ public sealed class StationWareRuleSystem : GameRuleSystem
         {
             if (!TryComp<CombatModeComponent>(ent, out var combatMode))
                 continue;
-            combatMode.IsInCombatMode = false;
+            _combatMode.SetInCombatMode(ent, false, combatMode);
             RemComp(ent, combatMode);
         }
     }
