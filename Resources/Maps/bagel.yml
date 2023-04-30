@@ -31682,8 +31682,10 @@ entities:
     type: GridAtmosphere
   - type: OccluderTree
   - type: Shuttle
-  - nextUpdate: 8187.135845
+  - nextUpdate: 0.45
     type: GridPathfinding
+  - nextUpdate: 1
+    type: SpreaderGrid
   - type: RadiationGridResistance
   - type: GasTileOverlay
 - uid: 61
@@ -83440,8 +83442,10 @@ entities:
     type: Fixtures
   - type: OccluderTree
   - type: Shuttle
-  - nextUpdate: 1984.9758152
+  - nextUpdate: 0.45
     type: GridPathfinding
+  - nextUpdate: 1
+    type: SpreaderGrid
   - gravityShakeSound: !type:SoundPathSpecifier
       path: /Audio/Effects/alert.ogg
     type: Gravity
@@ -109940,7 +109944,7 @@ entities:
     type: Transform
   - charge: 100
     type: GravityGenerator
-  - radius: 175.75
+  - radius: 4
     type: PointLight
 - uid: 11695
   type: VendingMachineSciDrobe
