@@ -20,6 +20,7 @@ using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
+using Robust.Shared.Utility;
 
 namespace Content.Server.Body.Systems;
 
@@ -141,16 +142,22 @@ public sealed class BodySystem : SharedBodySystem
         if (bodyId == null || !Resolve(bodyId.Value, ref body, false))
             return new HashSet<EntityUid>();
 
+        if (LifeStage(bodyId.Value) >= EntityLifeStage.Terminating || EntityManager.IsQueuedForDeletion(bodyId.Value))
+            return new HashSet<EntityUid>();
+
+        var xform = Transform(bodyId.Value);
+        if (xform.MapUid == null)
+            return new HashSet<EntityUid>();
+
         if (TryComp<DamageableComponent>(bodyId.Value, out var damageable) &&
             _mobThreshold.TryGetDeadThreshold(bodyId.Value, out var threshold))
         {
             Damageable.SetAllDamage(bodyId.Value, damageable, threshold.Value);
             _mobState.ChangeMobState(bodyId.Value, MobState.Dead);
         }
-
+        
         var gibs = base.GibBody(bodyId, gibOrgans, body, deleteItems);
 
-        var xform = Transform(bodyId.Value);
         var coordinates = xform.Coordinates;
         var filter = Filter.Pvs(bodyId.Value, entityManager: EntityManager);
         var audio = AudioParams.Default.WithVariation(0.025f);
