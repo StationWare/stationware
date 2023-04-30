@@ -1084,7 +1084,7 @@ namespace Content.Shared.CCVar
         /// </summary>
         public static readonly CVarDef<bool> CargoShuttles =
             CVarDef.Create("shuttle.cargo", true, CVar.SERVERONLY);
-        
+
         /// <summary>
         /// Whether to automatically spawn escape shuttles.
         /// </summary>
@@ -1208,34 +1208,6 @@ namespace Content.Shared.CCVar
         /// </summary>
         public static readonly CVarDef<float> AnomalyGenerationGridBoundsScale =
             CVarDef.Create("anomaly.generation_grid_bounds_scale", 0.6f, CVar.SERVERONLY);
-
-        /*
-         * StationWare
-         */
-
-        /// <summary>
-        ///     How many challenges are in a single stationware round
-        /// </summary>
-        public static readonly CVarDef<int> StationWareTotalChallenges =
-            CVarDef.Create("stationware.total_challenges", 15, CVar.SERVERONLY);
-
-        /// <summary>
-        ///     Every X challenges, the challenges themselves will speedup
-        /// </summary>
-        public static readonly CVarDef<float> StationWareAmountPerSpeedup =
-            CVarDef.Create("stationware.amount_per_speedup", 0.15f, CVar.SERVERONLY);
-
-        /// <summary>
-        ///     Every X challenges, the challenges themselves will speedup
-        /// </summary>
-        public static readonly CVarDef<int> StationWareSpeedupInterval =
-            CVarDef.Create("stationware.speedup_interval", 5, CVar.SERVERONLY);
-
-        /// <summary>
-        ///     How much time do we wait between each challenge
-        /// </summary>
-        public static readonly CVarDef<float> StationWareChallengeCooldownLength =
-            CVarDef.Create("stationware.challenge_cooldown_length", 5f, CVar.SERVERONLY);
 
         /// <summary>
         ///     Do we delete bodies once they die?
