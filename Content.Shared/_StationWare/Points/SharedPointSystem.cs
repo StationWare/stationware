@@ -143,6 +143,38 @@ public abstract class SharedPointSystem : EntitySystem
         return true;
     }
 
+    public bool TryGetTiedPlayers(PointManagerComponent? component, [NotNullWhen(true)] out List<NetUserId>? tiedPlayers)
+    {
+        tiedPlayers = null;
+        if (!TryGetPointManager(ref component))
+            return false;
+        if (!component.Points.Any())
+            return false;
+
+        var points = component.Points
+            .OrderByDescending(p => p.Value.Points).ToList();
+
+        tiedPlayers = new List<NetUserId>();
+        var highestPoints = 0;
+
+        foreach (var (player, info) in points)
+        {
+            if (info.Points > highestPoints)
+            {
+                highestPoints = info.Points;
+            }
+
+            if (info.Points < highestPoints) // we're no longer in the tied players
+            {
+                break;
+            }
+
+            tiedPlayers.Add(player);
+        }
+
+        return true;
+    }
+
     /// <summary>
     /// Creates a formatted message of a scoreboard of all players, ordered from greatest to least.
     /// </summary>
