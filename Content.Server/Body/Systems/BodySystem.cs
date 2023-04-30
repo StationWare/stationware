@@ -155,7 +155,7 @@ public sealed class BodySystem : SharedBodySystem
             Damageable.SetAllDamage(bodyId.Value, damageable, threshold.Value);
             _mobState.ChangeMobState(bodyId.Value, MobState.Dead);
         }
-        
+
         var gibs = base.GibBody(bodyId, gibOrgans, body, deleteItems);
 
         var coordinates = xform.Coordinates;
