@@ -1,10 +1,4 @@
 Entries:
-- author: Rane
-  changes:
-  - message: Fixed several items of clothing making your entire head invisible.
-    type: Fix
-  id: 2550
-  time: '2022-10-30T18:58:36.0000000+00:00'
 - author: aklos
   changes:
   - message: Flying mobs no longer run into mousetraps and glass shards
@@ -5370,3 +5364,9 @@ Entries:
     type: add
   id: 3327
   time: '2023-04-22T23:16:01Z'
+- author: eclips_e
+  changes:
+  - message: Added a tiebreaker deathmatch for those who manage to tie for winning.
+    type: add
+  id: 3328
+  time: '2023-04-30T14:09:37Z'
