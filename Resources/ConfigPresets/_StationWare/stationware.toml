@@ -41,6 +41,3 @@ map_enabled         = true
 cargo = false
 emergency = false
 arrivals = false
-
-[stationware] # Stationware cvars
-total_challenges    = 15

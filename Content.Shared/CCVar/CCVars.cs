@@ -274,7 +274,7 @@ namespace Content.Shared.CCVar
         /// Make people bonk when trying to climb certain objects like tables.
         /// </summary>
         public static readonly CVarDef<bool> GameTableBonk =
-            CVarDef.Create("game.table_bonk", false, CVar.SERVERONLY);
+            CVarDef.Create("game.table_bonk", false, CVar.REPLICATED);
 
 #if EXCEPTION_TOLERANCE
         /// <summary>
@@ -603,6 +603,12 @@ namespace Content.Shared.CCVar
 
         public static readonly CVarDef<bool> AdminAnnounceLogout =
             CVarDef.Create("admin.announce_logout", true, CVar.SERVERONLY);
+
+        /// <summary>
+        ///     Minimum explosion intensity to create an admin alert message. -1 to disable the alert.
+        /// </summary>
+        public static readonly CVarDef<int> AdminAlertExplosionMinIntensity =
+            CVarDef.Create("admin.alert.explosion_min_intensity", 60, CVar.SERVERONLY);
 
         /*
          * Explosions
@@ -1085,6 +1091,12 @@ namespace Content.Shared.CCVar
         public static readonly CVarDef<bool> CargoShuttles =
             CVarDef.Create("shuttle.cargo", true, CVar.SERVERONLY);
 
+        /// <summary>
+        /// Whether to automatically spawn escape shuttles.
+        /// </summary>
+        public static readonly CVarDef<bool> DisableGridFill =
+            CVarDef.Create("shuttle.disable_grid_fill", false, CVar.SERVERONLY);
+
         /*
          * Emergency
          */
@@ -1202,34 +1214,6 @@ namespace Content.Shared.CCVar
         /// </summary>
         public static readonly CVarDef<float> AnomalyGenerationGridBoundsScale =
             CVarDef.Create("anomaly.generation_grid_bounds_scale", 0.6f, CVar.SERVERONLY);
-
-        /*
-         * StationWare
-         */
-
-        /// <summary>
-        ///     How many challenges are in a single stationware round
-        /// </summary>
-        public static readonly CVarDef<int> StationWareTotalChallenges =
-            CVarDef.Create("stationware.total_challenges", 15, CVar.SERVERONLY);
-
-        /// <summary>
-        ///     Every X challenges, the challenges themselves will speedup
-        /// </summary>
-        public static readonly CVarDef<float> StationWareAmountPerSpeedup =
-            CVarDef.Create("stationware.amount_per_speedup", 0.15f, CVar.SERVERONLY);
-
-        /// <summary>
-        ///     Every X challenges, the challenges themselves will speedup
-        /// </summary>
-        public static readonly CVarDef<int> StationWareSpeedupInterval =
-            CVarDef.Create("stationware.speedup_interval", 5, CVar.SERVERONLY);
-
-        /// <summary>
-        ///     How much time do we wait between each challenge
-        /// </summary>
-        public static readonly CVarDef<float> StationWareChallengeCooldownLength =
-            CVarDef.Create("stationware.challenge_cooldown_length", 5f, CVar.SERVERONLY);
 
         /// <summary>
         ///     Do we delete bodies once they die?
@@ -1362,8 +1346,16 @@ namespace Content.Shared.CCVar
         public static readonly CVarDef<string>
             SalvageForced = CVarDef.Create("salvage.forced", "", CVar.SERVERONLY);
 
-        /*
+        /// <summary>
+        /// Cooldown for successful missions.
+        /// </summary>
+        public static readonly CVarDef<float>
+            SalvageExpeditionCooldown = CVarDef.Create("salvage.expedition_cooldown", 300f, CVar.REPLICATED);
 
+        public static readonly CVarDef<float>
+            SalvageExpeditionFailedCooldown = CVarDef.Create("salvage.expedition_failed_cooldown", 900f, CVar.REPLICATED);
+
+        /*
          * Flavor
          */
 

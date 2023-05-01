@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Content.Server._StationWare.Challenges.Modifiers.Components;
-using Content.Server.Hands.Components;
 using Content.Server.Hands.Systems;
+using Content.Shared.Hands.Components;
 using Content.Shared.Storage;
 using Robust.Shared.Random;
 

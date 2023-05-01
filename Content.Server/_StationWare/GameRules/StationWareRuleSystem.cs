@@ -9,13 +9,13 @@ using Content.Server.CombatMode;
 using Content.Server.Damage.Systems;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
+using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Hands.Systems;
-using Content.Shared.CCVar;
+using Content.Shared.CombatMode;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Mobs;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
-using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -23,39 +23,20 @@ using Robust.Shared.Timing;
 
 namespace Content.Server._StationWare.GameRules;
 
-public sealed class StationWareRuleSystem : GameRuleSystem
+public sealed class StationWareRuleSystem : GameRuleSystem<StationWareRuleComponent>
 {
     [Dependency] private readonly IChatManager _chatManager = default!;
-    [Dependency] private readonly IConfigurationManager _configuration = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly CombatModeSystem _combatMode = default!;
     [Dependency] private readonly GodmodeSystem _godmode = default!;
     [Dependency] private readonly HandsSystem _hands = default!;
     [Dependency] private readonly StationWareChallengeSystem _stationWareChallenge = default!;
     [Dependency] private readonly ChallengeOverlaySystem _overlay = default!;
     [Dependency] private readonly PointSystem _point = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
-
-    private TimeSpan _nextChallengeTime;
-    private TimeSpan? _restartRoundTime;
-    private TimeSpan _challengeDelay = TimeSpan.FromSeconds(5);
-    private readonly TimeSpan _postRoundDuration = TimeSpan.FromSeconds(10);
-    private EntityUid? _currentChallenge;
-
-    private readonly HashSet<string> _previousChallenges = new();
-
-    private int _totalChallenges = 15;
-    private int _challengeCount = 1;
-    private int _speedupInterval = 5;
-    private float _amountPerSpeedup = 0.15f;
-
-    private float _speedMultiplier = 1f;
-
-    private readonly HashSet<IPlayerSession> _queuedRespawns = new();
-
-    public override string Prototype => "StationWare";
 
     public override void Initialize()
     {
@@ -66,59 +47,61 @@ public sealed class StationWareRuleSystem : GameRuleSystem
         SubscribeLocalEvent<RoundEndTextAppendEvent>(OnRoundEndText);
 
         _overlay.BroadcastText("", false, Color.Green);
-
-        _configuration.OnValueChanged(CCVars.StationWareTotalChallenges, e => _totalChallenges = e, true);
-        _configuration.OnValueChanged(CCVars.StationWareChallengeCooldownLength, e => _challengeDelay = TimeSpan.FromSeconds(e), true);
-        _configuration.OnValueChanged(CCVars.StationWareSpeedupInterval, e => _speedupInterval = e, true);
-        _configuration.OnValueChanged(CCVars.StationWareAmountPerSpeedup, e => _amountPerSpeedup = e, true);
     }
 
     private void OnChallengeEnd(ref ChallengeEndEvent ev)
     {
-        if (!RuleStarted)
-            return;
-
-        if (ev.Challenge != _currentChallenge)
-            return;
-
-        if (_challengeCount >= _totalChallenges)
+        var query = EntityQueryEnumerator<StationWareRuleComponent, GameRuleComponent>();
+        while (query.MoveNext(out var uid, out var ware, out var rule))
         {
-            if (CheckForTies(out var tiedPlayers))
-            {
-                // there's a tie!
-                foreach (var player in tiedPlayers)
-                {
-                    if (_playerManager.TryGetSessionById(player, out var playerSession))
-                    {
-                        if (playerSession.AttachedEntity == null)
-                            return;
-
-                        var entity = playerSession.AttachedEntity.Value;
-
-                        AddComp<TiebreakerTrackerComponent>(entity);
-                    }
-                }
-                _stationWareChallenge.StartChallenge(_prototype.Index<ChallengePrototype>("TiebreakerChallenge"));
-            }
-            else
-            {
-                GameTicker.EndRound();
-                StartPostRoundSlaughter(ev.Completions.Keys.ToList());
-                _restartRoundTime = _timing.CurTime + _postRoundDuration;
+            if (!GameTicker.IsGameRuleActive(uid, rule))
                 return;
+
+            if (ev.Challenge != ware.CurrentChallenge)
+                return;
+
+            if (ware.ChallengeCount >= ware.TotalChallenges)
+            {
+                if (CheckForTies(out var tiedPlayers))
+                {
+                    // there's a tie!
+                    foreach (var player in tiedPlayers)
+                    {
+                        if (_playerManager.TryGetSessionById(player, out var playerSession))
+                        {
+                            if (playerSession.AttachedEntity == null)
+                                return;
+
+                            var entity = playerSession.AttachedEntity.Value;
+
+                            AddComp<TiebreakerTrackerComponent>(entity);
+                        }
+                    }
+
+                    _stationWareChallenge.StartChallenge(_prototype.Index<ChallengePrototype>("TiebreakerChallenge"));
+                }
+                else
+                {
+                    GameTicker.EndRound();
+                    StartPostRoundSlaughter(ev.Completions.Keys.ToList());
+                    ware.RestartRoundTime = _timing.CurTime + ware.PostRoundDuration;
+                    return;
+                }
+
             }
-        }
 
-        if (_challengeCount % _speedupInterval == 0)
-        {
-            _speedMultiplier -= _amountPerSpeedup;
-            _chatManager.DispatchServerAnnouncement(Loc.GetString("stationware-speed-up"), Color.Cyan);
-            //todo: sfx
-        }
-        _challengeCount++;
+            if (ware.ChallengeCount % ware.SpeedupInterval == 0)
+            {
+                ware.SpeedMultiplier -= ware.AmountPerSpeedup;
+                _chatManager.DispatchServerAnnouncement(Loc.GetString("stationware-speed-up"), Color.Cyan);
+                //todo: sfx
+            }
 
-        _currentChallenge = null;
-        _nextChallengeTime = _timing.CurTime + _challengeDelay * _speedMultiplier;
+            ware.ChallengeCount++;
+
+            ware.CurrentChallenge = null;
+            ware.NextChallengeTime = _timing.CurTime + ware.ChallengeDelay * ware.SpeedMultiplier;
+        }
     }
 
     private bool CheckForTies([NotNullWhen(true)] out List<NetUserId>? players)
@@ -138,62 +121,63 @@ public sealed class StationWareRuleSystem : GameRuleSystem
 
     private void OnMobStateChanged(MobStateChangedEvent ev)
     {
-        if (!RuleStarted)
-            return;
+        var query = EntityQueryEnumerator<StationWareRuleComponent, GameRuleComponent>();
+        while (query.MoveNext(out var uid, out var ware, out var rule))
+        {
+            if (!GameTicker.IsGameRuleActive(uid, rule))
+                return;
 
-        // only do it between challenges
-        if (_currentChallenge != null)
-            return;
+            // only do it between challenges
+            if (ware.CurrentChallenge != null)
+                return;
 
-        if (ev.NewMobState != MobState.Dead)
-            return;
+            if (ev.NewMobState != MobState.Dead)
+                return;
 
-        if (!TryComp<ActorComponent>(ev.Target, out var actor))
-            return;
+            if (!TryComp<ActorComponent>(ev.Target, out var actor))
+                return;
 
-        if (!_queuedRespawns.Contains(actor.PlayerSession))
-            _queuedRespawns.Add(actor.PlayerSession);
+            ware.QueuedRespawns.Add(actor.PlayerSession);
+        }
     }
 
     private void OnRoundEndText(RoundEndTextAppendEvent ev)
     {
-        if (!RuleAdded)
-            return;
+        var query = EntityQueryEnumerator<StationWareRuleComponent, GameRuleComponent>();
+        while (query.MoveNext(out var uid, out _, out var rule))
+        {
+            if (!GameTicker.IsGameRuleActive(uid, rule))
+                return;
 
-        ev.AddLine(_point.GetPointScoreBoard().ToMarkup());
+            ev.AddLine(_point.GetPointScoreBoard().ToMarkup());
 
-        if (!_point.TryGetHighestScoringPlayer(null, out var pair))
-            return;
-        var info = pair.Value.Value;
-        ev.AddLine(Loc.GetString("stationware-report-winner",
-            ("name", info.Name),
-            ("points", info.Points)));
+            if (!_point.TryGetHighestScoringPlayer(null, out var pair))
+                return;
+            var info = pair.Value.Value;
+            ev.AddLine(Loc.GetString("stationware-report-winner",
+                ("name", info.Name),
+                ("points", info.Points)));
+        }
     }
 
-    public override void Started()
+    protected override void Started(EntityUid uid, StationWareRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {
-        _previousChallenges.Clear();
-        _challengeCount = 1;
-        _currentChallenge = null;
-        _restartRoundTime = null;
-        _nextChallengeTime = _timing.CurTime + _challengeDelay;
-        _speedMultiplier = 1;
+        base.Started(uid, component, gameRule, args);
+
         _point.CreatePointManager(); //initialize it for the overlay
     }
 
-    public override void Ended()
+    protected override void Ended(EntityUid uid, StationWareRuleComponent component, GameRuleComponent gameRule, GameRuleEndedEvent args)
     {
+        base.Ended(uid, component, gameRule, args);
         _overlay.BroadcastText("", false, Color.Green);
     }
 
-    public override void Update(float frameTime)
+    protected override void ActiveTick(EntityUid uid, StationWareRuleComponent component, GameRuleComponent gameRule, float frameTime)
     {
-        base.Update(frameTime);
+        base.ActiveTick(uid, component, gameRule, frameTime);
 
-        if (!RuleStarted)
-            return;
-
-        if (_restartRoundTime != null && _timing.CurTime > _restartRoundTime)
+        if (component.RestartRoundTime != null && _timing.CurTime > component.RestartRoundTime)
         {
             GameTicker.RestartRound();
             return;
@@ -202,21 +186,21 @@ public sealed class StationWareRuleSystem : GameRuleSystem
         if (GameTicker.RunLevel != GameRunLevel.InRound)
             return;
 
-        _stationWareChallenge.RespawnPlayers(_queuedRespawns);
-        _queuedRespawns.Clear();
+        _stationWareChallenge.RespawnPlayers(component.QueuedRespawns);
+        component.QueuedRespawns.Clear();
 
-        if (_currentChallenge != null)
+        if (component.CurrentChallenge != null)
             return;
 
-        if (_timing.CurTime < _nextChallengeTime)
+        if (_timing.CurTime < component.NextChallengeTime)
             return;
 
-        var challenge = GetRandomChallenge(_challengeCount == _totalChallenges);
-        _currentChallenge = _stationWareChallenge.StartChallenge(challenge, _speedMultiplier);
-        _previousChallenges.Add(challenge.ID);
+        var challenge = GetRandomChallenge(component, component.ChallengeCount == component.TotalChallenges);
+        component.CurrentChallenge = _stationWareChallenge.StartChallenge(challenge, component.SpeedMultiplier);
+        component.PreviousChallenges.Add(challenge.ID);
     }
 
-    private ChallengePrototype GetRandomChallenge(bool bossRound, int? triedAmount = 0)
+    private ChallengePrototype GetRandomChallenge(StationWareRuleComponent component, bool bossRound, int? triedAmount = 0)
     {
         if (triedAmount >= 5)
         {
@@ -226,15 +210,15 @@ public sealed class StationWareRuleSystem : GameRuleSystem
         }
 
         var available = _prototype.EnumeratePrototypes<ChallengePrototype>()
-            .Where(p => !_previousChallenges.Contains(p.ID))
+            .Where(p => !component.PreviousChallenges.Contains(p.ID))
             .Where(p => p.Tags.Contains("BossRound") == bossRound)
             .Where(p => !p.Tags.Contains("ChallengePreventPick"))
             .ToList();
 
         if (!available.Any())
         {
-            _previousChallenges.Clear();
-            return GetRandomChallenge(bossRound, triedAmount + 1);
+            component.PreviousChallenges.Clear();
+            return GetRandomChallenge(component, bossRound, triedAmount + 1);
         }
         return _random.Pick(available);
     }
@@ -274,7 +258,7 @@ public sealed class StationWareRuleSystem : GameRuleSystem
         {
             if (!TryComp<CombatModeComponent>(ent, out var combatMode))
                 continue;
-            combatMode.IsInCombatMode = false;
+            _combatMode.SetInCombatMode(ent, false, combatMode);
             RemComp(ent, combatMode);
         }
     }

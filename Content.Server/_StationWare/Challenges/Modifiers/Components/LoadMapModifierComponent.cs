@@ -10,7 +10,7 @@ public sealed class LoadMapModifierComponent : Component
     /// Relative directory path to the given map, i.e. `Maps/ChallengeMaps/map-test.yml`
     /// </summary>
     [DataField("mapPath", required: true)]
-    public ResourcePath MapPath { get; } = default!;
+    public ResPath MapPath { get; } = default!;
 
     /// <summary>
     /// The map created by the modifier
