@@ -18,11 +18,12 @@ public sealed class LoadMapModifierSystem : EntitySystem
     /// <inheritdoc/>
     public override void Initialize()
     {
+        SubscribeLocalEvent<LoadMapModifierComponent, ChallengeInitEvent>(OnChallengeInit);
         SubscribeLocalEvent<LoadMapModifierComponent, ChallengeStartEvent>(OnChallengeStart);
         SubscribeLocalEvent<LoadMapModifierComponent, ChallengeEndEvent>(OnChallengeEnd);
     }
 
-    private void OnChallengeStart(EntityUid uid, LoadMapModifierComponent component, ref ChallengeStartEvent args)
+    private void OnChallengeInit(EntityUid uid, LoadMapModifierComponent component, ref ChallengeInitEvent args)
     {
         component.Map = _map.CreateMap();
         if (!_mapLoader.TryLoad(component.Map.Value, component.MapPath.ToString(), out _, new MapLoadOptions {LoadMap = true}))
@@ -30,6 +31,14 @@ public sealed class LoadMapModifierSystem : EntitySystem
 
         var mapEnt = _map.GetMapEntityId(component.Map.Value);
         Dirty(mapEnt);
+    }
+
+    private void OnChallengeStart(EntityUid uid, LoadMapModifierComponent component, ref ChallengeStartEvent args)
+    {
+        if (component.Map == null)
+            return;
+
+        var mapEnt = _map.GetMapEntityId(component.Map.Value);
 
         var validSpawns = new List<(EntityUid uid, Vector2)>();
         var query = EntityQueryEnumerator<MapPlayerSpawnerComponent, TransformComponent>();
@@ -48,7 +57,7 @@ public sealed class LoadMapModifierSystem : EntitySystem
             var playerXform = Transform(player);
             _transform.SetParent(player, playerXform, mapEnt);
             _transform.SetWorldPosition(playerXform, pos);
-            playerXform.Coordinates = new EntityCoordinates(spawn, 0, 0);
+            _transform.SetCoordinates(player, playerXform, new EntityCoordinates(spawn, 0, 0));
         }
     }
 
