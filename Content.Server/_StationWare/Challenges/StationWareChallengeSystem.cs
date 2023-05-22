@@ -55,8 +55,7 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
         var netuserId = ev.Player.UserId;
         foreach (var challenge in EntityQuery<StationWareChallengeComponent>())
         {
-            if (!challenge.Completions.ContainsKey(netuserId))
-                challenge.Completions[netuserId] = false; // fail on latejoin
+            challenge.Completions.TryAdd(netuserId, false); // fail on latejoin
         }
     }
 
@@ -93,6 +92,9 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
         {
             challengeComp.Completions.Add(id, null);
         }
+
+        var ev = new ChallengeInitEvent(uid, challengeComp);
+        RaiseLocalEvent(uid, ref ev);
 
         return uid;
     }
@@ -324,6 +326,13 @@ public sealed partial class StationWareChallengeSystem : EntitySystem
         }
     }
 }
+
+/// <summary>
+/// Event raised before the challenge starts
+/// </summary>
+/// <param name="Challenge"></param>
+[ByRefEvent]
+public readonly record struct ChallengeInitEvent(EntityUid Challenge, StationWareChallengeComponent Component);
 
 /// <summary>
 /// Event raised once the challenge begins and logic can start.
