@@ -1,11 +1,4 @@
 Entries:
-- author: router
-  changes:
-  - message: Made sound emotes not abhorrent. You can now add some punctuation marks
-      after emotes.
-    type: Tweak
-  id: 3086
-  time: '2023-02-28T20:13:17.0000000+00:00'
 - author: moonheart08
   changes:
   - message: Youtool no longer has free utility belts.
@@ -3417,3 +3410,9 @@ Entries:
     type: add
   id: 3585
   time: '2023-05-01T06:21:55Z'
+- author: EmoGarbage404
+  changes:
+  - message: Fixed map loading breaking with spawning modifiers.
+    type: fix
+  id: 3586
+  time: '2023-05-22T03:25:51Z'
