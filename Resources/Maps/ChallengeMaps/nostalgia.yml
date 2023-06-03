@@ -1867,7 +1867,7 @@ entities:
     parent: 1
     type: Transform
 - uid: 227
-  type: SWToolboxGreytide
+  type: PlushieLizard
   components:
   - pos: 0.48885512,0.49652898
     parent: 1
