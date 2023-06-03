@@ -37,7 +37,7 @@ dataset             = "StationWareTips"
 preset_enabled      = false
 map_enabled         = true
 
-[tags]
+[hub]
 tags = "lang:en,region:luna,rp:none"
 
 [shuttle]
