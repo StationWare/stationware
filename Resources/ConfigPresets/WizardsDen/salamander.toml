@@ -14,3 +14,6 @@ reason = "whitelist-not-whitelisted-rp"
 
 [ic]
 flavor_text = true
+
+[hub]
+tags = "lang:en,region:am_n_w,rp:med"

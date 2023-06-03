@@ -44,8 +44,6 @@ entities:
     fixedRotation: False
     bodyType: Dynamic
     type: Physics
-  - fixtures: []
-    type: Fixtures
   - type: OccluderTree
   - type: Shuttle
   - nextUpdate: 904.1359017
@@ -1867,7 +1865,7 @@ entities:
     parent: 1
     type: Transform
 - uid: 227
-  type: SWToolboxGreytide
+  type: PlushieLizard
   components:
   - pos: 0.48885512,0.49652898
     parent: 1

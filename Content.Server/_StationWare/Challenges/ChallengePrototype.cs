@@ -73,5 +73,5 @@ public sealed class ChallengePrototype : IPrototype
     /// the challenge itself.
     /// </summary>
     [DataField("challengeModifiers")]
-    public readonly EntityPrototype.ComponentRegistry ChallengeModifiers = new();
+    public readonly ComponentRegistry ChallengeModifiers = new();
 }

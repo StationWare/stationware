@@ -9,16 +9,6 @@
     noRot: true
     sprite: _StationWare/Structures/barrel.rsi
     state: icon
-  - type: Fixtures
-    fixtures:
-    - shape:
-        !type:PhysShapeCircle
-        radius: 0.4
-      density: 50
-      mask:
-      - MachineMask
-      layer:
-      - Impassable
   - type: Damageable
   - type: Destructible
     thresholds:

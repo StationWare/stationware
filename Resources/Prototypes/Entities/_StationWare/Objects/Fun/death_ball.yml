@@ -26,12 +26,13 @@
     angularDamping: 0
   - type: Fixtures
     fixtures:
-    - shape:
-        !type:PhysShapeAabb
-        bounds: "-0.5,-0.5,0.5,0.5"
-      density: 1
-      restitution: 1.5
-      hard: true
-      layer:
-      - Impassable
-      - Opaque
+      fix:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        density: 1
+        restitution: 1.5
+        hard: true
+        layer:
+        - Impassable
+        - Opaque

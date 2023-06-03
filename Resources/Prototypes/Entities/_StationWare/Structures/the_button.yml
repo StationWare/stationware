@@ -13,16 +13,6 @@
     layers:
     - state: icon
   - type: InteractionOutline
-  - type: Fixtures
-    fixtures:
-    - shape:
-        !type:PhysShapeAabb
-        bounds: "-0.3,-0.3,0.3,0.3"
-      density: 400
-      mask:
-      - MachineMask
-      layer:
-      - Impassable
   - type: InteractionWin
     winChance: 0.5
     failOnNoWin: true

@@ -22,11 +22,12 @@
   - type: Physics
   - type: Fixtures
     fixtures:
-    - shape:
-        !type:PhysShapeCircle
-        radius: 1.25
-      density: 400
-      mask:
-      - MobMask
-      layer:
-      - MobLayer
+      fix:
+        shape:
+          !type:PhysShapeCircle
+          radius: 1.25
+        density: 400
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
