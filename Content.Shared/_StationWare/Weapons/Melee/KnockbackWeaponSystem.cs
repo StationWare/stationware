@@ -26,7 +26,7 @@ public sealed class KnockbackWeaponSystem : EntitySystem
             direction = direction.Normalized * component.Distance;
             if (direction == Vector2.NaN)
                 continue;
-            _throwing.TryThrow(hit, direction, component.Strength, args.User, transform: hitXForm);
+            _throwing.TryThrow(hit, direction, component.Strength, args.User);
         }
     }
 }
