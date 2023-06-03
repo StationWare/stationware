@@ -5,11 +5,17 @@
   minPlayers: 0
   stations:
     Stationware:
-      mapNameTemplate: '{0} Dumbbell {1}'
-      nameGenerator:
-        !type:NanotrasenNameGenerator
-        prefixCreator: 'SW'
-      overflowJobs:
-      - Passenger
-      availableJobs:
-        Passenger: [ -1, -1 ]
+      stationProto: StandardNanotrasenStation
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: '{0} Dumbbell {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: 'SW'
+        - type: StationEmergencyShuttle
+          emergencyShuttlePath: /Maps/Shuttles/emergency_courser.yml
+        - type: StationJobs
+          overflowJobs:
+            - Passenger
+          availableJobs:
+            Passenger: [ -1, -1 ]
