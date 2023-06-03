@@ -21,7 +21,7 @@ public sealed class ControlPointModifierSystem : EntitySystem
         {
             foreach (var contact in _physics.GetContactingEntities(body))
             {
-                var ent = contact.Owner;
+                var ent = contact;
                 if (!args.Players.Contains(ent))
                     continue;
                 _stationWareChallenge.SetPlayerChallengeState(ent, uid, true, args.Component);

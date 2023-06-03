@@ -82,7 +82,7 @@ namespace Content.Shared.Throwing
 
         private void PreventCollision(EntityUid uid, ThrownItemComponent component, ref PreventCollideEvent args)
         {
-            if (args.BodyB.Owner == component.Thrower)
+            if (args.OtherBody.Owner == component.Thrower)
             {
                 args.Cancelled = true;
             }

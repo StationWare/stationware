@@ -2,6 +2,7 @@
 using Content.Shared.Tag;
 using Robust.Server.GameObjects;
 using Robust.Shared.Physics;
+using Robust.Shared.Physics.Components;
 
 namespace Content.Server._StationWare.Challenges.Modifiers.Systems;
 
@@ -37,9 +38,18 @@ public sealed class NonSolidStructuresModifierSystem : EntitySystem
 
     private void OnChallengeEnd(EntityUid uid, NonSolidStructuresModifierComponent component, ref ChallengeEndEvent args)
     {
-        foreach (var fixture in component.AffectedFixtures)
+        var enumerator = EntityQueryEnumerator<TagComponent, FixturesComponent>();
+        while (enumerator.MoveNext(out var ent, out var tag, out var fixtures))
         {
-            _physics.SetHard(fixture.Body.Owner, fixture, true);
+            if (!_tag.HasTag(tag, component.TargetTag))
+                continue;
+
+            foreach (var fixture in fixtures.Fixtures.Values)
+            {
+                if (!fixture.Hard)
+                    continue;
+                _physics.SetHard(ent, fixture, true, fixtures);
+            }
         }
         component.AffectedFixtures.Clear();
     }
