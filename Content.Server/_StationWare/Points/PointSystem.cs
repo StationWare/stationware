@@ -10,7 +10,7 @@ namespace Content.Server._StationWare.Points;
 
 public sealed class PointSystem : SharedPointSystem
 {
-    [Dependency] private readonly PVSOverrideSystem _pvs = default!;
+    [Dependency] private readonly PvsOverrideSystem _pvs = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
