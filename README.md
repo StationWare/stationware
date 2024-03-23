@@ -1,3 +1,9 @@
+# ⚠️ Repository is archived
+
+Hi! This repository has been archived since 2023 with the hopes to port it upstream, to space-wizards/space-station-14. We never did, but if you'd like to, a lot of the minigame code is well written and can be easily moved upstream.
+
+## Begin original README
+
 <p align="center"> <img alt="StationWare" width="400" height="200" src="Resources/Textures/Logo/logo.png" /></p>
 
 StationWare is a fork of SS14 primarily focused on WarioWare-like gameplay and general wackiness.
